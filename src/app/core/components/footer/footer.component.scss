@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   font-size: 1.3rem;
-  background-color: $colorperros;
+  background-color: $colorgeneral;
   padding: 1rem;
   &__rrss {
     font-size: 1.6rem;
@@ -28,7 +28,7 @@
   .footer {
     flex-direction: row;
     justify-content: space-around;
-    padding: 1rem;
+    padding: 2rem;
     font-size: 1.6rem;
   }
 }

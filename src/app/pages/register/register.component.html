@@ -1,1 +1,57 @@
-<p>register works!</p>
+<!-- <div class="container">
+    <h1>Registro de Usuario</h1>
+    <form class="form">
+        <div class="form__group">
+            <label for="name">
+                Nombre
+            </label>
+            <input type="text">
+        </div>
+        <div class="form__group">
+            <label for="name">
+                Email
+            </label>
+            <input type="text">
+        </div>
+        <div class="form__group">
+            <label for="name">
+                Password
+            </label>
+            <input type="text">
+        </div>
+    </form>
+</div> -->
+
+<form cForm class="form container" *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label cLabel for="name">Nombre</label>
+    <input cFormControl id="name" type="text" formControlName="name"/>
+    <div cFormText>El nombre es requerido</div>
+  </div>
+  <div class="mb-3">
+    <label cLabel for="email">Email</label>
+    <input cFormControl id="email" type="text" formControlName="email"/>
+    <div cFormText>El Email es requerido</div>
+  </div>
+  <div class="mb-3">
+    <label cLabel for="password">Password</label>
+    <input cFormControl id="password" type="password" formControlName="password"  />
+    <span cFormText id="passwordHelpBlock-2">
+      Your password must be 8-20 characters long, contain letters and numbers,
+      and must not contain spaces, special characters, or emoji.
+    </span>
+  </div>
+  <div class="mb-3">
+    <label cLabel for="repeatPassword">Repeat Password</label>
+    <input cFormControl id="repeatPassword" type="password" formControlName="repeatPassword" />
+  </div>
+  <div class="mb-3">
+    <label cLabel for="phone">Teléfono</label>
+    <input cFormControl id="phone" type="text" formControlName="phone"/>
+  </div>
+  <div class="mb-3">
+    <label cLabel for="address">Direccion</label>
+    <input cFormControl id="address" type="text" formControlName="address" />
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
