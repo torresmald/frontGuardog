@@ -1,1 +1,77 @@
-<p>about works!</p>
+<carousel id="carousel" [isAnimated]="true">
+  <div class="carousel--background">
+    <slide class="carousel--div">
+      <img
+        src="../../../../assets/not-found/404.jpg"
+        alt="Imagen 1"
+        class="carousel--div--image"
+      />
+      <div class="carousel--div--contain">
+        <h2>{{ "ABOUTSLIDER.1.TITLE" }}</h2>
+        <p>{{ "ABOUTSLIDER.1.TEXT1" }}</p>
+        <p>{{ "ABOUTSLIDER.1.TEXT2" }}</p>
+      </div>
+    </slide>
+  </div>
+  <slide>
+    <img
+      src="../../../../assets/not-found/404.jpg"
+      alt="Imagen 2"
+      class="carousel--div--image"
+    />
+    <div class="carousel--div--contain">
+      <h2>{{ "ABOUTSLIDER.2.TITLE" }}</h2>
+      <p>{{ "ABOUTSLIDER.2.TEXT" }}</p>
+    </div>
+  </slide>
+  <slide>
+    <img
+      src="../../../../assets/not-found/404.jpg"
+      alt="Imagen 3"
+      class="carousel--div--image"
+    />
+    <div class="carousel--div--contain">
+      <h2>{{ "ABOUTSLIDER.3.TITLE" }}</h2>
+      <p>{{ "ABOUTSLIDER.3.TEXT" }}</p>
+    </div>
+  </slide>
+  <slide>
+    <img
+      src="../../../../assets/not-found/404.jpg"
+      alt="Imagen 4"
+      class="carousel--div--image"
+    />
+    <div class="carousel--div--contain">
+      <h2>{{ "ABOUTSLIDER.4.TITLE" }}</h2>
+      <p>{{ "ABOUTSLIDER.4.TEXT" }}</p>
+    </div>
+  </slide>
+  <slide>
+    <img
+      src="../../../../assets/not-found/404.jpg"
+      alt="Imagen 5"
+      class="carousel--div--image"
+    />
+    <div class="carousel--div--contain">
+      <h2>{{ "ABOUTSLIDER.5.TITLE" }}</h2>
+      <p>{{ "ABOUTSLIDER.5.TEXT" }}</p>
+    </div>
+  </slide>
+  <slide>
+    <img
+      src="../../../../assets/not-found/404.jpg"
+      alt="Imagen 6"
+      class="carousel--div--image"
+    />
+    <div class="carousel--div--contain">
+      <h2>{{ "ABOUTSLIDER.6.TITLE" }}</h2>
+      <p>{{ "ABOUTSLIDER.6.TEXT" }}</p>
+    </div>
+  </slide>
+  <button carousel-control direction="prev" id="carousel">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button carousel-control direction="next" id="carousel">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</carousel>

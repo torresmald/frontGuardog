@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ScrollToTopComponent } from './shared/scroll-to-top/scroll-to-top.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +15,8 @@ import { ScrollToTopComponent } from './shared/scroll-to-top/scroll-to-top.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
