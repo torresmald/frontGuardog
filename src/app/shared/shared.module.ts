@@ -5,10 +5,10 @@ import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 
 
 @NgModule({
-  declarations: [ScrollToTopComponent],
+  declarations: [],
   imports: [
     CommonModule
   ],
-  exports: [ScrollToTopComponent]
+  exports: []
 })
 export class SharedModule { }

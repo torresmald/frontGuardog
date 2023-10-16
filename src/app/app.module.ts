@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { ScrollToTopComponent } from './shared/scroll-to-top/scroll-to-top.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthService } from './core/services/Auth/auth.service';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AuthService } from './core/services/Auth/auth.service';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
