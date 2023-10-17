@@ -1,11 +1,11 @@
-import { Pet } from "../../Pets/transformed/PetModel"
+import { Pets } from "../../Pets/transformed/PetModel"
 
-export interface Parent{
+export interface Parents{
     isAdmin: Boolean,
     verified: Boolean
     name: String,
     image: String,
-    pets: Pet[],
+    pets: Pets[],
     email: String,
     password: String,
     phone: String,

@@ -1,6 +1,6 @@
 import { nutrition, exercise } from "../petsData"
 
-export interface ApiPet{
+export interface ApiPets{
     _id: String,
     name: String,
     image: String,

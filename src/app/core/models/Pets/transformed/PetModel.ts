@@ -1,5 +1,5 @@
 import { nutrition, exercise } from "../petsData"
-export interface Pet{
+export interface Pets{
     name: String,
     image: String,
     birthday: String,

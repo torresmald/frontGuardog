@@ -6,14 +6,13 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ScrollToTopComponent } from './shared/scroll-to-top/scroll-to-top.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthService } from './core/services/Auth/auth.service';
+import { ApiParentsService } from './core/services/Parents/api/apiParentsService.service';
 import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScrollToTopComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +21,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [AuthService],
+  providers: [ApiParentsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,18 +1,18 @@
-import { ApiPet } from "../../Pets/api/apiPetModel"
+import { ApiPets } from "../../Pets/api/apiPetModel"
 
-export interface ApiParent{
+export interface ApiParents{
     _id: String,
     isAdmin: Boolean,
     verified: Boolean
     name: String,
     image: String,
-    pets: ApiPet[],
+    pets: ApiPets[],
     email: String,
     password: String,
     phone: String,
     address: String,
     token: String,
-    __v: String,
-    createdAt: String,
-    updatedAt: String
+    __v?: String,
+    createdAt?: String,
+    updatedAt?: String
 }

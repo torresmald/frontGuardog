@@ -1,0 +1,17 @@
+@import '../../../styles/main.scss';
+
+.login{
+  background-color: $colorgeneral;
+  margin: auto;
+  display: block;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  min-width: 10%;
+  font-size: 1.6rem;
+}
+.login:hover{
+  background-color: $colorperros;
+  font-size: 1.8rem;
+}
+  

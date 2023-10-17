@@ -28,7 +28,7 @@
         formControlName="password"
       />
       <p cFormText *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">El password es requerido</p>
-      <p cFormText *ngIf="form.get('password')?.hasError('minlength') && form.get('password')?.touched">El password debe tener al menos 6 carácteres</p>
+      <p cFormText *ngIf="form.get('password')?.hasError('minlength') && form.get('password')?.touched">El password debe tener al menos 8 carácteres</p>
 
     </div>
     <div class="mb-3">
@@ -54,5 +54,10 @@
 
     </div>
     <button [disabled]="!form.valid" type="submit" class="btn">Enviar</button>
+    <div class="mt-3 text-center">
+      <p cFormText *ngIf="errors === 'El Usuario ya existe, Loguéate'">El Usuario ya existe, Loguéate</p>
+    </div>
   </form>
 </div>
+<app-button [buttonName]="'Home'" [buttonClass]="'login'" routerLink=""></app-button>
+
