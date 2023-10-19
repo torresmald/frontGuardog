@@ -5,5 +5,5 @@
   <main class="content">
     <router-outlet></router-outlet>
   </main>
-  <app-footer *ngIf="!_router.url.includes('login')"></app-footer>
+  <app-footer *ngIf="!_router.url.includes('login') && !_router.url.includes('register')"></app-footer>
 </div>

@@ -14,4 +14,20 @@
   background-color: $colorperros;
   font-size: 1.8rem;
 }
+
+.register{
+  background-color: $colorperros;
+  margin: auto;
+  display: block;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  min-width: 10%;
+  font-size: 1.6rem;
+}
+
+.register:hover{
+  background-color: $colorgeneral;
+  font-size: 1.8rem;
+}
   

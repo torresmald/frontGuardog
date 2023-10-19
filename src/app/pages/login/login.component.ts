@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
+import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 
 @Component({
   selector: 'app-login',
@@ -11,26 +12,44 @@ import { ParentService } from 'src/app/core/services/Parents/parentsService.serv
 export class LoginComponent {
   public form?: FormGroup;
   public errors? : string;
+  public isTrainer: boolean = false;
 
 
-  constructor(private fb: FormBuilder, private parentService:ParentService, private router: Router) {}
+  constructor(private fb: FormBuilder, private parentService:ParentService, private trainerService:TrainerService , private router: Router, private route:ActivatedRoute) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
         });
+      this.route.queryParams.subscribe((value) => {
+        if(value['isTrainer']){
+          this.isTrainer = true
+        }        
+      })
   }
 
   
 
-  public onSubmit() {
-    
+  public onSubmit() {    
     if(this.form?.valid){
+      const request = this.isTrainer ?
+      this.trainerService.loginTrainers(this.form?.value).subscribe(
+        {
+          next: () => {
+            this.router.navigate(['trainer-view'])
+          },
+          error: (error) => {
+            const {error:errorResponse} = error
+            this.errors = errorResponse.msg;
+          }
+        }
+      ) 
+      : 
       this.parentService.loginParent(this.form?.value).subscribe(
         {
           next: () => {
-            console.log(this.form?.value);
+            this.router.navigate(['parent-view'])
           },
           error: (error) => {
             const {error:errorResponse} = error
@@ -38,7 +57,7 @@ export class LoginComponent {
           }
         }
       
-      )
+      ) 
     }
   }
 

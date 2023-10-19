@@ -1,5 +1,5 @@
 import { experience } from "../trainersData"
-export interface Trainer {
+export interface Trainers {
     name: String,
     image: String,
     email: String,

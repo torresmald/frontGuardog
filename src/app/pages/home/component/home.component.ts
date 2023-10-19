@@ -16,6 +16,6 @@ export class HomeComponent {
     this.router.navigate(['login'])
   }
   public goToTrainerLogin() {
-    this.router.navigate(['login'])
+    this.router.navigate(['login'], { queryParams: { isTrainer: 'true' } })
   }
 }

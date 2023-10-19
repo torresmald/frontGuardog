@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
+import { PetsService } from 'src/app/core/services/Pets/petsService.service';
 
 
 @Component({
@@ -10,12 +11,39 @@ import { ParentService } from 'src/app/core/services/Parents/parentsService.serv
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  public nutrition = ['Solida', 'Humeda', 'Lata'];
+  public exercises = ['30-60min', '60-120min', '+120min'];
+  public maxNumberGifts : number = 0;
+  public min = 0;
+  public max = 10;
+  public textRegister :string = 'Usuario'
   public isSamePassword: boolean = false;
   public form?: FormGroup;
   public errors?: string;
-  constructor(private fb: FormBuilder, private parentService:ParentService, private router: Router) {}
+  public newPet: boolean = false;
+  constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((value) => {
+      if(value['newPet']){
+        this.newPet = true
+        this.textRegister = 'Mascota'
+      }
+    });
+
+    this.newPet ?  
+
+    this.form = this.fb.group({
+      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      image: new FormControl('', Validators.required),
+      birthday: new FormControl('', Validators.required),
+      nutrition: new FormControl('', Validators.required),
+      diseases: new FormArray([]),
+      exercise: new FormControl('', Validators.required),
+      gifts: new FormControl(0)
+        })
+    
+    :
     this.form = this.fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -25,13 +53,16 @@ export class RegisterComponent implements OnInit {
       phone: new FormControl('', Validators.required)
         });
 
+    
 
-    this.form.get('password')?.valueChanges.subscribe((passwordValue) => {
+
+    
+    this.form?.get('password')?.valueChanges.subscribe((passwordValue) => {
       const repeatPasswordValue = this.form?.get('repeatPassword')?.value;
       this.isSamePassword = passwordValue === repeatPasswordValue;
     });
 
-    this.form.get('repeatPassword')?.valueChanges.subscribe((repeatPasswordValue) => {
+    this.form?.get('repeatPassword')?.valueChanges.subscribe((repeatPasswordValue) => {
       const passwordValue = this.form?.get('password')?.value;
       this.isSamePassword = passwordValue === repeatPasswordValue;
     });
@@ -41,8 +72,30 @@ export class RegisterComponent implements OnInit {
   
 
   public onSubmit() {
+    console.log(this.form?.value);
+    
     
     if(this.form?.valid){
+
+      const request = this.newPet ? 
+      console.log(this.form?.value)
+
+      // this.petsService.registerPets(this.form.value).subscribe(
+      //   {
+      //     next: () => {
+      //       console.log(this.form?.value);
+
+      //     },
+      //     error: (error) => {
+      //       const {error:errorResponse} = error
+      //       this.errors = errorResponse.msg;
+      //     }
+      //   }
+      // )
+      
+
+      :
+
       this.parentService.registerParent(this.form?.value).subscribe(
         {
           next: () => {
@@ -57,4 +110,13 @@ export class RegisterComponent implements OnInit {
       )
     }
   }
-}
+
+  public onAddDisease() {
+    const control = new FormControl();
+    (<FormArray>this.form?.get('diseases')).push(control)
+  }
+
+  get controls() {
+    return (this.form?.get('diseases') as FormArray).controls;
+  }
+ }

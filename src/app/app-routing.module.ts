@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'privacy',
     loadChildren: () => import('./pages/privacy/privacy.module').then((m) => m.PrivacyModule)
   },
+  {
+    path: 'parent-view',
+    loadChildren: () => import('./pages/parent-view/parent-view.module').then(m => m.ParentViewModule)
+  },
 
 
 
