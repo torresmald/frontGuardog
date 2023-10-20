@@ -26,6 +26,18 @@ export class PetsService {
         )
     }
 
+    public getPet (id:string):Observable<Pets> {
+        this.loadingService.showLoading()
+        return this.apiPetsService.getApiPet(id).pipe(
+           map((apiPets) => {
+                return transformDataPet(apiPets)
+           }),
+           tap(() => {
+            this.loadingService.hideLoading()
+           })
+        )
+    }
+
     public registerPets(body: Pets): Observable<Pets> {
         this.loadingService.showLoading()
         return this.apiPetsService.registerApiPets(body).pipe(

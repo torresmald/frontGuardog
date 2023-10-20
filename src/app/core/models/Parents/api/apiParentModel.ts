@@ -12,7 +12,10 @@ export interface ApiParents{
     phone: String,
     address: String,
     token: String,
+    id: String,
     __v?: String,
     createdAt?: String,
-    updatedAt?: String
+    updatedAt?: String,
+    existParent: any
+
 }

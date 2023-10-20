@@ -1,3 +1,4 @@
+import { Parents } from "../../Parents/transformed/ParentModel"
 import { nutrition, exercise } from "../petsData"
 
 export interface ApiPets{
@@ -12,6 +13,7 @@ export interface ApiPets{
     __v?: String,
     createdAt?: String,
     updatedAt?: String
+    parent: Parents
 
 }
 

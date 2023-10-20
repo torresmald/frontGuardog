@@ -11,4 +11,6 @@ export interface Parents{
     phone: String,
     address: String,
     token: String,
+    id: String,
+    existParent: any
 }

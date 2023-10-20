@@ -122,5 +122,6 @@
   </form>
 
 </div>
-<app-button [buttonName]="'Home'" [buttonClass]="'login'" routerLink=""></app-button>
+<app-button *ngIf="!newPet" [buttonName]="'Home'" [buttonClass]="'login'" routerLink=""></app-button>
 
+<app-button *ngIf="!newPet" [buttonName]="'Tienes una cuenta?'" [buttonClass]="'login'" routerLink="/login"></app-button>

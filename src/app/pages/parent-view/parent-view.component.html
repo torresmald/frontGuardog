@@ -1,8 +1,13 @@
 <div class="body">
-  <app-button
-    [buttonName]="'Registra tu Mascota'"
-    [buttonClass]="'register'"
-    routerLink="/register"
-    [queryParams]="{newPet: true}"
-  ></app-button>
+  <div class="container">
+    <app-button
+      [buttonName]="'Registra tu Mascota'"
+      [buttonClass]="'register'"
+      routerLink="/register"
+      [queryParams]="{ newPet: true }"
+    ></app-button>
+    <div class="services" *ngFor="let service of services">
+    </div>
+    <app-my-pets [pets]="pets"></app-my-pets>
+  </div>
 </div>

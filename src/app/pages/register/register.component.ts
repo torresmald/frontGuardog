@@ -23,7 +23,15 @@ export class RegisterComponent implements OnInit {
   public newPet: boolean = false;
   constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute) {}
 
+  public getToken() {
+    
+    const authToken = localStorage.getItem('parents');
+    return authToken ? JSON.parse(authToken).parent.email : null;
+  }
   ngOnInit(): void {
+
+  
+
     this.route.queryParams.subscribe((value) => {
       if(value['newPet']){
         this.newPet = true
@@ -40,7 +48,8 @@ export class RegisterComponent implements OnInit {
       nutrition: new FormControl('', Validators.required),
       diseases: new FormArray([]),
       exercise: new FormControl('', Validators.required),
-      gifts: new FormControl(0)
+      gifts: new FormControl(0),
+      parent: new FormControl(this.getToken())
         })
     
     :
@@ -76,38 +85,38 @@ export class RegisterComponent implements OnInit {
     
     
     if(this.form?.valid){
-
-      const request = this.newPet ? 
-      console.log(this.form?.value)
-
-      // this.petsService.registerPets(this.form.value).subscribe(
-      //   {
-      //     next: () => {
-      //       console.log(this.form?.value);
-
-      //     },
-      //     error: (error) => {
-      //       const {error:errorResponse} = error
-      //       this.errors = errorResponse.msg;
-      //     }
-      //   }
-      // )
-      
-
-      :
-
-      this.parentService.registerParent(this.form?.value).subscribe(
-        {
-          next: () => {
-            console.log(this.form?.value);
-          },
-          error: (error) => {
-            const {error:errorResponse} = error
-            this.errors = errorResponse.msg;
+      // const parent = this.getToken()      
+      if(this.newPet){
+        // const parentValue = this.form.get('parent')?.setValue('jonathan')
+        // console.log(parentValue);
+        
+        this.petsService.registerPets(this.form.value).subscribe(
+          {
+            next: () => {
+              this.router.navigate(['/parent-view'])
+              console.log(this.form?.value);
+  
+            },
+            error: (error) => {
+              const {error:errorResponse} = error
+              this.errors = errorResponse.msg;
+            }
           }
-        }
-      
-      )
+        )
+      } else {
+        this.parentService.registerParent(this.form?.value).subscribe(
+          {
+            next: () => {
+              console.log(this.form?.value);
+            },
+            error: (error) => {
+              const {error:errorResponse} = error
+              this.errors = errorResponse.msg;
+            }
+          }
+        
+        )
+      }
     }
   }
 

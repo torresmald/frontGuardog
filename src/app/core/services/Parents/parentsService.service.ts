@@ -6,6 +6,8 @@ import { ApiParents } from '../../models/Parents/api/apiParentModel';
 import { transformDataParent } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
 
+const TOKEN_KEY = 'parents'
+
 @Injectable({
   providedIn: 'root',
 })
@@ -18,9 +20,9 @@ export class ParentService {
   public getParents(): Observable<Parents[]> {
     this.loadingService.showLoading();
     return this.apiParentsService.getApiParents().pipe(
-      map((students: ApiParents[]) => {
-        return students.map((student: ApiParents) =>
-          transformDataParent(student)
+      map((parents: ApiParents[]) => {
+        return parents.map((parent: ApiParents) =>
+          transformDataParent(parent)
         );
       }),
       tap(() => {
@@ -32,8 +34,8 @@ export class ParentService {
   public getParent(id: string): Observable<Parents> {
     this.loadingService.showLoading();
     return this.apiParentsService.getApiParent(id).pipe(
-      map((students: ApiParents) => {
-        return transformDataParent(students)
+      map((parents: ApiParents) => {
+        return transformDataParent(parents)
       }),
       tap(() => {
         this.loadingService.hideLoading();
@@ -55,9 +57,17 @@ export class ParentService {
     this.loadingService.showLoading()
     return this.apiParentsService.loginApiParent(body).pipe(
       map((parent: ApiParents) => transformDataParent(parent)),
-      tap(() => {
-        this.loadingService.hideLoading()
+      tap((response) => {
+        console.log(response);
+        
+        this.loadingService.hideLoading();
+        const saveStore = JSON.stringify({
+          token: response.token,
+          parent: response.existParent
+        });
+        localStorage.setItem(TOKEN_KEY, saveStore);
       })
     )
   }
+  
 }

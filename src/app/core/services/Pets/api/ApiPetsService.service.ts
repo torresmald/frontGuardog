@@ -16,6 +16,10 @@ export class ApiPetsService {
     return this.http.get<ApiPets[]>(URL_API)
   }
 
+  public getApiPet (id:string): Observable<ApiPets> {
+    return this.http.get<ApiPets>(`${URL_API}/${id}`)
+  }
+
   public registerApiPets(body: ApiPets): Observable<ApiPets> {
     return this.http.post<ApiPets>(`${URL_API}/register`, body)
   } 
