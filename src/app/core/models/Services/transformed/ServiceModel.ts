@@ -1,4 +1,4 @@
 export interface Services {
-    name: String,
-    price: Number
+    name: string,
+    price: number
 }

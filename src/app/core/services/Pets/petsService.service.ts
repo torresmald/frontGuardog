@@ -4,6 +4,7 @@ import { Observable, map, tap } from "rxjs";
 import { Pets } from "../../models/Pets/transformed/PetModel";
 import { LoadingService } from "../Loading/loading.service";
 import { transformDataPet } from "./helpers/transformApi";
+import { ApiPets } from "../../models/Pets/api/apiPetModel";
 
 @Injectable({
     providedIn: 'root'
@@ -38,7 +39,7 @@ export class PetsService {
         )
     }
 
-    public registerPets(body: Pets): Observable<Pets> {
+    public registerPets(body: ApiPets): Observable<Pets> {
         this.loadingService.showLoading()
         return this.apiPetsService.registerApiPets(body).pipe(
             map((apiPets) => {

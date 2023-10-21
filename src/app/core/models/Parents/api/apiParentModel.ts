@@ -1,21 +1,18 @@
 import { ApiPets } from "../../Pets/api/apiPetModel"
 
 export interface ApiParents{
-    _id: String,
+    _id: string,
+    name: string,
+    image: string,
+    pets: ApiPets[],
+    email: string,
+    password: string,
+    phone: string,
+    address: string,
     isAdmin: Boolean,
     verified: Boolean
-    name: String,
-    image: String,
-    pets: ApiPets[],
-    email: String,
-    password: String,
-    phone: String,
-    address: String,
-    token: String,
-    id: String,
-    __v?: String,
-    createdAt?: String,
-    updatedAt?: String,
-    existParent: any
-
+    token: string,
+    __v?: string,
+    createdAt?: string,
+    updatedAt?: string,
 }

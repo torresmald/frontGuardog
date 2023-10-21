@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'parent-view',
     loadChildren: () => import('./pages/parent-view/parent-view.module').then(m => m.ParentViewModule)
   },
+  {
+    path: 'pet/:id',
+    loadChildren: () => import('./pages/pet/pet.module').then(m => m.PetModule)
+  },
 
 
 

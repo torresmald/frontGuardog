@@ -1,20 +1,19 @@
-import { Parents } from "../../Parents/transformed/ParentModel"
+import { ApiParents } from "../../Parents/api/apiParentModel"
 import { nutrition, exercise } from "../petsData"
 
 export interface ApiPets{
-    _id?: String,
-    name: String,
-    image: String,
-    birthday: String,
+    _id: string,
+    name: string,
+    image: string,
+    birthday: string,
     nutrition: nutrition,
-    diseases: String,
+    diseases: string,
     exercise: exercise,
     maxNumberGifts: Number,
-    __v?: String,
-    createdAt?: String,
-    updatedAt?: String
-    parent: Parents
-
+    __v?: string,
+    createdAt?: string,
+    updatedAt?: string
+    parent: ApiParents
 }
 
 

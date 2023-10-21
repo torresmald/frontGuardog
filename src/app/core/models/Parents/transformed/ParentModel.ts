@@ -1,16 +1,14 @@
 import { Pets } from "../../Pets/transformed/PetModel"
 
 export interface Parents{
+    name: string,
+    image: string,
+    pets: Pets[],
+    email: string,
+    password: string,
+    phone: string,
+    address: string,
     isAdmin: Boolean,
     verified: Boolean
-    name: String,
-    image: String,
-    pets: Pets[],
-    email: String,
-    password: String,
-    phone: String,
-    address: String,
-    token: String,
-    id: String,
-    existParent: any
+    token: string,
 }

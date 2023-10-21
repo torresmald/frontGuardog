@@ -10,7 +10,7 @@ import { MyPetsComponent } from './my-pets/my-pets.component';
 @NgModule({
   declarations: [
     ParentViewComponent,
-    MyPetsComponent
+    MyPetsComponent,
   ],
   imports: [
     CommonModule,

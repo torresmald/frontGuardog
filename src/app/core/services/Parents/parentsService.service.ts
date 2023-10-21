@@ -5,6 +5,7 @@ import { ApiParentsService } from './api/apiParentsService.service';
 import { ApiParents } from '../../models/Parents/api/apiParentModel';
 import { transformDataParent } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
+import { User } from '../../models/Users/transformed/UserModel';
 
 const TOKEN_KEY = 'parents'
 
@@ -53,17 +54,15 @@ export class ParentService {
         }));
   }
 
-  public loginParent(body : ApiParents): Observable<Parents> {
+  public loginParent(body : ApiParents): Observable<User> {
     this.loadingService.showLoading()
     return this.apiParentsService.loginApiParent(body).pipe(
-      map((parent: ApiParents) => transformDataParent(parent)),
+      map((parent: User) => parent),
       tap((response) => {
-        console.log(response);
-        
         this.loadingService.hideLoading();
         const saveStore = JSON.stringify({
           token: response.token,
-          parent: response.existParent
+          user: response.user
         });
         localStorage.setItem(TOKEN_KEY, saveStore);
       })
