@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { PetsService } from 'src/app/core/services/Pets/petsService.service';
+import { UsersService } from 'src/app/core/services/Users/usersService.service';
 
 
 @Component({
@@ -21,13 +22,9 @@ export class RegisterComponent implements OnInit {
   public form?: FormGroup;
   public errors?: string;
   public newPet: boolean = false;
-  constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute) {}
+  constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService) {}
 
-  public getToken() {
-    
-    const authToken = localStorage.getItem('parents');
-    return authToken ? JSON.parse(authToken).parent.email : null;
-  }
+  
   ngOnInit(): void {
 
   
@@ -49,7 +46,7 @@ export class RegisterComponent implements OnInit {
       diseases: new FormArray([]),
       exercise: new FormControl('', Validators.required),
       gifts: new FormControl(0),
-      parent: new FormControl(this.getToken())
+      parent: new FormControl(this.usersService.getTokenParent())
         })
     
     :

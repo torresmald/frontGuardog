@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ParentViewRoutingModule } from './parent-view-routing.module';
@@ -16,6 +16,10 @@ import { MyPetsComponent } from './my-pets/my-pets.component';
     CommonModule,
     ParentViewRoutingModule,
     SharedModule
-  ]
+  ],
+  providers: [{
+    provide: LOCALE_ID,
+    useValue: 'es-ES',
+  },]
 })
 export class ParentViewModule { }

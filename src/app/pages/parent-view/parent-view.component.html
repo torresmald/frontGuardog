@@ -1,13 +1,32 @@
 <div class="body">
   <div class="container">
-    <app-button
-      [buttonName]="'Registra tu Mascota'"
-      [buttonClass]="'register'"
-      routerLink="/register"
-      [queryParams]="{ newPet: true }"
-    ></app-button>
-    <div class="services" *ngFor="let service of services">
+    <div class="pets">
+      <app-button
+        [buttonName]="'Registra tu Mascota'"
+        [buttonClass]="'register'"
+        routerLink="/register"
+        [queryParams]="{ newPet: true }"
+      ></app-button>
+      <app-my-pets [pets]="pets"></app-my-pets>
     </div>
-    <app-my-pets [pets]="pets"></app-my-pets>
+    <div>
+      <h2>Servicios</h2>
+      <div *ngFor="let service of services">
+        <h3>{{service.name}}</h3>
+        <p>{{service.price | currency: 'EUR':'symbol':'2.2-2':'es' }}</p>
+        <p>{{service.type}}</p>
+        <button type="button" class="btn btn-primary" (click)="onAddService(service)">Añadir Servicio</button>
+      </div>
+    </div>
+    <div *ngIf="requestedServices.length > 0">
+      <h2>Servicios Contratados</h2>
+      <div *ngFor="let service of requestedServices">
+        <h3>{{service.name}}</h3>
+        <p>{{service.price | currency: 'EUR':'symbol':'2.2-2':'es'}}</p>
+        <button type="button" class="btn btn-danger" (click)="onRemoveService(service)">Eliminar Servicio</button>
+      </div>
+      <p>TOTAL A PAGAR: {{totalAmount | currency: 'EUR':'symbol':'2.2-2':'es'}}</p>
+      <button type="button" class="btn btn-secondary" (click)="onSubmit()">Contratar Servicios</button>
+    </div>
   </div>
 </div>

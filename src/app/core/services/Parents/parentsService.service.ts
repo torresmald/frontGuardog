@@ -45,21 +45,16 @@ export class ParentService {
   }
 
   public registerParent(body: ApiParents): Observable<Parents> {
-    this.loadingService.showLoading()
     return this.apiParentsService
       .registerApiParent(body).pipe(
-        map((parent: ApiParents) => transformDataParent(parent)),
-        tap(() => {
-          this.loadingService.hideLoading()
-        }));
+        map((parent: ApiParents) => transformDataParent(parent))
+       );
   }
 
   public loginParent(body : ApiParents): Observable<User> {
-    this.loadingService.showLoading()
     return this.apiParentsService.loginApiParent(body).pipe(
       map((parent: User) => parent),
       tap((response) => {
-        this.loadingService.hideLoading();
         const saveStore = JSON.stringify({
           token: response.token,
           user: response.user

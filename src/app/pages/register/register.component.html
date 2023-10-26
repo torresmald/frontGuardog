@@ -3,7 +3,7 @@
   <form
     cForm
     class="body__form container"
-    *ngIf="form && !newPet"
+    *ngIf="form"
     [formGroup]="form"
     (ngSubmit)="onSubmit()"
   >
@@ -13,13 +13,55 @@
       <p cFormText *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">El nombre es requerido</p>
       <p cFormText *ngIf="form.get('name')?.hasError('minlength') && form.get('name')?.touched">El nombre es muy corto</p>
     </div>
-    <div class="mb-3">
-      <label cLabel for="email">Email</label>
+    <div class="mb-3" *ngIf="newPet">
+      <label cLabel for="image">Imagen</label>
+      <input cFormControl id="image" type="text" formControlName="image" />
+      <p cFormText *ngIf="form.get('image')?.hasError('required') && form.get('image')?.touched">La imagen es requerido</p>
+    </div>
+    <div class="mb-3" *ngIf="newPet">
+      <label cLabel for="birthday">Fecha Nacimiento</label>
+      <input
+        cFormControl
+        id="birthday"
+        type="text"
+        formControlName="birthday"
+      />
+      <p cFormText *ngIf="form.get('birthday')?.hasError('birthday') && form.get('birthday')?.touched">La fecha es requerida</p>
+    </div>
+    <div class="mb-3" *ngIf="newPet">
+      <label cLabel for="nutrition">Alimentación Principal</label>
+      <select cSelect name="nutrition" id="nutrition" sizing="lg" formControlName="nutrition">
+        <option value="">-- Selecciona --</option>
+        <option *ngFor="let food of nutrition" [value]="food">{{food}}</option>
+      </select>
+      <p cFormText *ngIf="form.get('nutrition')?.hasError('nutrition') && form.get('nutrition')?.touched">La alimentacion es requerida</p>
+    </div>
+    <div class="mb-3" formArrayName="diseases" *ngIf="newPet">
+      <button class="btn-disease" type="button" (click)="onAddDisease()">Add Disease</button>
+      <div *ngFor="let diseaseControl of controls; let i = index">
+        <input cFormControl type="text"  [formControlName]="i">
+      </div>
+    </div>
+    <div class="mb-3" *ngIf="newPet">
+      <label cLabel for="exercise">Ejercicio</label>
+      <select cSelect name="exercise" id="exercise" sizing="lg" formControlName="exercise">
+        <option value="">-- Selecciona --</option>
+        <option *ngFor="let exercise of exercises" [value]="exercise">{{exercise}}</option>
+      </select>
+      <p cFormText *ngIf="form.get('exercise')?.hasError('exercise') && form.get('exercise')?.touched">El ejercicio es requerido</p>
+    </div>
+    <div class="mb-3" *ngIf="newPet">
+      <label cLabel for="customRange1">Maximos Premios Diarios <strong>{{maxNumberGifts}}</strong></label>
+      <input [(ngModel)]="maxNumberGifts" cFormControl id="customRange1" type="range" [ngModelOptions]="{standalone: true}" [max]="max" [min]="min"/>
+      <p cFormText *ngIf="form.get('gifts')?.hasError('gifts') && form.get('gifts')?.touched">La fecha es requerida</p>
+    </div>
+    <div class="mb-3" *ngIf="!newPet">
+      <label cLabel for="email" *ngIf="!newPet">Email</label>
       <input cFormControl id="email" type="text" formControlName="email" />
       <p cFormText *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El email es requerido</p>
       <p cFormText *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El email tiene un formato inválido</p>
     </div>
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="!newPet">
       <label cLabel for="password">Password</label>
       <input
         cFormControl
@@ -31,7 +73,7 @@
       <p cFormText *ngIf="form.get('password')?.hasError('minlength') && form.get('password')?.touched">El password debe tener al menos 8 carácteres</p>
 
     </div>
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="!newPet">
       <label cLabel for="repeatPassword">Repeat Password</label>
       <input
         cFormControl
@@ -41,13 +83,13 @@
       />
       <p cFormText *ngIf="!isSamePassword && form.get('repeatPassword')?.touched">Los passwords no coinciden</p>
     </div>
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="!newPet">
       <label cLabel for="phone">Teléfono</label>
       <input cFormControl id="phone" type="text" formControlName="phone" />
       <p cFormText *ngIf="form.get('phone')?.hasError('required') && form.get('phone')?.touched">El telefono es requerido</p>
 
     </div>
-    <div class="mb-3">
+    <div class="mb-3" *ngIf="!newPet">
       <label cLabel for="address">Direccion</label>
       <input cFormControl id="address" type="text" formControlName="address" />
       <p cFormText *ngIf="form.get('address')?.hasError('required') && form.get('address')?.touched">La direccion es requerida</p>
@@ -59,67 +101,6 @@
     </div>
   </form>
 
-  <form
-    cForm
-    class="body__form container"
-    *ngIf="form && newPet"
-    [formGroup]="form"
-    (ngSubmit)="onSubmit()"
-  >
-    <div class="mb-3">
-      <label cLabel for="name">Nombre</label>
-      <input cFormControl id="name" type="text" formControlName="name" />
-      <p cFormText *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">El nombre es requerido</p>
-      <p cFormText *ngIf="form.get('name')?.hasError('minlength') && form.get('name')?.touched">El nombre es muy corto</p>
-    </div>
-    <div class="mb-3">
-      <label cLabel for="image">Imagen</label>
-      <input cFormControl id="image" type="text" formControlName="image" />
-      <p cFormText *ngIf="form.get('image')?.hasError('required') && form.get('image')?.touched">La imagen es requerido</p>
-    </div>
-    <div class="mb-3">
-      <label cLabel for="birthday">Fecha Nacimiento</label>
-      <input
-        cFormControl
-        id="birthday"
-        type="text"
-        formControlName="birthday"
-      />
-      <p cFormText *ngIf="form.get('birthday')?.hasError('birthday') && form.get('birthday')?.touched">La fecha es requerida</p>
-    </div>
-    <div class="mb-3">
-      <label cLabel for="nutrition">Alimentación Principal</label>
-      <select cSelect name="nutrition" id="nutrition" sizing="lg" formControlName="nutrition">
-        <option value="">-- Selecciona --</option>
-        <option *ngFor="let food of nutrition" [value]="food">{{food}}</option>
-      </select>
-      <p cFormText *ngIf="form.get('nutrition')?.hasError('nutrition') && form.get('nutrition')?.touched">La alimentacion es requerida</p>
-    </div>
-    <div class="mb-3" formArrayName="diseases">
-      <!-- <input cFormControl id="diseases" type="diseases" formControlName="diseases" /> -->
-      <button class="btn-disease" type="button" (click)="onAddDisease()">Add Disease</button>
-      <div *ngFor="let diseaseControl of controls; let i = index">
-        <input cFormControl type="text"  [formControlName]="i">
-      </div>
-    </div>
-    <div class="mb-3">
-      <label cLabel for="exercise">Ejercicio</label>
-      <select cSelect name="exercise" id="exercise" sizing="lg" formControlName="exercise">
-        <option value="">-- Selecciona --</option>
-        <option *ngFor="let exercise of exercises" [value]="exercise">{{exercise}}</option>
-      </select>
-      <p cFormText *ngIf="form.get('exercise')?.hasError('exercise') && form.get('exercise')?.touched">El ejercicio es requerido</p>
-    </div>
-    <div class="mb-3">
-      <label cLabel for="customRange1">Maximos Premios Diarios <strong>{{maxNumberGifts}}</strong></label>
-      <input [(ngModel)]="maxNumberGifts" cFormControl id="customRange1" type="range" [ngModelOptions]="{standalone: true}" [max]="max" [min]="min"/>
-      <p cFormText *ngIf="form.get('gifts')?.hasError('gifts') && form.get('gifts')?.touched">La fecha es requerida</p>
-    </div>
-    <button [disabled]="!form.valid" type="submit" class="btn">Enviar</button>
-    <div class="mt-3 text-center">
-      <p cFormText *ngIf="errors === 'El Usuario ya existe, Loguéate'">El Usuario ya existe, Loguéate</p>
-    </div>
-  </form>
 
 </div>
 <app-button *ngIf="!newPet" [buttonName]="'Home'" [buttonClass]="'login'" routerLink=""></app-button>
