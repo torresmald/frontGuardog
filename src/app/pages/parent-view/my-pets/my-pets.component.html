@@ -1,6 +1,6 @@
 <h2>Mis Mascotas</h2>
-<div *ngFor="let pet of pets" (click)="goToDetail(pet._id)" class="pet">
-    <div class="circle-image">
+<div *ngFor="let pet of pets" (click)="goToDetail(pet._id)">
+    <div>
         <img [src]="pet.image" alt="">
     </div>
     <p>{{pet.name}}</p>

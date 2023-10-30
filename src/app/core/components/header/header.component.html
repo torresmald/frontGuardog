@@ -1,31 +1,36 @@
-<div class="header">
-  <div class="header__template">Aqui van los cambios de templat</div>
-  <div class="header__image">
+<div>
+  <div>Aqui van los cambios de templat</div>
+  <div>
     <img src="" alt="Imagen" routerLink="" />
   </div>
-  <nav class="header__nav">
-    <ul class="header__nav_list">
-      <li><a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a></li>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
+      </li>
       <li><a routerLink="/register" routerLinkActive="active">Registro</a></li>
       <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
     </ul>
   </nav>
 
-  
   <div>
-    <div (click)="openMenuMobile()" class="menuBurguer">
-      <img src="../../../../assets/menu/menu.png" alt="">
+    <div (click)="openMenuMobile()">
+      <img src="../../../../assets/menu/menu.png" alt="Menu" />
     </div>
-    <div  [ngClass]="{'menuMobile': !isMobile, 'menuBurguer': isMobile }">
-      <nav  *ngIf="isMobile">
-    <ul >
-      <li><a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a></li>
-      <li><a routerLink="/register" routerLinkActive="active">Registro</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
-    </ul>
-  </nav>
+    <div>
+      <nav *ngIf="isMobile">
+        <ul>
+          <li>
+            <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
+          </li>
+          <li>
+            <a routerLink="/register" routerLinkActive="active">Registro</a>
+          </li>
+          <li>
+            <a routerLink="/contact" routerLinkActive="active">Contacto</a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>
-
-

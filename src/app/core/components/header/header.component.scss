@@ -1,55 +1,55 @@
-@import "../../../../styles/main.scss";
-.header {
-  display: flex;
-  justify-content: space-between;
-  &__template {
-    width: 30%;
-    background-color: aqua;
-  }
-  &__image {
-    cursor: pointer;
-    background-color: red;
-    width: 50%;
-    height: 10rem;
-  }
-  &__nav {
-    width: 40%;
-    &_list {
-      display: none;
-    }
-  }
-}
-.active {
-  color: aqua;
-}
+// @import "../../../../styles/main.scss";
+// .header {
+//   display: flex;
+//   justify-content: space-between;
+//   &__template {
+//     width: 30%;
+//     background-color: aqua;
+//   }
+//   &__image {
+//     cursor: pointer;
+//     background-color: red;
+//     width: 50%;
+//     height: 10rem;
+//   }
+//   &__nav {
+//     width: 40%;
+//     &_list {
+//       display: none;
+//     }
+//   }
+// }
+// .active {
+//   color: aqua;
+// }
 
-.menuMobile {
-  display: none;
-}
+// .menuMobile {
+//   display: none;
+// }
 
-.menuBurguer {
-  background-color: bisque;
-  display: flex;
-  flex-direction: column;
-  img{
-    width: 4rem;
-    height: 4rem;
-  }
-}
+// .menuBurguer {
+//   background-color: bisque;
+//   display: flex;
+//   flex-direction: column;
+//   img{
+//     width: 4rem;
+//     height: 4rem;
+//   }
+// }
 
-@media all and (min-width: 600px) {
-  .header{
-    &__image{
-      width: 30%;
-    }
-    &__nav_list{
-      background-color: aquamarine;
-      display: flex;
-    }
+// @media all and (min-width: 600px) {
+//   .header{
+//     &__image{
+//       width: 30%;
+//     }
+//     &__nav_list{
+//       background-color: aquamarine;
+//       display: flex;
+//     }
 
-  }
-  .menuBurguer{
-    display: none;
-  }
+//   }
+//   .menuBurguer{
+//     display: none;
+//   }
 
-}
+// }
