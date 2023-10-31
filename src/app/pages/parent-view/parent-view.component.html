@@ -1,6 +1,6 @@
-<div class="body">
-  <div class="container">
-    <div class="pets">
+<div>
+  <div>
+    <div>
       <app-button
         [buttonName]="'Registra tu Mascota'"
         [buttonClass]="'register'"
@@ -15,7 +15,7 @@
         <h3>{{service.name}}</h3>
         <p>{{service.price | currency: 'EUR':'symbol':'2.2-2':'es' }}</p>
         <p>{{service.type}}</p>
-        <button type="button" class="btn btn-primary" (click)="onAddService(service)">Añadir Servicio</button>
+        <button type="button" (click)="onAddService(service)">Añadir Servicio</button>
       </div>
     </div>
     <div *ngIf="requestedServices.length > 0">
@@ -23,10 +23,10 @@
       <div *ngFor="let service of requestedServices">
         <h3>{{service.name}}</h3>
         <p>{{service.price | currency: 'EUR':'symbol':'2.2-2':'es'}}</p>
-        <button type="button" class="btn btn-danger" (click)="onRemoveService(service)">Eliminar Servicio</button>
+        <button type="button" (click)="onRemoveService(service)">Eliminar Servicio</button>
       </div>
       <p>TOTAL A PAGAR: {{totalAmount | currency: 'EUR':'symbol':'2.2-2':'es'}}</p>
-      <button type="button" class="btn btn-secondary" (click)="onSubmit()">Contratar Servicios</button>
+      <button type="button" (click)="onSubmit()">Contratar Servicios</button>
     </div>
   </div>
 </div>

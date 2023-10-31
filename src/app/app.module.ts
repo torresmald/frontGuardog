@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ApiParentsService } from './core/services/Parents/api/apiParentsService.service';
 import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [ApiParentsService],
+  exports: [],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

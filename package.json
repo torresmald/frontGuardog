@@ -24,8 +24,12 @@
     "@coreui/coreui": "^4.3.2",
     "@coreui/icons": "^3.0.1",
     "@coreui/icons-angular": "^4.5.25",
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "@popperjs/core": "^2.11.6",
+    "install": "^0.13.0",
+    "npm": "^10.2.1",
     "rxjs": "~7.8.0",
+    "tailwindcss-animated": "^1.0.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },

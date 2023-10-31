@@ -1,7 +1,17 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
-
+@layer base {
+  @font-face {
+    font-family: "dog";
+    src: url(./assets/fonts/DogsFont.ttf);
+  }
+  .active {
+    color: #8d3a30;
+    font-weight: bold;
+    transition: ease-in;
+  }
+  
+}

@@ -1,23 +1,20 @@
-<div class="home">
-  <div class="home__menu">
-    <div class="home__menu_login">
-      <div>
-        <h2>Texto</h2>
-        <p>Texto2</p>
+<div class="flex flex-col justify-around items-center text-center font-dog p-4 md:flex-row md:items-start md:flex-1">
+  <div class="p-8">
+      <div class="p-4 ">
+        <h2 class="text-3xl text-sienna-700 font-extrabold p-2">Bienvenidos a Guardog</h2>
+        <p class="text-sienna-500 font-bold opacity-70">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa perspiciatis minus optio voluptates amet</p>
       </div>
-      <div class="buttons">
-        <div class="home__menu_buttons">
-          <button (click)="goToRegister()">Registro</button>
-          <button (click)="goToLogin()">Login</button>
+      <div class="flex flex-col gap-8 justify-between">
+        <div class="flex gap-5 justify-center">
+          <button class="transition ease-in-out delay-150 bg-sienna-200 hover:-translate-y-1 hover:scale-110 hover:bg-sienna-500 duration-300 rounded-md p-4 hover:text-white"  (click)="goToRegister()">Registro</button>
+          <button class="transition ease-in-out delay-150 bg-sienna-300 hover:-translate-y-1 hover:scale-110 hover:bg-sienna-500 duration-300 rounded-md p-4 hover:text-white"  (click)="goToLogin()">Login</button>
         </div>
-        <div class="home__menu_trainer">
-          <button (click)="goToTrainerLogin()">Educador</button>
+        <div class="md:pt-32">
+          <button  class="transition ease-in-out delay-150 bg-sienna-600 hover:-translate-y-1 hover:scale-110 hover:bg-sienna-900 duration-300 rounded-md p-4 hover:text-white " (click)="goToTrainerLogin()">Profesionales</button>
         </div>
       </div>
-    </div>
   </div>
 
-  <div class="home__image">
-    <img src="../../../../assets/home/home.jpg" alt="Imagen Home" />
+  <div class="bg-home w-full h-full bg-contain bg-no-repeat bg-center animate-fade-up animate-once animate-duration-[3000ms] animate-delay-500 animate-ease-in mix-blend-multiply md:bg-contain md:bg-no-repeat">
   </div>
 </div>

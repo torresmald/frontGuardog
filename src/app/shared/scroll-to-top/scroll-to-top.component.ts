@@ -1,5 +1,4 @@
-import { Component, Inject, HostListener } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-scroll-to-top',
@@ -13,9 +12,6 @@ export class ScrollToTopComponent {
   @HostListener('window:scroll')
   public checkScroll() {
       
-    // window의 scroll top
-    // Both window.pageYOffset and document.documentElement.scrollTop returns the same result in all the cases. window.pageYOffset is not supported below IE 9.
-
     const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;    
     if (scrollPosition >= this.topPosToStartShowing) {
       this.isShow = true;
@@ -24,7 +20,7 @@ export class ScrollToTopComponent {
     }
   }
 
-  public gotoTop() {
+  public gotoTop() {    
     window.scroll({ 
       top: 0, 
       left: 0, 
