@@ -1,39 +1,192 @@
-<div>
-    <h1>Login</h1>
+<!-- <div class="flex flex-col flex-1 gap-20 items-center pt-36">
+  <div>
+    <h1 class="text-4xl font-dog font-extrabold text-sienna-800">Login</h1>
+  </div>
+  <div>
     <form
+      class="bg-sienna-100 p-8 rounded-md opacity-80 flex flex-col gap-8"
       cForm
       *ngIf="form"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
     >
-      
-      <div>
-        <label cLabel for="email">Email</label>
+      <div class="flex flex-col gap-4 text-center">
+        <label class="font-dog" cLabel for="email">Email</label>
         <input cFormControl id="email" type="text" formControlName="email" />
-        <p cFormText *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El email es requerido</p>
-        <p cFormText *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El email tiene un formato inválido</p>
+        <p
+          cFormText
+          *ngIf="
+            form.get('email')?.hasError('required') &&
+            form.get('email')?.touched
+          "
+        >
+          El email es requerido
+        </p>
+        <p
+          cFormText
+          *ngIf="
+            form.get('email')?.hasError('email') && form.get('email')?.touched
+          "
+        >
+          El email tiene un formato inválido
+        </p>
       </div>
-      <div>
-        <label cLabel for="password">Password</label>
+      <div class="flex flex-col gap-4 text-center">
+        <label class="font-dog" cLabel for="password">Password</label>
         <input
           cFormControl
           id="password"
           type="password"
           formControlName="password"
         />
-        <p cFormText *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">El password es requerido</p>
-        <p cFormText *ngIf="errors === 'El password no es correcto'">El password no es correcto</p>
+        <p
+          cFormText
+          *ngIf="
+            form.get('password')?.hasError('required') &&
+            form.get('password')?.touched
+          "
+        >
+          El password es requerido
+        </p>
+        <p cFormText *ngIf="errors === 'El password no es correcto'">
+          El password no es correcto
+        </p>
       </div>
       <button [disabled]="!form.valid" type="submit">Enviar</button>
       <div>
-        <p cFormText *ngIf="errors === 'El Usuario No existe, Registrate'">El Usuario No existe, Registrate</p>
-        <p cFormText *ngIf="errors === 'No has verificado tu cuenta, revisa tu email'">No has verificado tu cuenta, revisa tu email</p>
+        <p cFormText *ngIf="errors === 'El Usuario No existe, Registrate'">
+          El Usuario No existe, Registrate
+        </p>
+        <p
+          cFormText
+          *ngIf="errors === 'No has verificado tu cuenta, revisa tu email'"
+        >
+          No has verificado tu cuenta, revisa tu email
+        </p>
       </div>
     </form>
-
   </div>
-  <app-button [buttonName]="'Home'" [buttonClass]="'login'" routerLink=""></app-button>
+</div>
+<div>
+  <app-button
+    [buttonName]="'Home'"
+    [buttonClass]="'login'"
+    routerLink=""
+  ></app-button>
 
-  <app-button [buttonName]="'No tienes una cuenta?'" [buttonClass]="'login'" routerLink="/register"></app-button>
+  <app-button
+    [buttonName]="'No tienes una cuenta?'"
+    [buttonClass]="'login'"
+    routerLink="/register"
+  ></app-button>
+</div> -->
 
-  
+<!-- component -->
+<div
+  class="min-h-screen p-6 bg-sienna-100 flex items-center justify-center opacity-70"
+>
+  <div class="container max-w-screen-lg mx-auto">
+    <div>
+      <h2 class="font-semibold text-center text-2xl text-sienna-800 mb-6">
+        Login
+      </h2>
+      <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
+        <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+            <div class="text-sienna-600 font-bold">
+              <p class="font-medium text-lg">Login Details</p>
+              <p>Please fill out all the fields.</p>
+            </div>
+
+            <div class="lg:col-span-2">
+              <div
+                class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
+              >
+                <div class="md:col-span-5">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
+                    placeholder="email@domain.com"
+                    formControlName="email"
+                  />
+                  <p
+                    class="text-red-600"
+                    *ngIf="
+                      form.get('email')?.hasError('required') &&
+                      form.get('email')?.touched
+                    "
+                  >
+                    El email es requerido
+                  </p>
+                  <p
+                    class="text-red-600"
+                    *ngIf="
+                      form.get('email')?.hasError('email') &&
+                      form.get('email')?.touched
+                    "
+                  >
+                    El email tiene un formato inválido
+                  </p>
+                </div>
+
+                <div class="md:col-span-5">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
+                    formControlName="password"
+                  />
+                  <p
+                    class="text-red-600"
+                    *ngIf="
+                      form.get('password')?.hasError('required') &&
+                      form.get('password')?.touched
+                    "
+                  >
+                    El password es requerido
+                  </p>
+                  <p
+                    class="text-red-600"
+                    *ngIf="errors === 'El password no es correcto'"
+                  >
+                    El password no es correcto
+                  </p>
+                </div>
+                <div class="md:col-span-5 text-center py-4">
+                  <div class="inline-flex items-center">
+                    <button
+                      [disabled]="!form.valid"
+                      type="submit"
+                      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-blue-200 disabled:cursor-not-allowed"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+                <div class="md:col-span-5 text-center py-4">
+                  <p
+                    class="text-red-600 font-bold"
+                    *ngIf="errors === 'El Usuario No existe, Registrate'"
+                  >
+                    El Usuario No existe, Registrate
+                  </p>
+                  <p
+                    class="text-red-600 font-bold"
+                    *ngIf="
+                      errors === 'No has verificado tu cuenta, revisa tu email'
+                    "
+                  >
+                    No has verificado tu cuenta, revisa tu email
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
