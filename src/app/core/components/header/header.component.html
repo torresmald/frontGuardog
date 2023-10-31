@@ -1,33 +1,34 @@
-<div>
-  <div>Aqui van los cambios de templat</div>
-  <div>
-    <img src="" alt="Imagen" routerLink="" />
+<div class="flex justify-between mb-4 font-dog md:max-h-60 text-sm">
+  <div class="bg-sienna-400">Aqui van los cambios de templat</div>
+  <div class="bg-sienna-500 overflow-hidden flex-1 cursor-pointer">
+    <img class="w-full" src="../../../../assets/home/Apertura1.jpg" alt="Imagen" routerLink="" />
   </div>
-  <nav>
+  <nav class="hidden sm:flex p-4 text-sienna-600">
     <ul>
       <li>
-        <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
+        <a class="hover:text-sienna-800  hover:text-lg" routerLink="/about" routerLinkActive="active">Nosotros</a>
       </li>
-      <li><a routerLink="/register" routerLinkActive="active">Registro</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
+      <li><a class="hover:text-sienna-800 hover:text-lg" routerLink="/register" routerLinkActive="active">Registro</a></li>
+      <li><a class="hover:text-sienna-800 hover:text-lg" routerLink="/contact" routerLinkActive="active">Contacto</a></li>
     </ul>
   </nav>
 
-  <div>
-    <div (click)="openMenuMobile()">
-      <img src="../../../../assets/menu/menu.png" alt="Menu" />
+  <div class="sm:hidden px-4">
+    <div (click)="openMenuMobile()" class="text-2xl text-sienna-800 cursor-pointer text-center py-2">
+      <!-- <img src="../../../../assets/menu/menu.png" alt="Menu" /> -->
+      <span class="fa-solid fa-bars"></span>    
     </div>
-    <div>
-      <nav *ngIf="isMobile">
+    <div class="text-sienna-600" *ngIf="isMobile">
+      <nav>
         <ul>
           <li>
-            <a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a>
+            <a class="hover:text-sienna-800 hover:text-lg" routerLink="/about" routerLinkActive="active">Nosotros</a>
           </li>
           <li>
-            <a routerLink="/register" routerLinkActive="active">Registro</a>
+            <a class="hover:text-sienna-800 hover:text-lg" routerLink="/register" routerLinkActive="active">Registro</a>
           </li>
           <li>
-            <a routerLink="/contact" routerLinkActive="active">Contacto</a>
+            <a class="hover:text-sienna-800 hover:text-lg" routerLink="/contact" routerLinkActive="active">Contacto</a>
           </li>
         </ul>
       </nav>
