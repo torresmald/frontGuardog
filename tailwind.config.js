@@ -24,14 +24,20 @@ module.exports = {
       screens: {
         'tablet': '640px',
         // => @media (min-width: 640px) { ... }
-  
+
         'laptop': '1024px',
         // => @media (min-width: 1024px) { ... }
-  
+
         'desktop': '1280px',
         // => @media (min-width: 1280px) { ... }
       },
+      backgroundImage: {
+        'home': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1698747339/jcqtvlyhi2goe6h33bac.avif')",
+        'logo': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1698750803/vi2epjqi35gsv6gw1maq.jpg')"
+      }
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animated')
+  ],
 }
+
