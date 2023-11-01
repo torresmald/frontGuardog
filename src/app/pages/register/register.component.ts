@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
   
   ngOnInit(): void {
 
+    
   
 
     this.route.queryParams.subscribe((value) => {

@@ -1,30 +1,5 @@
-// .form{
-//     margin-top: 4rem;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     gap: 2rem;
-//     &__group{
-//         display: flex;
-//         flex-direction: column;
-//         width: 60%;
-//         &_control{
-//             padding: 1rem;
-//             border-radius: 1rem;
-//         }
-//         textarea{
-//             resize: none;
-//         }
-//     }
-//     &__button{
-//         padding: 1rem;
-//         border-radius: 1rem;
-//         background-color: aqua;
-//         margin-bottom: 10rem;
-//         cursor: pointer;
-//     }
-//     &__button:hover{
-//         background-color: red;
-//         color: white;
-//     }
-// }
+:host{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+}

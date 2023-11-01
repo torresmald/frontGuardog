@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {
@@ -31,8 +32,8 @@ module.exports = {
           '800': '#204526',
           '900': '#1b3920',
           '950': '#0e2012',
-      },
-      
+        },
+
 
       },
       fontFamily: {
@@ -54,7 +55,9 @@ module.exports = {
       }
     },
   },
-  plugins: [require('tailwindcss-animated')
+  plugins: [
+      require('tailwindcss-animated'),
+      require('flowbite/plugin')
   ],
 }
 
