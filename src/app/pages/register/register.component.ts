@@ -24,11 +24,8 @@ export class RegisterComponent implements OnInit {
   public newPet: boolean = false;
   constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService) {}
 
-  
-  ngOnInit(): void {
 
-    
-  
+  ngOnInit(): void {
 
     this.route.queryParams.subscribe((value) => {
       if(value['newPet']){
@@ -123,7 +120,7 @@ export class RegisterComponent implements OnInit {
     (<FormArray>this.form?.get('diseases')).push(control)
   }
 
-  get controls() {
-    return (this.form?.get('diseases') as FormArray).controls;
+  getControls() {
+    return (<FormArray>this.form?.get('diseases')).controls;
   }
  }

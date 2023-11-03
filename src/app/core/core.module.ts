@@ -8,11 +8,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/Loading/loading.service';
 import { LoaderComponent } from './components/loader/loader.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LoaderComponent],
-  imports: [CommonModule, CoreRoutingModule, HttpClientModule],
+  imports: [CommonModule, CoreRoutingModule, HttpClientModule, MatSlideToggleModule, MatIconModule],
   exports: [HeaderComponent, FooterComponent, LoaderComponent],
   providers: [LoadingService],
 })

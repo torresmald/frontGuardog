@@ -1,24 +1,17 @@
 <div class="flex justify-between mb-4 font-dog md:max-h-60 text-sm">
   <div>
-    <div class="">
-      <div class=" cursor-pointer py-4 px-4 text-2xl" (click)="onChangeTheme()">
-        <div [ngClass]="{'hidden': !isLightMode}">
-          <span class="fa-solid fa-moon text-gray-400 hover:text-gray-600"></span>
-        </div>
-        <div [ngClass]="{'hidden': isLightMode}" >
-          <span class="fa-solid fa-sun text-orange-600 hover:text-orange-800"></span>
-        </div>
-      </div>
+    <div class="cursor-pointer px-4 text-2xl flex items-center">
+      <mat-slide-toggle labelPosition="before" (click)="onChangeTheme()">
+        <mat-icon *ngIf="!isLightMode" class="text-[#ffb300]">sunny</mat-icon>
+        <mat-icon *ngIf="isLightMode"  class="text-gray-600">dark_mode</mat-icon>
+      </mat-slide-toggle>
+      
     </div>
-    <div class="">
-      <div class=" cursor-pointer px-4 text-2xl" (click)="onChangeLanguage()">
-        <div [ngClass]="{'hidden': language === 'es'}">
-          <i class="fa-solid fa-earth-americas text-red-600 hover:text-red-800"></i>
-        </div>
-        <div [ngClass]="{'hidden': language === 'uk'}" >
-          <i class="fa-solid fa-earth-americas text-blue-600 hover:text-blue-800"></i>
-        </div>
-      </div>
+    <div class="cursor-pointer px-4 text-2xl flex items-center">
+      <mat-slide-toggle labelPosition="before" (click)="onChangeLanguage()" color="success">
+        <mat-icon [ngClass]="language == 'uk' ? 'text-red-600' : 'text-blue-600'"
+        >language</mat-icon>
+      </mat-slide-toggle>
     </div>
   </div>
 

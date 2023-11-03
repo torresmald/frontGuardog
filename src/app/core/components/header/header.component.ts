@@ -12,18 +12,20 @@ export class HeaderComponent implements OnInit {
   public language: string = 'es';
 
   ngOnInit(): void {
-    const userPrefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const userPrefersLight =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: light)').matches;
-    if (userPrefersDark) {
-      this.theme = 'dark';
-    }
-    if (userPrefersLight) {
-      this.theme = 'light';
-    }
+  
+    // const userPrefersDark =
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // const userPrefersLight =
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: light)').matches;
+    // if (userPrefersDark) {
+    //   this.theme = 'dark';
+    // }
+    // if (userPrefersLight) {
+    //   this.theme = 'light';
+    // }
+    
   }
 
   public openMenuMobile() {
@@ -32,7 +34,6 @@ export class HeaderComponent implements OnInit {
 
   public onChangeTheme() {
     this.isLightMode = !this.isLightMode;
-    console.log(this.isLightMode);
   }
   public onChangeLanguage() {
     if (this.language === 'es') {
@@ -40,6 +41,5 @@ export class HeaderComponent implements OnInit {
     } else {
       this.language = 'es'
     }
-    console.log(this.language);
   }
 }

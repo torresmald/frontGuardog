@@ -6,6 +6,7 @@ import { RegisterComponent } from './register.component';
 import { FormModule } from '@coreui/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 
@@ -19,7 +20,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     FormModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatSliderModule
   ]
 })
 export class RegisterModule { }
