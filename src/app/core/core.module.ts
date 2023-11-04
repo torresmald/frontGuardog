@@ -8,12 +8,13 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/Loading/loading.service';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ModalNavComponent } from './components/modal-nav/modal-nav.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoaderComponent],
+  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent],
   imports: [CommonModule, CoreRoutingModule, HttpClientModule],
-  exports: [HeaderComponent, FooterComponent, LoaderComponent],
+  exports: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent],
   providers: [LoadingService],
 })
 export class CoreModule {}
