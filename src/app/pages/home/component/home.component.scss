@@ -1,4 +1,36 @@
-:host{
-    display: flex;
-    flex: 1;
+main section:first-child
+{
+	background-image: url("../../../../assets/home/home1.jpg");
+    background-position: center;
+}
+
+.image{
+    
+    background-position: center;
+    background-size: cover;
+  }
+
+.img1{
+    background-image: url(../../../../assets/home/home2.webp);
+}
+
+.img2{
+    background-image: url(../../../../assets/home/home3.webp);
+}
+
+.img3{
+    background-image: url(../../../../assets/home/home4.webp);
+}
+
+
+// :host{
+//     display: flex;
+//     flex: 1;
+// }
+
+@media (min-width: 768px) {
+ 
+    main section:first-child{
+        background-size: cover;
+    }
 }
