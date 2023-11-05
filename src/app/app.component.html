@@ -1,5 +1,5 @@
 <div class="app-container flex flex-col min-h-screen">
-  <!-- <app-modal-nav></app-modal-nav> -->
+  <app-modal-nav *ngIf="isMenuOpen"></app-modal-nav>
   <app-scroll-to-top></app-scroll-to-top>
   <app-loader></app-loader>
   <app-header *ngIf="!_router.url.includes('login') && !_router.url.includes('register')"></app-header>
