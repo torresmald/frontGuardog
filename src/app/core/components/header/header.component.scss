@@ -17,35 +17,14 @@ li:hover{
 }
 .active {
 	text-decoration: underline;
-  color: gray;
+  	color: gray;
 }
-
-@keyframes activeNav {
-	0% {
-	  opacity: 0;
-	  display: flex;
-	}
-	100% {
-	  opacity: 1;
-	}
-  }
 
 .hidden-nav {
 	opacity: 0;
-	animation: hiddenNav 0.5s forwards;
+	pointer-events: none;
+	transition: opacity 0.5s;
   }
-  
-  @keyframes hiddenNav {
-	0% {
-	  opacity: 1;
-	}
-	100% {
-	  opacity: 0;
-	  display: none;
-	}
-  }
-
-
 
 //   display: flex;
 //   justify-content: space-between;

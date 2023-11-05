@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   public theme?: string;
   public language: string = 'es';
   public scrollNav: boolean = false
+  public animationAllowed: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
@@ -18,7 +19,6 @@ export class HeaderComponent implements OnInit {
     const pageHeight = document.documentElement.scrollHeight;
     const scrollPosition = window.scrollY;
     const scrollPercentage = (scrollPosition / (pageHeight - windowHeight)) * 100;
-  
     if (scrollPercentage >= 20) 
       this.scrollNav = true;
     else
