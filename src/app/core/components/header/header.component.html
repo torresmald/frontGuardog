@@ -1,4 +1,23 @@
-<div class="flex justify-between mb-4 font-dog md:max-h-60 text-sm">
+<header [ngClass]="{'active-nav': !scrollNav, 'hidden-nav': scrollNav}" class="h-20 fixed z-30 w-full bg-sienna-100  flex items-center justify-between shadow-xl">
+  <div class="flex items-center ml-5"> 
+    <img class="w-16" src="../../../../assets/home/guardog2.png" alt="">
+    <h1 class="ml-4 text-[30px] font-dog">GuarDog</h1>
+  </div>
+  <nav>
+    <ul class="hidden md:flex mx-6 font-dog text-lg">
+      <li class="mx-5" routerLink="/">Inicio</li>
+      <li class="mx-5" routerLink="/about" routerLinkActive="active">Nosotros</li>
+      <li class="mx-5" routerLink="/contact" routerLinkActive="active">Contacto</li>
+      <li class="mx-5" routerLink="/register" routerLinkActive="active">Registrarse</li>
+    </ul>
+  </nav>
+  <img class="w-7 mr-3 cursor-pointer md:hidden" src="https://seekicon.com/free-icon-download/three-dots-vertical_1.png" alt="">
+</header>
+
+
+
+
+<!-- <div class="flex justify-between mb-4 font-dog md:max-h-60 text-sm">
   <div>
     <div class="">
       <div class=" cursor-pointer py-4 px-4 text-2xl" (click)="onChangeTheme()">
@@ -54,4 +73,4 @@
       </nav>
     </div>
   </div>
-</div>
+</div> -->
