@@ -1,5 +1,52 @@
 // @import "../../../../styles/main.scss";
 
+.active-nav{
+	transition: 0.5s;
+	animation: activeNav 0.5s forwards;
+}
+
+li{
+	cursor: pointer;
+	transition: 0.2s;
+}
+
+li:hover{
+	text-decoration: underline;
+	color: gray;
+	transition: 0.2s;
+}
+.active {
+	text-decoration: underline;
+  color: gray;
+}
+
+@keyframes activeNav {
+	0% {
+	  opacity: 0;
+	  display: flex;
+	}
+	100% {
+	  opacity: 1;
+	}
+  }
+
+.hidden-nav {
+	opacity: 0;
+	animation: hiddenNav 0.5s forwards;
+  }
+  
+  @keyframes hiddenNav {
+	0% {
+	  opacity: 1;
+	}
+	100% {
+	  opacity: 0;
+	  display: none;
+	}
+  }
+
+
+
 //   display: flex;
 //   justify-content: space-between;
 //   &__template {
@@ -19,9 +66,7 @@
 //     }
 //   }
 // }
-// .active {
-//   color: aqua;
-// }
+
 
 // .menuMobile {
 //   display: none;

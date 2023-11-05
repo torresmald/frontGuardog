@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +10,20 @@ export class HeaderComponent implements OnInit {
   public isLightMode: boolean = true;
   public theme?: string;
   public language: string = 'es';
+  public scrollNav: boolean = false
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event: Event): void {
+    const windowHeight = window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    const scrollPosition = window.scrollY;
+    const scrollPercentage = (scrollPosition / (pageHeight - windowHeight)) * 100;
+  
+    if (scrollPercentage >= 20) 
+      this.scrollNav = true;
+    else
+      this.scrollNav = false
+  }   
 
   ngOnInit(): void {
     const userPrefersDark =

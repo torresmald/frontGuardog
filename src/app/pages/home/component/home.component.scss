@@ -1,7 +1,8 @@
-main section:first-child
+.back-img
 {
 	background-image: url("../../../../assets/home/home1.jpg");
     background-position: center;
+    background-size: cover;
 }
 
 .image{
@@ -27,10 +28,3 @@ main section:first-child
 //     display: flex;
 //     flex: 1;
 // }
-
-@media (min-width: 768px) {
- 
-    main section:first-child{
-        background-size: cover;
-    }
-}
