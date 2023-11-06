@@ -38,6 +38,7 @@ export class LoginComponent {
       this.trainerService.loginTrainers(this.form?.value).subscribe(
         {
           next: () => {
+            this.modalService.message?.next('EYYYYYY!!!!')
             this.modalService.showModal()
             this.router.navigate(['trainer-view'])
           },
@@ -51,6 +52,7 @@ export class LoginComponent {
       this.parentService.loginParent(this.form?.value).subscribe(
         {
           next: () => {
+            this.modalService.message?.next('Logaudo!!!!')
             this.modalService.showModal()
             this.router.navigate(['parent-view'])
           },

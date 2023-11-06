@@ -8,18 +8,20 @@ import { ModalService } from '../../services/Modal/modal.service';
 })
 export class ModalFormComponent implements OnInit {
   public shouldShowModal?: boolean;
+  public message?: string;
 
   constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {
     this.modalService.$shoulShowModal.subscribe((value) => {
       this.shouldShowModal = value;
-      console.log(this.shouldShowModal);
-      
+    });
+    this.modalService.message?.subscribe((value) => {
+      this.message = value;
     });
   }
 
   public onCloseModal() {
-    this.modalService.closeModal()
+    this.modalService.closeModal();
   }
 }
