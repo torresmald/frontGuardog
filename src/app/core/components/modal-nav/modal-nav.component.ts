@@ -15,6 +15,10 @@ export class ModalNavComponent {
     this.courierService.setBooleanNav(false)
   }
 
+  public stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
+  
   public changeTheme() {
 
     this.isLightMode = !this.isLightMode;
