@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { CourierService } from '../../services/courier/courier.service';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +7,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public isMobile: boolean = false;
   public isLightMode: boolean = true;
   public theme?: string;
   public language: string = 'es';
   public scrollNav: boolean = false
-  public animationAllowed: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
@@ -23,7 +22,10 @@ export class HeaderComponent implements OnInit {
       this.scrollNav = true;
     else
       this.scrollNav = false
-  }   
+  }
+
+  constructor(public courierService: CourierService) {}
+
 
   ngOnInit(): void {
     const userPrefersDark =
@@ -41,7 +43,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public openMenuMobile() {
-    this.isMobile = !this.isMobile;
+    this.courierService.setBooleanNav(true)
   }
 
   public onChangeTheme() {

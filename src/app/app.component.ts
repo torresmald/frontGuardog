@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CourierService } from './core/services/courier/courier.service';
 
 
 @Component({
@@ -9,7 +10,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Guardog';
+  isMenuOpen: boolean = false
 
-  constructor(public _router: Router) {}
+  constructor(public _router: Router, public courierService: CourierService) {}
+
+  ngOnInit() {
+    this.courierService.getModalNav().subscribe((value) => {
+      this.isMenuOpen = value;
+    });
+  }
 
 }
