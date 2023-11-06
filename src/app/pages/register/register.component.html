@@ -99,6 +99,7 @@
                     name="nutrition"
                     id="nutrition"
                     formControlName="nutrition"
+                    class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
                   >
                     <option value="">-- Selecciona --</option>
                     <option *ngFor="let food of nutrition" [value]="food">
@@ -117,8 +118,7 @@
                 </div>
 
                 <div class="md:col-span-5" *ngIf="newPet">
-                  <label for="disease">Add Disease</label>
-                  <button type="button" (click)="onAddDisease()" id="disease">
+                  <button type="button" (click)="onAddDisease()" id="disease" class="bg-york-500 hover:bg-york-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
                     Add Disease
                   </button>
                   <div *ngFor="let diseaseControl of controls; let i = index">
@@ -132,6 +132,7 @@
                     name="exercise"
                     id="exercise"
                     formControlName="exercise"
+                    class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
                   >
                     <option value="">-- Selecciona --</option>
                     <option
@@ -152,18 +153,12 @@
                   </p>
                 </div>
 
-                <div class="md:col-span-5" *ngIf="newPet">
+                <div class="md:col-span-5 flex flex-col" *ngIf="newPet">
                   <label for="gifts">Maximos Premios Diarios</label>
-                  <input
-                    [(ngModel)]="maxNumberGifts"
-                    cFormControl
-                    id="gifts"
-                    type="range"
-                    [ngModelOptions]="{ standalone: true }"
-                    [max]="max"
-                    [min]="min"
-                    autocomplete="on"
-                  />
+                  <mat-slider min="0" max="10" step="1" showTickMarks discrete >
+                    <input class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500" matSliderThumb id="gifts" [(ngModel)]="maxNumberGifts" [ngModelOptions]="{ standalone: true }"
+                    >
+                  </mat-slider>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="!newPet">
