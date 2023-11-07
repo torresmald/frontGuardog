@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { PetsService } from 'src/app/core/services/Pets/petsService.service';
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
   public form?: FormGroup;
   public errors?: string;
   public newPet: boolean = false;
-  constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService) {}
+  constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService, private modalService: ModalService) {}
 
   
   ngOnInit(): void {
@@ -82,17 +83,15 @@ export class RegisterComponent implements OnInit {
     
     
     if(this.form?.valid){
-      // const parent = this.getToken()      
-      if(this.newPet){
-        // const parentValue = this.form.get('parent')?.setValue('jonathan')
-        // console.log(parentValue);
-        
+
         this.petsService.registerPets(this.form.value).subscribe(
           {
             next: () => {
-              this.router.navigate(['/parent-view'])
-              console.log(this.form?.value);
-  
+              this.modalService.$message?.next('Mascota Registrada');
+              this.modalService.showModal();
+              setTimeout(() => {                
+                this.router.navigate(['/parent-view'])
+              }, 1000);
             },
             error: (error) => {
               const {error:errorResponse} = error
@@ -100,20 +99,7 @@ export class RegisterComponent implements OnInit {
             }
           }
         )
-      } else {
-        this.parentService.registerParent(this.form?.value).subscribe(
-          {
-            next: () => {
-              console.log(this.form?.value);
-            },
-            error: (error) => {
-              const {error:errorResponse} = error
-              this.errors = errorResponse.msg;
-            }
-          }
-        
-        )
-      }
+       
     }
   }
 

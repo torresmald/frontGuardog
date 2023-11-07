@@ -6,14 +6,16 @@ import { ReplaySubject } from 'rxjs';
 })
 export class ModalService {
   public $shoulShowModal : ReplaySubject<boolean> = new ReplaySubject<boolean>()
-  public message?: ReplaySubject<string> = new ReplaySubject<string>()
+  public $message?: ReplaySubject<string> = new ReplaySubject<string>()
   constructor() { this.$shoulShowModal.next(true)}
 
   public showModal(){
     this.$shoulShowModal.next(true)
    
   }
-  public closeModal(){
-    this.$shoulShowModal.next(false)
+  public closeModal(data: boolean){
+    console.log(data);
+    
+    this.$shoulShowModal.next(data)
   }
 }

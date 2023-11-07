@@ -7,7 +7,7 @@
   <div class="relative w-full max-w-md max-h-full">
     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
       <button
-        (click)="onCloseModal()"
+        (click)="onLeavePage(false)"
         type="button"
         class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
       >
@@ -33,12 +33,20 @@
           {{message}}
         </h3>
         <button
-          (click)="onCloseModal()"
+          (click)="onLeavePage(true)"
+          data-modal-hide="popup-modal"
+          type="button"
+          class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+        >
+          Continuar
+        </button>
+        <button
+          (click)="onLeavePage(false)"
           data-modal-hide="popup-modal"
           type="button"
           class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
         >
-          Close
+          Cerrar
         </button>
       </div>
     </div>

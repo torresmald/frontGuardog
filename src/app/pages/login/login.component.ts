@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DeactivatableComponent } from 'src/app/core/guards/canDeactivate/deactivate.interface';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
@@ -10,7 +12,7 @@ import { TrainerService } from 'src/app/core/services/Trainers/trainersService.s
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements DeactivatableComponent {
   public form?: FormGroup;
   public errors? : string;
   public isTrainer: boolean = false;
@@ -30,17 +32,17 @@ export class LoginComponent {
       })
   }
 
-  
-
   public onSubmit() {    
     if(this.form?.valid){
       const request = this.isTrainer ?
       this.trainerService.loginTrainers(this.form?.value).subscribe(
         {
           next: () => {
-            this.modalService.message?.next('EYYYYYY!!!!')
+            this.modalService.$message?.next('Logueado con éxito')
             this.modalService.showModal()
-            this.router.navigate(['trainer-view'])
+            setTimeout(() => {
+              this.router.navigate(['trainer-view'])
+            }, 1000);
           },
           error: (error) => {
             const {error:errorResponse} = error
@@ -52,9 +54,11 @@ export class LoginComponent {
       this.parentService.loginParent(this.form?.value).subscribe(
         {
           next: () => {
-            this.modalService.message?.next('Logaudo!!!!')
+            this.modalService.$message?.next('Logueado con éxito')
             this.modalService.showModal()
-            this.router.navigate(['parent-view'])
+            setTimeout(() => {
+              this.router.navigate(['parent-view'])
+            }, 1000);
           },
           error: (error) => {
             const {error:errorResponse} = error
@@ -66,4 +70,15 @@ export class LoginComponent {
     }
   }
 
+  canDeactivate () {
+    if(!this.form?.dirty){
+      return true
+    } else {
+      this.modalService.$message?.next('No has guardado cambios')
+      this.modalService.showModal()
+      return false
+    }
+  }
+
+  
 }

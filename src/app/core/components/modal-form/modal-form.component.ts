@@ -16,12 +16,13 @@ export class ModalFormComponent implements OnInit {
     this.modalService.$shoulShowModal.subscribe((value) => {
       this.shouldShowModal = value;
     });
-    this.modalService.message?.subscribe((value) => {
+    this.modalService.$message?.subscribe((value) => {
       this.message = value;
     });
   }
 
-  public onCloseModal() {
-    this.modalService.closeModal();
+  public onLeavePage(result: boolean) {
+    console.log(result);
+    this.modalService.closeModal(result);
   }
 }
