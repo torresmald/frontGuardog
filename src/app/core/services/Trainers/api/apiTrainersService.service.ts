@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiTrainers } from 'src/app/core/models/Trainers/api/apiTrainerModel';
+import { ApiUsers } from 'src/app/core/models/Users/api/apiUserModel';
 
 const URL_API = 'http://localhost:4000/trainers'
 
@@ -16,8 +17,8 @@ export class ApiTrainerService {
     return this.htpp.get<ApiTrainers[]>(URL_API)
   }
 
-  public loginApiTrainers(body: ApiTrainers): Observable<ApiTrainers> {
-    return this.htpp.post<ApiTrainers>(`${URL_API}/login`, body)
+  public loginApiTrainers(body: ApiTrainers): Observable<ApiUsers> {
+    return this.htpp.post<ApiUsers>(`${URL_API}/login`, body)
   }
 
 

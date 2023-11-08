@@ -5,7 +5,9 @@ import { Trainers } from '../../models/Trainers/transformed/TrainerModel';
 import { transformDataTrainer } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
 import { ApiTrainers } from '../../models/Trainers/api/apiTrainerModel';
+import { User } from '../../models/Users/transformed/UserModel';
 
+const TOKEN_KEY = 'user'
 @Injectable({
   providedIn: 'root'
 })
@@ -28,14 +30,18 @@ export class TrainerService {
     )
   }
 
-  public loginTrainers (body: ApiTrainers) : Observable<Trainers> {
+
+  public loginTrainers(body : ApiTrainers): Observable<User> {
     this.loadingService.showLoading()
     return this.apiTrainerService.loginApiTrainers(body).pipe(
-      map((apiTrainer) => {
-        return transformDataTrainer(apiTrainer)
-      }),
-      tap(() => {
-        this.loadingService.hideLoading()
+      map((parent: User) => parent),
+      tap((response) => {
+        this.loadingService.showLoading()
+        const saveStore = JSON.stringify({
+          token: response.token,
+          user: response.user
+        });
+        localStorage.setItem(TOKEN_KEY, saveStore);
       })
     )
   }

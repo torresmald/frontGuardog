@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/Loading/loading.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ModalNavComponent } from './components/modal-nav/modal-nav.component';
+import { ModalFormComponent } from './components/modal-form/modal-form.component';
+import { ModalService } from '@coreui/angular';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent],
+  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent],
   imports: [CommonModule, CoreRoutingModule, HttpClientModule],
-  exports: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent],
-  providers: [LoadingService],
+  exports: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent],
+  providers: [LoadingService, ModalService],
 })
 export class CoreModule {}

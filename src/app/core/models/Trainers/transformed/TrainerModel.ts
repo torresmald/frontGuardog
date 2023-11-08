@@ -6,5 +6,6 @@ export interface Trainers {
     phone: string,
     experience: experience,
     verified: boolean,
-    isAdmin: boolean
+    isAdmin: boolean,
+    token: string,
 }

@@ -7,7 +7,7 @@ import { transformDataParent } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
 import { User } from '../../models/Users/transformed/UserModel';
 
-const TOKEN_KEY = 'parents'
+const TOKEN_KEY = 'user'
 
 @Injectable({
   providedIn: 'root',
