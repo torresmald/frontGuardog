@@ -71,12 +71,12 @@ export class LoginComponent implements DeactivatableComponent {
   }
 
   canDeactivate () {
-    if(!this.form?.dirty){
+    if(!this.form?.dirty){      
       return true
     } else {
       this.modalService.$message?.next('No has guardado cambios')
       this.modalService.showModal()
-      return false
+      return this.modalService.result$
     }
   }
 

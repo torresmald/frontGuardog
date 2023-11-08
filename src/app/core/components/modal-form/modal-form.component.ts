@@ -22,7 +22,7 @@ export class ModalFormComponent implements OnInit {
   }
 
   public onLeavePage(result: boolean) {
-    console.log(result);
-    this.modalService.closeModal(result);
+    this.modalService.closeModal();
+    this.modalService.result$.next(result); 
   }
 }
