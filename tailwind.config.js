@@ -51,7 +51,8 @@ module.exports = {
       },
       backgroundImage: {
         'home': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1698747339/jcqtvlyhi2goe6h33bac.avif')",
-        'logo': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1698750803/vi2epjqi35gsv6gw1maq.jpg')"
+        'logo': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1699454405/logo_bb0zi4.png')",
+        'not-found': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1699456229/404_uqk1lk.avif')"
       }
     },
   },
