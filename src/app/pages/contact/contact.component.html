@@ -1,22 +1,21 @@
-<section class="bg-sienna-50 dark:bg-gray-900 mt-20">
+<section class="bg-sienna-50 dark:bg-gray-900 mt-20 opacity-80">
   <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
     <h2
       class="mb-4 text-4xl tracking-tight font-extrabold text-center text-york-700"
     >
-      Contact Us
+      ¿Contáctanos!
     </h2>
     <p
       class="mb-8 lg:mb-16 font-light text-center text-york-500 sm:text-xl"
     >
-      Got a technical issue? Want to send feedback about a beta feature? Need
-      details about our Business plan? Let us know.
+      ¿Tienes un problema técnico? ¿Alguna sugerencia? ¡Háznoslo saber!
     </p>
     <form action="https://formspree.io/f/mnqklbbg" method="POST" target="_blank" class="space-y-8">
       <div>
         <label
           for="email"
           class="block mb-2 text-sm font-medium text-york-800 "
-          >Your email</label
+          >Email</label
         >
         <input
           type="email"
@@ -30,13 +29,13 @@
         <label
           for="subject"
           class="block mb-2 text-sm font-medium text-york-800 "
-          >Subject</label
+          >Asunto</label
         >
         <input
           type="text"
           id="subject"
           class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 "
-          placeholder="Let us know how we can help you"
+          placeholder="Dinos como te podemos ayudar"
           required
         />
       </div>
@@ -44,21 +43,30 @@
         <label
           for="message"
           class="block mb-2 text-sm font-medium text-york-800"
-          >Your message</label
+          >Mensaje</label
         >
         <textarea
           id="message"
           rows="6"
           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
-          placeholder="Leave a comment..."
+          placeholder="Deja aqui tu comentario..."
         ></textarea>
       </div>
-      <button
-        type="submit"
-        class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-sienna-700  sm:w-fit hover:bg-sienna-800 focus:ring-4 focus:outline-none focus:ring-sienna-300  dark:hover:bg-primary-700 "
-      >
-        Send message
-      </button>
+      <div class="flex justify-center gap-8">
+        <button
+          type="submit"
+          class="bg-york-500 hover:bg-york-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+        >
+          Enviar
+        </button>
+        <button
+          type="button"
+          routerLink=""
+          class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
+        >
+          Home
+        </button>
+      </div>
     </form>
   </div>
 </section>

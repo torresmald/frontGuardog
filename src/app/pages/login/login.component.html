@@ -1,5 +1,5 @@
 <div
-  class="min-h-screen p-6 bg-sienna-100 flex flex-col items-center justify-center opacity-70"
+  class="min-h-screen p-6 bg-sienna-100 flex flex-col items-center justify-center opacity-80"
 >
   <div class="container max-w-screen-lg mx-auto">
     <div>
@@ -50,6 +50,12 @@
                   >
                     El email tiene un formato inválido
                   </p>
+                  <p
+                  class="text-red-600"
+                  *ngIf="errors === 'El usuario no existe, registrate'"
+                >
+                  El usuario no existe, Registrate
+                </p>
                 </div>
 
                 <div class="md:col-span-5">

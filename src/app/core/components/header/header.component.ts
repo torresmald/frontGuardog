@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CourierService } from '../../services/courier/courier.service';
-
+import { UsersService } from '../../services/Users/usersService.service';
+import { Router } from '@angular/router';
+const TOKEN_KEY = 'user'
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,22 +12,22 @@ export class HeaderComponent implements OnInit {
   public isLightMode: boolean = true;
   public theme?: string;
   public language: string = 'es';
-  public scrollNav: boolean = false
+  public scrollNav: boolean = false;
+  public isLogged: boolean = false;
+  public isParent:boolean = false;
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
     const windowHeight = window.innerHeight;
     const pageHeight = document.documentElement.scrollHeight;
     const scrollPosition = window.scrollY;
-    const scrollPercentage = (scrollPosition / (pageHeight - windowHeight)) * 100;
-    if (scrollPercentage >= 20) 
-      this.scrollNav = true;
-    else
-      this.scrollNav = false
+    const scrollPercentage =
+      (scrollPosition / (pageHeight - windowHeight)) * 100;
+    if (scrollPercentage >= 20) this.scrollNav = true;
+    else this.scrollNav = false;
   }
 
-  constructor(public courierService: CourierService) {}
-
+  constructor(public courierService: CourierService, private usersService: UsersService, private router: Router) {}
 
   ngOnInit(): void {
     const userPrefersDark =
@@ -40,10 +42,14 @@ export class HeaderComponent implements OnInit {
     if (userPrefersLight) {
       this.theme = 'light';
     }
+
+    this.usersService.userLogged$.subscribe((value) => {      
+      this.isLogged = value
+    })
   }
 
   public openMenuMobile() {
-    this.courierService.setBooleanNav(true)
+    this.courierService.setBooleanNav(true);
   }
 
   public onChangeTheme() {
@@ -52,10 +58,22 @@ export class HeaderComponent implements OnInit {
   }
   public onChangeLanguage() {
     if (this.language === 'es') {
-      this.language = 'uk'
+      this.language = 'uk';
     } else {
-      this.language = 'es'
+      this.language = 'es';
     }
     console.log(this.language);
+  }
+
+  public onLogout(){
+    this.usersService.logout()
+    this.router.navigate([''])
+  }
+  public onNavigateAccount(){
+    const token = localStorage.getItem(TOKEN_KEY)
+    if(token){
+      JSON.parse(token).user.pets ? this.isParent = true : this.isParent= false
+    }
+    this.isParent ? this.router.navigate(['/parent-view']) : this.router.navigate(['/trainer-view'])
   }
 }

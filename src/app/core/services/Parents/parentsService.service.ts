@@ -45,13 +45,18 @@ export class ParentService {
   }
 
   public registerParent(body: ApiParents): Observable<Parents> {
+    this.loadingService.showLoading();
     return this.apiParentsService
       .registerApiParent(body).pipe(
-        map((parent: ApiParents) => transformDataParent(parent))
+        map((parent: ApiParents) => transformDataParent(parent)),
+        tap(() => {
+          this.loadingService.hideLoading();
+        })
        );
   }
 
   public loginParent(body : ApiParents): Observable<User> {
+    this.loadingService.showLoading();
     return this.apiParentsService.loginApiParent(body).pipe(
       map((parent: User) => parent),
       tap((response) => {
@@ -60,6 +65,7 @@ export class ParentService {
           user: response.user
         });
         localStorage.setItem(TOKEN_KEY, saveStore);
+        this.loadingService.hideLoading();
       })
     )
   }
