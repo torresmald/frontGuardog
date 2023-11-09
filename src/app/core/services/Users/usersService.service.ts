@@ -1,15 +1,14 @@
-import { Injectable } from "@angular/core";
-import { ReplaySubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { ReplaySubject } from 'rxjs';
 const TOKEN_KEY = 'user';
 
-
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
   public userLogged$: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  constructor() { 
+  constructor() {
     this.userLogged$.next(this.isLogged());
   }
 
@@ -22,14 +21,18 @@ export class UsersService {
     return !!isValidToken;
   }
 
+  public getTokenParent() {
+    const authToken = localStorage.getItem(TOKEN_KEY);
+    return authToken ? JSON.parse(authToken).user.email : null;
+  }
 
-    public getTokenParent() {  
-        const authToken = localStorage.getItem(TOKEN_KEY);
-        return authToken ? JSON.parse(authToken).user.email : null;
-      }
+  public getTokenTrainer() {
+    const authToken = localStorage.getItem(TOKEN_KEY);
+    return authToken ? JSON.parse(authToken).user.email : null;
+  }
 
-      public getTokenTrainer() {  
-        const authToken = localStorage.getItem(TOKEN_KEY);
-        return authToken ? JSON.parse(authToken).user.email : null;
-      }
+  public logout(){
+    localStorage.removeItem(TOKEN_KEY)
+    this.userLogged$.next(false);
+  }
 }

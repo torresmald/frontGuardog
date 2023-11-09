@@ -1,7 +1,9 @@
-<h2>Mis Mascotas</h2>
-<div *ngFor="let pet of pets" (click)="goToDetail(pet._id)">
-    <div>
-        <img [src]="pet.image" alt="">
+<div class="grid grid-cols-2 w-full gap-2">
+    <h2 class="text-xl font-dog text-center text-sienna-700 mb-2 col-span-2">Mis Mascotas</h2>
+    <div *ngFor="let pet of pets" (click)="goToDetail(pet._id)" class="flex flex-col items-center p-2 cursor-pointer gap-1">
+        <div>
+            <img class="rounded-full w-16 h-16" [src]="pet.image" alt="Imagen Mascota">
+        </div>
+        <p class="text-sm text-center font-dog font-black truncate w-16">{{pet.name}}</p>
     </div>
-    <p>{{pet.name}}</p>
 </div>

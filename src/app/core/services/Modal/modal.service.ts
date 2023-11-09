@@ -9,7 +9,7 @@ export class ModalService {
   public $message?: ReplaySubject<string> = new ReplaySubject<string>()
   public result$: Subject<boolean> = new Subject<boolean>();
 
-  constructor() { this.$shoulShowModal.next(true)}
+  constructor() { this.$shoulShowModal.next(false)}
 
   public showModal(){
     this.$shoulShowModal.next(true)

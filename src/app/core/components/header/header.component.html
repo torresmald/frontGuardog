@@ -1,4 +1,4 @@
-<header [ngClass]="{'hidden-nav': scrollNav}" class="fixed z-20 w-full bg-sienna-100  flex items-center justify-between shadow-xl duration-500 h-[15%]" >
+<header [ngClass]="{'hidden-nav': scrollNav}" class="fixed z-20 w-full bg-sienna-100  flex items-center justify-between shadow-xl duration-500 h-[10%]" >
   <div class="ml-5 md:ml-10"> 
     <img class="w-40" src="../../../../assets/home/logo.png" alt="Logo">
   </div>
@@ -7,7 +7,10 @@
       <li class="mx-5" routerLink="/">Inicio</li>
       <li class="mx-5" routerLink="/about" routerLinkActive="active">Nosotros</li>
       <li class="mx-5" routerLink="/contact" routerLinkActive="active">Contacto</li>
-      <li class="mx-5" routerLink="/register" routerLinkActive="active">Registrarse</li>
+      <li *ngIf="!isLogged" class="mx-5" routerLink="/register" routerLinkActive="active">Registrarse</li>
+      <li *ngIf="isLogged" (click)="onNavigateAccount()" class="mx-5" routerLinkActive="active">Mi Cuenta</li>
+      <li *ngIf="isLogged" (click)="onLogout()" class="mx-5" routerLinkActive="active">Logout</li>
+
     </ul>
   </nav>
   <img (click)="openMenuMobile()" class="w-7 mr-3 cursor-pointer md:hidden" src="https://seekicon.com/free-icon-download/three-dots-vertical_1.png" alt="">

@@ -36,7 +36,7 @@ export class TrainerService {
     return this.apiTrainerService.loginApiTrainers(body).pipe(
       map((parent: User) => parent),
       tap((response) => {
-        this.loadingService.showLoading()
+        this.loadingService.hideLoading()
         const saveStore = JSON.stringify({
           token: response.token,
           user: response.user
