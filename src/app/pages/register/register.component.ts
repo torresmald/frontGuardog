@@ -13,7 +13,7 @@ import { UsersService } from 'src/app/core/services/Users/usersService.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  public nutrition = ['Solida', 'Humeda', 'Lata'];
+  public nutrition = ['Solida', 'Humeda', 'Latas'];
   public exercises = ['30-60min', '60-120min', '+120min'];
   public maxNumberGifts : number = 0;
   public min = 0;
@@ -23,8 +23,13 @@ export class RegisterComponent implements OnInit {
   public form?: FormGroup;
   public errors?: string;
   public newPet: boolean = false;
+  public image: Blob | string = '';
+
+
+
   constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService, private modalService: ModalService) {}
 
+ 
   
   ngOnInit(): void {
 
@@ -41,7 +46,7 @@ export class RegisterComponent implements OnInit {
 
     this.form = this.fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      image: new FormControl('', Validators.required),
+      image: new FormControl(null),
       birthday: new FormControl('', Validators.required),
       nutrition: new FormControl('', Validators.required),
       diseases: new FormArray([]),
@@ -62,8 +67,6 @@ export class RegisterComponent implements OnInit {
 
     
 
-
-    
     this.form?.get('password')?.valueChanges.subscribe((passwordValue) => {
       const repeatPasswordValue = this.form?.get('repeatPassword')?.value;
       this.isSamePassword = passwordValue === repeatPasswordValue;
@@ -76,15 +79,45 @@ export class RegisterComponent implements OnInit {
 
   }
 
+  public get controlImage() {
+    return this.form?.get('image') as FormControl;
+  }
   
+  public get controlDisease() {
+    return (this.form?.get('diseases') as FormArray).controls;
+  }
+
+  public uploadImage(event: any) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const file = event.target.files[0];
+      reader.readAsArrayBuffer(file);
+      this.image = file;
+      console.log(this.image);
+      
+    }
+  }
 
   public onSubmit() {
-    console.log(this.form?.value);
-    
-    
     if(this.form?.valid){
 
-        this.petsService.registerPets(this.form.value).subscribe(
+
+    const form = new FormData();
+    form.append('name', this.form?.get('name')?.value);
+    form.append('image', this.image);
+    form.append('birthday', this.form?.get('birthday')?.value);
+    form.append('nutrition', this.form?.get('nutrition')?.value);
+    form.append('date', this.form?.get('date')?.value);
+    form.append('areas', this.form?.get('areas')?.value);
+    form.append('diseases', this.form?.get('diseases')?.value);
+    form.append('exercise', this.form?.get('exercise')?.value);
+    form.append('parent', this.form?.get('parent')?.value);
+
+    const formData = this.form.value;
+      
+      console.log(formData);
+
+        this.petsService.registerPets(form).subscribe(
           {
             next: () => {
               this.modalService.$message?.next('Mascota Registrada');
@@ -94,6 +127,7 @@ export class RegisterComponent implements OnInit {
               }, 1000);
             },
             error: (error) => {
+              console.log(error);
               const {error:errorResponse} = error
               this.errors = errorResponse.msg;
             }
@@ -108,7 +142,4 @@ export class RegisterComponent implements OnInit {
     (<FormArray>this.form?.get('diseases')).push(control)
   }
 
-  get controls() {
-    return (this.form?.get('diseases') as FormArray).controls;
-  }
  }

@@ -39,7 +39,7 @@ export class PetsService {
         )
     }
 
-    public registerPets(body: ApiPets): Observable<Pets> {
+    public registerPets(body: FormData): Observable<Pets> {        
         this.loadingService.showLoading()
         return this.apiPetsService.registerApiPets(body).pipe(
             map((apiPets) => {

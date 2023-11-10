@@ -34,7 +34,7 @@
                     autocomplete="on"
                   />
                   <p
-                    cFormText
+                    class="text-red-600 font-bold"
                     *ngIf="
                       form.get('name')?.hasError('required') &&
                       form.get('name')?.touched
@@ -43,8 +43,8 @@
                     El nombre es requerido
                   </p>
                   <p
-                    cFormText
-                    *ngIf="
+                  class="text-red-600 font-bold"
+                  *ngIf="
                       form.get('name')?.hasError('minlength') &&
                       form.get('name')?.touched
                     "
@@ -55,21 +55,24 @@
 
                 <div class="md:col-span-5" *ngIf="newPet">
                   <label for="image">Imagen</label>
-                  <input
-                    type="text"
-                    id="image"
-                    class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
-                    formControlName="image"
-                    autocomplete="on"
-                  />
+                  <app-upload-files *ngIf="form.get('image')" [formControl]="controlImage" (change)="uploadImage($event)"
+                  ></app-upload-files>
+                  <!-- <input
+                  accept=".jpg,.png"
+                  placeholder="Foto"
+                  type="file"
+                  id="image"
+                  formControlName="image"
+                  (change)="uploadImage($event)"
+                /> -->
                   <p
-                    cFormText
+                  class="text-red-600 font-bold"
                     *ngIf="
                       form.get('image')?.hasError('required') &&
                       form.get('image')?.touched
                     "
                   >
-                    La imagen es requerido
+                    La imagen es requerida
                   </p>
                 </div>
 
@@ -83,6 +86,8 @@
                     autocomplete="on"
                   />
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       form.get('birthday')?.hasError('birthday') &&
                       form.get('birthday')?.touched
@@ -106,8 +111,8 @@
                     </option>
                   </select>
                   <p
-                    cFormText
-                    *ngIf="
+                  class="text-red-600 font-bold"
+                  *ngIf="
                       form.get('nutrition')?.hasError('nutrition') &&
                       form.get('nutrition')?.touched
                     "
@@ -117,11 +122,11 @@
                 </div>
 
                 <div class="md:col-span-5" *ngIf="newPet">
-                  <button type="button" (click)="onAddDisease()" id="disease" class="bg-york-500 hover:bg-york-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+                  <button type="button" (click)="onAddDisease()" id="disease" class="bg-york-500 hover:bg-york-700 text-white font-bold py-2 px-4 rounded cursor-pointer mb-2">
                     Add Disease
                   </button>
-                  <div *ngFor="let diseaseControl of controls; let i = index">
-                    <input cFormControl type="text" [formControlName]="i" autocomplete="on"/>
+                  <div *ngFor="let diseaseControl of controlDisease; let i = index" formArrayName="diseases">
+                    <input class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500" type="text" [formControlName]="i" autocomplete="on"/>
                   </div>
                 </div>
 
@@ -142,7 +147,7 @@
                     </option>
                   </select>
                   <p
-                    cFormText
+                  class="text-red-600 font-bold"
                     *ngIf="
                       form.get('exercise')?.hasError('exercise') &&
                       form.get('exercise')?.touched
@@ -171,6 +176,8 @@
                     autocomplete="on"
                   />
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       form.get('email')?.hasError('required') &&
                       form.get('email')?.touched
@@ -179,6 +186,8 @@
                     El email es requerido
                   </p>
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       form.get('email')?.hasError('email') &&
                       form.get('email')?.touched
@@ -199,6 +208,8 @@
                     autocomplete="on"
                   />
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       form.get('password')?.hasError('required') &&
                       form.get('password')?.touched
@@ -207,6 +218,8 @@
                     El password es requerido
                   </p>
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       form.get('password')?.hasError('minlength') &&
                       form.get('password')?.touched
@@ -226,6 +239,8 @@
                     autocomplete="on"
                   />
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       !isSamePassword && form.get('repeatPassword')?.touched
                     "
@@ -244,6 +259,8 @@
                     autocomplete="on"
                   />
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       form.get('phone')?.hasError('required') &&
                       form.get('phone')?.touched
@@ -263,6 +280,8 @@
                     autocomplete="on"
                   />
                   <p
+                  class="text-red-600 font-bold"
+
                     *ngIf="
                       form.get('address')?.hasError('required') &&
                       form.get('address')?.touched

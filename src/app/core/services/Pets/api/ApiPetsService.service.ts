@@ -20,7 +20,9 @@ export class ApiPetsService {
     return this.http.get<ApiPets>(`${URL_API}/${id}`)
   }
 
-  public registerApiPets(body: ApiPets): Observable<ApiPets> {
+  public registerApiPets(body: FormData): Observable<ApiPets> {
+    console.log(body);
+    
     return this.http.post<ApiPets>(`${URL_API}/register`, body)
   } 
 }
