@@ -11,12 +11,13 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ModalNavComponent } from './components/modal-nav/modal-nav.component';
 import { ModalFormComponent } from './components/modal-form/modal-form.component';
 import { ModalService } from '@coreui/angular';
+import { ModalExtrasComponent } from './components/modal-extras/modal-extras.component';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent],
+  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent, ModalExtrasComponent],
   imports: [CommonModule, CoreRoutingModule, HttpClientModule],
-  exports: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent],
+  exports: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent,ModalExtrasComponent],
   providers: [LoadingService, ModalService],
 })
 export class CoreModule {}

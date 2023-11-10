@@ -4,9 +4,10 @@
   <app-scroll-to-top></app-scroll-to-top>
   <app-loader></app-loader>
   <app-header *ngIf="!_router.url.includes('login') && !_router.url.includes('register')"></app-header>
+  <app-modal-extras></app-modal-extras>
   <main>
     <router-outlet>
     </router-outlet>
   </main>
-  <!-- <app-footer *ngIf="!_router.url.includes('login') && !_router.url.includes('register')"></app-footer> -->
+    <app-footer *ngIf="!_router.url.includes('login') && !_router.url.includes('register')"></app-footer>
 </div>

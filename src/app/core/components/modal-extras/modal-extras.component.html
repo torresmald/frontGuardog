@@ -1,0 +1,12 @@
+<section class="bg-york-500 flex items-center fixed bottom-24 z-50 rounded-t-full rounded-b-full">
+	<div class="bg-york-500 h-12 flex justify-center items-center">
+		<img class="w-[30px] h-[30px]" src="https://www.freeiconspng.com/uploads/sunshine-icon-14.png" alt="">
+		<div class="bg-york-100 flex items-center mx-2 w-20 h-9 rounded-full">
+			<div (click)="changeTheme()" [ngClass]="{'light': isLightMode, 'dark': !isLightMode}" class="bg-york-300 cursor-pointer rounded-full mx-3 w-[25px] h-[25px]"></div>
+		</div>
+		<img class="w-[30px] h-[30px]" src="https://cdn-icons-png.flaticon.com/512/4445/4445942.png" alt="">
+	</div>
+	<img *ngIf="language === 'es'" (click)="onChangeLanguage()" class="mx-2 w-6 cursor-pointer" src="../../../../assets/home/spain.png" alt="">
+	<img *ngIf="language === 'uk'" (click)="onChangeLanguage()"  class="mx-2 w-6 cursor-pointer" src="../../../../assets/home/english.jpg" alt="">
+	<img class="mx-2 w-6" src="../../../../assets/home/bone.png" alt="">
+</section>
