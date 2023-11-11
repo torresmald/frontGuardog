@@ -10,8 +10,6 @@ const TOKEN_KEY = 'user'
 })
 export class HeaderComponent implements OnInit {
   public isLightMode: boolean = true;
-  public theme?: string;
-  public language: string = 'es';
   public scrollNav: boolean = false;
   public isLogged: boolean = false;
   public isParent:boolean = false;
@@ -30,18 +28,18 @@ export class HeaderComponent implements OnInit {
   constructor(public courierService: CourierService, private usersService: UsersService, private router: Router) {}
 
   ngOnInit(): void {
-    const userPrefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const userPrefersLight =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: light)').matches;
-    if (userPrefersDark) {
-      this.theme = 'dark';
-    }
-    if (userPrefersLight) {
-      this.theme = 'light';
-    }
+    // const userPrefersDark =
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // const userPrefersLight =
+    //   window.matchMedia &&
+    //   window.matchMedia('(prefers-color-scheme: light)').matches;
+    // if (userPrefersDark) {
+    //   this.theme = 'dark';
+    // }
+    // if (userPrefersLight) {
+    //   this.theme = 'light';
+    // }
 
     this.usersService.userLogged$.subscribe((value) => {      
       this.isLogged = value
@@ -51,20 +49,7 @@ export class HeaderComponent implements OnInit {
   public openMenuMobile() {
     this.courierService.setBooleanNav(true);
   }
-
-  public onChangeTheme() {
-    this.isLightMode = !this.isLightMode;
-    console.log(this.isLightMode);
-  }
-  public onChangeLanguage() {
-    if (this.language === 'es') {
-      this.language = 'uk';
-    } else {
-      this.language = 'es';
-    }
-    console.log(this.language);
-  }
-
+  
   public onLogout(){
     this.usersService.logout()
     this.router.navigate([''])

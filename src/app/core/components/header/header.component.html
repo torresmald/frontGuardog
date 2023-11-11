@@ -1,9 +1,9 @@
-<header [ngClass]="{'hidden-nav': scrollNav}" class="fixed z-20 w-full bg-sienna-100  flex items-center justify-between shadow-xl duration-500 h-[10%]" >
+<header [ngClass]="{'hidden-nav': scrollNav}" class="fixed z-20 w-full bg-sienna-100  flex items-center justify-between shadow-xl duration-500 h-[10vh]" >
   <div class="ml-5 md:ml-10"> 
-    <img class="w-40" src="../../../../assets/home/logo.png" alt="Logo">
+    <img routerLink="/" class="w-40 cursor-pointer" src="../../../../assets/home/logo.png" alt="Logo">
   </div>
   <nav>
-    <ul class="hidden md:flex mx-6 font-dog text-lg">
+    <ul class="hidden md:flex mx-6 font-dog text-lg text-sienna-600">
       <li class="mx-5" routerLink="/">Inicio</li>
       <li class="mx-5" routerLink="/about" routerLinkActive="active">Nosotros</li>
       <li class="mx-5" routerLink="/contact" routerLinkActive="active">Contacto</li>
@@ -13,7 +13,7 @@
 
     </ul>
   </nav>
-  <img (click)="openMenuMobile()" class="w-7 mr-3 cursor-pointer md:hidden" src="https://seekicon.com/free-icon-download/three-dots-vertical_1.png" alt="">
+  <img (click)="openMenuMobile()" class="w-7 mr-[2%] cursor-pointer md:hidden" src="https://seekicon.com/free-icon-download/three-dots-vertical_1.png" alt="">
 </header>
 
 

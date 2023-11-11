@@ -1,0 +1,16 @@
+.light{transition: 0.5s;}
+
+.dark {
+	margin-left: 54%;
+	transition: 0.5s;
+  }
+
+  section{
+	transform: translateX(-200px);
+	transition: 1s;
+  }
+
+  section:hover{
+	transform: translate(0);
+	transition: 1s;
+  }
