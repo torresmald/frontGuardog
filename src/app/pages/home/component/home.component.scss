@@ -29,6 +29,15 @@ article
 }
 
 // animaciones
+.s2{
+    opacity: 0;
+    transition: 0.7s;
+}
+
+.s2.s2-show{
+    opacity: 1;
+    transition: 0.7s;
+}
 
 .art {
     transform: translateY(60px);

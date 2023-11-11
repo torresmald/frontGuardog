@@ -22,7 +22,7 @@
       </button>
     </div>
   </section>
-  <section class="bg-sienna-100 relative z-10">
+  <section [ngClass]="{ 's2-show': scrollAnimation.animation1 }" class="s2 bg-sienna-100 relative z-10">
     <article
       [ngClass]="{ set: scrollAnimation.animation1 }"
       class="art h-[800px] md:h-[600px] md:flex w-full z-10 relative"
