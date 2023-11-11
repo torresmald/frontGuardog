@@ -13,18 +13,18 @@ import { UsersService } from 'src/app/core/services/Users/usersService.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  public nutrition = ['Solida', 'Humeda', 'Latas'];
-  public exercises = ['30-60min', '60-120min', '+120min'];
+  public nutrition: string[] = ['Solida', 'Humeda', 'Latas'];
+  public exercises: string[] = ['30-60min', '60-120min', '+120min'];
   public maxNumberGifts : number = 0;
-  public min = 0;
-  public max = 10;
+  public min : number = 0;
+  public max: number = 10;
   public textRegister :string = 'Usuario'
   public isSamePassword: boolean = false;
   public form?: FormGroup;
   public errors?: string;
   public newPet: boolean = false;
   public image: Blob | string = '';
-
+  public url :string | ArrayBuffer | null = 'https://i.pinimg.com/originals/45/b3/66/45b3660b7d464ca297f9f6969143ca96.jpg'
 
 
   constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService, private modalService: ModalService) {}
@@ -32,9 +32,6 @@ export class RegisterComponent implements OnInit {
  
   
   ngOnInit(): void {
-
-  
-
     this.route.queryParams.subscribe((value) => {
       if(value['newPet']){
         this.newPet = true
@@ -87,14 +84,16 @@ export class RegisterComponent implements OnInit {
     return (this.form?.get('diseases') as FormArray).controls;
   }
 
-  public uploadImage(event: any) {
+  public uploadImage(event: any) {    
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];
-      reader.readAsArrayBuffer(file);
-      this.image = file;
-      console.log(this.image);
-      
+      // reader.readAsArrayBuffer(file);
+      reader.readAsDataURL(file); 
+      reader.onload = (_event) => { 
+        this.url = reader.result        
+    }
+      this.image = file;      
     }
   }
 
@@ -114,8 +113,6 @@ export class RegisterComponent implements OnInit {
     form.append('parent', this.form?.get('parent')?.value);
 
     const formData = this.form.value;
-      
-      console.log(formData);
 
         this.petsService.registerPets(form).subscribe(
           {
@@ -127,7 +124,6 @@ export class RegisterComponent implements OnInit {
               }, 1000);
             },
             error: (error) => {
-              console.log(error);
               const {error:errorResponse} = error
               this.errors = errorResponse.msg;
             }
@@ -141,5 +137,6 @@ export class RegisterComponent implements OnInit {
     const control = new FormControl();
     (<FormArray>this.form?.get('diseases')).push(control)
   }
+
 
  }

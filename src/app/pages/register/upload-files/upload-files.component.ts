@@ -1,5 +1,5 @@
-import { Component, Input, forwardRef } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-upload-files',
@@ -16,7 +16,6 @@ import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR }
 export class UploadFilesComponent implements ControlValueAccessor {
   public files: any = [];
   @Input() formControl?: FormControl
-  
   private onChange: Function | undefined;
   private onTouch: Function | undefined;
 
@@ -28,11 +27,10 @@ export class UploadFilesComponent implements ControlValueAccessor {
       }
     } else {
       for (let index = 0; index < event.target.files.length; index++) {
-        const element = event.target.files[index];
+        const element = event.target.files[index];        
         this.files.push(element.name);
       }
     }
-    console.log(this.files);
   }
   public deleteAttachment(index: any) {
     this.files.splice(index, 1);

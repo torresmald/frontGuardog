@@ -1,5 +1,5 @@
-<div
-  class="uploadfilecontainer"
+  <div
+  class="bg-register bg-no-repeat bg-[size:50px] bg-center h-[80px] w-[100%] my-5 mx-auto border-dashed border-2 border-york-600 rounded-lg hover:cursor-pointer hover:bg-york-100 hover:opacity-80"
   (click)="fileInput.click()"
   appDragDrop
   (onFileDropped)="uploadFile($event)"
@@ -7,9 +7,9 @@
 >
   <input hidden type="file" #fileInput (change)="uploadFile($event)" [formControl]="formControl"/>
 </div>
-<div class="files-list" *ngFor="let file of files; let i = index">
+<div class="flex justify-between w-[80%] my-2 mx-auto bg-white border-2 border-dashed border-york-600 rounded-xl p-1 text-york-600" *ngFor="let file of files; let i = index">
   <p>{{ file }}</p>
-  <button class="delete-file" (click)="deleteAttachment(i)">
-    <img src="../../../../assets/Recycle_Bin_Full.png" />
+  <button class="bg-transparent border-none cursor-pointer" (click)="deleteAttachment(i)">
+    <img class="w-7" src="../../../../assets/login-register/Recycle_Bin_Full.png" />
   </button>
 </div>
