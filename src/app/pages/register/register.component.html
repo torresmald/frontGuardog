@@ -13,9 +13,9 @@
               <p class="font-medium text-lg text-york-600">Register Details</p>
               <p>Please fill out all the fields.</p>
               <img
-                src="https://i.pinimg.com/originals/45/b3/66/45b3660b7d464ca297f9f6969143ca96.jpg"
                 alt="Dogtor"
                 class="w-36 h-36 rounded-full mt-10 self-center"
+                [src]="url"
               />
             </div>
 
@@ -55,16 +55,8 @@
 
                 <div class="md:col-span-5" *ngIf="newPet">
                   <label for="image">Imagen</label>
-                  <app-upload-files *ngIf="form.get('image')" [formControl]="controlImage" (change)="uploadImage($event)"
+                  <app-upload-files *ngIf="form.get('image')" [formControl]="controlImage"  (change)="uploadImage($event) "
                   ></app-upload-files>
-                  <!-- <input
-                  accept=".jpg,.png"
-                  placeholder="Foto"
-                  type="file"
-                  id="image"
-                  formControlName="image"
-                  (change)="uploadImage($event)"
-                /> -->
                   <p
                   class="text-red-600 font-bold"
                     *ngIf="
@@ -159,8 +151,8 @@
 
                 <div class="md:col-span-5 flex flex-col" *ngIf="newPet">
                   <label for="gifts">Maximos Premios Diarios</label>
-                  <mat-slider min="0" max="10" step="1" showTickMarks discrete >
-                    <input class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500" matSliderThumb id="gifts" [(ngModel)]="maxNumberGifts" [ngModelOptions]="{ standalone: true }"
+                  <mat-slider color="primary" min="0" max="10" step="1" showTickMarks discrete >
+                    <input class="" matSliderThumb id="gifts" [(ngModel)]="maxNumberGifts" [ngModelOptions]="{ standalone: true }"
                     >
                   </mat-slider>
                 </div>
