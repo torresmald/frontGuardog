@@ -1,3 +1,8 @@
+article
+{
+    max-width: 3000px;
+    margin: auto;
+}
 .back-img
 {
 	background-image: url("../../../../assets/home/home1.jpg");
@@ -23,8 +28,28 @@
     background-image: url(../../../../assets/home/home4.jpg);
 }
 
+// animaciones
 
-// :host{
-//     display: flex;
-//     flex: 1;
-// }
+.art {
+    transform: translateY(60px);
+    transition: 0.7s;
+    opacity: 0;
+}
+
+.art.set{
+    opacity: 1;
+    transform: translate(0);
+}
+
+.cert{
+    border-radius: 200%;
+    box-shadow: 0px 0px 10px;
+    transform: translateY(60px);
+    transition: 0.7s;
+    opacity: 0;
+}
+
+.cert.certAnim{
+    opacity: 1;
+    transform: translate(0);
+}
