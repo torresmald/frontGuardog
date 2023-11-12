@@ -53,8 +53,8 @@
                   </p>
                 </div>
 
-                <div class="md:col-span-5" *ngIf="newPet">
-                  <label for="image">Imagen</label>
+                <div class="md:col-span-5">
+                  <label for="image">Avatar</label>
                   <app-upload-files *ngIf="form.get('image')" [formControl]="controlImage"  (change)="uploadImage($event) "
                   ></app-upload-files>
                   <p
@@ -163,7 +163,7 @@
                     type="text"
                     id="email"
                     class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
-                    placeholder="Introduce tu Nombre"
+                    placeholder="Introduce tu Email"
                     formControlName="email"
                     autocomplete="on"
                   />
@@ -296,11 +296,17 @@
                 </div>
                 <div class="md:col-span-5 text-center py-4">
                   <p
-                    class="text-red-600 font-bold"
-                    *ngIf="errors === 'El Usuario ya existe, Loguéate'"
+                    class="text-red-600 font-bold text-xl"
+                    *ngIf="errors === 'El usuaro ya existe, logueate'"
                   >
                     El Usuario ya existe, Loguéate
                   </p>
+                  <p
+                  class="text-red-600 font-bold text-xl"
+                  *ngIf="errors === 'Ya existe la mascota'"
+                >
+                  Ya existe la mascota
+                </p>
                 </div>
               </div>
             </div>

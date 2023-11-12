@@ -68,7 +68,7 @@ export class LoginComponent implements DeactivatableComponent {
             error: (error) => {
               this.loadingService.hideLoading()
               const { error: errorResponse } = error;
-              this.errors = errorResponse.msg;
+              this.errors = errorResponse.message;
             },
           })
         : this.parentService.loginParent(this.form?.value).subscribe({

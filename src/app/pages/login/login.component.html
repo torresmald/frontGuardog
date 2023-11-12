@@ -50,12 +50,6 @@
                   >
                     El email tiene un formato inválido
                   </p>
-                  <p
-                  class="text-red-600"
-                  *ngIf="errors === 'El usuario no existe, registrate'"
-                >
-                  El usuario no existe, Registrate
-                </p>
                 </div>
 
                 <div class="md:col-span-5">
@@ -95,13 +89,13 @@
                 </div>
                 <div class="md:col-span-5 text-center py-4">
                   <p
-                    class="text-red-600 font-bold"
-                    *ngIf="errors === 'El Usuario No existe, Registrate'"
+                    class="text-red-600 font-bold text-xl"
+                    *ngIf="errors === 'El usuario no existe, registrate'"
                   >
                     El Usuario No existe, Registrate
                   </p>
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600 font-bold text-xl"
                     *ngIf="
                       errors === 'No has verificado tu cuenta, revisa tu email'
                     "

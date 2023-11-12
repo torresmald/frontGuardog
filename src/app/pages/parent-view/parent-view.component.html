@@ -1,7 +1,9 @@
-<div class="mt-28 max-w-[90%] mx-auto mb-5">
-  <div class="flex flex-col items-center justify-center gap-8 lg:grid lg:grid-cols-1 lg:gap-8">
+<div class="max-w-[90%] mx-auto my-5">
+  <div
+    class="flex flex-col items-center justify-center gap-8 lg:grid lg:grid-cols-1 lg:gap-8"
+  >
     <button
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 lg:justify-self-center	"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 lg:justify-self-center"
       routerLink="/register"
       [queryParams]="{ newPet: true }"
     >
@@ -10,15 +12,19 @@
     <app-my-pets [pets]="pets"></app-my-pets>
   </div>
   <div class="mt-4 lg:flex">
-    <div class="lg:max-w-[70%]">
-      <h2 class="text-2xl font-dog text-center text-sienna-700 lg:text-start lg:ml-5">Servicios</h2>
-      <div *ngFor="let service of services" class="grid grid-cols-1 mt-4 gap-1 lg:relative lg:flex lg:flex-col">
-        <app-service
-          [service]="service"
-        ></app-service>
+    <div class="lg:w-full">
+      <h2
+        class="text-2xl font-dog text-center text-sienna-700 lg:text-start lg:ml-5"
+      >
+        Servicios
+      </h2>
+      <div
+        *ngFor="let service of services"
+        class="grid grid-cols-1 mt-4 gap-1 lg:relative lg:flex lg:items-center"
+      >
+        <app-service [service]="service"></app-service>
         <button
-        class="bg-york-500 hover:bg-york-700 text-white font-bold px-5 rounded cursor-pointer h-8 w-24 text-xs mx-auto lg:absolute lg:bottom-0 lg:right-0 lg:mb-4 lg:mr-16"
-
+          class="bg-york-500 hover:bg-york-700 text-white font-bold px-5 rounded cursor-pointer h-8 w-24 text-xs mx-auto"
           type="button"
           (click)="onAddService(service)"
         >
@@ -26,8 +32,8 @@
         </button>
       </div>
     </div>
-    <div
-      *ngIf="requestedServices.length > 0"
+    <!-- <div
+      *ngIf="requestedServices && requestedServices.length > 0"
       class="mt-6 grid grid-cols-3 gap-y-2 lg:flex lg:flex-col lg:gap-8 lg:fixed lg:right-5"
     >
       <h2 class="text-2xl text-york-700 font-dog text-center col-span-3">
@@ -62,6 +68,6 @@
       >
         Pagar
       </button>
-    </div>
+    </div> -->
   </div>
 </div>

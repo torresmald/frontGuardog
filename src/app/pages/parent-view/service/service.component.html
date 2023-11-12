@@ -1,18 +1,42 @@
-<div class=" lg:grid lg:grid-cols-3 lg:items-center">
+<!-- <div class=" lg:grid lg:grid-cols-4 lg:items-center lg:gap-4">
   <h3 class="text-lg font-dog text-sienna-500 text-center lg:col-start-2 lg:col-end-3">
     {{ service?.name }}
   </h3>
-  <div class="relative lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-2">
+  <div class="lg:col-span-2 lg:row-start-1 lg:row-end-3">
     <img
-      class="rounded-xl max-h-[30%] col-span-full w-full lg:max-h-[100%]"
+      class="rounded-xl max-h-[30%] h-[140px] col-span-full w-[200px] mx-auto lg:max-h-[100%] lg:w-full lg:h-[200px]"
       [src]="service?.image"
+      [ngClass]="{ inactive: changeStyles }"
+      alt="Imagen Servicio"
+    />
+    <p *ngIf="changeStyles" class="inset-0 text-2xl flex items-center justify-center text-york-400 font-extrabold">Añadido</p>
+    <span *ngIf="changeStyles" class="material-symbols-outlined absolute top-0 right-0 text-3xl font-extrabold mr-2 mt-2">
+      shopping_bag
+      </span>
+  </div>
+  <p class="text-center font-bold">
+    Precio:
+    <span class="text-blue-600 font-extrabold">{{
+      service?.price | currency : "EUR" : "symbol" : "2.2-2" : "es"
+    }}</span>
+  </p>
+</div> -->
+
+<div class="lg:grid lg:grid-cols-3 lg:gap-4 lg:items-center">
+  <h3 class="text-lg font-dog text-sienna-500 text-center lg:col-start-2 lg:col-end-3">
+    {{ service?.name }}
+  </h3>
+  <div class="relative lg:-order-1 h-40 w-48 mx-auto lg:w-72 lg:h-48 lg:mx-3">
+    <img
+    class="rounded-xl h-[140px] col-span-full w-[200px] mx-auto lg:max-h-[100%] lg:w-full lg:h-[200px] relative"
+    [src]="service?.image"
       [ngClass]="{ inactive: changeStyles }"
       alt="Imagen Servicio"
     />
     <p *ngIf="changeStyles" class="absolute inset-0 text-2xl flex items-center justify-center text-york-400 font-extrabold">Añadido</p>
     <span *ngIf="changeStyles" class="material-symbols-outlined absolute top-0 right-0 text-3xl font-extrabold mr-2 mt-2">
       shopping_bag
-      </span>
+    </span>
   </div>
   <p class="text-center font-bold">
     Precio:

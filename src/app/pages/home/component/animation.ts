@@ -55,8 +55,6 @@ export class ScrollListener {
       }
 
       callback(animationHome);
-      console.log(scrollPercentage);
-      
     };
     window.addEventListener('scroll', onScroll);
   }

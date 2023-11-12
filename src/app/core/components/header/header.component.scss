@@ -1,79 +1,49 @@
-// @import "../../../../styles/main.scss";
-
-.active-nav{
-	transition: 0.5s;
-	animation: activeNav 0.5s forwards;
+.active-nav {
+  transition: 0.5s;
+  animation: activeNav 0.5s forwards;
 }
 
-li{
+li {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+li:hover {
+  text-decoration: underline;
+  color: #74302c;
+  transition: 0.2s;
+}
+.active {
+  text-decoration: underline;
+  color: #74302c;
+}
+
+.hidden-nav {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+}
+
+span{
 	cursor: pointer;
 	transition: 0.2s;
 }
 
-li:hover{
+span:hover{
 	text-decoration: underline;
 	color: #74302c;
 	transition: 0.2s;
 }
-.active {
-	text-decoration: underline;
-  	color: #74302c;
-}
-
-.hidden-nav {
-	opacity: 0;
-	pointer-events: none;
-	transition: opacity 0.5s;
+.fixed-cart{
+  cursor: pointer;
+    position: fixed;
+    z-index: 18;
+    top: 0;
+    right: 20px;
+    border: 2px solid #74302c;
+    border-top: 0;
+    padding: 10px 0px;
+  p{
+    right: 29px;
   }
-
-//   display: flex;
-//   justify-content: space-between;
-//   &__template {
-//     width: 30%;
-//     background-color: aqua;
-//   }
-//   &__image {
-//     cursor: pointer;
-//     background-color: red;
-//     width: 50%;
-//     height: 10rem;
-//   }
-//   &__nav {
-//     width: 40%;
-//     &_list {
-//       display: none;
-//     }
-//   }
-// }
-
-
-// .menuMobile {
-//   display: none;
-// }
-
-// .menuBurguer {
-//   background-color: bisque;
-//   display: flex;
-//   flex-direction: column;
-//   img{
-//     width: 4rem;
-//     height: 4rem;
-//   }
-// }
-
-// @media all and (min-width: 600px) {
-//   .header{
-//     &__image{
-//       width: 30%;
-//     }
-//     &__nav_list{
-//       background-color: aquamarine;
-//       display: flex;
-//     }
-
-//   }
-//   .menuBurguer{
-//     display: none;
-//   }
-
-// }
+}
