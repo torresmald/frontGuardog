@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoadingService } from 'src/app/core/services/Loading/loading.service';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { PetsService } from 'src/app/core/services/Pets/petsService.service';
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
   public url :string | ArrayBuffer | null = 'https://i.pinimg.com/originals/45/b3/66/45b3660b7d464ca297f9f6969143ca96.jpg'
 
 
-  constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService, private modalService: ModalService) {}
+  constructor(private fb: FormBuilder, private parentService:ParentService, private petsService: PetsService ,private router: Router, private route:ActivatedRoute, private usersService: UsersService, private modalService: ModalService, private loadingService: LoadingService) {}
 
  
   
@@ -124,6 +125,8 @@ export class RegisterComponent implements OnInit {
               }, 1000);
             },
             error: (error) => {
+              this.loadingService.hideLoading()
+
               const {error:errorResponse} = error
               this.errors = errorResponse.msg;
             }

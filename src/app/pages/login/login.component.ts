@@ -8,6 +8,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DeactivatableComponent } from 'src/app/core/guards/canDeactivate/deactivate.interface';
+import { LoadingService } from 'src/app/core/services/Loading/loading.service';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
@@ -31,7 +32,9 @@ export class LoginComponent implements DeactivatableComponent {
     private router: Router,
     private route: ActivatedRoute,
     private modalService: ModalService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private loadingService: LoadingService
+
   ) {}
 
   ngOnInit(): void {
@@ -63,6 +66,7 @@ export class LoginComponent implements DeactivatableComponent {
               }, 1000);
             },
             error: (error) => {
+              this.loadingService.hideLoading()
               const { error: errorResponse } = error;
               this.errors = errorResponse.msg;
             },
@@ -78,6 +82,7 @@ export class LoginComponent implements DeactivatableComponent {
               }, 1000);
             },
             error: (error) => {
+              this.loadingService.hideLoading()
               const { error: errorResponse } = error;
               this.errors = errorResponse.message;
             },

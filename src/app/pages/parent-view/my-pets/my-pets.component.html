@@ -1,6 +1,6 @@
-<div class="grid grid-cols-2 w-full gap-2">
-    <h2 class="text-xl font-dog text-center text-sienna-700 mb-2 col-span-2">Mis Mascotas</h2>
-    <div *ngFor="let pet of pets" (click)="goToDetail(pet._id)" class="flex flex-col items-center p-2 cursor-pointer gap-1">
+<div class="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:items-center">
+    <h2 class="text-2xl font-dog text-center text-sienna-700 col-span-2 lg:col-span-3">Mis Mascotas</h2>
+    <div *ngFor="let pet of pets" (click)="goToDetail(pet._id)" class="justify-self-center	">
         <div>
             <img class="rounded-full w-16 h-16" [src]="pet.image" alt="Imagen Mascota">
         </div>

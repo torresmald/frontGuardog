@@ -1,14 +1,16 @@
 import { Injectable } from "@angular/core";
 import { ApiServicesService } from "./api/ApiServicesService.service";
-import { map, tap } from "rxjs";
+import { Subject, map, tap } from "rxjs";
 import { transformDataService } from "./helpers/transformApi";
 import { LoadingService } from "../Loading/loading.service";
+import { Services } from "../../models/Services/transformed/ServiceModel";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ServicesService {
     constructor(private apiServicesService: ApiServicesService, private loadingService: LoadingService){}
+    public stylesImage: Subject<Services> = new Subject<Services>();
 
     public getServices (){
         this.loadingService.showLoading()
@@ -33,4 +35,9 @@ export class ServicesService {
             })
         )
     }
+
+    updateStylesImage(service: Services) {
+        this.stylesImage.next(service);
+      }
+
 }

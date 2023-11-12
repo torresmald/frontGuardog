@@ -5,6 +5,7 @@ export interface ApiServices{
     name: string,
     price: number,
     type: string,
+    image: string,
     __v?: string,
     createdAt?: string,
     updatedAt?: string

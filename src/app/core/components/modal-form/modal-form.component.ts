@@ -15,15 +15,15 @@ export class ModalFormComponent implements OnInit {
   constructor(private modalService: ModalService, private usersService:UsersService) {}
 
   ngOnInit(): void {
-    this.modalService.$shoulShowModal.subscribe((value) => {
-      this.shouldShowModal = value;
+    this.modalService.$shoulShowModal.subscribe((value) => {      
+      this.shouldShowModal = value;      
     });
     this.modalService.$message?.subscribe((value) => {      
       this.message = value;
     });
     this.usersService.userLogged$.subscribe((value) => {
       this.isLogged = value
-    })
+    })    
   }
 
   public onLeavePage(result: boolean) {
