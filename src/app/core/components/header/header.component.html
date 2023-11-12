@@ -1,4 +1,4 @@
-<header [ngClass]="{'hidden-nav': scrollNav}" class="fixed z-20 w-full bg-sienna-100  flex items-center justify-between shadow-xl duration-500 h-[10vh]" >
+<header [ngClass]="{'hidden-nav': scrollNav && router.url === '/', 'fixed': router.url === '/'}" class="z-20 w-full bg-sienna-100 flex items-center justify-between shadow-xl duration-500 h-[80px]" >
   <div class="ml-5 md:ml-10"> 
     <img routerLink="/" class="w-40 cursor-pointer" src="../../../../assets/home/logo.png" alt="Logo">
   </div>

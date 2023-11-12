@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
     else this.scrollNav = false;
   }
 
-  constructor(public courierService: CourierService, private usersService: UsersService, private router: Router) {}
+  constructor(public courierService: CourierService, private usersService: UsersService, public router: Router) {}
 
   ngOnInit(): void {
     // const userPrefersDark =
