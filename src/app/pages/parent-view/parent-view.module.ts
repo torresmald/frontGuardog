@@ -5,12 +5,14 @@ import { ParentViewRoutingModule } from './parent-view-routing.module';
 import { ParentViewComponent } from './parent-view.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MyPetsComponent } from './my-pets/my-pets.component';
+import { ServiceComponent } from './service/service.component';
 
 
 @NgModule({
   declarations: [
     ParentViewComponent,
     MyPetsComponent,
+    ServiceComponent,
   ],
   imports: [
     CommonModule,

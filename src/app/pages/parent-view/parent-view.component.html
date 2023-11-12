@@ -1,7 +1,7 @@
-<div class="mt-28">
-  <div class="flex flex-col gap-8 items-center mb-4">
+<div class="mt-28 max-w-[90%] mx-auto mb-5">
+  <div class="flex flex-col items-center justify-center gap-8 lg:grid lg:grid-cols-1 lg:gap-8">
     <button
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-20 self-end mr-4"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 lg:justify-self-center	"
       routerLink="/register"
       [queryParams]="{ newPet: true }"
     >
@@ -9,42 +9,59 @@
     </button>
     <app-my-pets [pets]="pets"></app-my-pets>
   </div>
-  <div class="flex items-center text-center w-full">
-    <div class="flex flex-col gap-6 items-center ml-4">
-      <h2 class="text-3xl font-dog text-york-700">Servicios</h2>
+  <div class="mt-4 lg:flex">
+    <div class="lg:max-w-[70%]">
+      <h2 class="text-2xl font-dog text-center text-sienna-700 lg:text-start lg:ml-5">Servicios</h2>
+      <div *ngFor="let service of services" class="grid grid-cols-1 mt-4 gap-1 lg:relative lg:flex lg:flex-col">
+        <app-service
+          [service]="service"
+        ></app-service>
+        <button
+        class="bg-york-500 hover:bg-york-700 text-white font-bold px-5 rounded cursor-pointer h-8 w-24 text-xs mx-auto lg:absolute lg:bottom-0 lg:right-0 lg:mb-4 lg:mr-16"
+
+          type="button"
+          (click)="onAddService(service)"
+        >
+          Añadir
+        </button>
+      </div>
+    </div>
+    <div
+      *ngIf="requestedServices.length > 0"
+      class="mt-6 grid grid-cols-3 gap-y-2 lg:flex lg:flex-col lg:gap-8 lg:fixed lg:right-5"
+    >
+      <h2 class="text-2xl text-york-700 font-dog text-center col-span-3">
+        Servicios Contratados
+      </h2>
       <div
-        *ngFor="let service of services"
-        class="grid grid-cols-3 gap-2 text-center"
+        *ngFor="let service of requestedServices"
+        class="grid grid-cols-3 gap-1 text-center col-span-3"
       >
         <h3 class="text-base font-dog text-sienna-500">{{ service.name }}</h3>
         <p class="text-blue-600">
           {{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
         </p>
-        <!-- <p class="text-sienna-600">{{ service.type | titlecase }}</p> -->
-        <button class="bg-york-500 hover:bg-york-700 text-white font-bold py-1 px-4 rounded cursor-pointer  h-10 w-20 text-xs" type="button" (click)="onAddService(service)">
-          Añadir Servicio
-        </button>
-      </div>
-    </div>
-    <div *ngIf="requestedServices.length > 0" class="grid grid-cols-3 gap-4 flex-1">
-      <h2 class="text-2xl text-york-700 font-dog col-span-3">Servicios Contratados</h2>
-      <div *ngFor="let service of requestedServices" class="col-span-3 flex justify-around">
-        <h3 class="text-base font-dog text-sienna-500">{{ service.name }}</h3>
-        <p class="text-blue-600">
-          {{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
-        </p>
-        <button class="bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded cursor-pointer h-8 w-20 text-xs" type="button" (click)="onRemoveService(service)">
+        <button
+          class="bg-red-500 hover:bg-red-700 text-white font-bold px-4 rounded cursor-pointer h-8 w-20 text-xs mx-auto"
+          type="button"
+          (click)="onRemoveService(service)"
+        >
           Eliminar
         </button>
       </div>
-      <p class="text-blue-600 font-extrabold col-span-3 mr-4">
+      <p class="text-blue-600 font-extrabold m-4 text-end col-span-3">
         TOTAL A PAGAR:
         <span class="text-blue-800">
           {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
         </span>
       </p>
-      <button class="col-start-3 col-end-4 bg-york-500 hover:bg-york-700 text-white rounded cursor-pointer h-8 w-20" type="button" (click)="onSubmit()">Pagar</button>
+      <button
+        class="bg-york-500 hover:bg-york-700 text-white rounded cursor-pointer h-8 w-20 mx-auto col-start-3 col-end-4"
+        type="button"
+        (click)="onSubmit()"
+      >
+        Pagar
+      </button>
     </div>
-    <h3 class="text-2xl text-york-700 font-dog self-start flex-1" *ngIf="requestedServices.length == 0">{{ 'Sin Servicios Contratados' | titlecase}}</h3>
   </div>
 </div>

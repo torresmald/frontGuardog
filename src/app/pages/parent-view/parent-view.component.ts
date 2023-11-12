@@ -4,12 +4,10 @@ import { Services } from 'src/app/core/models/Services/transformed/ServiceModel'
 import { PetsService } from 'src/app/core/services/Pets/petsService.service';
 import { ServicesService } from 'src/app/core/services/Services/servicesService.service';
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
+
 import { Router } from '@angular/router';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 
-registerLocaleData(localeEs, 'es');
 
 @Component({
   selector: 'app-parent-view',
@@ -21,6 +19,7 @@ export class ParentViewComponent implements OnInit {
   public pets: Pets[] = []
   public requestedServices: Services[] = []
   public totalAmount: number = 0
+  public serviceAdded : Services | undefined ;
   
   
   constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private modalService: ModalService){}
@@ -39,14 +38,16 @@ export class ParentViewComponent implements OnInit {
   }
 
   public onAddService(service: Services){
-    let isServiceAdded = this.requestedServices.find((reqServ) => reqServ.name === service.name)
-    if(isServiceAdded){
+    this.serviceAdded = this.requestedServices.find((reqServ) => reqServ.name === service.name)    
+    if(this.serviceAdded){
       this.modalService.$message?.next('Ya has añadido este servicio')
       this.modalService.showModal()
       return
     }
     this.requestedServices?.push(service)
     this.totalAmount = this.requestedServices.reduce((acc, total) => acc + total.price, 0)
+    this.servicesService.updateStylesImage(service)
+
   }
 
   public onRemoveService(service:Services){
@@ -57,4 +58,5 @@ export class ParentViewComponent implements OnInit {
   public onSubmit(){
     this.router.navigate(['/checkout'])
   }
+
 }
