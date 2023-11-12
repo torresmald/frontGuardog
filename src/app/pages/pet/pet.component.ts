@@ -16,9 +16,11 @@ export class PetComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
       this.id = value['id']
+      
     })
       this.petsService.getPet(this.id).subscribe((value) => {        
         this.pet = value
+        console.log(this.pet)
       })
   }
 }
