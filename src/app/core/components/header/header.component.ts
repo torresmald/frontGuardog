@@ -2,6 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { CourierService } from '../../services/courier/courier.service';
 import { UsersService } from '../../services/Users/usersService.service';
 import { Router } from '@angular/router';
+import { Services } from '../../models/Services/transformed/ServiceModel';
+import { CartService } from '../../services/Cart/cart.service';
 const TOKEN_KEY = 'user'
 @Component({
   selector: 'app-header',
@@ -13,6 +15,11 @@ export class HeaderComponent implements OnInit {
   public scrollNav: boolean = false;
   public isLogged: boolean = false;
   public isParent:boolean = false;
+  public servicesInCart: Services[] = []
+  public numberInCart: number = 0
+  public showFixedCart: boolean = false;
+  public isHover: boolean = true;
+
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event): void {
@@ -23,9 +30,10 @@ export class HeaderComponent implements OnInit {
       (scrollPosition / (pageHeight - windowHeight)) * 100;
     if (scrollPercentage >= 20) this.scrollNav = true;
     else this.scrollNav = false;
+    this.showFixedCart = window.scrollY > 100;
   }
 
-  constructor(public courierService: CourierService, private usersService: UsersService, public router: Router) {}
+  constructor(public courierService: CourierService, private usersService: UsersService, public router: Router, private cartService: CartService) {}
 
   ngOnInit(): void {
     // const userPrefersDark =
@@ -43,6 +51,10 @@ export class HeaderComponent implements OnInit {
 
     this.usersService.userLogged$.subscribe((value) => {      
       this.isLogged = value
+    })
+    this.cartService.servicesAddedCart.subscribe((value) => {
+      this.servicesInCart = value
+      this.numberInCart = this.servicesInCart.length
     })
   }
 

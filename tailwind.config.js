@@ -53,7 +53,8 @@ module.exports = {
         'home': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1698747339/Guardog/jcqtvlyhi2goe6h33bac.avif')",
         'logo': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1699454405/Guardog/logo_bb0zi4.png')",
         'not-found': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1699456229/Guardog/404_uqk1lk.avif')",
-        'register': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1699606920/Guardog/khnqru5uhmcvdxr7s5zc.png')"
+        'register': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1699606920/Guardog/khnqru5uhmcvdxr7s5zc.png')",
+        'cart': "url('https://res.cloudinary.com/dpyvlsksj/image/upload/v1699803727/Guardog/bag_fhmkql.svg')"
       }
     },
   },

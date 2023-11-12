@@ -44,7 +44,7 @@ export class ParentService {
     );
   }
 
-  public registerParent(body: ApiParents): Observable<Parents> {
+  public registerParent(body: FormData): Observable<Parents> {
     this.loadingService.showLoading();
     return this.apiParentsService
       .registerApiParent(body).pipe(

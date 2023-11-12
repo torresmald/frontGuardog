@@ -22,7 +22,7 @@ export class ApiParentsService {
     return this.http.get<ApiParents>(`${URL_API}/${id}`)
   }
 
-  public registerApiParent (body: ApiParents): Observable<ApiParents>{
+  public registerApiParent (body: FormData): Observable<ApiParents>{
     return this.http.post<ApiParents>(`${URL_API}/register`, body)
   }
 

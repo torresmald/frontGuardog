@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Services } from 'src/app/core/models/Services/transformed/ServiceModel';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';

@@ -57,6 +57,7 @@ export class RegisterComponent implements OnInit {
     this.form = this.fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required, Validators.email]),
+      image: new FormControl(null),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       repeatPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
       address: new FormControl('', Validators.required),
@@ -101,20 +102,18 @@ export class RegisterComponent implements OnInit {
   public onSubmit() {
     if(this.form?.valid){
 
-
-    const form = new FormData();
-    form.append('name', this.form?.get('name')?.value);
-    form.append('image', this.image);
-    form.append('birthday', this.form?.get('birthday')?.value);
-    form.append('nutrition', this.form?.get('nutrition')?.value);
-    form.append('date', this.form?.get('date')?.value);
-    form.append('areas', this.form?.get('areas')?.value);
-    form.append('diseases', this.form?.get('diseases')?.value);
-    form.append('exercise', this.form?.get('exercise')?.value);
-    form.append('parent', this.form?.get('parent')?.value);
-
-    const formData = this.form.value;
-
+      if(this.newPet){
+        const form = new FormData();
+        form.append('name', this.form?.get('name')?.value);
+        form.append('image', this.image);
+        form.append('birthday', this.form?.get('birthday')?.value);
+        form.append('nutrition', this.form?.get('nutrition')?.value);
+        form.append('date', this.form?.get('date')?.value);
+        form.append('areas', this.form?.get('areas')?.value);
+        form.append('diseases', this.form?.get('diseases')?.value);
+        form.append('exercise', this.form?.get('exercise')?.value);
+        form.append('parent', this.form?.get('parent')?.value);
+    
         this.petsService.registerPets(form).subscribe(
           {
             next: () => {
@@ -126,12 +125,48 @@ export class RegisterComponent implements OnInit {
             },
             error: (error) => {
               this.loadingService.hideLoading()
-
+  
               const {error:errorResponse} = error
-              this.errors = errorResponse.msg;
+              this.errors = errorResponse.message;
+              console.log(error);
+              console.log(errorResponse);
+              
+              
+              console.log(this.errors);
+
             }
           }
         )
+      } else {
+        const form = new FormData();
+        form.append('name', this.form?.get('name')?.value);
+        form.append('image', this.image);
+        form.append('email', this.form?.get('email')?.value);
+        form.append('password', this.form?.get('password')?.value);
+        form.append('address', this.form?.get('address')?.value);
+        form.append('phone', this.form?.get('phone')?.value);
+
+        this.parentService.registerParent(form).subscribe(
+          {
+            next: () => {
+              this.modalService.$message?.next('Usuario Registrado');
+              this.modalService.showModal();
+              setTimeout(() => {                
+                this.router.navigate(['/parent-view'])
+              }, 1000);
+            },
+            error: (error) => {
+              
+              this.loadingService.hideLoading()
+              const {error:errorResponse} = error
+              this.errors = errorResponse.message;
+              console.log(this.errors);
+            }
+          }
+        )
+      }
+
+
        
     }
   }
