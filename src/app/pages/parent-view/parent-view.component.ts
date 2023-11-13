@@ -48,9 +48,7 @@ export class ParentViewComponent implements OnInit {
     // this.requestedServices?.push(service)
     // this.totalAmount = this.requestedServices.reduce((acc, total) => acc + total.price, 0)
     // this.servicesService.updateStylesImage(service)
-    this.requestedServices = this.cartService.onAddServiceToCart(service)
-    console.log(this.requestedServices);
-    
+    this.requestedServices = this.cartService.onAddServiceToCart(service)    
   }
 
   public onRemoveService(service:Services){
@@ -59,8 +57,6 @@ export class ParentViewComponent implements OnInit {
     //   this.totalAmount = this.totalAmount - service.price
     // }
     this.requestedServices = this.cartService.onRemoveServiceToCart(service)
-    console.log(this.requestedServices);
-
   }
 
   public onSubmit(){
