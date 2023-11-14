@@ -20,3 +20,13 @@ body, html {
   
 }
 
+.mat-mdc-snack-bar-container {
+  &.sienna-snackbar {
+    text-align: center;
+    font-weight: bold;
+    --mdc-snackbar-container-color: #204526;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+}
+

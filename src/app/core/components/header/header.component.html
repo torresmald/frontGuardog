@@ -48,6 +48,7 @@
       </li>
       <div
         (mouseover)="isHover = true"
+        (mouseleave)="isHover = false"
         [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
       >
         <li
@@ -62,14 +63,29 @@
           <span class="bg-cart w-[24px] h-[24px] bg-no-repeat block"></span>
         </li>
       </div>
-      <div *ngIf="isHover" class="absolute top-24 right-10 border-york-800 border-2 h-[200px] overflow-auto rounded-lg">
-        <div *ngFor="let service of servicesInCart" class="p-2">
-          <h5 class="text-xs">{{ service.name }}</h5>
-          <p class="text-xs">
-            {{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
-          </p>
+      <div
+        (mouseover)="isHover = true"
+        *ngIf="isHover && servicesInCart.length !== 0"
+        class="absolute top-20 right-6 border-york-800 border-2 h-[120px] w-[200px] overflow-auto rounded-lg"
+      >
+        <div>
+          <div
+            *ngFor="let service of servicesInCart"
+            class="p-2 flex justify-around"
+          >
+            <h5 class="text-xs">{{ service.name }}</h5>
+            <p class="text-xs">
+              {{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
+            </p>
+          </div>
+          <p class="text-end">Total Pedido: {{ totalAmount }}</p>
         </div>
-        
+      </div>
+      <div
+        *ngIf="servicesInCart.length === 0 && isHover"
+        class="absolute top-20 right-6 border-york-800 border-2 h-9 w-44 rounded-lg"
+      >
+        <p class="text-xs text-center m-auto">No hay productos en el carrito</p>
       </div>
     </ul>
   </nav>

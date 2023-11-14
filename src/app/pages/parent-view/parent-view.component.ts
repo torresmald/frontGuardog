@@ -6,7 +6,6 @@ import { ServicesService } from 'src/app/core/services/Services/servicesService.
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
 
 import { Router } from '@angular/router';
-import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { CartService } from 'src/app/core/services/Cart/cart.service';
 
 
@@ -23,7 +22,7 @@ export class ParentViewComponent implements OnInit {
   public serviceAdded : Services | undefined ;
   
   
-  constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private modalService: ModalService, private cartService: CartService){}
+  constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private cartService: CartService){}
 
  
 
@@ -39,28 +38,11 @@ export class ParentViewComponent implements OnInit {
   }
 
   public onAddService(service: Services){
-    // this.serviceAdded = this.requestedServices.find((reqServ) => reqServ.name === service.name)    
-    // if(this.serviceAdded){
-    //   this.modalService.$message?.next('Ya has añadido este servicio')
-    //   this.modalService.showModal()
-    //   return
-    // }
-    // this.requestedServices?.push(service)
-    // this.totalAmount = this.requestedServices.reduce((acc, total) => acc + total.price, 0)
-    // this.servicesService.updateStylesImage(service)
-    this.requestedServices = this.cartService.onAddServiceToCart(service)
-    console.log(this.requestedServices);
-    
+    this.requestedServices = this.cartService.onAddServiceToCart(service)    
   }
 
   public onRemoveService(service:Services){
-    // if(this.requestedServices){
-    //   this.requestedServices = this.requestedServices.filter((value) => service.name != value.name)
-    //   this.totalAmount = this.totalAmount - service.price
-    // }
     this.requestedServices = this.cartService.onRemoveServiceToCart(service)
-    console.log(this.requestedServices);
-
   }
 
   public onSubmit(){
