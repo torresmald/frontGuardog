@@ -22,7 +22,8 @@ export class HeaderComponent implements OnInit {
   public servicesInCart: Services[] = []
   public numberInCart: number = 0
   public showFixedCart: boolean = false;
-  public isHover: boolean = true;
+  public isHover: boolean = false;
+  public totalAmount: number = 0
 
 
   @HostListener('window:scroll', ['$event'])
@@ -52,13 +53,16 @@ export class HeaderComponent implements OnInit {
     // if (userPrefersLight) {
     //   this.theme = 'light';
     // }
-
+    this.totalAmount = this.cartService.getTotalAmount()
     this.usersService.userLogged$.subscribe((value) => {      
       this.isLogged = value
     })
-    this.cartService.servicesAddedCart.subscribe((value) => {
+    this.cartService.servicesAddedCart$.subscribe((value) => {
       this.servicesInCart = value
       this.numberInCart = this.servicesInCart.length
+    })
+    this.cartService.totalAmount$.subscribe((value) => {
+      this.totalAmount = value
     })
   }
 
