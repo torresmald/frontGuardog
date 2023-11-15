@@ -16,9 +16,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ToastComponent } from './components/toast/toast.component';
+import { ModalCartComponent } from './components/modal-cart/modal-cart.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent, ModalExtrasComponent, ToastComponent],
+  declarations: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent, ModalExtrasComponent, ToastComponent, ModalCartComponent],
   imports: [CommonModule, CoreRoutingModule, HttpClientModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   exports: [HeaderComponent, FooterComponent, LoaderComponent, ModalNavComponent, ModalFormComponent,ModalExtrasComponent, ToastComponent],
   providers: [LoadingService, ModalService],

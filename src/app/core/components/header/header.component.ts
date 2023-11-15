@@ -4,8 +4,10 @@ import { UsersService } from '../../services/Users/usersService.service';
 import { Router } from '@angular/router';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 
-
+registerLocaleData(localeEs, 'es');
 
 
 const TOKEN_KEY = 'user'
@@ -81,4 +83,5 @@ export class HeaderComponent implements OnInit {
     }
     this.isParent ? this.router.navigate(['/parent-view']) : this.router.navigate(['/trainer-view'])
   }
+
 }

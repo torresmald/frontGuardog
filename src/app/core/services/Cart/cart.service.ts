@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ModalService } from '../Modal/modal.service';
 import { ServicesService } from 'src/app/core/services/Services/servicesService.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
 
 @Injectable({
@@ -24,7 +24,7 @@ export class CartService {
     return total
   }
 
-  public onAddServiceToCart(service: Services): Services[] | null{
+  public addServiceToCart(service: Services): Services[] | null{
     this.serviceAdded = this.requestedServices.find((reqServ) => reqServ.name === service.name)    
     if(this.serviceAdded){
       this.modalService.$message?.next('Ya has añadido este servicio')
@@ -43,7 +43,7 @@ export class CartService {
     return this.requestedServices
   }
 
-  public onRemoveServiceToCart(service:Services) : Services[] | null{
+  public removeServiceToCart(service:Services) : Services[] | null{
     if(this.requestedServices){
       this.requestedServices = this.requestedServices.filter((value) => service.name != value.name)
       this.totalAmount$.next(this.getTotalAmount() - service.price)

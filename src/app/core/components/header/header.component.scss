@@ -24,16 +24,16 @@ li:hover {
   transition: opacity 0.5s;
 }
 
-span{
-	cursor: pointer;
-	transition: 0.2s;
-}
+// span{
+// 	cursor: pointer;
+// 	transition: 0.2s;
+// }
 
-span:hover{
-	text-decoration: underline;
-	color: #74302c;
-	transition: 0.2s;
-}
+// span:hover{
+// 	text-decoration: underline;
+// 	color: #74302c;
+// 	transition: 0.2s;
+// }
 .fixed-cart{
   cursor: pointer;
     position: fixed;
@@ -47,3 +47,4 @@ span:hover{
     right: 29px;
   }
 }
+
