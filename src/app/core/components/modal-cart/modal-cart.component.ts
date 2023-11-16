@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
-import { Subject } from 'rxjs';
+import { HeaderService } from '../../services/Header/header.service';
 
 @Component({
   selector: 'app-modal-cart',
@@ -15,14 +15,15 @@ import { Subject } from 'rxjs';
   styleUrls: ['./modal-cart.component.scss'],
 })
 export class ModalCartComponent implements OnInit {
-  @Input() isHover?: boolean;
   @Input() servicesInCart: Services[] = [];
   public totalAmount: number = 0;
   public numberInCart: number = 0;
+  public isHover: boolean = false
 
   constructor(
     private cartService: CartService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private headerService: HeaderService
   ) {}
 
   ngOnInit(): void {
@@ -33,10 +34,10 @@ export class ModalCartComponent implements OnInit {
     this.cartService.servicesAddedCart$.subscribe((value) => {
       this.servicesInCart = value;
       this.numberInCart = this.servicesInCart.length;
-    });
-
-
-    
+    });   
+    this.headerService.showCartPreview$.subscribe((value) => {
+      this.isHover = value
+    })
   }
   public onRemoveService(service: Services) {
     this.cartService.removeServiceToCart(service);
@@ -45,14 +46,6 @@ export class ModalCartComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   public onPageClick(event: any) {
     const clickedInside = this.elementRef.nativeElement.contains(event.target);
-    if (!clickedInside) {
-      //Do something.
-      console.log('Fuera');
-      this.isHover = false 
-    } else {
-      console.log('Dentro');
-      this.isHover = true 
-
-    }
+    !clickedInside ? this.isHover = false : this.isHover = true
   }
 }

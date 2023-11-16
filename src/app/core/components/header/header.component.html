@@ -47,7 +47,7 @@
         Logout
       </li>
       <div
-        (mouseenter)="isHover = true"
+        (mouseenter)="onChangeHover()"
         [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
       >
         <li
@@ -62,7 +62,7 @@
           <span class="bg-cart w-[24px] h-[24px] bg-no-repeat block"></span>
         </li>
       </div>
-      <app-modal-cart [isHover]="isHover" [servicesInCart]="servicesInCart"></app-modal-cart>
+      <app-modal-cart  [servicesInCart]="servicesInCart"></app-modal-cart>
     </ul>
   </nav>
   <img
