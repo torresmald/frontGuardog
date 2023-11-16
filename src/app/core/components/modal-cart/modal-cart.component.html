@@ -1,8 +1,9 @@
-<div>
+<div 
+>
     <div
+    (click)="onPageClick($event)"
       *ngIf="servicesInCart.length !== 0 && isHover"
       (mouseenter)="isHover = true"
-      (mouseleave)="isHover = false"
       class="absolute top-20 right-6 border-york-800 border-2 h-[120px] w-[300px] overflow-auto rounded-lg z-50"
     >
       <div>

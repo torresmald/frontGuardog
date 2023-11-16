@@ -47,8 +47,7 @@
         Logout
       </li>
       <div
-        (mouseover)="isHover = true"
-        (mouseleave)="isHover = false"
+        (mouseenter)="isHover = true"
         [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
       >
         <li
