@@ -1,10 +1,10 @@
 <div 
   *ngIf="isHover"
-  class="transition animate-fade animate-once animate-delay-300 animate-ease-in-out"
+  class="transition animate-fade animate-once animate-delay-300 animate-ease-in-out flex w-full h-full z-200"
 >
     <div
       *ngIf="servicesInCart.length !== 0"
-      class="absolute top-20 right-6 border-york-800 border-2 h-[120px] w-[300px] overflow-auto rounded-lg z-50"
+      class="absolute top-20 right-6 border-york-800 border-2 h-[120px] w-[300px] overflow-auto rounded-lg "
     >
       <div class="flex flex-col">
         <div *ngFor="let service of servicesInCart" class="p-2 flex justify-around items-center">
@@ -26,7 +26,7 @@
             {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}</span
           >
         </p>
-        <button class="bg-blue-600 rounded-lg text-white text-sm px-3 self-center m-3">Pagar</button>
+        <button routerLink="/checkout" class="bg-blue-600 rounded-lg text-white text-sm px-3 self-center m-3">Pagar</button>
       </div>
     </div>
     <div
