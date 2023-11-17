@@ -38,11 +38,11 @@ export class ParentViewComponent implements OnInit {
   }
 
   public onAddService(service: Services){
-    this.requestedServices = this.cartService.onAddServiceToCart(service)    
+    this.requestedServices = this.cartService.addServiceToCart(service)    
   }
 
   public onRemoveService(service:Services){
-    this.requestedServices = this.cartService.onRemoveServiceToCart(service)
+    this.requestedServices = this.cartService.removeServiceToCart(service)
   }
 
   public onSubmit(){

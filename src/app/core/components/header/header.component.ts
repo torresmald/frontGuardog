@@ -4,8 +4,11 @@ import { UsersService } from '../../services/Users/usersService.service';
 import { Router } from '@angular/router';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { HeaderService } from '../../services/Header/header.service';
 
-
+registerLocaleData(localeEs, 'es');
 
 
 const TOKEN_KEY = 'user'
@@ -38,7 +41,7 @@ export class HeaderComponent implements OnInit {
     this.showFixedCart = window.scrollY > 100;
   }
 
-  constructor(public courierService: CourierService, private usersService: UsersService, public router: Router, private cartService: CartService) {}
+  constructor(public courierService: CourierService, private usersService: UsersService, public router: Router, private cartService: CartService, private headerService: HeaderService) {}
 
   ngOnInit(): void {
     // const userPrefersDark =
@@ -64,6 +67,9 @@ export class HeaderComponent implements OnInit {
     this.cartService.totalAmount$.subscribe((value) => {
       this.totalAmount = value
     })
+    this.headerService.showCartPreview$.subscribe((value) => {      
+      this.isHover = value
+    })
   }
 
   public openMenuMobile() {
@@ -80,5 +86,9 @@ export class HeaderComponent implements OnInit {
       JSON.parse(token).user.pets ? this.isParent = true : this.isParent= false
     }
     this.isParent ? this.router.navigate(['/parent-view']) : this.router.navigate(['/trainer-view'])
+  }
+
+  public onChangeHover(){
+    this.headerService.showCart()
   }
 }
