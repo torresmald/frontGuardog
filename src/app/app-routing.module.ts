@@ -39,11 +39,7 @@ const routes: Routes = [
     path: 'pet/:id',
     loadChildren: () => import('./pages/pet/pet.module').then(m => m.PetModule)
   },
-
-
-
-
-
+  
 
   {
     path: '**',
