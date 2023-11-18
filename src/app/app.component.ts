@@ -18,6 +18,8 @@ export class AppComponent {
   ngOnInit() {
     this.courierService.getModalNav().subscribe((value) => {
       this.isMenuOpen = value;
+      console.log(this.isMenuOpen);
+      
     });
     this.courierService.getCartModal().subscribe((value) => {
       this.isCartModal = value 

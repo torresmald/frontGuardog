@@ -6,18 +6,15 @@
 
 <section
   [ngClass]="{ 'translate-x-0': isHover, 'translate-x-[350px]': !isHover, 'top-20': scrollEvent < 5, 'top-12': scrollEvent >= 5}"
-  class="bg-white w-[350px] h-[200px] right-0 fixed z-40 duration-500"
+  class="bg-white w-[350px] h-[200px] right-0 fixed z-40 duration-500 shadow-2xl"
 >
-  <div class="h-[20%] bg-sienna-100 bg-sie flex items-center justify-center">
-    <p class="text-xl font-dog">Carrito de compras</p>
-  </div>
   <div
     *ngIf="servicesInCart.length === 0"
-    class="h-[80%] flex items-center justify-center"
+    class="h-[100%] flex items-center justify-center"
   >
     <p class="text-2xl font-dog">El carrito esta vacio</p>
   </div>
-  <div *ngIf="servicesInCart.length !== 0" class="h-[60%] overflow-y-auto">
+  <div *ngIf="servicesInCart.length !== 0" class="h-[80%] overflow-y-auto">
     <div *ngFor="let service of servicesInCart" class="flex h-14 justify-between items-center mx-3">
       <h6 class="w-[160px]">{{ service.name }}</h6>
       <p class="text-blue-800">{{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}</p>
@@ -30,7 +27,7 @@
       </button>
     </div>
   </div>
-  <div *ngIf="servicesInCart.length !== 0" class="h-[20%] bg-sienna-100 flex justify-between items-center">
+  <div *ngIf="servicesInCart.length !== 0" class="h-[20%] bg-sienna-100 flex justify-between items-center shadow-2xl">
     <p class="mx-4">
       <b>Total Pedido:</b>
       {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}

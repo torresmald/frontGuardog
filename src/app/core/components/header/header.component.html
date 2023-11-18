@@ -48,6 +48,7 @@
       </li>
       <div
         (mouseenter)="onChangeHover()"
+        (mouseleave)="onHoverLeave()"
         [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
       >
         <li

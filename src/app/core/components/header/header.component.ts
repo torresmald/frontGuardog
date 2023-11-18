@@ -6,6 +6,7 @@ import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { TimeoutConfig } from 'rxjs';
 
 registerLocaleData(localeEs, 'es');
 
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
   public showFixedCart: boolean = false;
   public isHover: boolean = false;
   public totalAmount: number = 0
+  public timeHoverMenu?: ReturnType<typeof setTimeout>;
 
 
   @HostListener('window:scroll', ['$event'])
@@ -81,6 +83,15 @@ export class HeaderComponent implements OnInit {
   }
 
   public onChangeHover(){
-    this.courierService.setCartModal(true)
+    if (this.servicesInCart.length >= 1)
+    {
+      this.timeHoverMenu = setTimeout(() => {
+      this.courierService.setCartModal(true);
+    }, 1000);
+    }
+  }
+
+  public onHoverLeave() {
+    clearTimeout(this.timeHoverMenu);
   }
 }
