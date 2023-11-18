@@ -21,15 +21,15 @@ export class UsersService {
     return !!isValidToken;
   }
 
-  public getTokenParent() {
+  public getToken() {
     const authToken = localStorage.getItem(TOKEN_KEY);
-    return authToken ? JSON.parse(authToken).user.email : null;
+    return authToken ? JSON.parse(authToken).user._id : null;
   }
 
-  public getTokenTrainer() {
-    const authToken = localStorage.getItem(TOKEN_KEY);
-    return authToken ? JSON.parse(authToken).user.email : null;
-  }
+  // public getTokenTrainer() {
+  //   const authToken = localStorage.getItem(TOKEN_KEY);
+  //   return authToken ? JSON.parse(authToken).user._id : null;
+  // }
 
   public logout(){
     localStorage.removeItem(TOKEN_KEY)
