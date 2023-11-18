@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CourierService } from '../../services/courier/courier.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-nav',
@@ -19,10 +20,16 @@ export class ModalNavComponent implements OnInit {
     }
   }
 
-  constructor(public courierService: CourierService) {}
+  constructor(public courierService: CourierService, private _router: Router) {}
 
   ngOnInit(): void {
     this.courierService.getModalNav().subscribe(value =>  this.modalAnimation = value)
+    this._router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.closeMenuMobile()
+      }
+    })
+    
   }
 
   public closeMenuMobile() {

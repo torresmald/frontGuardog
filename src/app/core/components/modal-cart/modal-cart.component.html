@@ -1,6 +1,49 @@
-<div 
+<div
+  (click)="closeCartModal()"
   *ngIf="isHover"
-  class="transition animate-fade animate-once animate-delay-300 animate-ease-in-out flex w-full h-full z-200"
+  class="bg-black h-screen w-screen opacity-40 z-30 fixed"
+></div>
+
+<section
+  [ngClass]="{ 'translate-x-0': isHover, 'translate-x-[350px]': !isHover, 'top-20': scrollEvent < 5, 'top-12': scrollEvent >= 5}"
+  class="bg-white w-[350px] h-[200px] right-0 fixed z-40 duration-500 shadow-2xl"
+>
+  <div
+    *ngIf="servicesInCart.length === 0"
+    class="h-[100%] flex items-center justify-center"
+  >
+    <p class="text-2xl font-dog">El carrito esta vacio</p>
+  </div>
+  <div *ngIf="servicesInCart.length !== 0" class="h-[80%] overflow-y-auto">
+    <div *ngFor="let service of servicesInCart" class="flex h-14 justify-between items-center mx-3">
+      <h6 class="w-[160px]">{{ service.name }}</h6>
+      <p class="text-blue-800">{{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}</p>
+      <button
+        class="bg-red-600 rounded-full text-white text-sm h-7 w-7"
+        *ngIf="service"
+        (click)="onRemoveService(service)"
+      >
+        X
+      </button>
+    </div>
+  </div>
+  <div *ngIf="servicesInCart.length !== 0" class="h-[20%] bg-sienna-100 flex justify-between items-center shadow-2xl">
+    <p class="mx-4">
+      <b>Total Pedido:</b>
+      {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
+    </p>
+    <button
+      routerLink="/checkout"
+      class="bg-blue-600 rounded-lg w-[80px] h-[25px] text-white text-sm mx-4"
+    >
+      Pagar
+    </button>
+  </div>
+</section>
+
+<!-- <div 
+  *ngIf="isHover"
+  class="transition animate-fade animate-once animate-delay-300 animate-ease-in-out flex w-full h-full relative z-50"
 >
     <div
       *ngIf="servicesInCart.length !== 0"
@@ -35,4 +78,4 @@
     >
       <p class="text-xs text-center m-auto">No hay productos en el carrito</p>
     </div>
-</div>
+</div> -->

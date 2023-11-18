@@ -26,11 +26,8 @@ export class ScrollListener {
   static listen(callback: (booleans: object) => void): void {
     let animationHome = new homeAnimation({});
     const onScroll = () => {
-      const windowHeight = window.innerHeight;
-      const pageHeight = document.documentElement.scrollHeight;
-      const scrollPosition = window.scrollY;
       const scrollPercentage =
-        (scrollPosition / (pageHeight - windowHeight)) * 100;
+        (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
 
       switch (true) {
         case scrollPercentage >= 10 && scrollPercentage < 36:
