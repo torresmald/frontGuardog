@@ -27,12 +27,12 @@ export class ParentViewComponent implements OnInit {
  
 
   ngOnInit(): void {
-    const token = this.usersService.getTokenParent();    
+    const token = this.usersService.getToken();    
      this.servicesService.getServices().subscribe((value) => {
       this.services = value
      })
      this.petsService.getPets().subscribe((value) => {      
-       this.pets = value.filter((pet) => pet.parent?.email === token)
+       this.pets = value.filter((pet) => pet.parent?._id === token)
      })
      
   }

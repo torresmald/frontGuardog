@@ -5,4 +5,6 @@ export interface Services {
     price: number,
     type: string,
     image: string
+    _id: string,
+
 }

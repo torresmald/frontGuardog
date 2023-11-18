@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       diseases: new FormArray([]),
       exercise: new FormControl('', Validators.required),
       gifts: new FormControl(0),
-      parent: new FormControl(this.usersService.getTokenParent())
+      parent: new FormControl(this.usersService.getToken())
         })
     
     :
