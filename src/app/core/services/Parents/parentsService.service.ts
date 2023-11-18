@@ -21,8 +21,8 @@ export class ParentService {
   public getParents(): Observable<Parents[]> {
     this.loadingService.showLoading();
     return this.apiParentsService.getApiParents().pipe(
-      map((parents: ApiParents[]) => {
-        return parents.map((parent: ApiParents) =>
+      map((apiParents: ApiParents[]) => {
+        return apiParents.map((parent: ApiParents) =>
           transformDataParent(parent)
         );
       }),
