@@ -6,7 +6,6 @@ import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { HeaderService } from '../../services/Header/header.service';
 
 registerLocaleData(localeEs, 'es');
 
@@ -30,18 +29,14 @@ export class HeaderComponent implements OnInit {
 
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: Event): void {
-    const windowHeight = window.innerHeight;
-    const pageHeight = document.documentElement.scrollHeight;
-    const scrollPosition = window.scrollY;
-    const scrollPercentage =
-      (scrollPosition / (pageHeight - windowHeight)) * 100;
+  onScroll(): void {
+    const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     if (scrollPercentage >= 20) this.scrollNav = true;
     else this.scrollNav = false;
     this.showFixedCart = window.scrollY > 100;
   }
 
-  constructor(public courierService: CourierService, private usersService: UsersService, public router: Router, private cartService: CartService, private headerService: HeaderService) {}
+  constructor(public courierService: CourierService, private usersService: UsersService, public router: Router, private cartService: CartService) {}
 
   ngOnInit(): void {
     // const userPrefersDark =
@@ -67,9 +62,6 @@ export class HeaderComponent implements OnInit {
     this.cartService.totalAmount$.subscribe((value) => {
       this.totalAmount = value
     })
-    this.headerService.showCartPreview$.subscribe((value) => {      
-      this.isHover = value
-    })
   }
 
   public openMenuMobile() {
@@ -89,6 +81,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public onChangeHover(){
-    this.headerService.showCart()
+    this.courierService.setCartModal(true)
   }
 }

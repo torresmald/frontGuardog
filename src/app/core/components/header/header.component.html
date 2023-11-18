@@ -3,7 +3,7 @@
     'hidden-nav': scrollNav && router.url === '/',
     fixed: router.url === '/'
   }"
-  class="z-20 w-full bg-sienna-100 flex items-center justify-between shadow-xl duration-500 h-[10vh]"
+  class="z-20 w-full bg-sienna-100 flex items-center justify-between shadow-xl duration-500 h-[75px]"
 >
   <div class="ml-5 md:ml-10">
     <img
@@ -63,7 +63,7 @@
         </li>
       </div>
     </ul>
-    <app-modal-cart  [servicesInCart]="servicesInCart"></app-modal-cart>
+    <!-- <app-modal-cart  [servicesInCart]="servicesInCart"></app-modal-cart> -->
   </nav>
   <img
     (click)="openMenuMobile()"

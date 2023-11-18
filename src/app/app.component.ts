@@ -11,6 +11,7 @@ import { CourierService } from './core/services/courier/courier.service';
 export class AppComponent {
   title = 'Guardog';
   isMenuOpen: boolean = false
+  isCartModal: boolean = false
 
   constructor(public _router: Router, public courierService: CourierService) {}
 
@@ -18,6 +19,9 @@ export class AppComponent {
     this.courierService.getModalNav().subscribe((value) => {
       this.isMenuOpen = value;
     });
+    this.courierService.getCartModal().subscribe((value) => {
+      this.isCartModal = value 
+    })
   }
 
 }

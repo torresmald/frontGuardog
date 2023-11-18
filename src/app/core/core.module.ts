@@ -47,6 +47,7 @@ import { SharedModule } from '../shared/shared.module';
     ModalFormComponent,
     ModalExtrasComponent,
     ToastComponent,
+    ModalCartComponent,
   ],
   providers: [LoadingService, ModalService],
 })
