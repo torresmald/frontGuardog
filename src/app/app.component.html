@@ -5,11 +5,11 @@
   <app-modal-cart></app-modal-cart>
   <app-loader></app-loader>
   <app-toast></app-toast>
-  <app-header *ngIf="!_router.url.includes('login') && !_router.url.includes('register')"></app-header>
+  <app-header *ngIf="shouldShow()"></app-header>
   <app-modal-extras></app-modal-extras>
   <main>
     <router-outlet>
     </router-outlet>
   </main>
-    <app-footer *ngIf="!_router.url.includes('login') && !_router.url.includes('register')"></app-footer>
+  <app-footer *ngIf="shouldShow()"></app-footer>
 </div>

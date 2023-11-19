@@ -90,7 +90,6 @@ export class RegisterComponent implements OnInit {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];
-      // reader.readAsArrayBuffer(file);
       reader.readAsDataURL(file); 
       reader.onload = (_event) => { 
         this.url = reader.result        
