@@ -9,21 +9,25 @@ import { CourierService } from './core/services/courier/courier.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Guardog';
-  isMenuOpen: boolean = false
-  isCartModal: boolean = false
+  public title: string = 'Guardog';
+  public excludedUrls = ['login', 'register', 'confirm-account', 'forgot-password'];
+  public isMenuOpen: boolean = false
+  public isCartModal: boolean = false
 
-  constructor(public _router: Router, public courierService: CourierService) {}
+  constructor(public router: Router, public courierService: CourierService) {}
 
   ngOnInit() {
     this.courierService.getModalNav().subscribe((value) => {
-      this.isMenuOpen = value;
-      console.log(this.isMenuOpen);
-      
+      this.isMenuOpen = value;      
     });
     this.courierService.getCartModal().subscribe((value) => {
       this.isCartModal = value 
-    })
+    })    
   }
+
+  shouldShow(): boolean {
+    return this.excludedUrls.every(url => !this.router.url.includes(url));
+  }
+  
 
 }

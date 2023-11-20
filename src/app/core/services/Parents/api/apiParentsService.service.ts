@@ -29,4 +29,20 @@ export class ApiParentsService {
   public loginApiParent (body: ApiParents): Observable<ApiUsers>{
     return this.http.post<ApiUsers>(`${URL_API}/login`, body)
   }
+  
+  public verifyApiParentAccount(token: string): Observable<string>{
+    return this.http.get<string>(`${URL_API}/verify/${token}`)
+  }
+
+  public forgotApiPassword(body: string): Observable<string>{
+    return this.http.post<string>(`${URL_API}/forgot-password`, body)
+  }
+  public forgotApiPasswordToken(token:string): Observable<string>{
+    return this.http.get<string>(`${URL_API}/forgot-password/${token}`)
+  }
+  public updateApiPassword(token:string, password: string): Observable<string>{
+    const body = { password }
+    return this.http.post<string>(`${URL_API}/forgot-password/${token}`, body)
+  }
+  
 }

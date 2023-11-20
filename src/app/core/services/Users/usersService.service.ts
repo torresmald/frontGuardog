@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 const TOKEN_KEY = 'user';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,13 +26,10 @@ export class UsersService {
     return authToken ? JSON.parse(authToken).user._id : null;
   }
 
-  // public getTokenTrainer() {
-  //   const authToken = localStorage.getItem(TOKEN_KEY);
-  //   return authToken ? JSON.parse(authToken).user._id : null;
-  // }
-
   public logout(){
     localStorage.removeItem(TOKEN_KEY)
     this.userLogged$.next(false);
   }
+
+
 }

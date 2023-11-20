@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Parents } from '../../models/Parents/transformed/ParentModel';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { ApiParentsService } from './api/apiParentsService.service';
 import { ApiParents } from '../../models/Parents/api/apiParentModel';
 import { transformDataParent } from './helpers/transformApi';
@@ -69,5 +69,28 @@ export class ParentService {
       })
     )
   }
-  
+
+  public verifyParentAccount(token: string): Observable<any>{
+    return this.apiParentsService.verifyApiParentAccount(token).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+  }
+
+  public forgotPassword(body: string) : Observable<string>{
+    return this.apiParentsService.forgotApiPassword(body)
+  }
+  public forgotPasswordToken(token: string): Observable<string>{
+    return this.apiParentsService.forgotApiPasswordToken(token).pipe(
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    )
+  }
+
+  public updatePassword(token: string, password: string): Observable<string>{    
+    return this.apiParentsService.updateApiPassword(token, password)
+  }
+
 }

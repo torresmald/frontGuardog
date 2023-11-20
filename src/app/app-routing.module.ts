@@ -44,7 +44,18 @@ const routes: Routes = [
     path: 'checkout',
     loadChildren: () => import('./pages/checkout/checkout.module').then(m => m.CheckoutModule)
   },
-
+  {
+    path: 'confirm-account/:token',
+    loadChildren: () => import('./pages/confirm-account/confirm-account.module').then(m => m.ConfirmAccountModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
+  },
+  {
+    path: 'forgot-password/:token',
+    loadChildren: () => import('./pages/update-password/update-password.module').then(m => m.UpdatePasswordModule)
+  },
 
   {
     path: '**',
