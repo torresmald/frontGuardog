@@ -42,8 +42,29 @@ export class CheckoutComponent implements OnInit {
     this.checkoutForm?.get('services')?.setValue(this.servicesInCart);
   }
 
-  public onSubmit(){
-    console.log(this.checkoutForm?.value);
-    
+  public onSubmit() {
+    const selectedServices = this.checkoutForm?.get('services')?.value;
+    const selectedDates = this.checkoutForm?.get('date')?.value;
+    const selectedPet = this.checkoutForm?.get('pet')?.value;
+  
+    if (selectedServices && selectedDates && selectedPet) {
+      for (let i = 0; i < selectedServices.length; i++) {
+        const service = selectedServices[i];
+        const date = selectedDates[i];
+  
+        // Realiza las acciones necesarias con cada servicio, fecha y mascota
+        console.log('Fecha para servicio:', date);
+        console.log('Mascota para servicio:', selectedPet);
+        console.log('Servicio contratado:', service);
+        const valueForm = {
+          date,
+          pet: selectedPet,
+          service
+        }
+        console.log(valueForm);
+        
+      }
+    }
   }
+  
 }

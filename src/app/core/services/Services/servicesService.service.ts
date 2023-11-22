@@ -41,7 +41,7 @@ export class ServicesService {
     );
   }
 
-  updateStylesImage(service: Services) {
+  public updateStylesImage(service: Services) {
     this.stylesImage.next(service);
   }
 }

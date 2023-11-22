@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
+import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
 
@@ -16,7 +17,7 @@ export class UpdatePasswordComponent implements OnInit {
   public form?: FormGroup;
   public isSamePassword: boolean = false;
 
-  constructor(private parentsService: ParentService, private route:ActivatedRoute, private toastService: ToastService, private router: Router){}
+  constructor(private parentsService: ParentService, private route:ActivatedRoute, private toastService: ToastService, private router: Router, private modalService: ModalService){}
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
       this.token = value['token']
@@ -67,13 +68,12 @@ export class UpdatePasswordComponent implements OnInit {
       const newPassword = this.form?.get('password')?.value      
       this.parentsService.updatePassword(this.token, newPassword).subscribe((value) => {
         if(value){
-          this.message = value;
-          this.toastService.$message?.next(this.message);
-          this.toastService.showToast();
+          this.modalService.$message?.next(value)
+          this.modalService.showModal()
           setTimeout(() => {
-            this.toastService.closeToast();
+            this.modalService.closeModal()
             this.router.navigate(['/login'])
-          }, 1500);
+          }, 2000);
         }
         
       })
