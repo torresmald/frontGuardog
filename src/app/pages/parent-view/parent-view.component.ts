@@ -8,6 +8,7 @@ import { UsersService } from 'src/app/core/services/Users/usersService.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/Cart/cart.service';
 
+const TOKEN_KEY_CART = 'cart'
 
 @Component({
   selector: 'app-parent-view',
@@ -19,7 +20,9 @@ export class ParentViewComponent implements OnInit {
   public pets: Pets[] = []
   public requestedServices: Services[] | null = []
   public totalAmount: number = 0
-  public serviceAdded : Services | undefined ;
+  public servicesAddedToCart : Services[] | undefined ;
+  public serviceAddedToCart : Services | undefined ;
+
   
   
   constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private cartService: CartService){}
@@ -34,7 +37,10 @@ export class ParentViewComponent implements OnInit {
      this.petsService.getPets().subscribe((value) => {      
        this.pets = value.filter((pet) => pet.parent?._id === token)
      })
-     
+     const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
+     const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
+     this.servicesAddedToCart = dataParsed
+
   }
 
   public onAddService(service: Services){

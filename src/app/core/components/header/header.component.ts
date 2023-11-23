@@ -12,6 +12,9 @@ registerLocaleData(localeEs, 'es');
 
 
 const TOKEN_KEY = 'user'
+const TOKEN_KEY_CART = 'cart'
+const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
+const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -53,11 +56,16 @@ export class HeaderComponent implements OnInit {
     // if (userPrefersLight) {
     //   this.theme = 'light';
     // }
-    this.totalAmount = this.cartService.getTotalAmount()
+    if(dataParsed){
+      this.servicesInCart = dataParsed
+      this.numberInCart = this.servicesInCart.length
+    }
+
+    // this.totalAmount = this.cartService.getTotalAmount()
     this.usersService.userLogged$.subscribe((value) => {      
       this.isLogged = value
     })
-    this.cartService.servicesAddedCart$.subscribe((value) => {
+    this.cartService.servicesAddedCart$.subscribe((value) => {     
       this.servicesInCart = value
       this.numberInCart = this.servicesInCart.length
     })

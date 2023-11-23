@@ -13,6 +13,8 @@ registerLocaleData(localeEs, 'es');
 })
 export class ServiceComponent implements OnInit {
   @Input() service?: Services;
+  @Input() servicesAddedToCart?: Services[];
+
   public changeStyles?: boolean;
 
   constructor(private servicesService: ServicesService) {}
@@ -20,6 +22,12 @@ export class ServiceComponent implements OnInit {
   ngOnInit(): void {
     this.servicesService.stylesImage.subscribe((value) => {
       if (value.name === this.service?.name) {
+        this.changeStyles = true;
+      }
+    });
+    this.servicesAddedToCart?.map((service) => {
+      if (service._id === this.service?._id) {
+        console.log('En el carrito', service);
         this.changeStyles = true;
       }
     });

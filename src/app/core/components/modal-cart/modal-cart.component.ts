@@ -10,6 +10,8 @@ import { CartService } from '../../services/Cart/cart.service';
 import { CourierService } from '../../services/courier/courier.service';
 import { NavigationEnd, Router} from '@angular/router';
 
+const TOKEN_KEY_CART = 'cart'
+
 @Component({
   selector: 'app-modal-cart',
   templateUrl: './modal-cart.component.html',
@@ -36,6 +38,12 @@ export class ModalCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
+    const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
+    if(dataParsed){
+      this.servicesInCart = dataParsed
+      this.numberInCart = dataParsed.length;
+    }
     this.totalAmount = this.cartService.getTotalAmount();
     this.cartService.totalAmount$.subscribe((value) => {
       this.totalAmount = value;
