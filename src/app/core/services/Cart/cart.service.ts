@@ -65,19 +65,33 @@ export class CartService implements OnInit {
   }
   
 
-  public removeServiceToCart(service:Services) : Services[] | null{
-    if(this.requestedServices){
-      this.requestedServices = this.requestedServices.filter((value) => service.name != value.name)
-      this.totalAmount$.next(this.getTotalAmount() - service.price)
+  public removeServiceToCart(service: Services): Services[] | null {
+    // Recuperar servicios existentes del localStorage
+    const storedServices = localStorage.getItem(TOKEN_KEY_CART);
+  
+    if (storedServices) {
+      // Si hay servicios almacenados, cargarlos
+      this.requestedServices = JSON.parse(storedServices);
     }
-    this.toastService.$message?.next('Eliminado con Éxito')
-    this.toastService.showToast()
+  
+    // Filtrar el servicio a eliminar
+    this.requestedServices = this.requestedServices.filter((value) => service.name !== value.name);
+  
+    // Actualizar observables y almacenar en localStorage
+    this.totalAmount$.next(this.getTotalAmount() - service.price);
+    this.serviceService.updateStylesImage(service);
+    this.toastService.$message?.next('Eliminado con Éxito');
+    this.toastService.showToast();
     setTimeout(() => {
-      this.toastService.closeToast()
+      this.toastService.closeToast();
     }, 3000);
-    this.servicesAddedCart$.next(this.requestedServices)
-    return this.requestedServices
+  
+    this.servicesAddedCart$.next(this.requestedServices);
+    localStorage.setItem(TOKEN_KEY_CART, JSON.stringify(this.requestedServices));
+  
+    return this.requestedServices;
   }
+  
 
   public getServicesInCart(): Services[]{
     if(dataParsed){

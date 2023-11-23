@@ -30,7 +30,8 @@ export class ParentViewComponent implements OnInit {
  
 
   ngOnInit(): void {
-    const token = this.usersService.getToken();    
+    const token = this.usersService.getToken();   
+    // TODO Pype async 
      this.servicesService.getServices().subscribe((value) => {
       this.services = value
      })
@@ -44,7 +45,8 @@ export class ParentViewComponent implements OnInit {
   }
 
   public onAddService(service: Services){
-    this.requestedServices = this.cartService.addServiceToCart(service)    
+    this.requestedServices = this.cartService.addServiceToCart(service) 
+       
   }
 
   public onRemoveService(service:Services){

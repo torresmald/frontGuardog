@@ -48,14 +48,12 @@
   </div>
 </section> -->
 
-
-
-
 <div class="mt-4">
   <h2 class="m-3 text-2xl text-center text-york-600 font-extrabold">Carrito</h2>
   <div *ngIf="servicesInCart.length > 0 && checkoutForm">
     <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
       <div
+        id="services"
         *ngFor="let service of servicesInCart"
         class="flex flex-col gap-2 w-[70%] mx-auto"
       >
@@ -74,7 +72,7 @@
             {{ pet.name }}
           </option>
         </select>
-        <input type="date" formControlName="date" />
+        <input type="date" formControlName="date" id="date" />
       </div>
       <button
         class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold py-2 px-4 rounded cursor-pointer"

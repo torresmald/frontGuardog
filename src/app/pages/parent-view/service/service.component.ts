@@ -5,6 +5,7 @@ import localeEs from '@angular/common/locales/es';
 import { ServicesService } from 'src/app/core/services/Services/servicesService.service';
 
 registerLocaleData(localeEs, 'es');
+const TOKEN_KEY_CART = 'cart'
 
 @Component({
   selector: 'app-service',
@@ -20,6 +21,8 @@ export class ServiceComponent implements OnInit {
   constructor(private servicesService: ServicesService) {}
 
   ngOnInit(): void {
+    const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
+    const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
     this.servicesService.stylesImage.subscribe((value) => {
       if (value.name === this.service?.name) {
         this.changeStyles = true;
@@ -27,7 +30,6 @@ export class ServiceComponent implements OnInit {
     });
     this.servicesAddedToCart?.map((service) => {
       if (service._id === this.service?._id) {
-        console.log('En el carrito', service);
         this.changeStyles = true;
       }
     });
