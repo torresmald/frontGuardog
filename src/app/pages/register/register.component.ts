@@ -124,14 +124,8 @@ export class RegisterComponent implements OnInit {
             },
             error: (error) => {
               this.loadingService.hideLoading()
-  
               const {error:errorResponse} = error
-              this.errors = errorResponse.message;
-              console.log(error);
-              console.log(errorResponse);
-              
-              
-              console.log(this.errors);
+              this.errors = errorResponse.message
 
             }
           }
@@ -155,11 +149,9 @@ export class RegisterComponent implements OnInit {
               }, 1000);
             },
             error: (error) => {
-              
               this.loadingService.hideLoading()
               const {error:errorResponse} = error
               this.errors = errorResponse.message;
-              console.log(this.errors);
             }
           }
         )
