@@ -4,9 +4,12 @@ import { ServicesService } from 'src/app/core/services/Services/servicesService.
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { Subject } from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
+import { UpdatedStylesData } from '../Services/helpers/typeStylesChange';
 const TOKEN_KEY_CART = 'cart';
 const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
 const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -57,7 +60,11 @@ export class CartService implements OnInit {
     }, 3000);
     this.requestedServices = [...this.requestedServices, service];
     this.totalAmount$.next(this.getTotalAmount());
-    this.serviceService.updateStylesImage(service);
+    const dataToUpdate: UpdatedStylesData = {
+      service,
+      inCart: true
+    };
+    this.serviceService.updateStylesImage(dataToUpdate);
     this.servicesAddedCart$.next(this.requestedServices);
     localStorage.setItem(TOKEN_KEY_CART, JSON.stringify(this.requestedServices));
   
@@ -66,29 +73,24 @@ export class CartService implements OnInit {
   
 
   public removeServiceToCart(service: Services): Services[] | null {
-    // Recuperar servicios existentes del localStorage
     const storedServices = localStorage.getItem(TOKEN_KEY_CART);
-  
     if (storedServices) {
-      // Si hay servicios almacenados, cargarlos
       this.requestedServices = JSON.parse(storedServices);
     }
-  
-    // Filtrar el servicio a eliminar
     this.requestedServices = this.requestedServices.filter((value) => service.name !== value.name);
-  
-    // Actualizar observables y almacenar en localStorage
     this.totalAmount$.next(this.getTotalAmount() - service.price);
-    this.serviceService.updateStylesImage(service);
+    const dataToUpdate: UpdatedStylesData = {
+      service,
+      inCart: false
+    };
+    this.serviceService.updateStylesImage(dataToUpdate);
     this.toastService.$message?.next('Eliminado con Éxito');
     this.toastService.showToast();
     setTimeout(() => {
       this.toastService.closeToast();
     }, 3000);
-  
     this.servicesAddedCart$.next(this.requestedServices);
     localStorage.setItem(TOKEN_KEY_CART, JSON.stringify(this.requestedServices));
-  
     return this.requestedServices;
   }
   

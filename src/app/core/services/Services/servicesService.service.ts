@@ -3,7 +3,7 @@ import { ApiServicesService } from './api/ApiServicesService.service';
 import { Subject, map, tap } from 'rxjs';
 import { transformDataService } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
-import { Services } from '../../models/Services/transformed/ServiceModel';
+import { UpdatedStylesData } from './helpers/typeStylesChange';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class ServicesService {
     private apiServicesService: ApiServicesService,
     private loadingService: LoadingService
   ) {}
-  public stylesImage: Subject<Services> = new Subject<Services>();
+  public stylesImage: Subject<UpdatedStylesData> = new Subject<UpdatedStylesData>();
 
   public getServices() {
     this.loadingService.showLoading();
@@ -41,7 +41,7 @@ export class ServicesService {
     );
   }
 
-  public updateStylesImage(service: Services) {
-    this.stylesImage.next(service);
+  public updateStylesImage(data: UpdatedStylesData) {
+    this.stylesImage.next(data);
   }
 }

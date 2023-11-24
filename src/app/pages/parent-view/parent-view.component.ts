@@ -21,7 +21,6 @@ export class ParentViewComponent implements OnInit {
   public requestedServices: Services[] | null = []
   public totalAmount: number = 0
   public servicesAddedToCart : Services[] | undefined ;
-  public serviceAddedToCart : Services | undefined ;
 
   
   

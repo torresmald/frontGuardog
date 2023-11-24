@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Services } from 'src/app/core/models/Services/transformed/ServiceModel';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
@@ -12,7 +12,7 @@ const TOKEN_KEY_CART = 'cart'
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.scss'],
 })
-export class ServiceComponent implements OnInit {
+export class ServiceComponent implements OnInit, OnChanges {
   @Input() service?: Services;
   @Input() servicesAddedToCart?: Services[];
 
@@ -21,17 +21,21 @@ export class ServiceComponent implements OnInit {
   constructor(private servicesService: ServicesService) {}
 
   ngOnInit(): void {
-    const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
-    const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
+  }
+  ngOnChanges(changes: SimpleChanges): void {
     this.servicesService.stylesImage.subscribe((value) => {
-      if (value.name === this.service?.name) {
+      if (value.service.name === this.service?.name && value.inCart) {
         this.changeStyles = true;
-      }
+      } else if(value.service.name === this.service?.name && !value.inCart){
+        this.changeStyles = false;
+
+      }      
     });
     this.servicesAddedToCart?.map((service) => {
       if (service._id === this.service?._id) {
         this.changeStyles = true;
       }
     });
+      
   }
 }
