@@ -7,6 +7,7 @@ import { UsersService } from 'src/app/core/services/Users/usersService.service';
 
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/core/services/Cart/cart.service';
+import { ToastService } from 'src/app/core/services/Toast/toast.service';
 
 const TOKEN_KEY_CART = 'cart'
 
@@ -24,7 +25,7 @@ export class ParentViewComponent implements OnInit {
 
   
   
-  constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private cartService: CartService){}
+  constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private cartService: CartService, private toastService:ToastService){}
 
  
 
@@ -44,12 +45,16 @@ export class ParentViewComponent implements OnInit {
   }
 
   public onAddService(service: Services){
+    if (!service.date || !service.pet) {
+      this.toastService.$message?.next('Selecciona Mascota y Fecha')
+      this.toastService.showToast()
+      setTimeout(() => {
+        this.toastService.closeToast()
+      }, 2000);
+      return; 
+    }
     this.requestedServices = this.cartService.addServiceToCart(service) 
        
-  }
-
-  public onRemoveService(service:Services){
-    this.requestedServices = this.cartService.removeServiceToCart(service)
   }
 
   public onSubmit(){

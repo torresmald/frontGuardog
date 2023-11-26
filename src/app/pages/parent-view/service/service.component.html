@@ -22,19 +22,19 @@
   </p>
 </div> -->
 
-<div class="lg:grid lg:grid-cols-3 lg:gap-4 lg:items-center">
-  <h3 class="text-lg font-dog text-sienna-500 text-center lg:col-start-2 lg:col-end-3">
+<div class="lg:grid lg:grid-cols-3 lg:items-center">
+  <h3 class="text-xl font-dog text-sienna-500 text-center lg:col-start-2 lg:col-end-3">
     {{ service?.name }}
   </h3>
-  <div class="relative lg:-order-1 h-40 w-48 mx-auto lg:w-72 lg:h-48 lg:mx-3">
+  <div class="relative lg:-order-1 mx-auto lg:mx-3">
     <img
-    class="rounded-xl h-[140px] col-span-full w-[200px] mx-auto lg:max-h-[100%] lg:w-full lg:h-[200px] relative"
+    class="rounded-xl h-[140px] col-span-full w-[200px] mx-auto lg:max-h-[100%] lg:w-[150px] lg:h-[100px] relative"
     [src]="service?.image"
       [ngClass]="{ inactive: changeStyles}"
       alt="Imagen Servicio"
     />
-    <p *ngIf="changeStyles" class="absolute inset-0 text-2xl flex items-center justify-center text-york-400 font-extrabold">Añadido</p>
-    <span *ngIf="changeStyles" class="material-symbols-outlined absolute top-0 right-0 text-3xl font-extrabold mr-2 mt-2">
+    <p *ngIf="changeStyles" class="absolute inset-0 text-xl flex items-center justify-center text-york-400 font-extrabold">Añadido</p>
+    <span *ngIf="changeStyles" class="material-symbols-outlined absolute top-0 right-0 text-2xl font-extrabold mr-2 mt-2">
       shopping_bag
     </span>
   </div>

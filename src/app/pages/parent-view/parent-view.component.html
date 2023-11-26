@@ -22,15 +22,26 @@
   <div class="mt-4 lg:flex">
     <div class="lg:w-full">
       <h2
-        class="text-2xl font-dog text-center text-sienna-700 lg:text-start lg:ml-5"
+        class="text-3xl font-dog text-center text-sienna-700 lg:text-start lg:ml-5"
       >
         Servicios
       </h2>
-      <div
-        *ngFor="let service of services"
-        class="grid grid-cols-1 mt-4 gap-1 lg:relative lg:flex lg:items-center"
-      >
-        <app-service [servicesAddedToCart]="servicesAddedToCart" [service]="service"></app-service>
+      <div *ngFor="let service of services" class="grid grid-cols-1 my-6 gap-2 lg:grid-cols-5 lg:items-center xl:grid-cols-6">
+        <app-service class="lg:col-span-2 xl:col-span-3" [servicesAddedToCart]="servicesAddedToCart" [service]="service"></app-service>
+        
+        <div class="flex flex-col items-center mx-auto">
+          <label for="pet" class="font-dog text-york-500 text-center">Mascota</label>
+          <select id="pet" [(ngModel)]="service.pet">
+            <option disabled value="Selecciona">-- Selecciona --</option>
+            <option [value]="pet._id" *ngFor="let pet of pets">{{pet.name}}</option>
+          </select>
+        </div>
+        
+        <div class="flex flex-col items-center mx-auto text-lgtext-center mb-2">
+          <label class="font-dog text-york-500 text-center" for="date">Fecha</label>
+          <input type="date" id="date" [(ngModel)]="service.date" />
+        </div>
+        
         <button
           class="bg-york-500 hover:bg-york-700 text-white font-bold px-5 rounded cursor-pointer h-8 w-24 text-xs mx-auto"
           type="button"
@@ -39,6 +50,7 @@
           Añadir
         </button>
       </div>
+      
     </div>
     <!-- <div
       *ngIf="requestedServices && requestedServices.length > 0"

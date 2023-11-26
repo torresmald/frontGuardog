@@ -5,6 +5,7 @@ import { Services } from '../../models/Services/transformed/ServiceModel';
 import { Subject } from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
 import { UpdatedStylesData } from '../Services/helpers/typeStylesChange';
+import { Pets } from '../../models/Pets/transformed/PetModel';
 const TOKEN_KEY_CART = 'cart';
 const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
 const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
@@ -40,13 +41,13 @@ export class CartService implements OnInit {
   }
 
   public addServiceToCart(service: Services): Services[] | null {
+    console.log(service);
+    
     const storedServices = localStorage.getItem(TOKEN_KEY_CART);
     if (storedServices) {
       this.requestedServices = JSON.parse(storedServices);
     }
-  
     this.serviceAdded = this.requestedServices.find((reqServ) => reqServ.name === service.name);
-  
     if (this.serviceAdded) {
       this.modalService.$message?.next('Ya has añadido este servicio');
       this.modalService.showModal();

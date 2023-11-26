@@ -1,4 +1,4 @@
-import { typesServices } from "../servicesData";
+import { Pets } from "../../Pets/transformed/PetModel";
 
 export interface Services {
     name: string,
@@ -6,5 +6,6 @@ export interface Services {
     type: string,
     image: string
     _id: string,
-
+    pet: string,
+    date: string,
 }

@@ -6,6 +6,7 @@ import { ParentViewComponent } from './parent-view.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MyPetsComponent } from './my-pets/my-pets.component';
 import { ServiceComponent } from './service/service.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ServiceComponent } from './service/service.component';
   imports: [
     CommonModule,
     ParentViewRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   providers: [{
     provide: LOCALE_ID,

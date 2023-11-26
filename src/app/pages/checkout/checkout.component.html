@@ -67,12 +67,14 @@
             service?.price | currency : "EUR" : "symbol" : "2.2-2" : "es"
           }}</span>
         </p>
-        <select id="pets" formControlName="pet">
+        <img [src]="petImage" alt="{{ petImage }}" />
+        <p>{{service.date}}</p>
+        <!-- <select id="pets" formControlName="pet">
           <option [value]="pet._id" *ngFor="let pet of pets">
             {{ pet.name }}
-          </option>
-        </select>
-        <input type="date" formControlName="date" id="date" />
+          </option> 
+        </select> -->
+        <!-- <input type="date" id="date" /> -->
       </div>
       <button
         class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
