@@ -9,6 +9,7 @@ import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
 import { CourierService } from '../../services/courier/courier.service';
 import { NavigationEnd, Router} from '@angular/router';
+import { Pets } from '../../models/Pets/transformed/PetModel';
 
 const TOKEN_KEY_CART = 'cart'
 
@@ -67,9 +68,13 @@ export class ModalCartComponent implements OnInit {
     })
   }
   public onRemoveService(service: Services) {
+    service.date = '';
+    service.pet = ''; 
     this.cartService.removeServiceToCart(service);
     this.totalAmount = this.cartService.getTotalAmount();
   }
+  
+  
   
   public closeCartModal() {
     this.courierService.setCartModal(false)

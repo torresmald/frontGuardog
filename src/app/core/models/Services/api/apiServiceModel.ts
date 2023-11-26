@@ -1,3 +1,4 @@
+import { ApiPets } from "../../Pets/api/apiPetModel"
 import { typesServices } from "../servicesData"
 
 export interface ApiServices{
@@ -6,6 +7,8 @@ export interface ApiServices{
     price: number,
     type: string,
     image: string,
+    pet: string,
+    date: string,
     __v?: string,
     createdAt?: string,
     updatedAt?: string
