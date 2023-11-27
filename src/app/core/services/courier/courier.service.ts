@@ -5,13 +5,15 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class CourierService {
-  private modalNav = new BehaviorSubject<boolean>(false);
-  private modalCart = new BehaviorSubject<boolean>(false);
+  private modalNav:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private modalCart:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private modalItemService: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
 
   constructor() {
   }
-
+  public setItemServiceModal = (boolean: boolean) => this.modalItemService.next(boolean)
+  public getItemServiceModal = () => this.modalItemService.asObservable()
   public setCartModal = (boolean: boolean) => this.modalCart.next(boolean)
   public getCartModal = () => this.modalCart.asObservable()
   public setBooleanNav = (boolean: boolean) => this.modalNav.next(boolean);

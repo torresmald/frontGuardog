@@ -14,7 +14,7 @@ export class CartService {
   private requestedServices: BehaviorSubject<Services[]> = new BehaviorSubject<Services[]>([])
   private totalAmount: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
-  constructor(private modalService: ModalService, private serviceService: ServicesService, private toastService: ToastService, private localStorageService: LocalStorageService) {
+  constructor(private modalService: ModalService, private toastService: ToastService, private localStorageService: LocalStorageService) {
     this.localStorageService.getLocalStorage().subscribe( (data) => {
       this.requestedServices.next(data || [])
       this.updateTotal(undefined, "addition");
@@ -34,22 +34,12 @@ export class CartService {
       this.toastService.closeToast();
     }, 3000);
     this.requestedServices.next([...this.requestedServices.value, service])
-    const dataToUpdate: UpdatedStylesData = {
-      service,
-      inCart: true
-    };
     this.updateTotal(undefined, "addition")
-    this.serviceService.updateStylesImage(dataToUpdate);
     this.localStorageService.setLocalStorage(this.requestedServices.value)
   }
 
   public removeServiceToCart(service: Services): Services[] | null {
     this.requestedServices.next(this.requestedServices.value.filter((value) => service.name !== value.name))
-    const dataToUpdate: UpdatedStylesData = {
-      service,
-      inCart: false
-    };
-    this.serviceService.updateStylesImage(dataToUpdate);
     this.toastService.$message?.next('Eliminado con Éxito');
     this.toastService.showToast();
     setTimeout(() => {

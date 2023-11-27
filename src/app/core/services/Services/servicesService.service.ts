@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiServicesService } from './api/ApiServicesService.service';
-import { Subject, map, tap } from 'rxjs';
+import {Subject, map, tap} from 'rxjs';
 import { transformDataService } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
-import { UpdatedStylesData } from './helpers/typeStylesChange';
+import {Services} from "../../models/Services/transformed/ServiceModel";
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +11,10 @@ import { UpdatedStylesData } from './helpers/typeStylesChange';
 export class ServicesService {
   constructor(
     private apiServicesService: ApiServicesService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    // private selectOneService: Subject<Services> = new Subject<Services>
   ) {}
-  public stylesImage: Subject<UpdatedStylesData> = new Subject<UpdatedStylesData>();
+  // public stylesImage: Subject<UpdatedStylesData> = new Subject<UpdatedStylesData>();
 
   public getServices() {
     this.loadingService.showLoading();
@@ -28,6 +29,8 @@ export class ServicesService {
       })
     );
   }
+/*  public setSelectService = (service: Services) => this.selectOneService.next(service)
+  public getSelectService = () => this.selectOneService.asObservable()*/
 
   public getService(id: string) {
     this.loadingService.showLoading();
@@ -41,7 +44,7 @@ export class ServicesService {
     );
   }
 
-  public updateStylesImage(data: UpdatedStylesData) {
-    this.stylesImage.next(data);
-  }
+  // public updateStylesImage(data: UpdatedStylesData) {
+  //   this.stylesImage.next(data);
+  // }
 }

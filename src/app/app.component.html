@@ -1,5 +1,6 @@
 <div class="app-container flex flex-col min-h-screen">
   <app-modal-form></app-modal-form>
+  <app-modal-items-services *ngIf="isItemServiceModal"></app-modal-items-services>
   <app-modal-nav *ngIf="isMenuOpen"></app-modal-nav>
   <app-scroll-to-top></app-scroll-to-top>
   <app-modal-cart></app-modal-cart>

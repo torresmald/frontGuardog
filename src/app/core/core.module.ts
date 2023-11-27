@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CoreRoutingModule } from './core-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/Loading/loading.service';
 import { LoaderComponent } from './components/loader/loader.component';
@@ -18,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastComponent } from './components/toast/toast.component';
 import { ModalCartComponent } from './components/modal-cart/modal-cart.component';
 import { SharedModule } from '../shared/shared.module';
+import { ModalItemsServicesComponent } from './components/modal-items-services/modal-items-services.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { SharedModule } from '../shared/shared.module';
     ModalExtrasComponent,
     ToastComponent,
     ModalCartComponent,
+    ModalItemsServicesComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +39,7 @@ import { SharedModule } from '../shared/shared.module';
     MatInputModule,
     MatButtonModule,
     SharedModule,
+    FormsModule,
   ],
   exports: [
     HeaderComponent,
@@ -48,6 +50,7 @@ import { SharedModule } from '../shared/shared.module';
     ModalExtrasComponent,
     ToastComponent,
     ModalCartComponent,
+    ModalItemsServicesComponent
   ],
   providers: [LoadingService, ModalService],
 })
