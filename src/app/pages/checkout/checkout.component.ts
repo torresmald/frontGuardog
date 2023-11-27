@@ -26,7 +26,6 @@ export class CheckoutComponent implements OnInit {
     private petsService: PetsService,
     private usersService: UsersService,
     private formBuilder: FormBuilder,
-    private storageService: LocalStorageService
   ) {
   }
 
