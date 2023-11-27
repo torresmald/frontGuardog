@@ -30,7 +30,7 @@
   <div *ngIf="servicesInCart.length !== 0" class="h-[20%] bg-sienna-100 flex justify-between items-center shadow-2xl">
     <p class="mx-4">
       <b>Total Pedido:</b>
-      {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
+<!--      {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}-->
     </p>
     <button
       routerLink="/checkout"
@@ -41,7 +41,7 @@
   </div>
 </section>
 
-<!-- <div 
+<!-- <div
   *ngIf="isHover"
   class="transition animate-fade animate-once animate-delay-300 animate-ease-in-out flex w-full h-full relative z-50"
 >

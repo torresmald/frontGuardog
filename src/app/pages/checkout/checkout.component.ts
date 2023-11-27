@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
-import { Services } from 'src/app/core/models/Services/transformed/ServiceModel';
-import { UsersService } from 'src/app/core/services/Users/usersService.service';
-import { registerLocaleData } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {Appointments} from 'src/app/core/models/Appointments/transformed/AppointmentModel';
+import {Services} from 'src/app/core/models/Services/transformed/ServiceModel';
+import {UsersService} from 'src/app/core/services/Users/usersService.service';
+import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import { PetsService } from 'src/app/core/services/Pets/petsService.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { forkJoin } from 'rxjs';
+import {PetsService} from 'src/app/core/services/Pets/petsService.service';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {forkJoin} from 'rxjs';
+import {CartService} from "../../core/services/Cart/cart.service";
+import {LocalStorageService} from "../../core/services/LocalStorage/local-storage.service";
+
 const TOKEN_KEY_CART = 'cart';
 
 registerLocaleData(localeEs, 'es');
@@ -21,17 +24,20 @@ export class CheckoutComponent implements OnInit {
   public appointments: Appointments[] = [];
   public servicesInCart: Services[] = [];
   public petImage?: string;
+  public subTotal:number = 0;
+
   constructor(
     private petsService: PetsService,
     private usersService: UsersService,
-    private formBuilder: FormBuilder
-  ) {}
+    private formBuilder: FormBuilder,
+    private storageService: LocalStorageService
+  ) {
+  }
+
   ngOnInit(): void {
     const token = this.usersService.getToken();
     const dataStorage = localStorage.getItem(TOKEN_KEY_CART);
-    const dataParsed = dataStorage ? JSON.parse(dataStorage) : null;
-    this.servicesInCart = dataParsed;
-
+    console.log(this.storageService.getLocalStorage())
 
     // TODO AQUI ES GetPET con elID que tengo el localStorage
 
@@ -42,9 +48,6 @@ export class CheckoutComponent implements OnInit {
 
     this.checkoutForm?.get('services')?.setValue(this.servicesInCart);
   }
-
-
-
   public onSubmit() {
     console.log(this.checkoutForm?.value);
   }

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Pets } from 'src/app/core/models/Pets/transformed/PetModel';
-import { Services } from 'src/app/core/models/Services/transformed/ServiceModel';
-import { PetsService } from 'src/app/core/services/Pets/petsService.service';
-import { ServicesService } from 'src/app/core/services/Services/servicesService.service';
-import { UsersService } from 'src/app/core/services/Users/usersService.service';
+import {Component, OnInit} from '@angular/core';
+import {Pets} from 'src/app/core/models/Pets/transformed/PetModel';
+import {Services} from 'src/app/core/models/Services/transformed/ServiceModel';
+import {PetsService} from 'src/app/core/services/Pets/petsService.service';
+import {ServicesService} from 'src/app/core/services/Services/servicesService.service';
+import {UsersService} from 'src/app/core/services/Users/usersService.service';
 
-import { Router } from '@angular/router';
-import { CartService } from 'src/app/core/services/Cart/cart.service';
-import { ToastService } from 'src/app/core/services/Toast/toast.service';
+import {Router} from '@angular/router';
+import {CartService} from 'src/app/core/services/Cart/cart.service';
+import {ToastService} from 'src/app/core/services/Toast/toast.service';
 
 const TOKEN_KEY_CART = 'cart'
 
@@ -19,29 +19,21 @@ const TOKEN_KEY_CART = 'cart'
 export class ParentViewComponent implements OnInit {
   public services: Services[] = []
   public pets: Pets[] = []
-  public requestedServices: Services[] | null = []
-  public totalAmount: number = 0
   public servicesAddedToCart : Services[] | undefined ;
 
-  
-  
   constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private cartService: CartService, private toastService:ToastService){}
 
- 
-
   ngOnInit(): void {
-    const token = this.usersService.getToken();   
-    // TODO Pype async 
+    const token = this.usersService.getToken();
+    // TODO Pype async
      this.servicesService.getServices().subscribe((value) => {
       this.services = value
      })
-     this.petsService.getPets().subscribe((value) => {      
+     this.petsService.getPets().subscribe((value) => {
        this.pets = value.filter((pet) => pet.parent?._id === token)
      })
      const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
-     const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
-     this.servicesAddedToCart = dataParsed
-
+      this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null
   }
 
   public onAddService(service: Services){
@@ -51,10 +43,10 @@ export class ParentViewComponent implements OnInit {
       setTimeout(() => {
         this.toastService.closeToast()
       }, 2000);
-      return; 
+      return;
     }
-    this.requestedServices = this.cartService.addServiceToCart(service) 
-       
+    this.cartService.addServiceToCart(service)
+
   }
 
   public onSubmit(){

@@ -1,53 +1,43 @@
-<!-- <section class="lg:flex justify-center pt-16">
+<section class="lg:flex justify-center pt-16">
   <div class="bg-white mx-5 md:mx-0 lg:w-[900px] h-[500px] md:mr-2 shadow-md">
     <h6 class="flex items-center text-3xl font-bold h-[15%] ml-5">Mi Carrito</h6>
     <hr>
     <div class="h-[70%] overflow-y-scroll">
-      <article class=" w-[95%] h-[130px] md:h-[170px] mt-3 flex mx-auto shadow-md">
-        <img class="h-full w-[200px] md:w-[250px]" src="https://th.bing.com/th/id/R.2ee9ef24216ed1d1c1d87444cda1abf0?rik=px5G0a8XFor7aw&riu=http%3a%2f%2fsupercachorros.org%2fwp-content%2fuploads%2f2013%2f03%2f7_pasos.png&ehk=FGTJ5IRB%2bzX6O3D3I3UfknTHKcUqLUy7sT72RFigonY%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="">
+      <article *ngFor="let service of servicesInCart" class=" w-[95%] h-[130px] md:h-[170px] mt-3 flex mx-auto shadow-md">
+        <img class="h-full w-[200px] md:w-[250px]"
+             src="{{service.image}}"
+             alt="">
         <div class="mx-5 flex flex-col justify-evenly">
-          <p class="text-xl md:text-2xl font-bold">300$</p>
-          <p class="text-sm md:text-lg">Servicio de baño y peluqueria</p>
-          <p class="text-xs md:text-lg opacity-70">Fecha 24/12/23 a las 23:00</p>
-        </div>
-      </article>
-      <article class=" w-[95%] h-[130px] md:h-[170px] mt-3 flex mx-auto shadow-md">
-        <img class="h-full w-[200px] md:w-[250px]" src="https://th.bing.com/th/id/R.2ee9ef24216ed1d1c1d87444cda1abf0?rik=px5G0a8XFor7aw&riu=http%3a%2f%2fsupercachorros.org%2fwp-content%2fuploads%2f2013%2f03%2f7_pasos.png&ehk=FGTJ5IRB%2bzX6O3D3I3UfknTHKcUqLUy7sT72RFigonY%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="">
-        <div class="mx-5 flex flex-col justify-evenly">
-          <p class="text-xl md:text-2xl font-bold">300$</p>
-          <p class="text-sm md:text-lg">Servicio de baño y peluqueria</p>
-          <p class="text-xs md:text-lg opacity-70">Fecha 24/12/23 a las 23:00</p>
-        </div>
-      </article>
-      <article class=" w-[95%] h-[130px] md:h-[170px] mt-3 flex mx-auto shadow-md">
-        <img class="h-full w-[200px] md:w-[250px]" src="https://th.bing.com/th/id/R.2ee9ef24216ed1d1c1d87444cda1abf0?rik=px5G0a8XFor7aw&riu=http%3a%2f%2fsupercachorros.org%2fwp-content%2fuploads%2f2013%2f03%2f7_pasos.png&ehk=FGTJ5IRB%2bzX6O3D3I3UfknTHKcUqLUy7sT72RFigonY%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1" alt="">
-        <div class="mx-5 flex flex-col justify-evenly">
-          <p class="text-xl md:text-2xl font-bold">300$</p>
-          <p class="text-sm md:text-lg">Servicio de baño y peluqueria</p>
-          <p class="text-xs md:text-lg opacity-70">Fecha 24/12/23 a las 23:00</p>
+          <p class="text-xl md:text-2xl font-bold">{{"Precio: " + service.price + "$"}}</p>
+          <p class="text-sm md:text-lg">{{service.name}}</p>
+          <p class="text-xs md:text-lg opacity-70">{{service.date}}</p>
         </div>
       </article>
     </div>
     <div class="h-[15%] flex justify-end items-center pr-5 text-2xl">
       <p class="mr-5 font-bold">SUB-TOTAL:</p>
-      <P>2500$</P>
+      <P>{{subTotal + "$"}}</P>
     </div>
   </div>
   <div>
     <div class="bg-white mx-5 lg:w-[400px] h-[300px] md:mx-0 md:ml-2 my-5 lg:my-0 px-7 py-4 shadow-md">
       <h6 class="h-[17%] text-3xl font-bold border-b border-gray-500">RESUMEN</h6>
       <div class="h-[56%] border-b border-gray-500 flex flex-col justify-end">
-        <article class="flex justify-between"><p class="font-bold opacity-70">Sub-Total</p><p class="text-lg opacity-60">2500$</p></article>
-        <article class="flex justify-between"><p class="font-bold opacity-70">Gastos de Aplicacion</p><p class="text-lg opacity-60">30$</p></article>
-        <article class="flex justify-between"><p class="text-lg font-bold mb-3">Total a pagar</p><p class="text-lg opacity-70">2530$</p></article>
+        <article class="flex justify-between"><p class="font-bold opacity-70">Sub-Total</p>
+          <p class="text-lg opacity-60">2500$</p></article>
+        <article class="flex justify-between"><p class="font-bold opacity-70">Gastos de Aplicacion</p>
+          <p class="text-lg opacity-60">30$</p></article>
+        <article class="flex justify-between"><p class="text-lg font-bold mb-3">Total a pagar</p>
+          <p class="text-lg opacity-70">2530$</p></article>
       </div>
       <div class="h-[22%] flex justify-center">
         <button class="bg-blue-600 text-white w-[500px] mt-3 h-10 tracking-widest font-bold">COMPRAR</button>
       </div>
     </div>
   </div>
-</section> -->
+</section>
 
+<!--
 <div class="mt-4">
   <h2 class="m-3 text-2xl text-center text-york-600 font-extrabold">Carrito</h2>
   <div *ngIf="servicesInCart.length > 0 && checkoutForm">
@@ -69,12 +59,12 @@
         </p>
         <img [src]="petImage" alt="{{ petImage }}" />
         <p>{{service.date}}</p>
-        <!-- <select id="pets" formControlName="pet">
+        &lt;!&ndash; <select id="pets" formControlName="pet">
           <option [value]="pet._id" *ngFor="let pet of pets">
             {{ pet.name }}
-          </option> 
-        </select> -->
-        <!-- <input type="date" id="date" /> -->
+          </option>
+        </select> &ndash;&gt;
+        &lt;!&ndash; <input type="date" id="date" /> &ndash;&gt;
       </div>
       <button
         class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
@@ -88,3 +78,4 @@
     <p>No hay servicios en el carrito.</p>
   </div>
 </div>
+-->
