@@ -8,8 +8,6 @@ import {PetsService} from 'src/app/core/services/Pets/petsService.service';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {LocalStorageService} from "../../core/services/LocalStorage/local-storage.service";
 
-const TOKEN_KEY_CART = 'cart';
-
 registerLocaleData(localeEs, 'es');
 
 @Component({
