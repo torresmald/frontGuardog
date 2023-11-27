@@ -1,0 +1,24 @@
+<section (click)="closeModalService()" class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40">
+    <section (click)="stopPropagation($event)" class="bg-white flex flex-col md:flex-row justify-center md:justify-evenly items-center p-7 h-[300px] md:h-[100px] w-full rounded-md">
+        <div class="flex flex-col">
+            <label for="pet" class="font-dog text-xl text-york-500 my-3 md:my-0">Selecciona tu Mascota</label>
+            <select id="pet">
+                <option disabled value="Selecciona">-- Selecciona --</option>
+                <option *ngFor="let pet of pets">{{pet.name}}</option>
+            </select>
+        </div>
+        <div class="flex flex-col">
+            <label class="font-dog text-xl text-york-500 text-center my-3 md:my-0" for="date">Escoge la Fecha</label>
+            <input type="date" id="date" />
+        </div>
+        <button  class="bg-blue-500 text-sm mt-4 md:mt-6 text-white w-[100px] h-[40px] rounded">Confirmar</button>
+    </section>
+</section>
+
+
+
+<!--
+// Seleccionar mascota
+// fecha
+// boto añadir
+-->

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiServicesService } from './api/ApiServicesService.service';
-import {Subject, map, tap} from 'rxjs';
+import {map, tap} from 'rxjs';
 import { transformDataService } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
-import {Services} from "../../models/Services/transformed/ServiceModel";
 
 @Injectable({
   providedIn: 'root',

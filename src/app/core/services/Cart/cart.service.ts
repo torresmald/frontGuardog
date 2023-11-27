@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ModalService } from '../Modal/modal.service';
-import { ServicesService } from 'src/app/core/services/Services/servicesService.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import {BehaviorSubject} from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
-import { UpdatedStylesData } from '../Services/helpers/typeStylesChange';
 import {LocalStorageService} from "../LocalStorage/local-storage.service";
 @Injectable({
   providedIn: 'root'
