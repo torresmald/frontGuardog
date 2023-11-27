@@ -6,7 +6,6 @@ import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import {PetsService} from 'src/app/core/services/Pets/petsService.service';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {LocalStorageService} from "../../core/services/LocalStorage/local-storage.service";
 
 registerLocaleData(localeEs, 'es');
 
