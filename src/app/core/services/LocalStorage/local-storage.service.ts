@@ -6,7 +6,7 @@ import {Services} from "../../models/Services/transformed/ServiceModel";
   providedIn: 'root',
 })
 export class LocalStorageService {
-  private TOKEN_KEY_CART: string = 'cart';
+  public TOKEN_KEY_CART: string = 'cart';
   public localStorageData: BehaviorSubject<Services[] | null> = new BehaviorSubject<Services[] | null>(null);
 
   constructor() {

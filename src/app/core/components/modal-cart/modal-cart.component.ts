@@ -18,7 +18,7 @@ import {LocalStorageService} from "../../services/LocalStorage/local-storage.ser
 export class ModalCartComponent implements OnInit {
 
     public servicesInCart: Services[] = [];
-    // public totalAmount: number = 0;
+    public totalAmount: number = 0;
     // public numberInCart: number = 0;
     public isHover?: boolean = false
     public scrollEvent: number = 0;
@@ -32,6 +32,7 @@ export class ModalCartComponent implements OnInit {
     )
     {
         localStorageService.getLocalStorage().subscribe(value => this.servicesInCart = value || [])
+        cartService.getTotalAmount().subscribe( value => this.totalAmount = value);
     }
 
     @HostListener('window:scroll', ['$event'])

@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
     }
 
     public onNavigateAccount() {
-        const token = localStorage.getItem(TOKEN_KEY)
+        const token = localStorage.getItem('cart') // TODO evaluar si usar una variable de entorno para el token
         if (token) {
             JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
         }

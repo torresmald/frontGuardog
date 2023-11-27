@@ -6,17 +6,20 @@ import {BehaviorSubject} from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
 import { UpdatedStylesData } from '../Services/helpers/typeStylesChange';
 import {LocalStorageService} from "../LocalStorage/local-storage.service";
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   public services: Services[] = []
-  public requestedServices: BehaviorSubject<Services[]> = new BehaviorSubject<Services[]>([])
+  private requestedServices: BehaviorSubject<Services[]> = new BehaviorSubject<Services[]>([])
+  private totalAmount: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
   constructor(private modalService: ModalService, private serviceService: ServicesService, private toastService: ToastService, private localStorageService: LocalStorageService) {
-    this.localStorageService.getLocalStorage().subscribe( data => this.requestedServices.next(data || []))
+    this.localStorageService.getLocalStorage().subscribe( (data) => {
+      this.requestedServices.next(data || [])
+      this.updateTotal(undefined, "addition");
+    })
+
   }
   public addServiceToCart(service: Services): void{
     const serviceAdded: Services | undefined = this.requestedServices.value.find((reqServ) => reqServ.name === service.name);
@@ -35,6 +38,7 @@ export class CartService {
       service,
       inCart: true
     };
+    this.updateTotal(undefined, "addition")
     this.serviceService.updateStylesImage(dataToUpdate);
     this.localStorageService.setLocalStorage(this.requestedServices.value)
   }
@@ -51,8 +55,22 @@ export class CartService {
     setTimeout(() => {
       this.toastService.closeToast();
     }, 3000);
+    this.updateTotal(service, "subtraction" )
     this.localStorageService.setLocalStorage(this.requestedServices.value)
     return this.requestedServices.value;
+  }
+  public  getTotalAmount(){
+    return this.totalAmount.asObservable()
+  }
+  private updateTotal(service: Services | undefined ,operator: string){
+    switch (operator) {
+      case "addition":
+        this.totalAmount.next(this.requestedServices.value.reduce((acc:number, total:Services) => acc + total.price,  0))
+            break;
+      case "subtraction":
+        this.totalAmount.next(service? this.totalAmount.value - service.price : this.totalAmount.value)
+            break;
+    }
   }
 
 }
