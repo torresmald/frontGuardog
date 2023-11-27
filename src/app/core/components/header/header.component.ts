@@ -3,19 +3,11 @@ import {CourierService} from '../../services/courier/courier.service';
 import {UsersService} from '../../services/Users/usersService.service';
 import {Router} from '@angular/router';
 import {Services} from '../../models/Services/transformed/ServiceModel';
-import {CartService} from '../../services/Cart/cart.service';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {TimeoutConfig} from 'rxjs';
 import {LocalStorageService} from "../../services/LocalStorage/local-storage.service";
 
 registerLocaleData(localeEs, 'es');
-
-
-const TOKEN_KEY = 'user'
-const TOKEN_KEY_CART = 'cart'
-const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
-const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
 
 @Component({
     selector: 'app-header',
@@ -38,8 +30,7 @@ export class HeaderComponent implements OnInit {
     @HostListener('window:scroll', ['$event'])
     onScroll(): void {
         const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        if (scrollPercentage >= 20) this.scrollNav = true;
-        else this.scrollNav = false;
+        this.scrollNav = scrollPercentage >= 20;
         this.showFixedCart = window.scrollY > 100;
     }
 

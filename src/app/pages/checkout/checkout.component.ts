@@ -6,8 +6,6 @@ import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import {PetsService} from 'src/app/core/services/Pets/petsService.service';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {forkJoin} from 'rxjs';
-import {CartService} from "../../core/services/Cart/cart.service";
 import {LocalStorageService} from "../../core/services/LocalStorage/local-storage.service";
 
 const TOKEN_KEY_CART = 'cart';
@@ -35,9 +33,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const token = this.usersService.getToken();
-    const dataStorage = localStorage.getItem(TOKEN_KEY_CART);
-    console.log(this.storageService.getLocalStorage())
 
     // TODO AQUI ES GetPET con elID que tengo el localStorage
 
