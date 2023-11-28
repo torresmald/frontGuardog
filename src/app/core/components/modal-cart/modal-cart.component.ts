@@ -19,7 +19,6 @@ export class ModalCartComponent implements OnInit {
 
     public servicesInCart: Services[] = [];
     public totalAmount: number = 0;
-    // public numberInCart: number = 0;
     public isHover?: boolean = false
     public scrollEvent: number = 0;
 
@@ -59,6 +58,8 @@ export class ModalCartComponent implements OnInit {
     public onRemoveService(service: Services) {
         service.date = '';
         service.pet = '';
+        if (service)
+            this.courierService.updateServiceInCart(service?._id, false);
         this.cartService.removeServiceToCart(service);
     }
 

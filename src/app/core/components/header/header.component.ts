@@ -15,15 +15,13 @@ registerLocaleData(localeEs, 'es');
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-    public isLightMode: boolean = true;
+    // public isLightMode: boolean = true;
     public scrollNav: boolean = false;
     public isLogged: boolean = false;
     public isParent: boolean = false;
     public servicesInCart: Services[] = []
     public numberInCart: number = 0
     public showFixedCart: boolean = false;
-    public isHover: boolean = false;
-    public totalAmount: number = 0
     public timeHoverMenu?: ReturnType<typeof setTimeout>;
 
 
@@ -34,9 +32,10 @@ export class HeaderComponent implements OnInit {
         this.showFixedCart = window.scrollY > 100;
     }
 
-    constructor(public courierService: CourierService, private usersService: UsersService, public router: Router, private localStorageService: LocalStorageService) {
-    }
-
+    constructor(public courierService: CourierService,
+                private usersService: UsersService,
+                public router: Router,
+                private localStorageService: LocalStorageService) {}
     ngOnInit(): void {
         this.localStorageService.getLocalStorage().subscribe(value => {
             this.servicesInCart = value || [];
@@ -57,7 +56,7 @@ export class HeaderComponent implements OnInit {
     }
 
     public onNavigateAccount() {
-        const token = localStorage.getItem('cart') // TODO evaluar si usar una variable de entorno para el token
+        const token = localStorage.getItem('user') // TODO evaluar si usar una variable de entorno para el token
         if (token) {
             JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
         }

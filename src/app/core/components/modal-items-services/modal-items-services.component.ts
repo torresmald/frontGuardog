@@ -15,32 +15,43 @@ import {CartService} from "../../services/Cart/cart.service";
 })
 export class ModalItemsServicesComponent implements OnInit{
   public  pets: Pets[] = []
-  public service?: Services
+  public service: Services | null = null
 
-  constructor(private cartService: CartService,private toastService: ToastService,private serviceService:ServicesService ,private petService:PetsService ,private renderer: Renderer2, private courierService: CourierService, private userService: UsersService) {
-  }
+  constructor(
+      private cartService: CartService,
+      private toastService: ToastService,
+      private serviceService:ServicesService ,
+      private petService:PetsService ,
+      private renderer: Renderer2,
+      private courierService: CourierService,
+      private userService: UsersService,
+  )
+  {}
   ngOnInit(): void {
     this.renderer.addClass(document.body, 'block-scroll');
-    this.petService.getPets().subscribe((value) => {
-      this.pets = value.filter((pet) => pet.parent?._id === this.userService.getToken())
+    this.petService.getPets().subscribe((value:Pets[]):void => {
+      this.pets = value.filter((pet:Pets):boolean => pet.parent?._id === this.userService.getToken())
     })
-    // this.serviceService.getSelectService().subscribe(value => this.service = value)
+    this.serviceService.getSelectService().subscribe(value => this.service = value)
   }
-  closeModalService(){
+  closeModalService() :void{
     this.courierService.setItemServiceModal(false)
     this.renderer.removeClass(document.body, 'block-scroll');
   }
-  // public onAddService(service: Services){
-  //   if (!service.date || !service.pet) {
-  //     this.toastService.$message?.next('Selecciona Mascota y Fecha')
-  //     this.toastService.showToast()
-  //     setTimeout(() => {
-  //       this.toastService.closeToast()
-  //     }, 2000);
-  //     return;
-  //   }
-  //   this.cartService.addServiceToCart(service)
-  // }
+  public onAddService(service: Services): void{
+    if (!service.date || !service.pet) {
+      this.toastService.$message?.next('Selecciona Mascota y Fecha')
+      this.toastService.showToast()
+      setTimeout((): void => {
+        this.toastService.closeToast()
+      }, 2000);
+      return;
+    }
+    this.renderer.removeClass(document.body, 'block-scroll');
+    this.cartService.addServiceToCart(service)
+    this.courierService.updateServiceInCart(service._id, true);
+    this.courierService.setItemServiceModal(false)
+  }
   public stopPropagation(event: Event) {
     event.stopPropagation();
   }

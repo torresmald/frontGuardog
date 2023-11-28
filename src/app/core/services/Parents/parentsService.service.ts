@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Parents } from '../../models/Parents/transformed/ParentModel';
-import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 import { ApiParentsService } from './api/apiParentsService.service';
 import { ApiParents } from '../../models/Parents/api/apiParentModel';
 import { transformDataParent } from './helpers/transformApi';
@@ -89,7 +89,7 @@ export class ParentService {
     )
   }
 
-  public updatePassword(token: string, password: string): Observable<string>{    
+  public updatePassword(token: string, password: string): Observable<string>{
     return this.apiParentsService.updateApiPassword(token, password)
   }
 

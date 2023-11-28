@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, of } from 'rxjs';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
 
@@ -19,7 +18,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.form = new FormGroup({
       'email': new FormControl('', [Validators.required, Validators.email])
     })
-      
+
 
   }
 

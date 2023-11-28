@@ -1,5 +1,3 @@
-import { Pets } from "../../Pets/transformed/PetModel";
-
 export interface Services {
     name: string,
     price: number,

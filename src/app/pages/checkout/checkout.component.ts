@@ -40,6 +40,6 @@ export class CheckoutComponent implements OnInit {
     this.checkoutForm?.get('services')?.setValue(this.servicesInCart);
   }
   public onSubmit() {
-    console.log(this.checkoutForm?.value);
+    // console.log(this.checkoutForm?.value);
   }
 }

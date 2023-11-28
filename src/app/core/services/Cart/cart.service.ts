@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ModalService } from '../Modal/modal.service';
+// import { ModalService } from '../Modal/modal.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import {BehaviorSubject} from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
@@ -12,7 +12,11 @@ export class CartService {
   private requestedServices: BehaviorSubject<Services[]> = new BehaviorSubject<Services[]>([])
   private totalAmount: BehaviorSubject<number> = new BehaviorSubject<number>(0)
 
-  constructor(private modalService: ModalService, private toastService: ToastService, private localStorageService: LocalStorageService) {
+  constructor(
+      // private modalService: ModalService,
+      private toastService: ToastService,
+      private localStorageService: LocalStorageService,
+  ) {
     this.localStorageService.getLocalStorage().subscribe( (data) => {
       this.requestedServices.next(data || [])
       this.updateTotal(undefined, "addition");
@@ -20,12 +24,12 @@ export class CartService {
 
   }
   public addServiceToCart(service: Services): void{
-    const serviceAdded: Services | undefined = this.requestedServices.value.find((reqServ) => reqServ.name === service.name);
-    if (serviceAdded) {
-      this.modalService.$message?.next('Ya has añadido este servicio');
-      this.modalService.showModal();
-      return ;
-    }
+    // const serviceAdded: Services | undefined = this.requestedServices.value.find((reqServ) => reqServ.name === service.name);
+    // if (serviceAdded) {
+    //   this.modalService.$message?.next('Ya has añadido este servicio');
+    //   this.modalService.showModal();
+    //   return ;
+    // }
     this.toastService.$message?.next('Añadido con Éxito');
     this.toastService.showToast();
     setTimeout(() => {

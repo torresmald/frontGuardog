@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -19,15 +19,15 @@ export class UploadFilesComponent implements ControlValueAccessor {
   private onChange: Function | undefined;
   private onTouch: Function | undefined;
 
-  public uploadFile(event: any) {    
-    if (event[0]) {      
+  public uploadFile(event: any) {
+    if (event[0]) {
       for (let index = 0; index < event.length; index++) {
         const element = event[index];
         this.files.push(element.name);
       }
     } else {
       for (let index = 0; index < event.target.files.length; index++) {
-        const element = event.target.files[index];        
+        const element = event.target.files[index];
         this.files.push(element.name);
       }
     }
@@ -39,7 +39,7 @@ export class UploadFilesComponent implements ControlValueAccessor {
 
   writeValue(files: any): void {
     // console.log();
-    
+
     // this.files = files;
   }
 
@@ -51,12 +51,3 @@ export class UploadFilesComponent implements ControlValueAccessor {
     // this.onTouch = fn;
   }
 }
-
-
-
-
-
-
-
-  
-

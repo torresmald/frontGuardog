@@ -24,7 +24,6 @@ export class LocalStorageService {
   }
 
   public setLocalStorage(requestedServices: Services[]){
-    console.log(requestedServices)
     localStorage.setItem(this.TOKEN_KEY_CART, JSON.stringify(requestedServices))
     this.updateLocalStorage()
   }
