@@ -4,18 +4,12 @@
   transition: opacity 0.5s;
 }
 
-// span{
-// 	cursor: pointer;
-// 	transition: 0.2s;
-// }
+li{
+  cursor:pointer;
+}
 
-// span:hover{
-// 	text-decoration: underline;
-// 	color: #74302c;
-// 	transition: 0.2s;
-// }
 .fixed-cart{
-  cursor: pointer;
+    cursor: pointer;
     position: fixed;
     z-index: 18;
     top: 0;

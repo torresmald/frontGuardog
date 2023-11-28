@@ -23,6 +23,11 @@ export class CartService {
     })
 
   }
+  public getCartServices = () => {
+    let cart: Services[] | null = []
+    this.localStorageService.getLocalStorage().subscribe(value => cart = value)
+    return cart
+  }
   public addServiceToCart(service: Services): void{
     // const serviceAdded: Services | undefined = this.requestedServices.value.find((reqServ) => reqServ.name === service.name);
     // if (serviceAdded) {

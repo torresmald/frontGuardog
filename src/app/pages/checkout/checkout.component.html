@@ -16,7 +16,7 @@
     </div>
     <div class="h-[15%] flex justify-end items-center pr-5 text-2xl">
       <p class="mr-5 font-bold">SUB-TOTAL:</p>
-      <P>{{subTotal + "$"}}</P>
+      <P>{{subTotal}}$</P>
     </div>
   </div>
   <div>
@@ -24,11 +24,11 @@
       <h6 class="h-[17%] text-3xl font-bold border-b border-gray-500">RESUMEN</h6>
       <div class="h-[56%] border-b border-gray-500 flex flex-col justify-end">
         <article class="flex justify-between"><p class="font-bold opacity-70">Sub-Total</p>
-          <p class="text-lg opacity-60">2500$</p></article>
+          <p class="text-lg opacity-60">{{subTotal}}$</p></article>
         <article class="flex justify-between"><p class="font-bold opacity-70">Gastos de Aplicacion</p>
-          <p class="text-lg opacity-60">30$</p></article>
+          <p class="text-lg opacity-60">{{IVA}}$</p></article>
         <article class="flex justify-between"><p class="text-lg font-bold mb-3">Total a pagar</p>
-          <p class="text-lg opacity-70">2530$</p></article>
+          <p class="text-lg opacity-70">{{total}}$</p></article>
       </div>
       <div class="h-[22%] flex justify-center">
         <button class="bg-blue-600 text-white w-[500px] mt-3 h-10 tracking-widest font-bold">COMPRAR</button>

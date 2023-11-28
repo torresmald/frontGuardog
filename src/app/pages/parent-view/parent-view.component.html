@@ -1,4 +1,20 @@
 <section class="main">
+    <app-my-pets [pets]="pets"></app-my-pets>
+    <div class="flex gap-10 lg:justify-evenly">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 lg:justify-self-center"
+                routerLink="/register"
+                [queryParams]="{ newPet: true }"
+              >
+                Nueva Mascota
+              </button>
+              <button
+              class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 lg:justify-self-center"
+              routerLink="/forgot-password"
+                >
+              Reestablecer Password
+                </button>
+            </div>
     <h2 class="text-3xl my-10 font-dog text-center text-sienna-700">Servicios</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center">
         <app-service *ngFor="let service of services" class="m-5" [servicesAddedToCart]="servicesAddedToCart" [service]="service"></app-service>
