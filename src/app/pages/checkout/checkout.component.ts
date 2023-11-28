@@ -7,6 +7,7 @@ import localeEs from '@angular/common/locales/es';
 import {PetsService} from 'src/app/core/services/Pets/petsService.service';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {CartService} from "../../core/services/Cart/cart.service";
+import {Pets} from "../../core/models/Pets/transformed/PetModel";
 
 registerLocaleData(localeEs, 'es');
 
@@ -43,6 +44,7 @@ export class CheckoutComponent implements OnInit {
     // });
     // this.petsService.getPet()
   }
+
   public onSubmit() {
     console.log(this.checkoutForm?.value);
   }

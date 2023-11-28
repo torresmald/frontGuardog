@@ -15,6 +15,7 @@ import {CartService} from "../../services/Cart/cart.service";
 })
 export class ModalItemsServicesComponent implements OnInit{
   public  pets: Pets[] = []
+  public  petId: string = ""
   public service: Services | null = null
 
   constructor(
@@ -48,9 +49,12 @@ export class ModalItemsServicesComponent implements OnInit{
       return;
     }
     this.renderer.removeClass(document.body, 'block-scroll');
-    this.cartService.addServiceToCart(service)
+    this.cartService.addServiceToCart(service, this.petId)
     this.courierService.updateServiceInCart(service._id, true);
     this.courierService.setItemServiceModal(false)
+  }
+  public selectPetId(petId: string){
+    this.petId = petId
   }
   public stopPropagation(event: Event) {
     event.stopPropagation();

@@ -28,21 +28,16 @@ export class CartService {
     this.localStorageService.getLocalStorage().subscribe(value => cart = value)
     return cart
   }
-  public addServiceToCart(service: Services): void{
-    // const serviceAdded: Services | undefined = this.requestedServices.value.find((reqServ) => reqServ.name === service.name);
-    // if (serviceAdded) {
-    //   this.modalService.$message?.next('Ya has añadido este servicio');
-    //   this.modalService.showModal();
-    //   return ;
-    // }
+  public addServiceToCart(service: Services, petId: string): void{
+    service.petId = petId;
+    this.requestedServices.next([...this.requestedServices.value, service])
+    this.updateTotal(undefined, "addition")
+    this.localStorageService.setLocalStorage(this.requestedServices.value)
     this.toastService.$message?.next('Añadido con Éxito');
     this.toastService.showToast();
     setTimeout(() => {
       this.toastService.closeToast();
     }, 3000);
-    this.requestedServices.next([...this.requestedServices.value, service])
-    this.updateTotal(undefined, "addition")
-    this.localStorageService.setLocalStorage(this.requestedServices.value)
   }
 
   public removeServiceToCart(service: Services): Services[] | null {

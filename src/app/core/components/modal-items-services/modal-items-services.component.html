@@ -4,7 +4,7 @@
             <label for="pet" class="font-dog text-xl text-york-500 my-3 md:my-0">Selecciona tu Mascota</label>
             <select [(ngModel)]="service.pet"  id="pet">
                 <option disabled value="Selecciona">-- Selecciona --</option>
-                <option *ngFor="let pet of pets">{{pet.name}}</option>
+                <option (click)="selectPetId(pet._id)" *ngFor="let pet of pets">{{pet.name}}</option>
             </select>
         </div>
         <div class="flex flex-col">
