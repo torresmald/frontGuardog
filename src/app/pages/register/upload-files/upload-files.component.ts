@@ -16,8 +16,8 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 export class UploadFilesComponent implements ControlValueAccessor {
   public files: any = [];
   @Input() formControl?: FormControl
-  private onChange: Function | undefined;
-  private onTouch: Function | undefined;
+  // private onChange: Function | undefined;
+  // private onTouch: Function | undefined;
 
   public uploadFile(event: any) {
     if (event[0]) {

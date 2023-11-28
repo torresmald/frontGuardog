@@ -53,7 +53,7 @@ export class LoginComponent implements DeactivatableComponent {
 
   public onSubmit() {
     if (this.form?.valid) {
-      const request = this.isTrainer
+      const request = this.isTrainer // TODO esta linea hace algo?
         ? this.trainerService.loginTrainers(this.form?.value).subscribe({
             next: () => {
               this.modalService.$message?.next('Logueado con éxito');
