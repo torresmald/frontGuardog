@@ -29,7 +29,6 @@ export class ServiceComponent implements OnInit {
             }
         });
     }
-
     openServiceModal(service: Services) {
         this.serviceService.setSelectService(service)
         this.courierService.setItemServiceModal(true)

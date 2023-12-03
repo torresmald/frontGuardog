@@ -1,0 +1,11 @@
+<article class=" w-[95%] h-[130px] md:h-[170px] relative mt-3 flex mx-auto shadow-md">
+  <img class="h-full w-[200px] md:w-[250px]"
+       src="{{service?.image}}"
+       alt="">
+  <div class="mx-5 flex flex-col justify-evenly">
+    <p class="text-xl md:text-2xl font-bold">{{"Precio: " + service?.price + "$"}}</p>
+    <p class="text-sm md:text-lg">{{service?.name}}</p>
+    <p class="text-xs md:text-lg opacity-70">{{service?.date}}</p>
+    <img src="{{pet?.image}}" class="w-10 h-10 md:w-20 md:h-20 absolute rounded-full bottom-2 right-3">
+  </div>
+</article>
