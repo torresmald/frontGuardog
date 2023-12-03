@@ -1,47 +1,15 @@
-<!-- <div class=" lg:grid lg:grid-cols-4 lg:items-center lg:gap-4">
-  <h3 class="text-lg font-dog text-sienna-500 text-center lg:col-start-2 lg:col-end-3">
-    {{ service?.name }}
-  </h3>
-  <div class="lg:col-span-2 lg:row-start-1 lg:row-end-3">
-    <img
-      class="rounded-xl max-h-[30%] h-[140px] col-span-full w-[200px] mx-auto lg:max-h-[100%] lg:w-full lg:h-[200px]"
-      [src]="service?.image"
-      [ngClass]="{ inactive: changeStyles }"
-      alt="Imagen Servicio"
-    />
-    <p *ngIf="changeStyles" class="inset-0 text-2xl flex items-center justify-center text-york-400 font-extrabold">Añadido</p>
-    <span *ngIf="changeStyles" class="material-symbols-outlined absolute top-0 right-0 text-3xl font-extrabold mr-2 mt-2">
-      shopping_bag
-      </span>
-  </div>
-  <p class="text-center font-bold">
-    Precio:
-    <span class="text-blue-600 font-extrabold">{{
-      service?.price | currency : "EUR" : "symbol" : "2.2-2" : "es"
-    }}</span>
-  </p>
-</div> -->
-
-<div class="lg:grid lg:grid-cols-3 lg:items-center">
-  <h3 class="text-xl font-dog text-sienna-500 text-center lg:col-start-2 lg:col-end-3">
-    {{ service?.name }}
-  </h3>
-  <div class="relative lg:-order-1 mx-auto lg:mx-3">
-    <img
-    class="rounded-xl h-[140px] col-span-full w-[200px] mx-auto lg:max-h-[100%] lg:w-[150px] lg:h-[100px] relative"
-    [src]="service?.image"
-      [ngClass]="{ inactive: changeStyles}"
-      alt="Imagen Servicio"
-    />
-    <p *ngIf="changeStyles" class="absolute inset-0 text-xl flex items-center justify-center text-york-400 font-extrabold">Añadido</p>
-    <span *ngIf="changeStyles" class="material-symbols-outlined absolute top-0 right-0 text-2xl font-extrabold mr-2 mt-2">
-      shopping_bag
-    </span>
-  </div>
-  <p class="text-center font-bold">
-    Precio:
-    <span class="text-blue-600 font-extrabold">{{
-      service?.price | currency : "EUR" : "symbol" : "2.2-2" : "es"
-    }}</span>
-  </p>
-</div>
+<section *ngIf="service" [ngClass]="{'opacity-70': isServiceInCart}" id="default" class="bg-blue-700 w-[300px] h-[300px] relative flex flex-col justify-end rounded-3xl overflow-hidden shadow-lg z-20">
+    <img [ngClass]="{'grayscale': isServiceInCart}" class="absolute h-[220px] w-full top-0" src="{{service.image}}" alt="petImage">
+    <img class="absolute bottom-16 left-5 z-30 w-[50px] h-[60px]" src="assets/home/logoMini.png" alt="logoMini">
+    <div class="absolute w-[200px] text-right bottom-12 right-5 z-30">
+        <h6 class="text-sienna-500 font-dog text-xl">{{service.name}}</h6>
+        <p class="text-2xl font-bold opacity-70">{{service.price.toFixed(2) + "$"}}</p>
+        <button
+                [ngClass]="{'bg-green-500': isServiceInCart}"
+                [disabled]="isServiceInCart" (click)="openServiceModal(service)"
+                 class="absolute right-0 -bottom-9 text-xs w-[90px] h-[25px] text-white bg-blue-500 rounded">{{isServiceInCart ? "En carrito":"Añadir"}}
+        </button>
+    </div>
+    <div class="box bg-sienna-100 h-[160px] w-[330px] translate-y-10 -translate-x-5 p-3 rounded-t-3xl -rotate-12">
+    </div>
+</section>

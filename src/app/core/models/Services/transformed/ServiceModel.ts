@@ -1,5 +1,3 @@
-import { Pets } from "../../Pets/transformed/PetModel";
-
 export interface Services {
     name: string,
     price: number,
@@ -8,4 +6,5 @@ export interface Services {
     _id: string,
     pet: string,
     date: string,
+    petId?: string
 }

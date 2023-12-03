@@ -1,134 +1,76 @@
 <header
-  [ngClass]="{
+        [ngClass]="{
     'hidden-nav': scrollNav && router.url === '/',
     fixed: router.url === '/'
   }"
-  class="z-20 w-full bg-sienna-100 flex items-center justify-between shadow-xl duration-500 h-[74px]"
+        class="z-20 w-full bg-sienna-100 flex items-center justify-between shadow-xl duration-500 h-[74px]"
 >
-  <div class="ml-5 md:ml-10">
-    <img
-      routerLink="/"
-      class="w-40 cursor-pointer"
-      src="../../../../assets/home/logo.png"
-      alt="Logo"
-    />
-  </div>
-  <nav>
-    <ul class="hidden md:flex mx-6 font-dog text-lg text-sienna-600">
-      <li class="mx-5" routerLink="/">Inicio</li>
-      <li class="mx-5" routerLink="/about" routerLinkActive="active">
-        Nosotros
-      </li>
-      <li class="mx-5" routerLink="/contact" routerLinkActive="active">
-        Contacto
-      </li>
-      <li
-        *ngIf="!isLogged"
-        class="mx-5"
-        routerLink="/register"
-        routerLinkActive="active"
-      >
-        Registrarse
-      </li>
-      <li
-        *ngIf="isLogged"
-        (click)="onNavigateAccount()"
-        class="mx-5"
-        routerLinkActive="active"
-      >
-        Mi Cuenta
-      </li>
-      <li
-        *ngIf="isLogged"
-        (click)="onLogout()"
-        class="mx-5"
-        routerLinkActive="active"
-      >
-        Logout
-      </li>
-      <div
-        (mouseenter)="onChangeHover()"
-        (mouseleave)="onHoverLeave()"
-        *ngIf="servicesInCart.length > 0"
-        [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
-      >
-        <li
-          *ngIf="isLogged"
-          class="mx-5"
-          routerLink="/checkout"
-          routerLinkActive="active"
-        >
-          <p class="absolute text-center text-black right-7">
-            {{ numberInCart }}
-          </p>
-          <span class="bg-cart w-[24px] h-[24px] bg-no-repeat block"></span>
-        </li>
-      </div>
-    </ul>
-    <!-- <app-modal-cart  [servicesInCart]="servicesInCart"></app-modal-cart> -->
-  </nav>
-  <img
-    (click)="openMenuMobile()"
-    class="w-7 mr-[2%] cursor-pointer md:hidden"
-    src="https://seekicon.com/free-icon-download/three-dots-vertical_1.png"
-    alt=""
-  />
-</header>
-
-<!-- <div class="flex justify-between mb-4 font-dog md:max-h-60 text-sm">
-  <div>
-    <div class="">
-      <div class=" cursor-pointer py-4 px-4 text-2xl" (click)="onChangeTheme()">
-        <div [ngClass]="{'hidden': !isLightMode}">
-          <span class="fa-solid fa-moon text-gray-400 hover:text-gray-600"></span>
-        </div>
-        <div [ngClass]="{'hidden': isLightMode}" >
-          <span class="fa-solid fa-sun text-orange-600 hover:text-orange-800"></span>
-        </div>
-      </div>
+    <div class="ml-5 md:ml-10">
+        <img
+                routerLink="/"
+                class="w-40 cursor-pointer"
+                src="../../../../assets/home/logo.png"
+                alt="Logo"
+        />
     </div>
-    <div class="">
-      <div class=" cursor-pointer px-4 text-2xl" (click)="onChangeLanguage()">
-        <div [ngClass]="{'hidden': language === 'es'}">
-          <i class="fa-solid fa-earth-americas text-red-600 hover:text-red-800"></i>
-        </div>
-        <div [ngClass]="{'hidden': language === 'uk'}" >
-          <i class="fa-solid fa-earth-americas text-blue-600 hover:text-blue-800"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-logo bg-no-repeat bg-center min-h-[140px] min-w-[300px] md:min-h-[200px] md:min-w-[500px] lg:min-w-[700px] cursor-pointer" routerLink="">
-  </div>
-  <nav class="hidden sm:flex p-8 text-sienna-600 md:text-xl">
-    <ul>
-      <li>
-        <a class="hover:text-sienna-800  hover:text-2xl" routerLink="/about" routerLinkActive="active">Nosotros</a>
-      </li>
-      <li><a class="hover:text-sienna-800 hover:text-2xl" routerLink="/register" routerLinkActive="active">Registro</a></li>
-      <li><a class="hover:text-sienna-800 hover:text-2xl" routerLink="/contact" routerLinkActive="active">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <div class="sm:hidden px-4">
-    <div (click)="openMenuMobile()" class="text-2xl text-sienna-800 cursor-pointer text-center py-2">
-      <span class="fa-solid fa-bars"></span>    
-    </div>
-    <div class="text-sienna-600" *ngIf="isMobile">
-      <nav>
-        <ul>
-          <li>
-            <a class="hover:text-sienna-800 hover:text-lg" routerLink="/about" routerLinkActive="active">Nosotros</a>
-          </li>
-          <li>
-            <a class="hover:text-sienna-800 hover:text-lg" routerLink="/register" routerLinkActive="active">Registro</a>
-          </li>
-          <li>
-            <a class="hover:text-sienna-800 hover:text-lg" routerLink="/contact" routerLinkActive="active">Contacto</a>
-          </li>
+    <nav>
+        <ul class="hidden md:flex mx-6 font-dog text-lg text-sienna-600">
+            <li class="mx-5" routerLink="/" >Inicio</li>
+            <li class="mx-5" routerLink="/about" routerLinkActive="active">
+                Nosotros
+            </li>
+            <li class="mx-5" routerLink="/contact" routerLinkActive="active">
+                Contacto
+            </li>
+            <li
+                    *ngIf="!isLogged"
+                    class="mx-5"
+                    routerLink="/register"
+                    routerLinkActive="active"
+            >
+                Registrarse
+            </li>
+            <li
+                    *ngIf="isLogged"
+                    (click)="onNavigateAccount()"
+                    class="mx-5"
+                    routerLinkActive="active"
+            >
+                Mi Cuenta
+            </li>
+            <li
+                    *ngIf="isLogged"
+                    (click)="onLogout()"
+                    class="mx-5"
+                    routerLinkActive="active"
+            >
+                Logout
+            </li>
+            <div
+                    (mouseenter)="onChangeHover()"
+                    (mouseleave)="onHoverLeave()"
+                    *ngIf="servicesInCart.length > 0"
+                    [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
+                    class="cursor-pointer"
+            >
+                <li
+                        *ngIf="isLogged"
+                        class="mx-5"
+                        routerLink="/checkout"
+                        routerLinkActive="active"
+                >
+                    <p class="absolute text-center text-black right-7">
+                        {{ numberInCart }}
+                    </p>
+                    <span class="bg-cart w-[24px] h-[24px] bg-no-repeat block"></span>
+                </li>
+            </div>
         </ul>
-      </nav>
-    </div>
-  </div>
-</div> -->
+    </nav>
+    <img
+            (click)="openMenuMobile()"
+            class="w-7 mr-[2%] cursor-pointer md:hidden"
+            src="https://seekicon.com/free-icon-download/three-dots-vertical_1.png"
+            alt=""
+    />
+</header>

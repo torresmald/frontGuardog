@@ -175,10 +175,8 @@
   left: -10px;
   z-index: 0;
   box-shadow: inset -12px -8px 40px rgba(118, 118, 118, 0.2);
-  border: 4px solid #fcfcfc;
-  border-left-width: 0;
-  border-bottom-width: 0;
-  border-top-width: 0;
+  border: 0 solid #fcfcfc;
+  border-right-width: 4px;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }

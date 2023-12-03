@@ -11,11 +11,10 @@ export class ModalService {
 
   constructor() { this.$shoulShowModal.next(false)}
 
-  public showModal(){    
+  public showModal(){
     this.$shoulShowModal.next(true)
-    
   }
-  public closeModal(){    
-    this.$shoulShowModal.next(false)    
+  public closeModal(){
+    this.$shoulShowModal.next(false)
   }
 }

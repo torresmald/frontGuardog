@@ -14,7 +14,7 @@ export class ModalNavComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
     const screenWidth = window.innerWidth;
-  
+
     if (screenWidth >= 769) {
       this.closeMenuMobile()
     }
@@ -29,7 +29,7 @@ export class ModalNavComponent implements OnInit {
         this.closeMenuMobile()
       }
     })
-    
+
   }
 
   public closeMenuMobile() {
@@ -42,12 +42,12 @@ export class ModalNavComponent implements OnInit {
   public stopPropagation(event: Event) {
     event.stopPropagation();
   }
-  
-  public changeTheme() {
 
-    this.isLightMode = !this.isLightMode;
-    console.log(this.isLightMode);
-    
-  }
+  // public changeTheme() {
+  //
+  //   this.isLightMode = !this.isLightMode;
+  //   console.log(this.isLightMode);
+  //
+  // }
 
 }

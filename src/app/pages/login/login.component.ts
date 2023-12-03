@@ -6,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { DeactivatableComponent } from 'src/app/core/guards/canDeactivate/deactivate.interface';
 import { LoadingService } from 'src/app/core/services/Loading/loading.service';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
@@ -54,7 +53,7 @@ export class LoginComponent implements DeactivatableComponent {
 
   public onSubmit() {
     if (this.form?.valid) {
-      const request = this.isTrainer
+      const request = this.isTrainer // TODO esta linea hace algo?
         ? this.trainerService.loginTrainers(this.form?.value).subscribe({
             next: () => {
               this.modalService.$message?.next('Logueado con éxito');

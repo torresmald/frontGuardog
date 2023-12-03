@@ -13,21 +13,18 @@ export class AppComponent {
   public excludedUrls = ['login', 'register', 'confirm-account', 'forgot-password'];
   public isMenuOpen: boolean = false
   public isCartModal: boolean = false
+  public isItemServiceModal: boolean = false
 
   constructor(public router: Router, public courierService: CourierService) {}
 
   ngOnInit() {
-    this.courierService.getModalNav().subscribe((value) => {
-      this.isMenuOpen = value;      
-    });
-    this.courierService.getCartModal().subscribe((value) => {
-      this.isCartModal = value 
-    })    
+    this.courierService.getModalNav().subscribe((value) => this.isMenuOpen = value);
+    this.courierService.getCartModal().subscribe(value => this.isCartModal = value)
+    this.courierService.getItemServiceModal().subscribe(value => this.isItemServiceModal = value)
   }
-
   shouldShow(): boolean {
     return this.excludedUrls.every(url => !this.router.url.includes(url));
   }
-  
+
 
 }

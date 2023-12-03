@@ -1,5 +1,3 @@
-import { ApiPets } from "../../Pets/api/apiPetModel"
-import { typesServices } from "../servicesData"
 
 export interface ApiServices{
     _id: string,

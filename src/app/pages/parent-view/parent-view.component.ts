@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Pets } from 'src/app/core/models/Pets/transformed/PetModel';
-import { Services } from 'src/app/core/models/Services/transformed/ServiceModel';
-import { PetsService } from 'src/app/core/services/Pets/petsService.service';
-import { ServicesService } from 'src/app/core/services/Services/servicesService.service';
-import { UsersService } from 'src/app/core/services/Users/usersService.service';
-
-import { Router } from '@angular/router';
-import { CartService } from 'src/app/core/services/Cart/cart.service';
-import { ToastService } from 'src/app/core/services/Toast/toast.service';
-
+import {Component, OnInit} from '@angular/core';
+import {Pets} from 'src/app/core/models/Pets/transformed/PetModel';
+import {Services} from 'src/app/core/models/Services/transformed/ServiceModel';
+import {PetsService} from 'src/app/core/services/Pets/petsService.service';
+import {ServicesService} from 'src/app/core/services/Services/servicesService.service';
+import {UsersService} from 'src/app/core/services/Users/usersService.service';
+import {Router} from '@angular/router';
 const TOKEN_KEY_CART = 'cart'
 
 @Component({
@@ -19,42 +15,28 @@ const TOKEN_KEY_CART = 'cart'
 export class ParentViewComponent implements OnInit {
   public services: Services[] = []
   public pets: Pets[] = []
-  public requestedServices: Services[] | null = []
-  public totalAmount: number = 0
-  public servicesAddedToCart : Services[] | undefined ;
+  public servicesAddedToCart : Services[];
 
-  
-  
-  constructor(private servicesService: ServicesService, private petsService:PetsService, private usersService: UsersService, private router: Router, private cartService: CartService, private toastService:ToastService){}
-
- 
+  constructor(
+      private servicesService: ServicesService,
+      private petsService:PetsService,
+      private usersService: UsersService,
+      private router: Router,
+  ){
+      this.servicesAddedToCart = []
+  }
 
   ngOnInit(): void {
-    const token = this.usersService.getToken();   
-    // TODO Pype async 
-     this.servicesService.getServices().subscribe((value) => {
+    const token = this.usersService.getToken();
+    // TODO Pype async
+     this.servicesService.getServices().subscribe((value:Services[]) => {
       this.services = value
      })
-     this.petsService.getPets().subscribe((value) => {      
+     this.petsService.getPets().subscribe((value:Pets[]):void => {
        this.pets = value.filter((pet) => pet.parent?._id === token)
      })
      const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
-     const dataParsed = dataStorage ? JSON.parse(dataStorage) : null
-     this.servicesAddedToCart = dataParsed
-
-  }
-
-  public onAddService(service: Services){
-    if (!service.date || !service.pet) {
-      this.toastService.$message?.next('Selecciona Mascota y Fecha')
-      this.toastService.showToast()
-      setTimeout(() => {
-        this.toastService.closeToast()
-      }, 2000);
-      return; 
-    }
-    this.requestedServices = this.cartService.addServiceToCart(service) 
-       
+      this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null
   }
 
   public onSubmit(){
