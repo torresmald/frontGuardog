@@ -13,6 +13,7 @@ export class ModalCouponsComponent {
   public message?: string;
   public isLogged: boolean = false;
   public coupon? : any
+  public changeModal: boolean = false;
 
   constructor(private modalService: ModalService, private usersService:UsersService, private couponsService: CouponsService) {}
 
@@ -26,6 +27,8 @@ export class ModalCouponsComponent {
     })
     this.coupon = this.couponsService.getRandomCoupon()
     console.log(this.coupon);
-    
+    setInterval(() => {
+      this.changeModal = ! this.changeModal
+    }, 2000);
   }
 }
