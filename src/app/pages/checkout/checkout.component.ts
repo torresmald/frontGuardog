@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {Services} from 'src/app/core/models/Services/transformed/ServiceModel';
-import {registerLocaleData} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Services } from 'src/app/core/models/Services/transformed/ServiceModel';
+import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {PetsService} from 'src/app/core/services/Pets/petsService.service';
-import {CartService} from "../../core/services/Cart/cart.service";
+import { CartService } from '../../core/services/Cart/cart.service';
+import { CouponsService } from 'src/app/core/services/Coupons/coupons.service';
+import { ToastService } from 'src/app/core/services/Toast/toast.service';
 
 registerLocaleData(localeEs, 'es');
 
@@ -15,23 +16,44 @@ registerLocaleData(localeEs, 'es');
 export class CheckoutComponent implements OnInit {
   public servicesInCart: Services[] = [];
   public petImage?: string;
-  public subTotal:number = 0;
+  public subTotal: number = 0;
   public total: number = 0;
-  public IVA: number = 0;
+  public taxes: number = 0;
+  public coupon: string = '';
+  public discount: number = 0;
 
   constructor(
-    private petsService: PetsService,
-    private CartService: CartService
-  ) {
-  }
+    private CartService: CartService,
+    private couponsService: CouponsService,
+    private toastService: ToastService
+  ) {}
   ngOnInit(): void {
-    this.servicesInCart = this.CartService.getCartServices()
-    this.CartService.getTotalAmount().subscribe(value => this.subTotal = value)
-    this.IVA = ((this.subTotal * 21) / 100)
-    this.total = this.subTotal + this.IVA
-    // TODO AQUI ES GetPET con elID que tengo el localStorage
+    this.servicesInCart = this.CartService.getCartServices();
+    this.CartService.getSubtotalAmount().subscribe(
+      (value) => (this.subTotal = value)
+    );
+    this.CartService.getTaxes().subscribe(
+      (value) => (this.taxes = value)
+    );
+    this.CartService.getTotalAmount().subscribe(
+      (value) => (this.total = value)
+    );
   }
-  public onSubmit() { // TODO en serviceInCart esta todo lo que necesitas, hay una propiedad llamada petId asociada a cada servicio
+  public onApplyCoupon(coupon: string) {
+    this.discount = this.couponsService.applyCoupon(coupon);
+    if (this.discount) {
+      this.CartService.getSubtotalAmount().subscribe(value => this.subTotal = value - (value * this.discount / 100));
+      this.CartService.getTaxes().subscribe((value) => this.taxes = value - (value * this.discount / 100));
+      this.CartService.getTotalAmount().subscribe((value) => this.total = value - (value * this.discount / 100));
+      this.toastService.$message?.next('Cupon Aplicado');
+      this.toastService.showToast()
+      setTimeout(() => {
+        this.toastService.closeToast()
+      }, 2000);
+    }
+  }
+  public onSubmit() {
+    // TODO en serviceInCart esta todo lo que necesitas, hay una propiedad llamada petId asociada a cada servicio
     console.log(this.servicesInCart);
   }
 }
