@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
-import { coupon } from '../../models/Coupons/coupons';
+import { Coupon} from '../../models/Coupons/CouponModel';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
+const URL_API = 'http://localhost:4000/coupons';
 @Injectable({
   providedIn: 'root',
 })
 export class CouponsService {
-  public COUPONS: any[] = [
-    { name: '10DESCUENTO', discount: 10 },
-    { name: '20DESCUENTO', discount: 20 },
-    { name: '30DESCUENTO', discount: 30 },
-    { name: '40DESCUENTO', discount: 40 },
-    { name: '50DESCUENTO', discount: 50 },
-    { name: '60DESCUENTO', discount: 60 },
-    { name: '70DESCUENTO', discount: 70 },
-    { name: '80DESCUENTO', discount: 80 },
-    { name: '90DESCUENTO', discount: 90 },
-    { name: '100DESCUENTO', discount: 100 },
-  ];
   
-  constructor() {}
+  public coupon?:Coupon;
+  
+  constructor(private http: HttpClient) {}
 
-  public applyCoupon(coupon: string) {
-    const existCoupon = this.COUPONS.find((coup) => coup.name === coupon);
-    if (existCoupon) {
-      console.log(coupon);
-      return existCoupon.discount;
-    }
+  
+  public getCoupons(): Observable<Coupon[]>{
+    return this.http.get<Coupon[]>(URL_API)
   }
 
-  public getRandomCoupon (){
-    const randomComparator = () => Math.random() - 0.5;
-    return [...this.COUPONS].sort(randomComparator)[0]
+  public getDailyCoupon(): Observable<Coupon>{
+    return this.http.get<Coupon>(`${URL_API}/daily`)
   }
+
+  // public applyCoupon(coupon: string) {
+  //   const existCoupon = this.getDailyCoupon().subscribe((value) => {
+  //     console.log(value);
+  //     console.log(coupon);
+      
+      
+  //     this.coupon = value
+  //   })
+  //   console.log(existCoupon);
+  //   return this.coupon;
+  // }
+
 }

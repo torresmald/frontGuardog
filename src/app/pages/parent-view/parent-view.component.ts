@@ -35,6 +35,7 @@ export class ParentViewComponent implements OnInit {
      this.petsService.getPets().subscribe((value:Pets[]):void => {
        this.pets = value.filter((pet) => pet.parent?._id === token)
      })
+     // TODO del servicio
      const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
       this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null
   }
