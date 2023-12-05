@@ -34,9 +34,7 @@ export class CartService {
     this.localStorageService.getLocalStorage().subscribe(value => cart = value)
     return cart
   }
-  public addServiceToCart(service: Services, petId: string): void{
-    console.log(petId);
-    
+  public addServiceToCart(service: Services, petId: string): void{    
     service.petId = petId;
     this.requestedServices.next([...this.requestedServices.value, service])
     this.updateTotal(undefined, "addition")

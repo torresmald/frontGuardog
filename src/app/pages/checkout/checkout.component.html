@@ -1,22 +1,24 @@
 <section class="lg:flex justify-center pt-16">
-  <div class="bg-white mx-5 md:mx-0 lg:w-[900px] h-[500px] md:mr-2 shadow-md">
+  <div class="bg-white mx-5 md:mx-0 lg:w-[900px] h-[600px] md:mr-2 shadow-md">
     <h6 class="flex items-center text-3xl font-bold h-[15%] ml-5">Mi Carrito</h6>
     <hr>
     <div class="h-[70%] overflow-y-scroll">
-      <app-service-card *ngFor="let service of servicesInCart" [service]="service"></app-service-card>
+      <app-service-card *ngFor="let service of servicesInCart" [service]="service" [servicesAddedToCart]="servicesAddedToCart"></app-service-card>
     </div>
     <div class="h-[15%] flex justify-end items-center pr-5 text-2xl">
       <p class="mr-5 font-bold">SUB-TOTAL:</p>
-      <P>{{subTotal | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</P>
+      <p>{{subTotal | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p>
     </div>
   </div>
   <div>
-    <div class="bg-white mx-5 lg:w-[400px] h-[500px] md:mx-0 md:ml-2 my-5 lg:my-0 px-7 py-4 shadow-md">
+    <div class="bg-white mx-5 lg:w-[400px] h-[600px] md:mx-0 md:ml-2 my-5 lg:my-0 px-7 py-4 shadow-md">
       <h6 class="h-[12%] text-3xl font-bold border-b border-gray-500">RESUMEN</h6>
       <div class="h-[30%] border-b border-gray-500 flex flex-col justify-center">
         <article class="flex justify-between"><p class="font-bold opacity-70">Sub-Total</p>
           <p class="text-lg opacity-60">{{subTotal | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p></article>
-        <article class="flex justify-between"><p class="font-bold opacity-70">Gastos de Aplicacion</p>
+         <article *ngIf="discount" class="flex justify-between"><p class="font-bold opacity-70">Cupon</p>
+          <p class="text-lg opacity-60">{{discount}}%</p></article>
+        <article class="flex justify-between"><p class="font-bold opacity-70">IVA</p>
           <p class="text-lg opacity-60">{{taxes | currency : "EUR" : "symbol" : ".2-2" : "es"}}</p></article>
         <article class="flex justify-between"><p class="text-lg font-bold mb-3">Total a pagar</p>
           <p class="text-lg opacity-70">{{total | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p></article>
