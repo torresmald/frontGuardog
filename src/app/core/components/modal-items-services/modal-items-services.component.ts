@@ -53,9 +53,13 @@ export class ModalItemsServicesComponent implements OnInit{
     this.courierService.updateServiceInCart(service._id, true);
     this.courierService.setItemServiceModal(false)
   }
-  public selectPetId(petId: string){
-    this.petId = petId
-  }
+  public selectPetId(event: any) {
+    const petId: string | null = event?.target?.value || null;
+    if (petId) {
+        this.petId = petId;
+    } 
+}
+
   public stopPropagation(event: Event) {
     event.stopPropagation();
   }

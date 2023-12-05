@@ -2,9 +2,9 @@
     <section (click)="stopPropagation($event)" class="bg-white flex flex-col md:flex-row justify-center md:justify-evenly items-center p-7 h-[300px] md:h-[100px] w-full rounded-md">
         <div class="flex flex-col">
             <label for="pet" class="font-dog text-xl text-york-500 my-3 md:my-0">Selecciona tu Mascota</label>
-            <select [(ngModel)]="service.pet"  id="pet">
-                <option disabled value="Selecciona">-- Selecciona --</option>
-                <option (click)="selectPetId(pet._id)" *ngFor="let pet of pets">{{pet.name}}</option>
+            <select [(ngModel)]="service.pet"  id="pet" (change)="selectPetId($event)">
+                <option  value="Selecciona">-- Selecciona --</option>
+                <option [value]="pet._id" *ngFor="let pet of pets">{{pet.name}}</option>
             </select>
         </div>
         <div class="flex flex-col">

@@ -7,19 +7,25 @@
     </div>
     <div class="h-[15%] flex justify-end items-center pr-5 text-2xl">
       <p class="mr-5 font-bold">SUB-TOTAL:</p>
-      <P>{{subTotal}}$</P>
+      <P>{{subTotal | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</P>
     </div>
   </div>
   <div>
-    <div class="bg-white mx-5 lg:w-[400px] h-[300px] md:mx-0 md:ml-2 my-5 lg:my-0 px-7 py-4 shadow-md">
-      <h6 class="h-[17%] text-3xl font-bold border-b border-gray-500">RESUMEN</h6>
-      <div class="h-[56%] border-b border-gray-500 flex flex-col justify-end">
+    <div class="bg-white mx-5 lg:w-[400px] h-[500px] md:mx-0 md:ml-2 my-5 lg:my-0 px-7 py-4 shadow-md">
+      <h6 class="h-[12%] text-3xl font-bold border-b border-gray-500">RESUMEN</h6>
+      <div class="h-[30%] border-b border-gray-500 flex flex-col justify-center">
         <article class="flex justify-between"><p class="font-bold opacity-70">Sub-Total</p>
-          <p class="text-lg opacity-60">{{subTotal}}$</p></article>
+          <p class="text-lg opacity-60">{{subTotal | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p></article>
         <article class="flex justify-between"><p class="font-bold opacity-70">Gastos de Aplicacion</p>
-          <p class="text-lg opacity-60">{{IVA}}$</p></article>
+          <p class="text-lg opacity-60">{{taxes | currency : "EUR" : "symbol" : ".2-2" : "es"}}</p></article>
         <article class="flex justify-between"><p class="text-lg font-bold mb-3">Total a pagar</p>
-          <p class="text-lg opacity-70">{{total}}$</p></article>
+          <p class="text-lg opacity-70">{{total | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p></article>
+      </div>
+      <div class="h-[30%] border-b border-gray-500 flex flex-col justify-start mt-2 w-full mx-auto max-w-[300px]">
+        <article class="flex flex-col justify-between gap-4">
+          <input type="text" [(ngModel)]="coupon" placeholder="Introduce tu Cupón">
+          <button [disabled]="discount" class="bg-york-600 text-white w-full p-2 tracking-widest font-bold disabled:bg-red-800 disabled:cursor-not-allowed" (click)="onApplyCoupon(coupon)">{{!discount ? 'Aplicar' : 'Aplicado'}}</button>
+        </article>
       </div>
       <div class="h-[22%] flex justify-center">
         <button (click)="onSubmit()" class="bg-blue-600 text-white w-[500px] mt-3 h-10 tracking-widest font-bold">COMPRAR</button>

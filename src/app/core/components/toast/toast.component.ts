@@ -23,7 +23,7 @@ export class ToastComponent {
   }
   public isSuccessMessage(message?: string): boolean {
     if(message){
-      const successMessages = ['Añadido con Éxito', 'Usuario confirmado', 'Token Valido', 'Hemos enviado un email con las instrucciones', 'Password modificado'];
+      const successMessages = ['Añadido con Éxito', 'Usuario confirmado', 'Token Valido', 'Hemos enviado un email con las instrucciones', 'Password modificado', 'Cupon Aplicado'];
       return successMessages.includes(message);
     }
     return false

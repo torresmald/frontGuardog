@@ -18,6 +18,7 @@ import { ModalCartComponent } from './components/modal-cart/modal-cart.component
 import { SharedModule } from '../shared/shared.module';
 import { ModalItemsServicesComponent } from './components/modal-items-services/modal-items-services.component';
 import {FormsModule} from "@angular/forms";
+import { ModalCouponsComponent } from './components/modal-coupons/modal-coupons.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {FormsModule} from "@angular/forms";
     ToastComponent,
     ModalCartComponent,
     ModalItemsServicesComponent,
+    ModalCouponsComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +52,8 @@ import {FormsModule} from "@angular/forms";
     ModalExtrasComponent,
     ToastComponent,
     ModalCartComponent,
-    ModalItemsServicesComponent
+    ModalItemsServicesComponent,
+    ModalCouponsComponent
   ],
   providers: [LoadingService, ModalService],
 })

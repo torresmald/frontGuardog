@@ -4,13 +4,19 @@ import { Services } from '../../models/Services/transformed/ServiceModel';
 import {BehaviorSubject} from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
 import {LocalStorageService} from "../LocalStorage/local-storage.service";
+
+const IVA = 21;
+
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   public services: Services[] = []
   private requestedServices: BehaviorSubject<Services[]> = new BehaviorSubject<Services[]>([])
+  private subtotalAmount: BehaviorSubject<number> = new BehaviorSubject<number>(0)
+  private taxes: BehaviorSubject<number> = new BehaviorSubject<number>(0)
   private totalAmount: BehaviorSubject<number> = new BehaviorSubject<number>(0)
+
 
   constructor(
       // private modalService: ModalService,
@@ -29,6 +35,8 @@ export class CartService {
     return cart
   }
   public addServiceToCart(service: Services, petId: string): void{
+    console.log(petId);
+    
     service.petId = petId;
     this.requestedServices.next([...this.requestedServices.value, service])
     this.updateTotal(undefined, "addition")
@@ -51,16 +59,24 @@ export class CartService {
     this.localStorageService.setLocalStorage(this.requestedServices.value)
     return this.requestedServices.value;
   }
+  public  getSubtotalAmount(){
+    return this.subtotalAmount.asObservable()
+  }
+  public  getTaxes(){
+    return this.taxes.asObservable()
+  }
   public  getTotalAmount(){
     return this.totalAmount.asObservable()
   }
   private updateTotal(service: Services | undefined ,operator: string){
     switch (operator) {
       case "addition":
-        this.totalAmount.next(this.requestedServices.value.reduce((acc:number, total:Services) => acc + total.price,  0))
+        this.subtotalAmount.next(this.requestedServices.value.reduce((acc:number, total:Services) => acc + total.price,  0))
+        this.taxes.next(this.subtotalAmount.value * IVA / 100)
+        this.totalAmount.next(this.subtotalAmount.value + this.taxes.value)
             break;
       case "subtraction":
-        this.totalAmount.next(service? this.totalAmount.value - service.price : this.totalAmount.value)
+        this.subtotalAmount.next(service? this.subtotalAmount.value - service.price : this.subtotalAmount.value)
             break;
     }
   }
