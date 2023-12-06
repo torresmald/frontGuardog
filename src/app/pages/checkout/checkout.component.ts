@@ -5,9 +5,13 @@ import localeEs from '@angular/common/locales/es';
 import { CartService } from '../../core/services/Cart/cart.service';
 import { CouponsService } from 'src/app/core/services/Coupons/coupons.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
+import {convertToISO} from '../../shared/helpers/dates/index'
+import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmentsService.service';
 
 registerLocaleData(localeEs, 'es');
-const TOKEN_KEY_CART = 'cart'
+const TOKEN_KEY_CART = 'cart';
+const TOKEN_KEY_USER = 'user';
+
 
 @Component({
   selector: 'app-checkout',
@@ -22,50 +26,73 @@ export class CheckoutComponent implements OnInit {
   public taxes: number = 0;
   public coupon: string = '';
   public discount: number = 0;
-  public servicesAddedToCart: Services[] = []
-
+  public servicesAddedToCart: Services[] = [];
+  public isValidCoupon?: boolean = true;
+  public date?: Date;
 
   constructor(
     private CartService: CartService,
     private couponsService: CouponsService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private appointmentsService: AppointmentsService
   ) {}
   ngOnInit(): void {
     this.servicesInCart = this.CartService.getCartServices();
     this.CartService.getSubtotalAmount().subscribe(
       (value) => (this.subTotal = value)
     );
-    this.CartService.getTaxes().subscribe(
-      (value) => (this.taxes = value)
-    );
+    this.CartService.getTaxes().subscribe((value) => (this.taxes = value));
     this.CartService.getTotalAmount().subscribe(
       (value) => (this.total = value)
     );
     // TODO del servicio
-    const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
-    this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null
+    const dataStorage = localStorage.getItem(TOKEN_KEY_CART);
+    this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null;
   }
   public onApplyCoupon(coupon: string) {
     this.couponsService.getDailyCoupon().subscribe((value) => {
-      if(coupon === value.name){
-        this.discount = value.discount
+      if (coupon === value.name) {
+        this.discount = value.discount;
+        this.isValidCoupon = true;
+      } else {
+        this.isValidCoupon = false;
+        this.coupon = '';
       }
       if (this.discount) {
         // TODO ver descuentos
-        this.CartService.getSubtotalAmount().subscribe(value => this.subTotal = value - (value * this.discount / 100));
+        this.CartService.getSubtotalAmount().subscribe(
+          (value) => (this.subTotal = value - (value * this.discount) / 100)
+        );
         this.CartService.getTaxes().subscribe((value) => value);
-        this.CartService.getTotalAmount().subscribe((value) => this.total = this.subTotal +  this.taxes);
+        this.CartService.getTotalAmount().subscribe(
+          (value) => (this.total = this.subTotal + this.taxes)
+        );
         this.toastService.$message?.next('Cupon Aplicado');
-        this.toastService.showToast()
+        this.toastService.showToast();
         setTimeout(() => {
-          this.toastService.closeToast()
+          this.toastService.closeToast();
         }, 2000);
       }
-    })    
+    });
   }
-  
-  public onSubmit() {
-    // TODO en serviceInCart esta todo lo que necesitas, hay una propiedad llamada petId asociada a cada servicio
-    console.log(this.servicesInCart);
-  }
+
+    public onSubmit() {
+      const dataStorage = localStorage.getItem(TOKEN_KEY_USER);
+      const user = dataStorage ? JSON.parse(dataStorage).user._id : null;
+      const data = this.servicesInCart.map((services) => {
+        const dateString = services.date;
+        const formattedData = new Date(dateString);
+        convertToISO(formattedData)
+        services.date =  formattedData
+        return {
+          _id: services._id,
+          parent: user,
+          services
+        };
+      });
+      console.log(data);
+      // this.appointmentsService.registerAppointment(data).subscribe((value) => {
+      //   console.log(value);
+      // })
+    }
 }

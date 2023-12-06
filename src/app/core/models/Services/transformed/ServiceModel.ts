@@ -5,6 +5,6 @@ export interface Services {
     image: string
     _id: string,
     pet: string,
-    date: string,
+    date: Date,
     petId?: string
 }

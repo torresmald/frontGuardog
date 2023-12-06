@@ -1,4 +1,4 @@
-<div class="h-8 mt-3" [ngClass]="{ 'mt-[86px]': router.url === '/' }">
+<div class="h-8 mt-3" [ngClass]="{ 'mt-[86px]': router.url === '/' }" *ngIf="isLogged">
   <section
     class="text-center text-york-500 font-bold"
     *ngIf="changeModal"

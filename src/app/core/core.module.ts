@@ -19,7 +19,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ModalItemsServicesComponent } from './components/modal-items-services/modal-items-services.component';
 import {FormsModule} from "@angular/forms";
 import { ModalCouponsComponent } from './components/modal-coupons/modal-coupons.component';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -42,6 +43,8 @@ import { ModalCouponsComponent } from './components/modal-coupons/modal-coupons.
     MatButtonModule,
     SharedModule,
     FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     HeaderComponent,

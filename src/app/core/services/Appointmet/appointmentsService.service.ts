@@ -33,22 +33,21 @@ export class AppointmentsService {
     )
   }
 
-  public getAppointment(id: string): Observable<Appointments> {
-    return this.apiAppointments
-      .getApiAppointment(id)
-      .pipe(
-        map((apiAppointment: ApiAppointments) =>
-          transformDataAppointment(apiAppointment)
-        )
-      );
+  public getAppointmentsDate(date: Date): Observable<Appointments[]> {
+    return this.apiAppointments.getApiAppointmentsDate(date).pipe(
+      map((appiAppointment: ApiAppointments[]) => {
+        return appiAppointment.map((appiAppointment: ApiAppointments) => transformDataAppointment(appiAppointment))
+      })
+    )
   }
 
-  public registerAppointment(body: string): Observable<Appointments> {
+
+  public registerAppointment(body: Appointments[]): Observable<Appointments> {
     return this.apiAppointments
       .registerApiAppointment(body)
       .pipe(
         map((apiAppointment: ApiAppointments) =>
-          transformDataAppointment(apiAppointment)
+          apiAppointment
         )
       );
   }

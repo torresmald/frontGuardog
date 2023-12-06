@@ -9,7 +9,15 @@
         </div>
         <div class="flex flex-col">
             <label class="font-dog text-xl text-york-500 text-center my-3 md:my-0" for="date">Escoge la Fecha</label>
-            <input [(ngModel)]="service.date"  type="date" id="date"/>
+            <!-- <input [(ngModel)]="service.date"  type="date" id="date" [disabled]="true" (input)="checkDisabledDates($event)"/> -->
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="service.date" [matDatepickerFilter]="disabledDates">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              
+              
         </div>
         <button (click)="onAddService(service)"  class="bg-blue-500 text-sm mt-4 md:mt-6 text-white w-[100px] h-[40px] rounded">Confirmar</button>
     </section>
