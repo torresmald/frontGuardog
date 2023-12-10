@@ -5,4 +5,5 @@ export interface Appointments{
     _id: string,
     services: Services[],
     parent: Parents,
+    amount: number,
 }

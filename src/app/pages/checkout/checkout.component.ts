@@ -37,6 +37,7 @@ export class CheckoutComponent implements OnInit {
     private appointmentsService: AppointmentsService
   ) {}
   ngOnInit(): void {
+    
     this.servicesInCart = this.CartService.getCartServices();
     this.CartService.getSubtotalAmount().subscribe(
       (value) => (this.subTotal = value)
@@ -48,6 +49,8 @@ export class CheckoutComponent implements OnInit {
     // TODO del servicio
     const dataStorage = localStorage.getItem(TOKEN_KEY_CART);
     this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null;
+    console.log(this.servicesInCart);
+    
   }
   public onApplyCoupon(coupon: string) {
     this.couponsService.getDailyCoupon().subscribe((value) => {
@@ -80,19 +83,18 @@ export class CheckoutComponent implements OnInit {
       const dataStorage = localStorage.getItem(TOKEN_KEY_USER);
       const user = dataStorage ? JSON.parse(dataStorage).user._id : null;
       const data = this.servicesInCart.map((services) => {
-        const dateString = services.date;
-        const formattedData = new Date(dateString);
-        convertToISO(formattedData)
-        services.date =  formattedData
         return {
           _id: services._id,
+          date: services.date,
+          hour: services.hour,
           parent: user,
           services
         };
       });
       console.log(data);
-      // this.appointmentsService.registerAppointment(data).subscribe((value) => {
-      //   console.log(value);
-      // })
+      
+      this.appointmentsService.registerAppointment(data).subscribe((value) => {
+        console.log(value);
+      })
     }
 }

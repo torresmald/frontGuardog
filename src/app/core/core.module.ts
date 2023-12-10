@@ -21,6 +21,8 @@ import {FormsModule} from "@angular/forms";
 import { ModalCouponsComponent } from './components/modal-coupons/modal-coupons.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { MAT_DATE_LOCALE} from '@angular/material/core';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -58,6 +60,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     ModalItemsServicesComponent,
     ModalCouponsComponent
   ],
-  providers: [LoadingService, ModalService],
+  providers: [LoadingService, ModalService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+],
 })
 export class CoreModule {}

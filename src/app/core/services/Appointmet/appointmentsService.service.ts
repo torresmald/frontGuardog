@@ -42,7 +42,7 @@ export class AppointmentsService {
   }
 
 
-  public registerAppointment(body: Appointments[]): Observable<Appointments> {
+  public registerAppointment(body: any[]): Observable<Appointments> {
     return this.apiAppointments
       .registerApiAppointment(body)
       .pipe(

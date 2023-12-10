@@ -1,4 +1,4 @@
-import {formatISO} from 'date-fns'
+import {formatISO, parse} from 'date-fns'
 export const convertToISO = (strDate: Date) => {
-   formatISO(strDate)
+   console.log(formatISO(strDate));
 }

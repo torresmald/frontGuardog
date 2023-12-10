@@ -5,6 +5,7 @@ export interface Services {
     image: string
     _id: string,
     pet: string,
-    date: Date,
+    date: string,
+    hour: string,
     petId?: string
 }
