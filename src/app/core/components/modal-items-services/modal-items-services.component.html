@@ -8,21 +8,22 @@
             </select>
         </div>
         <div class="flex flex-col"  *ngIf="true">
-            <label class="font-dog text-xl text-york-500 text-center my-3 md:my-0" for="date">Fecha</label>
+            <label class="font-dog text-xl text-york-500 text-center my-3 md:my-0" >Fecha</label>
             <!-- <input [(ngModel)]="service.date"  type="date" id="date" [disabled]="true" (input)="checkDisabledDates($event)"/> -->
             <mat-form-field>
                 <mat-label>Choose a date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="service.date" [matDatepickerFilter]="disabledDates">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="service.date" [matDatepickerFilter]="disabledDates"  (dateChange)="onRequestHours($event)" >
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
               
               
         </div>
-        <div class="flex flex-col">
-            <label class="font-dog text-xl text-york-500 text-center my-3 md:my-0" for="hour">Hora</label>
+        <div class="flex flex-col" *ngIf="showHours">
+            <label class="font-dog text-xl text-york-500 text-center my-3 md:my-0" >Hora</label>
             <div class="flex gap-1 w-[300px] flex-wrap">
-                 <button (click)="onAddHour(hour)" class="bg-sienna-700 text-white p-2 rounded" [ngClass]="{'bg-york-500': selectedHour === hour}" *ngFor="let hour of hours">
+                 <button    [disabled]="hoursBusy.includes(hour)"
+                 (click)="onAddHour(hour)" class="bg-york-700 text-white p-2 rounded disabled:bg-red-600 disabled:cursor-not-allowed" [ngClass]="{'bg-blue-300': selectedHour === hour}" *ngFor="let hour of hours">
                     {{hour}}
                 </button>
             </div>

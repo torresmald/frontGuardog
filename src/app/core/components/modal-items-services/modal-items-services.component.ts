@@ -10,7 +10,7 @@ import { CartService } from '../../services/Cart/cart.service';
 import { AppointmentsService } from '../../services/Appointmet/appointmentsService.service';
 import { Appointments } from '../../models/Appointments/transformed/AppointmentModel';
 import { parseISO, format, isValid } from 'date-fns';
-import { es } from 'date-fns/locale';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 const STARTHOUR = 10;
 const ENDHOUR = 19;
@@ -28,6 +28,8 @@ export class ModalItemsServicesComponent implements OnInit {
   public datesToDisable: any;
   public hours: string[] = [];
   public selectedHour!: string;
+  public hoursBusy : string[] = []
+  public showHours:boolean = false
 
   constructor(
     private cartService: CartService,
@@ -39,7 +41,7 @@ export class ModalItemsServicesComponent implements OnInit {
     private userService: UsersService,
     private appointmentsService: AppointmentsService
   ) {}
-  ngOnInit(): void {
+  ngOnInit(): void {    
     for (let hour = STARTHOUR; hour <= ENDHOUR; hour++) {
       this.hours.push(hour + ':00');
     }
@@ -89,12 +91,28 @@ export class ModalItemsServicesComponent implements OnInit {
   }
 
   public disabledDates = (date: Date | null): boolean => {
-    if (date) {
+    if (date) {      
       const today = new Date();
       const day = (date || today).getDay();
       return  date >= today && day !== 0 && day !== 6;
     }
     return true;
   };
+  public onRequestHours(event: MatDatepickerInputEvent<Date>){
+    this.hoursBusy = []
+    this.selectedHour = ''
+    this.showHours = true
+    if(event){
+      const fechaFormateada = event.value ? format(event.value, 'dd/MM/yyyy') : '';
+      this.appointmentsService.getAppointmentsDate(fechaFormateada).subscribe((appointments) => {
+        appointments.map((appointment) => {
+          this.hoursBusy.push(appointment.hour)          
+        })
+      }
+      )
+    }
+  }
+
+
   
 }
