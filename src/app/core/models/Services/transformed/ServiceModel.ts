@@ -6,5 +6,6 @@ export interface Services {
     _id: string,
     pet: string,
     date: string,
+    hour: string,
     petId?: string
 }

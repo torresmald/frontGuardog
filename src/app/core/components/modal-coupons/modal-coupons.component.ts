@@ -11,25 +11,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./modal-coupons.component.scss'],
 })
 export class ModalCouponsComponent {
-  public shouldShowModal?: boolean;
-  public message?: string;
   public isLogged: boolean = false;
   public coupon?: Coupon;
   public changeModal: boolean = false;
  
 
   constructor(
-    private modalService: ModalService,
     private usersService: UsersService,
     private couponsService: CouponsService,
     public router: Router
   ) {}
 
   ngOnInit(): void {
-    this.modalService.$shoulShowModal.subscribe((value) => {
-      this.shouldShowModal = value;
-    });
-    this.message = 'Aqui tienes tu cupón';
     this.usersService.userLogged$.subscribe((value) => {
       this.isLogged = value;
     });

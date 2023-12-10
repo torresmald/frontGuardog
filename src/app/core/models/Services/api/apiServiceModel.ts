@@ -7,6 +7,8 @@ export interface ApiServices{
     image: string,
     pet: string,
     date: string,
+    hour: string,
+    petId?: string,
     __v?: string,
     createdAt?: string,
     updatedAt?: string

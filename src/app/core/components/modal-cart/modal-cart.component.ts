@@ -58,6 +58,7 @@ export class ModalCartComponent implements OnInit {
     public onRemoveService(service: Services) {
         service.date = '';
         service.pet = '';
+        service._id = ''
         if (service)
             this.courierService.updateServiceInCart(service?._id, false);
         this.cartService.removeServiceToCart(service);

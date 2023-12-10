@@ -1,17 +1,17 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Appointments } from '../../models/Appointments/transformed/AppointmentModel';
 import { ApiAppointmentsService } from './api/apiAppointmentsService.service';
 import { transformDataAppointment } from './helpers/transformApi';
 import { ApiAppointments } from '../../models/Appointments/api/apiAppointmentModel';
+import { Services } from '../../models/Services/transformed/ServiceModel';
+import { ApiServices } from '../../models/Services/api/apiServiceModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppointmentsService {
   constructor(
-    private http: HttpClient,
     private apiAppointments: ApiAppointmentsService
   ) {}
 
@@ -33,22 +33,21 @@ export class AppointmentsService {
     )
   }
 
-  public getAppointment(id: string): Observable<Appointments> {
-    return this.apiAppointments
-      .getApiAppointment(id)
-      .pipe(
-        map((apiAppointment: ApiAppointments) =>
-          transformDataAppointment(apiAppointment)
-        )
-      );
+  public getAppointmentsDate(date: string): Observable<Services[]> {
+    return this.apiAppointments.getApiAppointmentsDate(date).pipe(
+      map((appiAppointment: ApiServices[]) => {
+        return appiAppointment.map((appiAppointment: ApiServices) => appiAppointment)
+      })
+    )
   }
 
-  public registerAppointment(body: string): Observable<Appointments> {
+
+  public registerAppointment(body: any): Observable<Appointments> {
     return this.apiAppointments
       .registerApiAppointment(body)
       .pipe(
         map((apiAppointment: ApiAppointments) =>
-          transformDataAppointment(apiAppointment)
+          apiAppointment
         )
       );
   }

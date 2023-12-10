@@ -1,15 +1,13 @@
-<div class="h-8 mt-3" [ngClass]="{ 'mt-[86px]': router.url === '/' }">
+<div class="h-10 mt-3 text-center text-york-500 font-bold text-xs md:text-base" [ngClass]="{ 'mt-[86px]': router.url === '/' }" *ngIf="isLogged">
   <section
-    class="text-center text-york-500 font-bold"
     *ngIf="changeModal"
   >
     CONSIGUE DESCUENTOS USANDO EL CUPÓN :
-    <span class="text-white bg-sienna-700 font-extrabold p-2 ">{{
+    <span class="text-white bg-sienna-700 font-extrabold p-1 ">{{
       coupon?.name
     }}</span>
   </section>
   <section
-    class="text-center text-york-500 font-bold"
     *ngIf="!changeModal"
   >
     DISFRUTA DE NUESTROS SERVICIOS AL MEJOR PRECIO
