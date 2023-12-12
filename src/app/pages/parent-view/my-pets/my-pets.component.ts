@@ -8,13 +8,13 @@ import { Pets } from 'src/app/core/models/Pets/transformed/PetModel';
   styleUrls: ['./my-pets.component.scss'],
 })
 export class MyPetsComponent {
-  @Input() pets?: Pets[];
+  // @Input() pets?: Pets[];
 
-  constructor(private router: Router) {
+  // constructor(private router: Router) {
     
-  }
+  // }
   
-  public goToDetail(id: string) {
-    this.router.navigate(['pet', id]);
-  }
+  // public goToDetail(id: string) {
+  //   this.router.navigate(['pet', id]);
+  // }
 }

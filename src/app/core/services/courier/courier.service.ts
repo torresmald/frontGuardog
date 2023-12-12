@@ -7,6 +7,7 @@ import {BehaviorSubject} from 'rxjs';
 export class CourierService {
   private modalNav:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private modalCart:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private modalPets:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);  
   private modalItemService: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   private cartState:BehaviorSubject<{[id: string]: Boolean}> = new BehaviorSubject<{[id: string]: Boolean}>({});
   constructor() {}
@@ -23,4 +24,6 @@ export class CourierService {
   public getCartModal = () => this.modalCart.asObservable()
   public setBooleanNav = (boolean: boolean) => this.modalNav.next(boolean);
   public getModalNav = () => this.modalNav.asObservable();
+  public setPetModal = (boolean: boolean) => this.modalPets.next(boolean)
+  public getPetModal = () => this.modalPets.asObservable()
 }

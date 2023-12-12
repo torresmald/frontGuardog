@@ -60,7 +60,6 @@ export class ModalItemsServicesComponent implements OnInit {
     this.renderer.removeClass(document.body, 'block-scroll');
   }
   public onAddService(service: Services): void {
-    console.log(service.date);
     service.hour = this.selectedHour;
     if (!service.date || !service.pet || !this.selectedHour) {
       this.toastService.$message?.next('Selecciona Mascota y Fecha/Hora');

@@ -5,8 +5,8 @@ import {PetsService} from 'src/app/core/services/Pets/petsService.service';
 import {ServicesService} from 'src/app/core/services/Services/servicesService.service';
 import {UsersService} from 'src/app/core/services/Users/usersService.service';
 import {Router} from '@angular/router';
-import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmentsService.service';
 import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
+import { CourierService } from 'src/app/core/services/courier/courier.service';
 const TOKEN_KEY_CART = 'cart'
 
 @Component({
@@ -25,7 +25,7 @@ export class ParentViewComponent implements OnInit {
       private petsService:PetsService,
       private usersService: UsersService,
       private router: Router,
-      private appointmentsService: AppointmentsService
+      private courierService: CourierService
   ){
       this.servicesAddedToCart = []
   }
@@ -42,9 +42,11 @@ export class ParentViewComponent implements OnInit {
      // TODO del servicio
      const dataStorage = localStorage.getItem(TOKEN_KEY_CART)
       this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null
-
-      // this.appointmentsService.getAppointmentsDate()
   }
+
+  public openMenuMobile() {
+    this.courierService.setPetModal(true);
+}
 
   public onSubmit(){
     this.router.navigate(['/checkout'])

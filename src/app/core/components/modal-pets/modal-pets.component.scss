@@ -1,0 +1,27 @@
+.show{
+	animation: openModal 0.4s;
+}
+@keyframes openModal{
+
+	0%{
+		transform: translateX(300px);
+	}
+
+	100%{
+		transform: translate(0);
+	}
+}
+
+.hiddenNav{
+	animation: closeModal 0.4s forwards;
+}
+
+@keyframes closeModal {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(300px);
+	}
+}

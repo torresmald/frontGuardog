@@ -22,6 +22,7 @@ import { ModalCouponsComponent } from './components/modal-coupons/modal-coupons.
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MAT_DATE_LOCALE} from '@angular/material/core';
+import { ModalPetsComponent } from './components/modal-pets/modal-pets.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MAT_DATE_LOCALE} from '@angular/material/core';
     ModalCartComponent,
     ModalItemsServicesComponent,
     ModalCouponsComponent,
+    ModalPetsComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,9 @@ import { MAT_DATE_LOCALE} from '@angular/material/core';
     ToastComponent,
     ModalCartComponent,
     ModalItemsServicesComponent,
-    ModalCouponsComponent
+    ModalCouponsComponent,
+    ModalPetsComponent,
+
   ],
   providers: [LoadingService, ModalService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
 ],
