@@ -14,7 +14,7 @@ export class CourierService {
   public updateServiceInCart(serviceId: string | undefined, isInCart: Boolean ):void {
     const currentCartState:{[id: string]: Boolean } = this.cartState.getValue();
     if (serviceId)
-      currentCartState[serviceId] = isInCart;
+      currentCartState[serviceId] = isInCart;    
     this.cartState.next({ ...currentCartState });
   }
   public setItemServiceModal = (boolean: boolean) => this.modalItemService.next(boolean)
