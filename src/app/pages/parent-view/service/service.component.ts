@@ -24,6 +24,8 @@ export class ServiceComponent implements OnInit {
         this.servicesAddedToCart?.find(value => this.isServiceInCart = value._id === this.service?._id);
         this.courierService.updateServiceInCart(this.service?._id, this.isServiceInCart);
         this.courierService.getServiceInCart().subscribe(value => {
+            console.log(value);
+            
             if (this.service) {
                 this.isServiceInCart = value[this.service?._id];
             }
