@@ -1,22 +1,29 @@
 <div (click)="closeMenuMobile()" class="bg-black flex fixed text-[20px] bg-opacity-40 w-full h-screen z-40">
-	<nav  [ngClass]="{'show': modalAnimation, 'hiddenNav': !modalAnimation}" (click)="stopPropagation($event)" class="bg-sienna-100 flex flex-col justify-between w-[300px] font-dog h-screen">
-		<ul class="mt-6">
-			<li (click)="closeMenuMobile()" routerLink="/"><img src="../../../../assets/home/nav1.png" alt="">Inicio</li>
-			<li (click)="closeMenuMobile()" routerLink="/about"><img src="../../../../assets/home/nav1.png" alt="">Nosotros</li>
-			<li (click)="closeMenuMobile()" routerLink="/contact"><img src="../../../../assets/home/nav1.png" alt="">Contacto</li>
-			<li (click)="closeMenuMobile()" routerLink="/register"><img src="../../../../assets/home/nav1.png" alt="">Regitrarse</li>
-		</ul>
-		<img class="w-[50%] mx-auto" src="../../../../assets/home/logo.png" alt="">
-	</nav>
+  <nav [ngClass]="{'show': modalAnimation, 'hiddenNav': !modalAnimation}" (click)="stopPropagation($event)"
+       class="bg-sienna-100 flex flex-col justify-between w-[300px] font-dog h-screen">
+    <ul class="mt-6">
+      <li (click)="closeMenuMobile()" routerLink="/">
+        <img src="../../../../assets/home/nav1.png" alt="">Inicio
+      </li>
+      <li *ngIf="isLogged" (click)="closeMenuMobile(); onNavigateAccount()">
+        <img src="../../../../assets/home/nav1.png" alt="">Mi Cuenta
+      </li>
+      <li *ngIf="isLogged" (click)="closeMenuMobile()" routerLink="/checkout">
+        <img src="../../../../assets/home/nav1.png" alt="">Carrito de compras
+      </li>
+      <li (click)="closeMenuMobile()" routerLink="/about">
+        <img src="../../../../assets/home/nav1.png" alt="">Nosotros
+      </li>
+      <li (click)="closeMenuMobile()" routerLink="/contact">
+        <img src="../../../../assets/home/nav1.png" alt="">Contacto
+      </li>
+      <li *ngIf="!isLogged" (click)="closeMenuMobile()" routerLink="/register">
+        <img src="../../../../assets/home/nav1.png" alt="">Regitrarse
+      </li>
+      <li *ngIf="isLogged" (click)="onLogout(); closeMenuMobile()">
+        <img src="../../../../assets/home/nav1.png" alt="">Cerrar Sesión
+      </li>
+    </ul>
+    <img class="w-[50%] mx-auto" src="../../../../assets/home/logo.png" alt="">
+  </nav>
 </div>
-
-
-<!-- <section class="bg-sienna-500 flex justify-center items-center w-full h-20">
-	<div class="bg-white w-60 h-12 flex justify-center items-center">
-		<img src="https://www.freeiconspng.com/uploads/sunshine-icon-14.png" alt="">
-		<div class="bg-sienna-100 flex items-center mx-3 w-20 h-9 rounded-full">
-			<div (click)="changeTheme()" [ngClass]="{'light': isLightMode, 'dark': !isLightMode}" class="bg-sienna-300 cursor-pointer rounded-full mx-3 w-[25px] h-[25px]"></div>
-		</div>
-		<img src="https://cdn-icons-png.flaticon.com/512/4445/4445942.png" alt="">
-	</div>
-</section> -->

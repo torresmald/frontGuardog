@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { CourierService } from '../../services/courier/courier.service';
 import { NavigationEnd, Router } from '@angular/router';
+import {UsersService} from "../../services/Users/usersService.service";
 
 @Component({
   selector: 'app-modal-nav',
@@ -10,6 +11,9 @@ import { NavigationEnd, Router } from '@angular/router';
 export class ModalNavComponent implements OnInit {
   public isLightMode: boolean = true;
   public modalAnimation: boolean = false;
+  public isParent: boolean = false;
+  public isLogged: boolean = false;
+
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
@@ -20,7 +24,7 @@ export class ModalNavComponent implements OnInit {
     }
   }
 
-  constructor(public courierService: CourierService, private _router: Router) {}
+  constructor(public courierService: CourierService, private _router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.courierService.getModalNav().subscribe(value =>  this.modalAnimation = value)
@@ -29,7 +33,9 @@ export class ModalNavComponent implements OnInit {
         this.closeMenuMobile()
       }
     })
-
+    this.usersService.userLogged$.subscribe((value) => {
+      this.isLogged = value
+    })
   }
 
   public closeMenuMobile() {
@@ -42,6 +48,20 @@ export class ModalNavComponent implements OnInit {
   public stopPropagation(event: Event) {
     event.stopPropagation();
   }
+
+  public onLogout() {
+    this.usersService.logout()
+    this._router.navigate([''])
+  }
+
+  public onNavigateAccount() {
+    const token = localStorage.getItem('user') // TODO evaluar si usar una variable de entorno para el token
+    if (token) {
+      JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
+    }
+    this.isParent ? this._router.navigate(['/parent-view']) : this._router.navigate(['/trainer-view'])
+  }
+
 
   // public changeTheme() {
   //
