@@ -3,7 +3,7 @@
     <img class="absolute bottom-16 left-5 z-30 w-[50px] h-[60px]" src="assets/home/logoMini.png" alt="logoMini">
     <div class="absolute w-[200px] text-right bottom-12 right-5 z-30">
         <h6 class="text-sienna-500 font-dog text-xl">{{service.name}}</h6>
-        <p class="text-2xl font-bold opacity-70">{{service.price.toFixed(2) + "$"}}</p>
+        <p class="text-2xl font-bold opacity-70">{{service.price | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p>
         <button
                 [ngClass]="{'bg-green-500': isServiceInCart}"
                 [disabled]="isServiceInCart" (click)="openServiceModal(service)"
