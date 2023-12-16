@@ -23,4 +23,7 @@ export class PetComponent implements OnInit {
         console.log(this.pet)
       })
   }
+  public onDownloadPet(){
+    
+  }
 }

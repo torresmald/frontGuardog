@@ -15,6 +15,7 @@
               Reestablecer Password
                 </button>
             </div>-->
+    <div class="flex justify-end"><img class="cursor-pointer w-20" (click)="openMenuMobile()" src="../../../assets/pets.png" alt="Nueva Mascota"></div>
     <h2 class="text-3xl my-10 font-dog text-center text-sienna-700">Servicios</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 place-items-center">
         <app-service *ngFor="let service of services" class="m-5" [servicesAddedToCart]="servicesAddedToCart" [service]="service"></app-service>

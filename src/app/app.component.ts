@@ -14,6 +14,8 @@ export class AppComponent {
   public isMenuOpen: boolean = false
   public isCartModal: boolean = false
   public isItemServiceModal: boolean = false
+  public isPetModal: boolean = false
+
 
   constructor(public router: Router, public courierService: CourierService) {}
 
@@ -21,6 +23,8 @@ export class AppComponent {
     this.courierService.getModalNav().subscribe((value) => this.isMenuOpen = value);
     this.courierService.getCartModal().subscribe(value => this.isCartModal = value)
     this.courierService.getItemServiceModal().subscribe(value => this.isItemServiceModal = value)
+    this.courierService.getPetModal().subscribe((value) => this.isPetModal = value);
+
   }
   shouldShow(): boolean {
     return this.excludedUrls.every(url => !this.router.url.includes(url));

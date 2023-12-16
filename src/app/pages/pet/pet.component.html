@@ -1,34 +1,53 @@
-<section class="bg-sienna-50 flex flex-col md:flex-row justify-center md:items-center relative">
-	<article class="bg-sienna-100 md:absolute md:right-[50%] flex flex-col items-center justify-center h-[170px] md:h-[550px] md:w-[400px] mx-6 mt-3 rounded-t-xl md:rounded-xl z-20">
-		<figure class="shadow-2xl rounded-full overflow-auto my-2 md:my-10 w-[110px] h-[100px] md:h-[200px] md:w-[210px]"><img class="w-full h-full" src="{{pet?.image}}" alt=""></figure>
-		<p class="capitalize text-[25px] md:text-[40px] font-dog">{{pet?.name}}</p>
+<section
+  class="bg-sienna-50 w-full flex flex-col gap-20 mt-14"
+>
+  <div class="flex flex-col md:flex-row justify-center md:items-center relative">
+	<article
+	  class="bg-sienna-100 md:absolute md:right-[50%] flex flex-col items-center justify-center h-[170px] md:h-[550px] md:w-[400px] mx-6 mt-3 rounded-t-xl md:rounded-xl z-20"
+	>
+	  <figure
+		class="shadow-2xl rounded-full overflow-auto my-2 md:my-10 w-[110px] h-[100px] md:h-[200px] md:w-[210px]"
+	  >
+		<img class="w-full h-full" src="{{ pet?.image }}" alt="" />
+	  </figure>
+	  <p class="capitalize text-[25px] md:text-[40px] font-dog">
+		{{ pet?.name }}
+	  </p>
 	</article>
-	<article class="bg-white md:relative z-10 flex flex-col justify-evenly text-center items-center rounded-sm shadow-2xl md:w-[900px] h-[300px] md:h-[500px] mx-4">
-		<div class="md:ml-[49%]">
-			<p class="font-dog">Fecha de Nacimiento</p>
-			<p>{{pet?.birthday}}</p>
-		</div>
-		<div class="md:ml-[49%]">
-			<p class="font-dog">Dueño</p>
-			<p>{{pet?.parent?.name}}</p>
-		</div>
-		<div class="md:ml-[49%]">
-			<p class="font-dog">Dieta</p>
-			<p>{{pet?.nutrition}}</p>
-		</div>
-		<div class="md:ml-[49%]">
-			<p class="font-dog">Alergias</p>
-			<p>{{pet?.diseases}}</p>
-		</div>
+	<article
+	  class="bg-white md:relative z-10 flex flex-col justify-evenly text-center items-center rounded-sm shadow-2xl md:w-[900px] h-[300px] md:h-[500px] mx-4"
+	>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Fecha de Nacimiento</p>
+		<p>{{ pet?.birthday }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Dueño</p>
+		<p>{{ pet?.parent?.name }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Dieta</p>
+		<p>{{ pet?.nutrition }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Alergias</p>
+		<p>{{ pet?.diseases }}</p>
+	  </div>
 	</article>
+  </div>
+  <div class="mx-auto w-44 flex gap-8">
+	  <button
+		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+		routerLink="/parent-view"
+	  >
+		Volver
+	  </button>
+	  <button
+	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+	  (click)="onDownloadPet()"
+	  >
+	  Descargar Ficha
+	</button>
+  </div>
 </section>
 
-
-<!-- name: { type: String, unique: true, required: true },
-image: String,
-birthday: String,
-parent: { type: mongoose.Schema.Types.ObjectId, ref: 'Parent' },
-nutrition: { type: String, enum: ['Solida', 'Humeda', 'Latas'], required: true  },
-diseases: { type: [String || null] },
-exercice: {type:  String, enum:  ['30-60 min', '60-120 min', '+120min']},
-maxNumberGifts: Number -->
