@@ -25,6 +25,15 @@ export class AppointmentsService {
     );
   }
 
+  public getAppointment(id: string): Observable<Appointments> {
+    return this.apiAppointments.getApiAppointment(id).pipe(
+      map((apiappointment) => {
+       return  transformDataAppointment(apiappointment)
+      })
+    );
+  }
+  
+
   public getAppointmentsUser(user: string): Observable<Appointments[]> {
     return this.apiAppointments.getApiAppointmentsUser(user).pipe(
       map((appiAppointment: ApiAppointments[]) => {
@@ -50,5 +59,9 @@ export class AppointmentsService {
           apiAppointment
         )
       );
+  }
+
+  public deleteAppointment(id: string): Observable<string> {
+    return this.apiAppointments.deleteApiAppointment(id)
   }
 }
