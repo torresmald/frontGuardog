@@ -30,6 +30,17 @@ export class TrainerService {
     )
   }
 
+  public getTrainer (id: string): Observable<Trainers>{
+    this.loadingService.showLoading()
+    return this.apiTrainerService.getApiTrainer(id).pipe(
+      map((apiTrainer) => {
+        return transformDataTrainer(apiTrainer)
+      }),
+      tap(() => {
+        this.loadingService.hideLoading()
+      })
+    )
+  }
 
   public loginTrainers(body : ApiTrainers): Observable<User> {
     this.loadingService.showLoading()

@@ -19,6 +19,7 @@ export class AppComponent {
 
   constructor(public router: Router, public courierService: CourierService) {}
 
+
   ngOnInit() {
     this.courierService.getModalNav().subscribe((value) => this.isMenuOpen = value);
     this.courierService.getCartModal().subscribe(value => this.isCartModal = value)

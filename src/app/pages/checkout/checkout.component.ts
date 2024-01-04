@@ -91,6 +91,7 @@ export class CheckoutComponent implements OnInit {
         date: services.date,
         hour: services.hour,
         parent: user,
+        trainer:services.trainer,
         services,
         totalPaidReal: this.total,
         totalPay: this.subTotal,

@@ -36,6 +36,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/parent-view/parent-view.module').then(m => m.ParentViewModule)
   },
   {
+    path: 'trainer-view',
+    loadChildren: () => import('./pages/trainer-view/trainer-view.module').then(m => m.TrainerViewModule)
+  },
+  {
+    path: 'my-account/:id',
+    loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountModule)
+  },
+  {
+    path: 'my-appointments/:id',
+    loadChildren: () => import('./pages/my-appointments/my-appointments.module').then(m => m.MyAppointmentsModule)
+  },
+  {
     path: 'pet/:id',
     loadChildren: () => import('./pages/pet/pet.module').then(m => m.PetModule)
   },

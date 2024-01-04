@@ -42,15 +42,15 @@ export class HeaderComponent implements OnInit {
 
         this.localStorageService.getLocalStorage().subscribe(value => {
             this.servicesInCart = value || [];
-            this.numberInCart = this.servicesInCart.length;
-            console.log(this.servicesInCart);
-            
+            this.numberInCart = this.servicesInCart.length;            
         });
         this.usersService.userLogged$.subscribe((value) => {
             this.isLogged = value
         })
-        console.log(this.servicesInCart);
-        
+        const token = localStorage.getItem('user') 
+        if (token) {
+            JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
+        }
     }
 
     public openMenuMobile() {

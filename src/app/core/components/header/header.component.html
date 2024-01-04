@@ -49,7 +49,7 @@
             <div
                     (mouseenter)="onChangeHover()"
                     (mouseleave)="onHoverLeave()"
-                    *ngIf="servicesInCart.length > 0"
+                    *ngIf="servicesInCart.length > 0 && isParent"
                     [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
                     class="cursor-pointer"
             >
