@@ -9,6 +9,7 @@ export interface ApiServices{
     date: string,
     hour: string,
     petId?: string,
+    trainer: string,
     __v?: string,
     createdAt?: string,
     updatedAt?: string

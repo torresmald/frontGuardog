@@ -4,6 +4,7 @@ import { CartService } from '../../services/Cart/cart.service';
 import { CourierService } from '../../services/courier/courier.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { LocalStorageService } from '../../services/LocalStorage/local-storage.service';
+import { UsersService } from '../../services/Users/usersService.service';
 
 @Component({
   selector: 'app-modal-cart',
@@ -15,20 +16,17 @@ export class ModalCartComponent implements OnInit {
   public totalAmount: number = 0;
   public isHover?: boolean = false;
   public scrollEvent: number = 0;
+  public isLogged: boolean = false;
 
   constructor(
     private _router: Router,
     private cartService: CartService,
     private courierService: CourierService,
     private renderer: Renderer2,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private usersService: UsersService,
   ) {
-    localStorageService
-      .getLocalStorage()
-      .subscribe((value) => (this.servicesInCart = value || []));
-    cartService
-      .getTotalAmount()
-      .subscribe((value) => (this.totalAmount = value));
+   
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -40,6 +38,12 @@ export class ModalCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+     this.localStorageService
+      .getLocalStorage()
+      .subscribe((value) => (this.servicesInCart = value || []));
+    this.cartService
+      .getTotalAmount()
+      .subscribe((value) => (this.totalAmount = value));
     this.courierService.getCartModal().subscribe((value) => {
       this.isHover = value;
       if (this.isHover) this.renderer.addClass(document.body, 'block-scroll');
@@ -51,6 +55,9 @@ export class ModalCartComponent implements OnInit {
         this.scrollEvent = 0;
       }
     });
+    this.usersService.userLogged$.subscribe((value) => {
+      this.isLogged = value
+  })
   }
 
   public onRemoveService(service: Services) {

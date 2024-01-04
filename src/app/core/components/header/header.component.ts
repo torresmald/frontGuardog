@@ -6,6 +6,7 @@ import {Services} from '../../models/Services/transformed/ServiceModel';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import {LocalStorageService} from "../../services/LocalStorage/local-storage.service";
+import { CartService } from '../../services/Cart/cart.service';
 
 registerLocaleData(localeEs, 'es');
 
@@ -35,15 +36,21 @@ export class HeaderComponent implements OnInit {
     constructor(public courierService: CourierService,
                 private usersService: UsersService,
                 public router: Router,
-                private localStorageService: LocalStorageService) {}
+                private localStorageService: LocalStorageService, private cartService: CartService) {}
     ngOnInit(): void {
+        this.servicesInCart = this.cartService.getCartServices();
+
         this.localStorageService.getLocalStorage().subscribe(value => {
             this.servicesInCart = value || [];
             this.numberInCart = this.servicesInCart.length;
+            console.log(this.servicesInCart);
+            
         });
         this.usersService.userLogged$.subscribe((value) => {
             this.isLogged = value
         })
+        console.log(this.servicesInCart);
+        
     }
 
     public openMenuMobile() {

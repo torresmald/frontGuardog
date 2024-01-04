@@ -72,6 +72,19 @@ section img {
 	}
 }
 
+.fixed-cart{
+    cursor: pointer;
+    position: fixed;
+    z-index: 18;
+    top: 0;
+    right: 20px;
+    box-shadow: 0 0 2px 1px;
+    border: 1px solid #74302c;
+    background-color: #f2e2d3;
+    border-top: 0;
+    padding: 10px 0;
+    z-index: 99;
+}
 
 
 

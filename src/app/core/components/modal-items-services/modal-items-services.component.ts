@@ -11,6 +11,8 @@ import { AppointmentsService } from '../../services/Appointmet/appointmentsServi
 import { Appointments } from '../../models/Appointments/transformed/AppointmentModel';
 import { parseISO, format, isValid } from 'date-fns';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { Trainers } from '../../models/Trainers/transformed/TrainerModel';
+import { TrainerService } from '../../services/Trainers/trainersService.service';
 
 const STARTHOUR = 10;
 const ENDHOUR = 19;
@@ -28,8 +30,10 @@ export class ModalItemsServicesComponent implements OnInit {
   public datesToDisable: any;
   public hours: string[] = [];
   public selectedHour!: string;
-  public hoursBusy : string[] = []
-  public showHours:boolean = false
+  public hoursBusy : string[] = [];
+  public showHours:boolean = false;
+  public trainers?: Trainers[]
+  public trainerSelected : string = ''
 
   constructor(
     private cartService: CartService,
@@ -39,7 +43,8 @@ export class ModalItemsServicesComponent implements OnInit {
     private renderer: Renderer2,
     private courierService: CourierService,
     private userService: UsersService,
-    private appointmentsService: AppointmentsService
+    private appointmentsService: AppointmentsService,
+    private trainersService: TrainerService
   ) {}
   ngOnInit(): void {    
     for (let hour = STARTHOUR; hour <= ENDHOUR; hour++) {
@@ -54,25 +59,13 @@ export class ModalItemsServicesComponent implements OnInit {
     this.serviceService
       .getSelectService()
       .subscribe((value) => (this.service = value));
+    this.trainersService.getTrainers().subscribe((trainers) => {
+      this.trainers = trainers      
+    })
   }
   closeModalService(): void {
     this.courierService.setItemServiceModal(false);
     this.renderer.removeClass(document.body, 'block-scroll');
-  }
-  public onAddService(service: Services): void {
-    service.hour = this.selectedHour;
-    if (!service.date || !service.pet || !this.selectedHour) {
-      this.toastService.$message?.next('Selecciona Mascota y Fecha/Hora');
-      this.toastService.showToast();
-      setTimeout((): void => {
-        this.toastService.closeToast();
-      }, 2000);
-      return;
-    }
-    this.renderer.removeClass(document.body, 'block-scroll');
-    this.cartService.addServiceToCart(service, this.petId);
-    this.courierService.updateServiceInCart(service._id, true);
-    this.courierService.setItemServiceModal(false);
   }
   public onAddHour(hour: string) {
     this.selectedHour = hour;
@@ -83,6 +76,10 @@ export class ModalItemsServicesComponent implements OnInit {
     if (petId) {
       this.petId = petId;
     }
+  }
+
+  public onSelectTrainer(event: any){
+    this.trainerSelected = event.target.value
   }
 
   public stopPropagation(event: Event) {
@@ -112,6 +109,22 @@ export class ModalItemsServicesComponent implements OnInit {
     }
   }
 
+  public onAddService(service: Services): void {
+    service.hour = this.selectedHour;
+    service.trainer = this.trainerSelected
+    if (!service.date || !service.pet || !this.selectedHour || !this.trainerSelected) {
+      this.toastService.$message?.next('Selecciona Todos los Campos');
+      this.toastService.showToast();
+      setTimeout((): void => {
+        this.toastService.closeToast();
+      }, 2000);
+      return;
+    }
+    this.renderer.removeClass(document.body, 'block-scroll');
+    this.cartService.addServiceToCart(service, this.petId);
+    this.courierService.updateServiceInCart(service._id, true);
+    this.courierService.setItemServiceModal(false);
+  }
 
   
 }

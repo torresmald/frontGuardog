@@ -4,7 +4,16 @@
 			<li (click)="closeMenuMobile()" routerLink="/"><img src="../../../../assets/home/nav1.png" alt="">Inicio</li>
 			<li (click)="closeMenuMobile()" routerLink="/about"><img src="../../../../assets/home/nav1.png" alt="">Nosotros</li>
 			<li (click)="closeMenuMobile()" routerLink="/contact"><img src="../../../../assets/home/nav1.png" alt="">Contacto</li>
-			<li (click)="closeMenuMobile()" routerLink="/register"><img src="../../../../assets/home/nav1.png" alt="">Regitrarse</li>
+			<li *ngIf="!isLogged" (click)="closeMenuMobile()" routerLink="/register"><img src="../../../../assets/home/nav1.png" alt="">Regitrarse</li>
+			<li *ngIf="isLogged" (click)="onNavigateAccount()" class="mx-5" routerLink="active"><img src="../../../../assets/home/nav1.png" alt="">Mi Cuenta</li>
+			<li *ngIf="isLogged" (click)="onLogout()" class="mx-5"><img src="../../../../assets/home/nav1.png" alt="">Logout</li>
+			<li *ngIf="servicesInCart.length > 0 && isLogged" (mouseenter)="onChangeHover()" (mouseleave)="onHoverLeave()" routerLink="/checkout">
+				<img src="../../../../assets/home/nav1.png" alt="">
+				<p class="absolute text-center text-black right-60 mt-1">
+					{{ numberInCart }}
+				</p>
+				<span class="bg-cart w-[24px] h-[24px] bg-no-repeat block text-black"></span>
+			</li>
 		</ul>
 		<img class="w-[50%] mx-auto" src="../../../../assets/home/logo.png" alt="">
 	</nav>
