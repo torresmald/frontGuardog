@@ -1,5 +1,5 @@
 <section *ngIf="service" (click)="closeModalService()" class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40">
-    <section (click)="stopPropagation($event)" class="bg-white flex flex-col justify-center md:justify-between items-center p-7 h-[500px] md:h-[500px] w-full rounded-md text-center">
+    <section (click)="stopPropagation($event)" class="bg-white flex flex-col justify-start md:justify-between items-center p-7 h-[700px] md:h-[500px] w-full rounded-md text-center">
         <div class="flex flex-col">
             <label for="pet" class="font-dog text-xl text-york-500 my-3 md:my-0">Mascota</label>
             <select [(ngModel)]="service.pet"  id="pet" (change)="selectPetId($event)">
@@ -26,6 +26,13 @@
                     {{hour}}
                 </button>
             </div>
+        </div>
+        <div class="flex flex-col">
+            <label for="trainer" class="font-dog text-xl text-york-500 my-3 md:my-0">Trainer</label>
+            <select id="trainer" (change)="onSelectTrainer($event)">
+                <option  value="Selecciona">-- Selecciona --</option>
+                <option [value]="trainer._id" *ngFor="let trainer of trainers">{{trainer.name}}</option>
+            </select>
         </div>
         <button (click)="onAddService(service)"  class="bg-blue-500 text-sm mt-6 md:mt-6 text-white w-[100px] h-[40px] rounded">Confirmar</button>
     </section>

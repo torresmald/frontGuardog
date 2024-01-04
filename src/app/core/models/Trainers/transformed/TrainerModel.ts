@@ -1,5 +1,6 @@
 import { experience } from "../trainersData"
 export interface Trainers {
+    _id: string,
     name: string,
     image: string,
     email: string,

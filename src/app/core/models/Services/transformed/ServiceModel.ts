@@ -1,3 +1,4 @@
+
 export interface Services {
     name: string,
     price: number,
@@ -7,5 +8,6 @@ export interface Services {
     pet: string,
     date: string,
     hour: string,
-    petId?: string
+    petId?: string,
+    trainer: string
 }

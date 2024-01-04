@@ -27,4 +27,8 @@ export class LocalStorageService {
     localStorage.setItem(this.TOKEN_KEY_CART, JSON.stringify(requestedServices))
     this.updateLocalStorage()
   }
+
+  public removeLocalStorage(key: string){
+    localStorage.removeItem(key)
+  }
 }

@@ -25,6 +25,15 @@ export class AppointmentsService {
     );
   }
 
+  public getAppointment(id: string): Observable<Appointments> {
+    return this.apiAppointments.getApiAppointment(id).pipe(
+      map((apiappointment) => {
+       return  transformDataAppointment(apiappointment)
+      })
+    );
+  }
+  
+
   public getAppointmentsUser(user: string): Observable<Appointments[]> {
     return this.apiAppointments.getApiAppointmentsUser(user).pipe(
       map((appiAppointment: ApiAppointments[]) => {
@@ -34,6 +43,8 @@ export class AppointmentsService {
   }
 
   public getAppointmentsDate(date: string): Observable<Services[]> {
+    console.log(date);
+    
     return this.apiAppointments.getApiAppointmentsDate(date).pipe(
       map((appiAppointment: ApiServices[]) => {
         return appiAppointment.map((appiAppointment: ApiServices) => appiAppointment)
@@ -50,5 +61,9 @@ export class AppointmentsService {
           apiAppointment
         )
       );
+  }
+
+  public deleteAppointment(id: string): Observable<string> {
+    return this.apiAppointments.deleteApiAppointment(id)
   }
 }

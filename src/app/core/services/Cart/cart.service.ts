@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { ModalService } from '../Modal/modal.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import {BehaviorSubject} from 'rxjs';
 import { ToastService } from '../Toast/toast.service';
@@ -19,7 +18,6 @@ export class CartService {
 
 
   constructor(
-      // private modalService: ModalService,
       private toastService: ToastService,
       private localStorageService: LocalStorageService,
   ) {
@@ -56,6 +54,11 @@ export class CartService {
     this.updateTotal(service, "subtraction" )
     this.localStorageService.setLocalStorage(this.requestedServices.value)
     return this.requestedServices.value;
+  }
+
+  public removeAllServices(key: string) {
+    this.localStorageService.removeLocalStorage(key)
+
   }
   public  getSubtotalAmount(){
     return this.subtotalAmount.asObservable()
