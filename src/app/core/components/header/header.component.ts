@@ -17,6 +17,8 @@ registerLocaleData(localeEs, 'es');
 })
 export class HeaderComponent implements OnInit {
     // public isLightMode: boolean = true;
+    public token?: string;
+    public id?: string;
     public scrollNav: boolean = false;
     public isLogged: boolean = false;
     public isParent: boolean = false;
@@ -63,13 +65,22 @@ export class HeaderComponent implements OnInit {
     }
 
     public onNavigateAccount() {
-        const token = localStorage.getItem('user') // TODO evaluar si usar una variable de entorno para el token
-        if (token) {
-            JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
+        this.token = this.localStorageService.TOKEN_KEY_USER;
+        const storedValue: string | null = localStorage.getItem(this.token);
+        const parsedValue = storedValue ? JSON.parse(storedValue) : null;
+        this.id = parsedValue.user._id
+        this.router.navigate([`/my-account/${this.id}`])
+    }
+
+                
+    public onNavigateServices() {
+        this.token = this.localStorageService.TOKEN_KEY_USER;
+        const storedValue = localStorage.getItem(this.token);
+        if (storedValue) {
+            JSON.parse(storedValue).user.pets ? this.isParent = true : this.isParent = false
         }
         this.isParent ? this.router.navigate(['/parent-view']) : this.router.navigate(['/trainer-view'])
     }
-
     public onChangeHover() {
         if (this.servicesInCart.length >= 1) {
             this.timeHoverMenu = setTimeout(() => {

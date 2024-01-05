@@ -53,7 +53,7 @@ export class LoginComponent implements DeactivatableComponent {
 
   public onSubmit() {
     if (this.form?.valid) {
-      const request = this.isTrainer // TODO esta linea hace algo?
+      const request = this.isTrainer 
         ? this.trainerService.loginTrainers(this.form?.value).subscribe({
             next: () => {
               this.modalService.$message?.next('Logueado con éxito');
@@ -81,9 +81,11 @@ export class LoginComponent implements DeactivatableComponent {
               }, 1000);
             },
             error: (error) => {
+              
               this.loadingService.hideLoading()
               const { error: errorResponse } = error;
               this.errors = errorResponse.message;
+              console.log(this.errors);
             },
           });
     }

@@ -25,5 +25,9 @@ export class ApiTrainerService {
     return this.htpp.post<ApiUsers>(`${URL_API}/login`, body)
   }
 
+  public updateApiDataTrainer(id: string, body: string): Observable<string>{
+    return this.htpp.put<string>(`${URL_API}/${id}`, body)
+  }
+
 
 }

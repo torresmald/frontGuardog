@@ -44,5 +44,9 @@ export class ApiParentsService {
     const body = { password }
     return this.http.post<string>(`${URL_API}/forgot-password/${token}`, body)
   }
+
+  public updateApiDataParent(id: string, body: string): Observable<string>{
+    return this.http.put<string>(`${URL_API}/${id}`, body)
+  }
   
 }

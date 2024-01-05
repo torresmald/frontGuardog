@@ -5,6 +5,7 @@
 			<li (click)="closeMenuMobile()" routerLink="/about"><img src="../../../../assets/home/nav1.png" alt="">Nosotros</li>
 			<li (click)="closeMenuMobile()" routerLink="/contact"><img src="../../../../assets/home/nav1.png" alt="">Contacto</li>
 			<li *ngIf="!isLogged" (click)="closeMenuMobile()" routerLink="/register"><img src="../../../../assets/home/nav1.png" alt="">Regitrarse</li>
+			<li *ngIf="isLogged && isParent" (click)="onNavigateServices()"><img src="../../../../assets/home/nav1.png" alt="">Servicios</li>
 			<li *ngIf="isLogged" (click)="onNavigateAccount()" class="mx-5" routerLink="active"><img src="../../../../assets/home/nav1.png" alt="">Mi Cuenta</li>
 			<li *ngIf="isLogged" (click)="onLogout()" class="mx-5"><img src="../../../../assets/home/nav1.png" alt="">Logout</li>
 			<li *ngIf="servicesInCart.length > 0 && isLogged && isParent" (mouseenter)="onChangeHover()" (mouseleave)="onHoverLeave()" routerLink="/checkout">

@@ -97,6 +97,11 @@ export class RegisterComponent implements OnInit {
       this.image = file;      
     }
   }
+  
+  public onAddDisease() {
+    const control = new FormControl();
+    (<FormArray>this.form?.get('diseases')).push(control)
+  }
 
   public onSubmit() {
     if(this.form?.valid){
@@ -162,10 +167,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  public onAddDisease() {
-    const control = new FormControl();
-    (<FormArray>this.form?.get('diseases')).push(control)
-  }
+
 
 
  }

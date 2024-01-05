@@ -9,11 +9,12 @@ import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-st
 })
 export class TrainerViewComponent implements OnInit {
   public id?: string
+  public token?:string
   constructor(private localStorageService: LocalStorageService, private router: Router) {}
 
   ngOnInit(): void {
-    const TOKEN_KEY_USER = 'user'
-    const storedValue: string | null = localStorage.getItem(TOKEN_KEY_USER);
+    this.token = this.localStorageService.TOKEN_KEY_USER;
+    const storedValue: string | null = localStorage.getItem(this.token);
     const parsedValue = storedValue ? JSON.parse(storedValue) : null;
     this.id = parsedValue.user._id
   }

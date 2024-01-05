@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
 import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmentsService.service';
+import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { PetsService } from 'src/app/core/services/Pets/petsService.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class MyAppointmentsComponent {
   public appointments: Appointments[] = [];
   public namePet:string = ''
 
-  constructor(private route: ActivatedRoute, private appointmentsService: AppointmentsService, private petsService: PetsService) {
+  constructor(private route: ActivatedRoute, private appointmentsService: AppointmentsService, private petsService: PetsService, private modalService: ModalService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,12 +28,23 @@ export class MyAppointmentsComponent {
           appointment.services.map((service) => {
             this.petsService.getPet(service.pet).subscribe((pet) => {
               this.namePet = pet.name
-              console.log(this.namePet);
-              console.log(pet);
             })
           })
           
         })
       })
+  }
+
+  public onCancelAppointment(id: string) {
+    this.appointmentsService.deleteAppointment(id).subscribe((value) => {
+      if(value){
+        this.modalService.$message?.next('Cita Cancelada');
+        this.modalService.showModal();
+        setTimeout(() => {
+          this.router.navigate(['/trainer-view']);
+        }, 1000);
+      }
+      
+    })
   }
 }

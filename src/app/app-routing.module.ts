@@ -48,6 +48,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/my-appointments/my-appointments.module').then(m => m.MyAppointmentsModule)
   },
   {
+    path: 'update-data/:id',
+    loadChildren: () => import('./pages/update-data/update-data.module').then(m => m.UpdateDataModule)
+  },
+  {
     path: 'pet/:id',
     loadChildren: () => import('./pages/pet/pet.module').then(m => m.PetModule)
   },

@@ -27,7 +27,6 @@ export class AppointmentComponent implements OnInit {
   }
 
   public onCancelAppointment(id: string){
-    console.log(id);
     this.appointmentsService.deleteAppointment(id).subscribe(value => {
       if(value){
         this.modalService.$message?.next('Cita Cancelada');

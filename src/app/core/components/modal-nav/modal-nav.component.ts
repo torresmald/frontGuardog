@@ -20,6 +20,9 @@ export class ModalNavComponent implements OnInit {
   public numberInCart: number = 0;
   public showFixedCart: boolean = false;
   public timeHoverMenu?: ReturnType<typeof setTimeout>;
+  public id?:string;
+  public token?: string;
+
 
   @HostListener('window:resize', ['$event'])
   onResize(): void {
@@ -77,17 +80,20 @@ export class ModalNavComponent implements OnInit {
   }
 
   public onNavigateAccount() {
-    const token = localStorage.getItem('user'); // TODO evaluar si usar una variable de entorno para el token
-    if (token) {
-      JSON.parse(token).user.pets
-        ? (this.isParent = true)
-        : (this.isParent = false);
-    }
-    this.isParent
-      ? this.router.navigate(['/parent-view'])
-      : this.router.navigate(['/trainer-view']);
+    this.token = this.localStorageService.TOKEN_KEY_USER;
+    const storedValue: string | null = localStorage.getItem(this.token);
+    const parsedValue = storedValue ? JSON.parse(storedValue) : null;
+    this.id = parsedValue.user._id
+    this.router.navigate([`/my-account/${this.id}`])
   }
-
+  public onNavigateServices() {
+    this.token = this.localStorageService.TOKEN_KEY_USER;
+    const storedValue = localStorage.getItem(this.token);
+    if (storedValue) {
+        JSON.parse(storedValue).user.pets ? this.isParent = true : this.isParent = false
+    }
+    this.isParent ? this.router.navigate(['/parent-view']) : this.router.navigate(['/trainer-view'])
+}
   public onLogout() {
     this.usersService.logout();
     this.router.navigate(['']);
