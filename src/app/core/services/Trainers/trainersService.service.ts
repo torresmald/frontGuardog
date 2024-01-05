@@ -30,6 +30,17 @@ export class TrainerService {
     )
   }
 
+  public getTrainer (id: string): Observable<Trainers>{
+    this.loadingService.showLoading()
+    return this.apiTrainerService.getApiTrainer(id).pipe(
+      map((apiTrainer) => {
+        return transformDataTrainer(apiTrainer)
+      }),
+      tap(() => {
+        this.loadingService.hideLoading()
+      })
+    )
+  }
 
   public loginTrainers(body : ApiTrainers): Observable<User> {
     this.loadingService.showLoading()
@@ -42,6 +53,15 @@ export class TrainerService {
           user: response.user
         });
         localStorage.setItem(TOKEN_KEY, saveStore);
+      })
+    )
+  }
+
+  public updateDataTrainer(id: string, body: string): Observable<string>{
+    this.loadingService.showLoading();
+    return this.apiTrainerService.updateApiDataTrainer(id, body).pipe(
+      tap(() => {
+        this.loadingService.hideLoading()
       })
     )
   }

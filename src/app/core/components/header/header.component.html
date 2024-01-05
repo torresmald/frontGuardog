@@ -15,7 +15,6 @@
     </div>
     <nav>
         <ul class="hidden md:flex mx-6 font-dog text-lg text-sienna-600">
-            <li class="mx-5" routerLink="/" >Inicio</li>
             <li class="mx-5" routerLink="/about" routerLinkActive="active">
                 Nosotros
             </li>
@@ -30,6 +29,14 @@
             >
                 Registrarse
             </li>
+            <li
+            *ngIf="isLogged && isParent"
+            (click)="onNavigateServices()"
+            class="mx-5"
+            routerLinkActive="active"
+    >
+        Servicios
+    </li>
             <li
                     *ngIf="isLogged"
                     (click)="onNavigateAccount()"
@@ -49,7 +56,7 @@
             <div
                     (mouseenter)="onChangeHover()"
                     (mouseleave)="onHoverLeave()"
-                    *ngIf="servicesInCart.length > 0"
+                    *ngIf="servicesInCart.length > 0 && isParent"
                     [ngClass]="{ 'fixed-cart': showFixedCart, relative: !showFixedCart }"
                     class="cursor-pointer"
             >

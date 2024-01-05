@@ -93,4 +93,13 @@ export class ParentService {
     return this.apiParentsService.updateApiPassword(token, password)
   }
 
+  public updateDataParent(id: string, body: string): Observable<string>{
+    this.loadingService.showLoading();
+    return this.apiParentsService.updateApiDataParent(id, body).pipe(
+      tap(() => {
+        this.loadingService.hideLoading()
+      })
+    )
+  }
+
 }

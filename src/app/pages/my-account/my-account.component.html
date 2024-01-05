@@ -1,0 +1,107 @@
+<section
+*ngIf="trainer"
+  class="main bg-sienna-50 w-full flex flex-col gap-20 mt-14"
+>
+  <div class="flex flex-col md:flex-row justify-center md:items-center relative">
+	<article
+	  class="bg-sienna-100 md:absolute md:right-[50%] flex flex-col items-center justify-center h-[170px] md:h-[550px] md:w-[400px] mx-6 mt-3 rounded-t-xl md:rounded-xl z-20"
+	>
+	  <figure
+		class="shadow-2xl rounded-full overflow-auto my-2 md:my-10 w-[110px] h-[100px] md:h-[200px] md:w-[210px]"
+	  >
+		<img class="w-full h-full" src="{{ trainer.image }}" alt="" />
+	  </figure>
+	  <p class="capitalize text-[25px] md:text-[40px] font-dog">
+		{{ trainer.name }}
+	  </p>
+	</article>
+	<article
+	  class="bg-white md:relative z-10 flex flex-col justify-evenly text-center items-center rounded-sm shadow-2xl md:w-[900px] h-[300px] md:h-[500px] mx-4"
+	>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Email</p>
+		<p>{{ trainer.email }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Nombre</p>
+		<p>{{ trainer.name }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Telefono</p>
+		<p>{{ trainer.phone }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full" *ngIf="trainer.experience">
+		<p class="font-dog text-2xl">Experiencia</p>
+		<p>{{ trainer.experience }}</p>
+	  </div>
+	</article>
+  </div>
+  <div class="mx-auto w-44 flex gap-8">
+	  <button
+		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+		routerLink="/trainer-view"
+	  >
+		Volver
+	  </button>
+	  <button
+	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+	  (click)="onChangeData(trainer._id)"
+	  >
+	  Cambiar Datos
+	</button>
+  </div>
+</section>
+<section
+*ngIf="parent"
+  class="main bg-sienna-50 w-full flex flex-col gap-20 mt-14"
+>
+  <div class="flex flex-col md:flex-row justify-center md:items-center relative">
+	<article
+	  class="bg-sienna-100 md:absolute md:right-[50%] flex flex-col items-center justify-center h-[170px] md:h-[550px] md:w-[400px] mx-6 mt-3 rounded-t-xl md:rounded-xl z-20"
+	>
+	  <figure
+		class="shadow-2xl rounded-full overflow-auto my-2 md:my-10 w-[110px] h-[100px] md:h-[200px] md:w-[210px]"
+	  >
+		<img class="w-full h-full" src="{{ parent.image }}" alt="" />
+	  </figure>
+	  <p class="capitalize text-[25px] md:text-[40px] font-dog">
+		{{ parent.name }}
+	  </p>
+	</article>
+	<article
+	  class="bg-white md:relative z-10 flex flex-col justify-evenly text-center items-center rounded-sm shadow-2xl md:w-[900px] h-[300px] md:h-[500px] mx-4"
+	>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Email</p>
+		<p>{{ parent.email }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Nombre</p>
+		<p>{{ parent.name }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Telefono</p>
+		<p>{{ parent.phone }}</p>
+	  </div>
+	  <div class="md:ml-[49%] w-full">
+		<p class="font-dog text-2xl">Direccion</p>
+		<p>{{ parent.address }}</p>
+	  </div>
+	</article>
+  </div>
+  <div class="mx-auto w-44 flex gap-8">
+	  <button
+		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+		routerLink="/parent-view"
+	  >
+		Volver
+	  </button>
+	  <button
+	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+	  (click)="onChangeData(parent._id)"
+	  >
+	  Cambiar Datos
+	</button>
+  </div>
+</section>
+
