@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiPets } from 'src/app/core/models/Pets/api/apiPetModel';
 
-const URL_API = 'http://localhost:4000/pets'
+const URL_API = 'https://api-guardog.vercel.app/pets'
 
 @Injectable({
   providedIn: 'root'

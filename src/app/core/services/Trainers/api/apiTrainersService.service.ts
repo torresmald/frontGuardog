@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiTrainers } from 'src/app/core/models/Trainers/api/apiTrainerModel';
 import { ApiUsers } from 'src/app/core/models/Users/api/apiUserModel';
 
-const URL_API = 'http://localhost:4000/trainers'
+const URL_API = 'https://api-guardog.vercel.app/trainers'
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import { Coupon} from '../../models/Coupons/CouponModel';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const URL_API = 'http://localhost:4000/coupons';
+const URL_API = 'https://api-guardog.vercel.app/coupons';
 @Injectable({
   providedIn: 'root',
 })

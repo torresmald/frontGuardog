@@ -5,7 +5,7 @@ import { ApiAppointments } from 'src/app/core/models/Appointments/api/apiAppoint
 import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
 import { ApiServices } from 'src/app/core/models/Services/api/apiServiceModel';
 
-const URL_API = 'http://localhost:4000/appointments';
+const URL_API = 'https://api-guardog.vercel.app/appointments';
 
 @Injectable({
   providedIn: 'root',

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ApiServices } from "src/app/core/models/Services/api/apiServiceModel";
 
-const API_URL = 'http://localhost:4000/services'
+const API_URL = 'https://api-guardog.vercel.app/services'
 
 @Injectable({
     providedIn: 'root'
