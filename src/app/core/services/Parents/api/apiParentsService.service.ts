@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiParents } from 'src/app/core/models/Parents/api/apiParentModel';
 import { ApiUsers } from 'src/app/core/models/Users/api/apiUserModel';
 
-const URL_API = 'http://localhost:4000/parents';
+const URL_API = 'https://api-guardog.vercel.app/parents';
 
 
 @Injectable({
