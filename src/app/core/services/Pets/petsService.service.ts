@@ -45,7 +45,19 @@ export class PetsService {
                 return transformDataPet(apiPets)
             }),
             tap(() => {
-                this.loadingService.showLoading()
+                this.loadingService.hideLoading()
+            })
+        )
+    }
+
+    public deletePets(id: string): Observable<string> {
+        this.loadingService.showLoading()
+        return this.apiPetsService.deleteApiPets(id).pipe(
+            map((apiPets) => {
+                return apiPets
+            }),
+            tap(() => {
+                this.loadingService.hideLoading()
             })
         )
     }

@@ -23,4 +23,8 @@ export class ApiPetsService {
   public registerApiPets(body: FormData): Observable<ApiPets> {    
     return this.http.post<ApiPets>(`${URL_API}/register`, body)
   } 
+
+  public deleteApiPets(id:string): Observable<string>{
+    return this.http.delete<string>(`${URL_API}/${id}`)
+  }
 }
