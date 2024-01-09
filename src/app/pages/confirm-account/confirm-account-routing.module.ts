@@ -5,7 +5,7 @@ import { ConfirmAccountComponent } from './confirm-account.component';
 const routes: Routes = [
   {
     path: '',
-    component: ConfirmAccountComponent
+    component: ConfirmAccountComponent,
   }
 ];
 
