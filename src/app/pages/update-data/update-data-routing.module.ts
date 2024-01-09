@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UpdateDataComponent } from './update-data.component';
+import { AuthGuard } from 'src/app/core/guards/canActivate/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: UpdateDataComponent
+    component: UpdateDataComponent,
+    canActivate: [AuthGuard]  
   }
 ];
 
