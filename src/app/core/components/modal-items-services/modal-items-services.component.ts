@@ -9,7 +9,7 @@ import { ToastService } from '../../services/Toast/toast.service';
 import { CartService } from '../../services/Cart/cart.service';
 import { AppointmentsService } from '../../services/Appointmet/appointmentsService.service';
 import { Appointments } from '../../models/Appointments/transformed/AppointmentModel';
-import { parseISO, format, isValid } from 'date-fns';
+import { format } from 'date-fns';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Trainers } from '../../models/Trainers/transformed/TrainerModel';
 import { TrainerService } from '../../services/Trainers/trainersService.service';
@@ -83,6 +83,8 @@ export class ModalItemsServicesComponent implements OnInit {
   }
 
   public stopPropagation(event: Event) {
+    console.log(event);
+    
     event.stopPropagation();
   }
 
