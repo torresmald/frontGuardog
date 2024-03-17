@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PrivacyRoutingModule } from './privacy-routing.module';
 import { PrivacyComponent } from './privacy.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PrivacyComponent } from './privacy.component';
   ],
   imports: [
     CommonModule,
-    PrivacyRoutingModule
+    PrivacyRoutingModule,
+    TranslateModule
   ]
 })
 export class PrivacyModule { }
