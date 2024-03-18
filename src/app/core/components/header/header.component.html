@@ -16,10 +16,10 @@
     <nav>
         <ul class="hidden md:flex mx-6 font-dog text-lg text-sienna-600">
             <li class="mx-5" routerLink="/about" routerLinkActive="active">
-                Nosotros
+                {{""}}
             </li>
             <li class="mx-5" routerLink="/contact" routerLinkActive="active">
-                Contacto
+                {{"HEADER.About" | translate}}
             </li>
             <li
                     *ngIf="!isLogged"
@@ -27,7 +27,8 @@
                     routerLink="/register"
                     routerLinkActive="active"
             >
-                Registrarse
+            {{"HEADER.Register" | translate}}
+
             </li>
             <li
             *ngIf="isLogged && isParent"
@@ -35,7 +36,8 @@
             class="mx-5"
             routerLinkActive="active"
     >
-        Servicios
+    {{"HEADER.Services" | translate}}
+
     </li>
             <li
                     *ngIf="isLogged"
@@ -43,7 +45,8 @@
                     class="mx-5"
                     routerLinkActive="active"
             >
-                Mi Cuenta
+            {{"HEADER.Account" | translate}}
+                
             </li>
             <li
                     *ngIf="isLogged"
@@ -51,7 +54,8 @@
                     class="mx-5"
                     routerLinkActive="active"
             >
-                Logout
+            {{"HEADER.Logout" | translate}}
+
             </li>
             <div
                     (mouseenter)="onChangeHover()"

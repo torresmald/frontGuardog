@@ -5,6 +5,7 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
 import { CheckoutComponent } from './checkout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceCardComponent } from './service-card/service-card.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ServiceCardComponent } from './service-card/service-card.component';
     CommonModule,
     CheckoutRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
 })
 export class CheckoutModule { }
