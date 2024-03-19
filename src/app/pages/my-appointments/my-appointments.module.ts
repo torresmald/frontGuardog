@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MyAppointmentsRoutingModule } from './my-appointments-routing.module';
 import { MyAppointmentsComponent } from './my-appointments.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { MyAppointmentsComponent } from './my-appointments.component';
   ],
   imports: [
     CommonModule,
-    MyAppointmentsRoutingModule
+    MyAppointmentsRoutingModule,
+    TranslateModule
   ]
 })
 export class MyAppointmentsModule { }

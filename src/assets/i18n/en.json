@@ -77,5 +77,54 @@
     "Subject": "Subject",
     "Message": "Message",
     "Send": "Send"
+  },
+  "FORGOT_PASSWORD": {
+    "Reset": "Recover Password",
+    "Fill": "Please, fill all the fields",
+    "EmailRequired": "The email is required",
+    "EmailInvalid": "The email has an invalid format",
+    "Submit": "Submit",
+    "Back": "Back"
+  },
+  "HOME":{
+    "Title": "Dog Services",
+    "Subtitle": "We understand the importance of giving your pets the care and attention they deserve.",
+    "Trainers": "Trainers",
+    "Clients": "Clients",
+    "Walk": "Walk Service",
+    "WalkDesc":"Fall in love with the joy in every step. Our walks offer more than just stretching your legs; They are adventures full of fun and exploration. With our team of expert sitters, your dogs will enjoy themselves.",
+    "Bath": "Bath and Hairdressing",
+    "BathDesc": "We understand the importance of keeping your furry friends looking and feeling fresh. Our bathing and grooming services go beyond aesthetics, providing comprehensive, attentive care to ensure your pets feel pampered and look amazing. Discover what we offer!",
+    "Guard": "Dog Daycare",
+    "GuardDesc": "At our dog daycare, we are proud to offer a home away from home for your beloved four-legged friends. With a passionate team and services designed to meet all their needs, your pet will enjoy a unique and enriching experience. Discover why we are the perfect choice for the care of your furry companions!"
+  },
+  "LOGIN":{
+    "Fill":"Please, fill all the fields",
+    "EmailRequired":"The email is required",
+    "EmailInvalid":"The email has an invalid format",
+    "Password": "Password",
+    "PasswordRequired":"The password is required",
+    "PasswordInvalid": "The password is invalid",
+    "Submit":"Submit",
+    "ForgotPassword":"Forgot Password?",
+    "NoUser": "The user does´t exist, Create an Account",
+    "UserNoVerified": "Your account isn´t verified, check your email",
+    "Back":"Back",
+    "Register":"Create Account"
+  },
+  "MY_ACCOUNT":{
+    "Name": "Name",
+    "Phone": "Phone",
+    "Experience": "Experience",
+    "Back":"Back",
+    "Change": "Change Data",
+    "Address": "Address"
+  },
+  "MY_APPOINTMENTS":{
+    "Date":"Date",
+    "Time":"Time",
+    "Pet":"Pet",
+    "Cancel": "Cancel Appointment",
+    "NoAppointments": "You dont have Appointments"
   }
 }

@@ -6,6 +6,7 @@ import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormModule } from '@coreui/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -18,7 +19,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     LoginRoutingModule,
     ReactiveFormsModule,
     FormModule,
-    SharedModule
+    SharedModule,
+    TranslateModule
   ]
 })
 export class LoginModule { }

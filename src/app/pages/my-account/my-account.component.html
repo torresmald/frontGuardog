@@ -23,15 +23,24 @@
 		<p>{{ trainer.email }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Nombre</p>
+		<p class="font-dog text-2xl">
+			{{"MY_ACCOUNT.Name" | translate}}
+
+		</p>
 		<p>{{ trainer.name }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Telefono</p>
+		<p class="font-dog text-2xl">
+			{{"MY_ACCOUNT.Phone" | translate}}
+
+		</p>
 		<p>{{ trainer.phone }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full" *ngIf="trainer.experience">
-		<p class="font-dog text-2xl">Experiencia</p>
+		<p class="font-dog text-2xl">
+			{{"MY_ACCOUNT.Experience" | translate}}
+
+		</p>
 		<p>{{ trainer.experience }}</p>
 	  </div>
 	</article>
@@ -41,13 +50,15 @@
 		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
 		routerLink="/trainer-view"
 	  >
-		Volver
+	  {{"MY_ACCOUNT.Back" | translate}}
+		
 	  </button>
 	  <button
 	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
 	  (click)="onChangeData(trainer._id)"
 	  >
-	  Cambiar Datos
+	  {{"MY_ACCOUNT.Change" | translate}}
+	  
 	</button>
   </div>
 </section>
@@ -76,15 +87,24 @@
 		<p>{{ parent.email }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Nombre</p>
+		<p class="font-dog text-2xl">
+			{{"MY_ACCOUNT.Name" | translate}}
+
+		</p>
 		<p>{{ parent.name }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Telefono</p>
+		<p class="font-dog text-2xl">
+			{{"MY_ACCOUNT.Phone" | translate}}
+
+		</p>
 		<p>{{ parent.phone }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Direccion</p>
+		<p class="font-dog text-2xl">
+			{{"MY_ACCOUNT.Address" | translate}}
+
+		</p>
 		<p>{{ parent.address }}</p>
 	  </div>
 	</article>
@@ -94,13 +114,14 @@
 		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
 		routerLink="/parent-view"
 	  >
-		Volver
+	  {{"MY_ACCOUNT.Back" | translate}}
+		
 	  </button>
 	  <button
 	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
 	  (click)="onChangeData(parent._id)"
 	  >
-	  Cambiar Datos
+	  {{"MY_ACCOUNT.Change" | translate}}
 	</button>
   </div>
 </section>

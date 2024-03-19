@@ -79,6 +79,52 @@
     "Send": "Enviar"
   },
   "FORGOT_PASSWORD": {
-    "Reset": "Recuperar Contraseña"
+    "Reset": "Recuperar Contraseña",
+    "Fill": "Por favor, rellena Todos los campos",
+    "EmailRequired": "El email es requerido",
+    "EmailInvalid": "El email tiene un formato inválido",
+    "Submit": "Enviar",
+    "Back": "Volver"
+  },
+  "HOME":{
+    "Title": "Servicios Caninos",
+    "Subtitle": "Entendemos la importancia de brindar a tus mascotas el cuidado y atención que se merecen.",
+    "Trainers": "Profesionales",
+    "Clients": "Particulares",
+    "Walk": "Servicio de paseo",
+    "WalkDesc":"Enamórate de la alegría en cada paso. Nuestros paseos ofrecen más que simplemente estirar las piernas; son aventuras llenas de diversión y exploración. Con nuestro equipo de cuidadores expertos, tus perros disfrutarán.",
+    "Bath": "Baño y Peluquería",
+    "BathDesc": "Comprendemos la importancia de mantener a tus peludos amigos con aspecto y sensación fresca. Nuestros servicios de baño y peluquería van más allá de la estética, proporcionando cuidados completos y atentos para garantizar que tus mascotas se sientan mimadas y luzcan increíbles. ¡Descubre lo que ofrecemos!",
+    "Guard": "Guarderia Canina",
+    "GuardDesc": " En nuestra guardería canina, nos enorgullece ofrecer un hogar lejos de casa para tus queridos amigos de cuatro patas. Con un equipo apasionado y servicios diseñados para satisfacer todas sus necesidades, tu mascota disfrutará de una experiencia única y enriquecedora. ¡Descubre por qué somos la elección perfecta para el cuidado de tus peludos compañeros!"
+  },
+  "LOGIN":{
+    "Fill": "Por favor, rellena Todos los campos",
+    "EmailRequired":"El email es requerido",
+    "EmailInvalid":"El email tiene un formato inválido",
+    "Password": "Contraseña",
+    "PasswordRequired":"La contraseña es requerida",
+    "PasswordInvalid": "La contraseña no es correcta",
+    "Submit":"Enviar",
+    "ForgotPassword":"¿Olvidaste tu contraseña?",
+    "NoUser": "El Usuario No existe, Registrate",
+    "UserNoVerified": "No has verificado tu cuenta, revisa tu email",
+    "Back":"Volver",
+    "Register":"Crear Cuenta"
+  },
+  "MY_ACCOUNT":{
+    "Name": "Nombre",
+    "Phone": "Telefono",
+    "Experience": "Experiencia",
+    "Back":"Volver",
+    "Change": "Cambiar Datos",
+    "Address": "Direccion"
+  },
+  "MY_APPOINTMENTS":{
+    "Date":"Fecha",
+    "Time":"Hora",
+    "Pet":"Mascota",
+    "Cancel": "Cancelar Cita",
+    "NoAppointments": "No tienes citas actualmente"
   }
 }
