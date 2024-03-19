@@ -18,19 +18,31 @@
 	  class="bg-white md:relative z-10 flex flex-col justify-evenly text-center items-center rounded-sm shadow-2xl md:w-[900px] h-[300px] md:h-[500px] mx-4"
 	>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Fecha de Nacimiento</p>
+		<p class="font-dog text-2xl">
+	{{"PET.Birthday" | translate}}
+
+		</p>
 		<p>{{ pet?.birthday }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Dueño</p>
+		<p class="font-dog text-2xl">
+	{{"PET.Owner" | translate}}
+
+		</p>
 		<p>{{ pet?.parent?.name }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Dieta</p>
+		<p class="font-dog text-2xl">
+	{{"PET.Diet" | translate}}
+
+		</p>
 		<p>{{ pet?.nutrition }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
-		<p class="font-dog text-2xl">Alergias</p>
+		<p class="font-dog text-2xl">
+	{{"PET.Alergies" | translate}}
+
+		</p>
 		<p>{{ pet?.diseases }}</p>
 	  </div>
 	</article>
@@ -40,19 +52,21 @@
 		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
 		routerLink="/parent-view"
 	  >
-		Volver
+	  {{"PET.Back" | translate}}
+
 	  </button>
 	  <button
 	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
 	  (click)="onDownloadPet()"
 	  >
-	  Descargar Ficha
+	{{"PET.Download" | translate}}
+	  
 	</button>
 	<button
 	class="bg-red-500 hover:bg-red-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
 	(click)="onDeletePet(pet?._id)"
 	>
-	Eliminar Mascota
+	{{"PET.Remove" | translate}}
   </button>
   </div>
 </section>
