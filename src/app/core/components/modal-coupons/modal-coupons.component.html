@@ -2,7 +2,7 @@
   <section
     *ngIf="changeModal"
   >
-    CONSIGUE DESCUENTOS USANDO EL CUPÓN :
+    {{"COUPONS.Welcome" | translate}} :
     <span class="text-white bg-sienna-700 font-extrabold p-1 ">{{
       coupon?.name
     }}</span>
@@ -10,6 +10,6 @@
   <section
     *ngIf="!changeModal"
   >
-    DISFRUTA DE NUESTROS SERVICIOS AL MEJOR PRECIO
+    {{"COUPONS.Enjoy" | translate}}
   </section>
 </div>

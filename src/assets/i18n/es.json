@@ -1,205 +1,144 @@
 {
-  "HEADER": {
-    "ABOUT": "Sobre Nosotros",
-    "LOGIN": "Login",
-    "LOGOUT": "Logout",
-    "ACCOUNT": "Mi Cuenta"
-  },
   "FOOTER": {
-    "HOME": "Inicio",
-    "CONTACT": "Contacto",
-    "PRIVACY": "Privacidad"
+    "About": "Sobre Nosotros",
+    "Privacy": "Politica de Privacidad",
+    "Contact": "Contacto"
   },
-  "MYACCOUNT": {
-    "DATA": "Mis Datos de Contacto",
-    "NAME": "Nombre",
-    "EMAIL": "Email",
-    "GRADE": "Curso"
+  "HEADER":{
+    "About":"Nosotros",
+    "Register": "Registro",
+    "Services": "Servicios",
+    "Account": "Mi Cuenta",
+    "Logout": "Logout"
+  },
+  "CART": {
+    "Empty": "El carrito está vacío",
+    "Total": "Total",
+    "Pay": "Pagar"
+  },
+  "COUPONS": {
+    "Welcome": "CONSIGUE DESCUENTOS USANDO EL CUPÓN",
+    "Enjoy": "DISFRUTA DE NUESTROS SERVICIOS AL MEJOR PRECIO"
   },
   "MODAL": {
-    "CONTINUE": "CONTINUAR",
-    "EXIT": "SALIR"
+    "Continue": "Continuar",
+    "Close": "Cerrar"
   },
-  "BUTTON": {
-    "BACK": "Atrás"
+  "MODAL_SERVICES": {
+    "Pet": "Mascota",
+    "Select": "Selecciona",
+    "Date": "Fecha",
+    "Choose": "Elije una Fecha",
+    "Time": "Hora",
+    "Trainer": "Entrenador",
+    "Confirm": "Confirmar"
   },
-  "TEACHERS": {
-    "VIEW": {
-      "NAV": {
-        "MY STUDENTS": "Mis alumnos",
-        "MESSAGE": "Mensajes",
-        "RESOURCES": "Añadir Recurso"
-      },
-      "CALENDAR": {
-        "INSTRUCTIONS": "Instrucciones",
-        "LI1": "Seleccione las fechas y se le pedirá que cree un nuevo evento",
-        "LI2": "Eventos para arrastrar, soltar y cambiar el tamaño",
-        "LI3": "Haga clic en un evento para eliminarlo",
-        "DELETEWEEKENDS": "Quitar los fines de semana",
-        "ALLEVENTS": "Todos los Eventos"
-      }
-    }
+  "MODAL_NAV": {
+    "Home": "Inicio",
+    "About": "Nosotros",
+    "Contact":"Contacto",
+    "Register":"Registro",
+    "Services":"Servicios",
+    "Account":"Mi Cuenta",
+    "Logout":"Logout"
   },
-  "MYSTUDENTS": {
-    "FILTER": "Filtra por nombre",
-    "SORT": "Ordena por nombre",
-    "UPWARD": "Ascendente",
-    "FALLING": "Descendente",
-    "CLASS": "Clase",
-    "BUTTONS": {
-      "RETURN": "Volver",
-      "DOWNLOAD": "Descargar los detalles",
-      "DETAIL": "Ir al detalle"
-    }
+  "MODAL_PETS":{
+    "Pet": "Nueva Mascota",
+    "Password": "Restablecer Password",
+    "Pets": "Mis Mascotas",
+    "Appointments": "Mis Citas"
   },
-  "MYSTUDENTDETAIL": {
-    "NAME": "Nombre",
-    "ADRESS": "Dirección",
-    "PHONE": "Teléfono",
-    "YEAR": "Año de nacimiento",
-    "CLASS": "Clase",
-    "ALLERGIES": "Alergias",
-    "MEDICATIONS": "Medicamentos",
-    "AREAS": "Areas",
-    "EMAIL": "Email",
-    "RETURN": "Volver",
-    "DOWNLOAD": "Descargar detalles"
+  "APPOINTMENTS":{
+    "Appointment": "Cita Contratada",
+    "Date":"Fecha",
+    "Back": "Volver",
+    "Cancel": "Anular"
   },
-  "SONGS": {
-    "TITLE": "Canciones",
-    "INTRO1": "En esta sección encontrarás una colección de canciones que cantamos en el colegio. Estas melodías están especialmente seleccionadas para que los niños puedan disfrutarlas y aprender al mismo tiempo. Las utilizamos mucho como recurso educativo para favorecer la adquisición de ciertos hábitos y rutinas.",
-    "INTRO2": "¡Esperamos que os gusten y las cantéis juntos en casa!",
-    "BACKBUTTON": "Volver",
-    "DELETEBUTTON": "Borrar Recurso"
-},
-  "TEACHERSMESSAGE": {
-    "TITLE": "Enviar mensajes a las familias",
-    "FORM": {
-      "NAME": "Nombre",
-      "DESCRIPTION": "Descripción",
-      "BUTTON": "Enviar"
-    },
-    "RETURN": "Volver"
+  "SERVICE_CARD":{
+    "Prize": "Precio",
+    "Hour": "horas",
+    "Trainer":"Entrenador"
   },
-  "ABOUTSLIDER": {
-    "1": {
-      "TITLE": "ESCUELA INFANTIL SEMILLA",
-      "TEXT1": "Nuesta Escuela infantil 'Semilla' se encuentra ubicada en la calle Wallaby, número 42, en el municipio de Sidney, dentro de la provincia de Invent.",
-      "TEXT2": "Con un total de 100 personas de alumnado en edades comprendidas entre 2 y 5 años, dividas en 4 clases."
-    },
-    "2": {
-      "TITLE": "LOS MEJORES PROFESIONALES",
-      "TEXT": "Entre nuestra plantilla de profesionales se encuentran educadores y educadoras que promoverán el crecimiento autónomo del alumnado."
-    },
-    "3": {
-      "TITLE": "HERRAMIENTAS DE MADERA",
-      "TEXT": "Todos los objetos utilizados en las áreas de trabajo de nuestra escuela están realizadas en madera pulida y son totalmente adecuadas para el uso infantil."
-    },
-    "4": {
-      "TITLE": "EDUCACIÓN EN VALORES",
-      "TEXT": "Durante la infancia, la educación en valores como el cuidado del medioambiente son especialmente importantes. Es por ello, que promovemos acciones como el reciclaje."
-    },
-    "5": {
-      "TITLE": "DESARROLLO DE CAPACIDADES ARTÍSTICAS",
-      "TEXT": "Nos parece primordial el desarrollo cognitivo de los menores a través de la utilización de las artes: pintura, música, baile, teatro, etc..."
-    },
-    "6": {
-      "TITLE": "USO DE METODOLOGÍA MONTESSORI",
-      "TEXT": "Promover la autonomía es uno de nuestros objetivos primordiales y lo trabajamos a través de la metodología Monstessori."
-    }
+  "CHECKOUT":{
+    "Cart": "Carrito",
+    "Resume": "RESUMEN",
+    "Coupon": "Cupón",
+    "IVA": "IVA",
+    "Total": "Total a Pagar",
+    "Invalid": "Cupón No Válido",
+    "Buy": "COMPRAR"
+  },
+  "CONFIRM_ACCOUNT":{
+    "Confirm": "Confirmar Cuenta"
   },
   "CONTACT": {
-    "NAME": "Nombre",
-    "EMAIL": "Email",
-    "MESSAGE": "Mensaje",
-    "SEND": "Enviar"
+    "Contact": "¡Contáctanos!",
+    "Suggest": "¿Tienes un problema técnico? ¿Alguna sugerencia? ¡Háznoslo saber!",
+    "Subject": "Asunto",
+    "Message": "Mensaje",
+    "Send": "Enviar"
   },
-  "HOME": {
-    "TEACHER": "Acceso a profesorado",
-    "FAMILY": "Acceso a familias"
+  "FORGOT_PASSWORD": {
+    "Reset": "Recuperar Contraseña",
+    "Fill": "Por favor, rellena Todos los campos",
+    "EmailRequired": "El email es requerido",
+    "EmailInvalid": "El email tiene un formato inválido",
+    "Submit": "Enviar",
+    "Back": "Volver"
   },
-  "LOGIN": {
-    "TITLE": {
-      "1": "Acceso a profesorado",
-      "2": "Acceso a familias"
-    },
-    "FIELDS": {
-      "TITLE": "Introduce email y contraseña",
-      "EMAIL": {
-        "1": "Email requerido",
-        "2": "Formato de email incorrecto"
-      },
-      "PASSWORD": {
-        "PASSWORD": "Contraseña",
-        "1": "Escribe una contraseña"
-      },
-      "GO": "Acceder",
-      "RETURN": "Atrás"
-    },
-    "OVERLAY": {
-      "1": "Bienvenido",
-      "2": "¿Eres un familiar o tutor?",
-      "3": "Acceso familias",
-      "4": "Bienvenido",
-      "5": "¿Perteneces al profesorado?",
-      "6": "Acceso profesorado"
-    }
+  "HOME":{
+    "Title": "Servicios Caninos",
+    "Subtitle": "Entendemos la importancia de brindar a tus mascotas el cuidado y atención que se merecen.",
+    "Trainers": "Profesionales",
+    "Clients": "Particulares",
+    "Walk": "Servicio de paseo",
+    "WalkDesc":"Enamórate de la alegría en cada paso. Nuestros paseos ofrecen más que simplemente estirar las piernas; son aventuras llenas de diversión y exploración. Con nuestro equipo de cuidadores expertos, tus perros disfrutarán.",
+    "Bath": "Baño y Peluquería",
+    "BathDesc": "Comprendemos la importancia de mantener a tus peludos amigos con aspecto y sensación fresca. Nuestros servicios de baño y peluquería van más allá de la estética, proporcionando cuidados completos y atentos para garantizar que tus mascotas se sientan mimadas y luzcan increíbles. ¡Descubre lo que ofrecemos!",
+    "Guard": "Guarderia Canina",
+    "GuardDesc": " En nuestra guardería canina, nos enorgullece ofrecer un hogar lejos de casa para tus queridos amigos de cuatro patas. Con un equipo apasionado y servicios diseñados para satisfacer todas sus necesidades, tu mascota disfrutará de una experiencia única y enriquecedora. ¡Descubre por qué somos la elección perfecta para el cuidado de tus peludos compañeros!"
   },
-  "ALERT": {
-    "SUCCESS": {
-      "TITLE": "Welcome",
-      "MSG": "You have successfully logged in"
-    },
-    "ERROR": {
-      "TITLE": "Error",
-      "MSG": "You must complete all fields"
-    }
+  "LOGIN":{
+    "Fill": "Por favor, rellena Todos los campos",
+    "EmailRequired":"El email es requerido",
+    "EmailInvalid":"El email tiene un formato inválido",
+    "Password": "Contraseña",
+    "PasswordRequired":"La contraseña es requerida",
+    "PasswordInvalid": "La contraseña no es correcta",
+    "Submit":"Enviar",
+    "ForgotPassword":"¿Olvidaste tu contraseña?",
+    "NoUser": "El Usuario No existe, Registrate",
+    "UserNoVerified": "No has verificado tu cuenta, revisa tu email",
+    "Back":"Volver",
+    "Register":"Crear Cuenta"
   },
-  "MATHACTIVITIES": {
-    "TITLE": "Actividades Lógico-Matemáticas",
-    "INTRO1": "En esta sección encontrarás una variedad de actividades lógico-matemáticas para que puedas practicar y reforzar los conceptos que vamos aprendiendo en clase.",
-    "INTRO2": "Esperamos que disfrutes de estas actividades y las encuentres útiles. Si tienes alguna pregunta o necesitas ayuda con alguna actividad, no dudes en preguntar a tu profesor.",
-    "BACKBUTTON": "Volver",
-    "VIEWBUTTON": "Ver Actividad"
-},
-"FAMILYVIEW" : {
-  "NAV" : {
-    "1" : "Notificaciones",
-    "2" : "Recursos",
-    "3" : "Contacto"
+  "MY_ACCOUNT":{
+    "Name": "Nombre",
+    "Phone": "Telefono",
+    "Experience": "Experiencia",
+    "Back":"Volver",
+    "Change": "Cambiar Datos",
+    "Address": "Direccion"
   },
-  "FILE" : "Ficha de mi hijo",
-  "CALENDAR" : "Mi calendario",
-  "CARD" :{
-    "GRADE" : "Clase",
-    "BIRTH" : "Fecha de nacimiento",
-    "PHONE" : "Teléfono de contacto:",
-    "EMAIL" : "Email de contacto:",
-    "ADRESS" : "Dirección:",
-    "DISEASES" : "Enfermedades:",
-    "ALLERGIES" : "Alergias alimentarias:"
-  }
+  "MY_APPOINTMENTS":{
+    "Date":"Fecha",
+    "Time":"Hora",
+    "Pet":"Mascota",
+    "Cancel": "Cancelar Cita",
+    "NoAppointments": "No tienes citas actualmente"
   },
-  "READINGWRITINGACTIVITIES" : {
-    "TITLE": "Actividades de Lectoescritura",
-    "INTRO1": "En esta sección encontrarás una variedad de actividades de lectoescritura para que puedas practicar y reforzar los conceptos que vamos aprendiendo en clase.",
-    "INTRO2": "Esperamos que disfrutes de estas actividades y las encuentres útiles. Si tienes alguna pregunta o necesitas ayuda con alguna actividad, no dudes en preguntar a tu profesor.",
-    "BACKBUTTON": "Volver",
-    "VIEWBUTTON": "Ver actividad"
+  "PARENT_VIEW":{
+    "Pets":"Mascotas/Citas",
+    "Services":"Servicios"
   },
-  "ENGLISHACTIVITIES" : {
-    "TITLE": "Actividades de Inglés",
-    "INTRO1": "En esta sección encontrarás una variedad de actividades de inglés para que puedas practicar y reforzar los conceptos que vamos aprendiendo en clase.",
-    "INTRO2": "Esperamos que disfrutes de estas actividades y las encuentres útiles. Si tienes alguna pregunta o necesitas ayuda con alguna actividad, no dudes en preguntar a tu profesor.",
-    "BACKBUTTON": "Volver",
-    "VIEWBUTTON": "Ver Actividad"
-  },
-  "PROGRAMACTIVITIES" : {
-    "TITLE": "Actividades Relacionadas con la Programación",
-    "INTRO1": "En esta sección encontrarás una variedad de actividades relacionadas con lo que vamos viendo en nuestra programación para que puedas practicar y reforzar los conceptos que vamos aprendiendo en clase.",
-    "INTRO2": "Esperamos que disfrutes de estas actividades y las encuentres útiles. Si tienes alguna pregunta o necesitas ayuda con alguna actividad, no dudes en preguntar a tu profesor.",
-    "BACKBUTTON": "Volver",
-    "VIEWBUTTON": "Ver Actividad"
+  "PET":{
+    "Date":"Fecha Nacimiento",
+    "Owner":"Propietario",
+    "Diet":"Dieta",
+    "Alergies":"Alergias",
+    "Back":"Volver",
+    "Download":"Descargar Ficha",
+    "Remove":"Eliminar Mascota"
   },
   "PRIVACITY" : {
     "1" : "POLÍTICA DE PRIVACIDAD DEL SITIO WEB",
@@ -250,10 +189,66 @@
     "46" : "El uso del Sitio Web implicará la aceptación de la Política de Privacidad del mismo. XXXX se reserva el derecho a modificar su    Política de Privacidad, de acuerdo a su propio criterio, o motivado por un cambio legislativo, jurisprudencial o doctrinal de la Agencia Española de Protección de Datos. Los cambios o actualizaciones de esta Política de Privacidad no serán notificados de forma explícita al Usuario. Se recomienda al Usuario consultar esta página de forma periódica para estar al tanto de los últimos cambios o actualizaciones. Esta Política de Privacidad fue actualizada para adaptarse al Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos (RGPD) y a la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales.",
     "47" : "Este documento de Política de Privacidad de un sitio web ha sido creado mediante el generador de plantilla de política de privacidad web gratis online el día 21/03/2023."
   },
-  "BOOKS": {
-    "TITLE": "Cuentos",
-    "INTRO1": "En esta sección encontrarás una selección de cuentos que leemos en clase. Estos cuentos están especialmente seleccionados para que los niños puedan disfrutarlos y aprender al mismo tiempo. Son una excelente herramienta para fomentar la imaginación y el amor por la lectura desde temprana edad.",
-    "INTRO2": "¡Esperamos que disfruten de estos cuentos y los compartan juntos en casa!",
-    "BACKBUTTON": "Volver"
-}
+  "TRAINER_VIEW":{
+    "Data":"Mis Datos",
+    "Dates": "Mis Citas"
+  },
+  "UPDATE_PASSWORD":{
+    "Update":"Actualizar Contraseña",
+    "Fill":"Por favor, rellena Todos los campos",
+    "Password":"Contraseña",
+    "PasswordRequired":"La contraseña es requerida",
+    "PasswordInvalid":"El password debe tener al menos 8 carácteres",
+    "RepeatPassword":"Repetir Contraseña",
+    "NoCoincidence": "Las Contraseñas no coinciden",
+    "Submit":"Enviar",
+    "Back":"Volver"
+  },
+  "UPDATE_DATA": {
+    "Edit": "Edita tus Datos",
+    "Account":"Detalles Cuenta",
+    "Fill":"Por favor, rellena Todos los campos",
+    "Name":"Nombre",
+    "NameRequired": "El nombre es requerido",
+    "NameSort": "El nombre es muy corto",
+    "Phone":"Telefono",
+    "PhoneRequired": "El Telefono es requerido",
+    "Address":"Direccion",
+    "AddressRequired": "La direccion es requerida",
+    "Submit":"Enviar",
+    "Back":"Volver"
+  },
+  "REGISTER":{
+    "Register": "Registro",
+    "Fill":"Por favor, rellena Todos los campos",
+    "Name":"Nombre",
+    "NameRequired":"El nombre es requerido",
+    "NameSort":"El nombre es muy corto",
+    "ImgRequired": "La imagen es requerida",
+    "Date":"Fecha",
+    "DateRequired": "La fecha es requerida",
+    "Nutrition": "Alimentacion",
+    "NutritionRequired": "La alimentacion es requerida",
+    "Select":"Selecciona",
+    "Disease": "Añade Enfermedad",
+    "Exercise":"Ejercicio",
+    "ExerciseRequired":"El ejercicio es requerido",
+    "Gifts": "Maximos Premios Diarios",
+    "EmailRequired":"El email es requerido",
+    "EmailInvalid":"El email tiene un formato inválido",
+    "Password":"Contraseña",
+    "PasswordRequired":"La contraseña es requerida",
+    "PasswordInvalid":"El password debe tener al menos 8 carácteres",
+    "RepeatPassword":"Repetir Contraseña",
+    "NoCoincidence":"Las Contraseñas no coinciden",
+    "Phone":"Telefono",
+    "PhoneRequired":"El Telefono es requerido",
+    "Address":"Direccion",
+    "AddressRequired":"La direccion es requerida",
+    "Submit":"Enviar",
+    "ExistUser":"El Usuario ya existe, Loguéate",
+    "ExistPet":"Ya existe la mascota",
+    "Home":"Inicio",
+    "Back":"Volver"
+  }
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UpdateDataRoutingModule } from './update-data-routing.module';
 import { UpdateDataComponent } from './update-data.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     UpdateDataRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ]
 })
 export class UpdateDataModule { }

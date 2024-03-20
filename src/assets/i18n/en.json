@@ -1,207 +1,144 @@
 {
-  "HEADER": {
-    "ABOUT": "About Us",
-    "LOGIN": "Login",
-    "LOGOUT": "Logout",
-    "ACCOUNT": "My Account"
-  },
   "FOOTER": {
-    "HOME": "Home",
-    "CONTACT": "Contact",
-    "PRIVACY": "Privacy"
+    "About": "About Us",
+    "Privacy": "Privacy",
+    "Contact": "Contact"
   },
-  "MYACCOUNT": {
-    "DATA": "My Contact Data",
-    "NAME": "Name",
-    "EMAIL": "Email",
-    "GRADE": "Grade"
+  "HEADER":{
+    "About":"About Us",
+    "Register": "Register",
+    "Services": "Services",
+    "Account": "My Account",
+    "Logout": "Logout"
   },
-
+  "CART": {
+    "Empty": "The cart is empty",
+    "Total": "Total",
+    "Pay": "Pay"
+  },
+  "COUPONS": {
+    "Welcome": "GET DISCOUNTS USING DAILY COUPON",
+    "Enjoy": "ENJOY OUR SERVICES AT THE BEST PRICE"
+  },
   "MODAL": {
-    "CONTINUE": "CONTINUE",
-    "EXIT": "EXIT",
-    "MESSAGE": "ARE YOU SURE YOU WANT YO EXIT?"
+    "Continue": "Continue",
+    "Close": "Close"
   },
-  "BUTTON": {
-    "BACK": "Back"
+  "MODAL_SERVICES": {
+    "Pet": "Pet",
+    "Select": "Select",
+    "Date": "Date",
+    "Choose": "Choose a Date",
+    "Time": "Time",
+    "Trainer": "Trainer",
+    "Confirm": "Confirm"
   },
-  "TEACHERS": {
-    "VIEW": {
-      "NAV": {
-        "MY STUDENTS": "My students",
-        "MESSAGE": "Messages",
-        "RESOURCES": "Add Resource"
-      },
-      "CALENDAR": {
-        "INSTRUCTIONS": "Instructions",
-        "LI1": "Select the dates and you will be prompted to create a new event",
-        "LI2": "Events for drag, drop and resize",
-        "LI3": "Click on an event to delete it",
-        "DELETEWEEKENDS": "Remove weekends",
-        "ALLEVENTS": "All Events"
-      }
-    }
+  "MODAL_NAV": {
+    "Home": "Home",
+    "About": "About Us",
+    "Contact":"Contact",
+    "Register":"Register",
+    "Services":"Services",
+    "Account":"My Account",
+    "Logout":"Logout"
   },
-  "MYSTUDENTS": {
-    "FILTER": "Filter by name",
-    "SORT": "Sort by Name",
-    "UPWARD": "Upward",
-    "FALLING": "Falling",
-    "CLASS": "Course",
-    "BUTTONS": {
-      "RETURN": "Return",
-      "DOWNLOAD": "Download details",
-      "DETAIL": "Go to detail"
-    }
+  "MODAL_PETS":{
+    "Pet": "New Pet",
+    "Password": "Reset Password",
+    "Pets": "My Pets",
+    "Appointments": "My Appointments"
   },
-  "MYSTUDENTDETAIL": {
-    "NAME": "Name",
-    "ADRESS": "Adress",
-    "PHONE": "Phone",
-    "YEAR": "Year of birth",
-    "CLASS": "Course",
-    "ALLERGIES": "Allergies",
-    "MEDICATIONS": "Medications",
-    "AREAS": "Areas",
-    "EMAIL": "Email",
-    "RETURN": "Return",
-    "DOWNLOAD": "Download details"
+  "APPOINTMENTS":{
+    "Appointment": "Appointment",
+    "Date":"Date",
+    "Back": "Back",
+    "Cancel": "Cancel"
   },
-  "TEACHERSMESSAGE": {
-    "TITLE": "Send messages to families",
-    "FORM": {
-      "NAME": "Name",
-      "DESCRIPTION": "Description",
-      "BUTTON": "Send"
-    },
-    "RETURN": "Return"
+  "SERVICE_CARD":{
+    "Prize": "Prize",
+    "Hour": "hours",
+    "Trainer":"Trainer"
   },
-  "SONGS": {
-    "TITLE": "Songs",
-    "INTRO1": "In this section you will find a collection of songs that we sing at school. These melodies are specially selected so that children can enjoy them and learn at the same time. We use them a lot as an educational resource to promote the acquisition of certain habits and routines.",
-    "INTRO2": "We hope you like them and sing them together at home!",
-    "BACKBUTTON": "Back",
-    "DELETEBUTTON": "Delete Resource"
+  "CHECKOUT":{
+    "Cart": "Cart",
+    "Resume": "RESUME",
+    "Coupon": "Coupon",
+    "IVA": "TAX",
+    "Total": "Total Payr",
+    "Invalid": "Invalid Coupon",
+    "Buy": "BUY"
   },
-  "ABOUTSLIDER": {
-    "1": {
-      "TITLE": "SEMILLA INFANT SCHOOL",
-      "TEXT1": "Our Nursery School 'Semilla' is located at Wallaby Street, number 42, in the municipality of Sidney, within the province of Invent.",
-      "TEXT2": "With a total of 100 students between the ages of 2 and 5, divided into 4 classes."
-    },
-    "2": {
-      "TITLE": "THE BEST PROFESSIONALS",
-      "TEXT": "Among our staff of professionals are educators who will promote the autonomous growth of students."
-    },
-    "3": {
-      "TITLE": "WOODEN TOOLS",
-      "TEXT": "All the objects used in the work areas of our school are made of polished wood and are totally suitable for children's use."
-    },
-    "4": {
-      "TITLE": "EDUCATION IN VALUES",
-      "TEXT": "During childhood, education in values ​​such as caring for the environment are especially important. That is why we promote actions such as recycling."
-    },
-    "5": {
-      "TITLE": "DEVELOPMENT OF ARTISTIC SKILLS",
-      "TEXT": "We believe that the cognitive development of minors through the use of the arts is essential: painting, music, dance, theater, etc..."
-    },
-    "6": {
-      "TITLE": "USE OF MONTESSORI METHODOLOGY",
-      "TEXT": "Promoting autonomy is one of our primary objectives and we work on it through the Monstessori methodology."
-    }
+  "CONFIRM_ACCOUNT":{
+    "Confirm": "Confirm Account"
   },
   "CONTACT": {
-    "NAME": "Name",
-    "EMAIL": "Email",
-    "MESSAGE": "Message",
-    "SEND": "Send"
+    "Contact": "Contact Us!",
+    "Suggest": "Do you have a technical Issue? Any suggestion? Tell Us!",
+    "Subject": "Subject",
+    "Message": "Message",
+    "Send": "Send"
   },
-  "HOME": {
-    "TEACHER": "Access to teachers",
-    "FAMILY": "Access to families"
+  "FORGOT_PASSWORD": {
+    "Reset": "Recover Password",
+    "Fill": "Please, fill all the fields",
+    "EmailRequired": "The email is required",
+    "EmailInvalid": "The email has an invalid format",
+    "Submit": "Submit",
+    "Back": "Back"
   },
-  "LOGIN": {
-    "TITLE": {
-      "1": "Access to teachers",
-      "2": "Access to families"
-    },
-    "FIELDS": {
-      "TITLE": "Enter email and password",
-      "EMAIL": {
-        "1": "Email required",
-        "2": "Incorrect email format"
-      },
-      "PASSWORD": {
-        "PASSWORD": "Password",
-        "1": "Enter a password"
-      },
-      "GO": "To access",
-      "RETURN": "Return"
-    },
-    "OVERLAY": {
-      "1": "Welcome",
-      "2": "Are you a familiar or guardian?",
-      "3": "Family access",
-      "4": "Welcome",
-      "5": "Do you belong to the faculty?",
-      "6": "Teacher access"
-    }
+  "HOME":{
+    "Title": "Dog Services",
+    "Subtitle": "We understand the importance of giving your pets the care and attention they deserve.",
+    "Trainers": "Trainers",
+    "Clients": "Clients",
+    "Walk": "Walk Service",
+    "WalkDesc":"Fall in love with the joy in every step. Our walks offer more than just stretching your legs; They are adventures full of fun and exploration. With our team of expert sitters, your dogs will enjoy themselves.",
+    "Bath": "Bath and Hairdressing",
+    "BathDesc": "We understand the importance of keeping your furry friends looking and feeling fresh. Our bathing and grooming services go beyond aesthetics, providing comprehensive, attentive care to ensure your pets feel pampered and look amazing. Discover what we offer!",
+    "Guard": "Dog Daycare",
+    "GuardDesc": "At our dog daycare, we are proud to offer a home away from home for your beloved four-legged friends. With a passionate team and services designed to meet all their needs, your pet will enjoy a unique and enriching experience. Discover why we are the perfect choice for the care of your furry companions!"
   },
-  "ALERT": {
-    "SUCCESS": {
-      "TITLE": "Welcome",
-      "MSG": "You have successfully logged in"
-    },
-    "ERROR": {
-      "TITLE": "Error",
-      "MSG": "You must complete all fields"
-    }
+  "LOGIN":{
+    "Fill":"Please, fill all the fields",
+    "EmailRequired":"The email is required",
+    "EmailInvalid":"The email has an invalid format",
+    "Password": "Password",
+    "PasswordRequired":"The password is required",
+    "PasswordInvalid": "The password is invalid",
+    "Submit":"Submit",
+    "ForgotPassword":"Forgot Password?",
+    "NoUser": "The user does´t exist, Create an Account",
+    "UserNoVerified": "Your account isn´t verified, check your email",
+    "Back":"Back",
+    "Register":"Create Account"
   },
-  "MATHACTIVITIES": {
-    "TITLE": "Logic-Math Activities",
-    "INTRO1": "In this section you will find a variety of logic-math activities to practice and reinforce the concepts we are learning in class.",
-    "INTRO2": "We hope you enjoy these activities and find them useful. If you have any questions or need help with any activity, do not hesitate to ask your teacher.",
-    "BACKBUTTON": "Back",
-    "VIEWBUTTON": "Back"
+  "MY_ACCOUNT":{
+    "Name": "Name",
+    "Phone": "Phone",
+    "Experience": "Experience",
+    "Back":"Back",
+    "Change": "Change Data",
+    "Address": "Address"
   },
-  "FAMILYVIEW": {
-    "NAV": {
-      "1": "Notifications",
-      "2": "Resources",
-      "3": "Contact"
-    },
-    "FILE": "My son's file",
-    "CALENDAR": "My calendar",
-    "CARD": {
-      "GRADE": "Class",
-      "BIRTH": "Date of birth",
-      "PHONE": "Telephone contact:",
-      "EMAIL": "Contact email:",
-      "ADRESS": "Address:",
-      "DISEASES": "Diseases:",
-      "ALLERGIES": "Food allergies"
-    }
+  "MY_APPOINTMENTS":{
+    "Date":"Date",
+    "Time":"Time",
+    "Pet":"Pet",
+    "Cancel": "Cancel Appointment",
+    "NoAppointments": "You dont have Appointments"
   },
-  "READINGWRITINGACTIVITIES": {
-    "TITLE": "Reading and Writing Activities",
-    "INTRO1": "In this section you will find a variety of reading and writing activities to practice and reinforce the concepts we are learning in class.",
-    "INTRO2": "We hope you enjoy these activities and find them useful. If you have any questions or need help with any activity, do not hesitate to ask your teacher.",
-    "BACKBUTTON": "Back",
-    "VIEWBUTTON": "View Activity"
+  "PARENT_VIEW":{
+    "Pets":"Pets/Appointmets",
+    "Services":"Services"
   },
-  "ENGLISHACTIVITIES": {
-    "TITLE": "English Activities",
-    "INTRO1": "In this section you will find a variety of English activities to practice and reinforce the concepts we are learning in class.",
-    "INTRO2": "We hope you enjoy these activities and find them useful. If you have any questions or need help with any activity, do not hesitate to ask your teacher.",
-    "BACKBUTTON": "Back",
-    "VIEWBUTTON": "View Activity"
-  },
-  "PROGRAMACTIVITIES": {
-    "TITLE": "Programming Activities",
-    "INTRO1": "In this section you will find a variety of programming-related activities to practice and reinforce the concepts we are learning in class.",
-    "INTRO2": "We hope you enjoy these activities and find them useful. If you have any questions or need help with any activity, do not hesitate to ask your teacher.",
-    "BACKBUTTON": "Back",
-    "VIEWBUTTON": "View Activity"
+  "PET":{
+    "Date":"Birthdate",
+    "Owner":"Owner",
+    "Diet":"Diet",
+    "Alergies":"Alergies",
+    "Back":"Back",
+    "Download":"Download Data",
+    "Remove":"Delete Pet"
   },
   "PRIVACITY": {
     "1": "WEBSITE PRIVACY POLICY",
@@ -252,10 +189,66 @@
     "46": "The use of the Website will imply acceptance of its Privacy Policy. XXXX reserves the right to modify its Privacy Policy, according to its own criteria, or motivated by a legislative, jurisprudential or doctrinal change of the Spanish Agency for Data Protection. Changes or updates to this Privacy Policy will not be explicitly notified to the User. The User is recommended to consult this page periodically to be aware of the latest changes or updates. This Policy of Privacy was updated to adapt to Regulation (EU) 2016/679 of the European Parliament and of the Council, of April 27, 2016, regarding the protection of natural persons with regard to the processing of personal data and the free movement of these data (GDPR) and Organic Law 3/2018, of December 5, Protection of Personal Data and guarantee of digital rights.",
     "47": "This Privacy Policy document for a website was created using the free online web privacy policy template generator on 03/21/2023."
   },
-  "BOOKS": {
-    "TITLE": "Books",
-    "INTRO1": "In this section you will find a selection of stories that we read in class. These stories are specially selected so that children can enjoy them and learn at the same time. They are an excellent tool to encourage imagination and a love of reading from an early age.",
-    "INTRO2": "We hope you enjoy these stories and share them together at home!",
-    "BACKBUTTON": "Back"
-}
+  "TRAINER_VIEW":{
+    "Data":"My Data",
+    "Dates": "My Appointments"
+  },
+  "UPDATE_PASSWORD":{
+    "Update":"Update Password",
+    "Fill":"Please, fill all the fields",
+    "Password":"Password",
+    "PasswordRequired":"The password is required",
+    "PasswordInvalid":"The password must be at least 8 characters",
+    "RepeatPassword":"Repeat Password",
+    "NoCoincidence": "Passwords do not match",
+    "Submit":"Submit",
+    "Back":"Back"
+  },
+  "UPDATE_DATA": {
+    "Edit": "Edit your Data",
+    "Account":"Account Details",
+    "Fill":"Please, fill all the fields",
+    "Name":"Name",
+    "NameRequired": "The name is required",
+    "NameSort": "The name is too sort",
+    "Phone":"Phone",
+    "PhoneRequired": "The Phone is required",
+    "Address":"Address",
+    "AddressRequired": "The address is required",
+    "Submit":"Submit",
+    "Back":"Back"
+  },
+  "REGISTER":{
+    "Register": "Register",
+    "Fill":"Please, fill all the fields",
+    "Name":"Name",
+    "NameRequired":"The name is required",
+    "NameSort":"The name is too sort",
+    "ImgRequired": "Avatar is required",
+    "Date":"Date",
+    "DateRequired": "Date is required",
+    "Nutrition": "Nutrition",
+    "NutritionRequired": "Nutrition is required",
+    "Select":"Select",
+    "Disease": "Add Disease",
+    "Exercise":"Exercise",
+    "ExerciseRequired":"Exercise is required",
+    "Gifts": "Max Diary Gifts",
+    "EmailRequired":"The email is required",
+    "EmailInvalid":"The email has an invalid format",
+    "Password":"Password",
+    "PasswordRequired":"The password is required",
+    "PasswordInvalid":"The password must be at least 8 characters",
+    "RepeatPassword":"Repeat Password",
+    "NoCoincidence":"Passwords do not match",
+    "Phone":"Phone",
+    "PhoneRequired":"The Phone is required",
+    "Address":"Address",
+    "AddressRequired":"The address is required",
+    "Submit":"Submit",
+    "ExistUser":"The user already exist, Login",
+    "ExistPet":"The pet already exist",
+    "Home":"Home",
+    "Back":"Back"
+  }
 }

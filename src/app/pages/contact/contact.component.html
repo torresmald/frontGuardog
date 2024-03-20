@@ -3,12 +3,14 @@
       <h2
         class="mb-4 text-4xl tracking-tight font-extrabold text-center text-york-700"
       >
-        ¿Contáctanos!
+      {{"CONTACT.Contact" | translate}}
+
       </h2>
       <p
         class="mb-8 font-light text-center text-york-500 sm:text-xl"
       >
-        ¿Tienes un problema técnico? ¿Alguna sugerencia? ¡Háznoslo saber!
+      {{"CONTACT.Suggest" | translate}}
+
       </p>
       <form action="https://formspree.io/f/mnqklbbg" method="POST" target="_blank" class="space-y-8">
         <div>
@@ -29,7 +31,8 @@
           <label
             for="subject"
             class="block mb-1 text-sm font-medium text-york-800 "
-            >Asunto</label
+            >{{"CONTACT.Subject" | translate}}
+            </label
           >
           <input
             type="text"
@@ -43,7 +46,8 @@
           <label
             for="message"
             class="block mb-1 text-sm font-medium text-york-800"
-            >Mensaje</label
+            >{{"CONTACT.Message" | translate}}
+            </label
           >
           <textarea
             id="message"
@@ -57,7 +61,7 @@
             type="submit"
             class="bg-york-500 hover:bg-york-700 text-white font-bold py-1 px-4 rounded cursor-pointer"
           >
-            Enviar
+            {{"CONTACT.Send" | translate}}
           </button>
           <button
             type="button"

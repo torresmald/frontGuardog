@@ -10,8 +10,10 @@
         <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="font-bold flex flex-col text-center">
-              <p class="font-medium text-lg text-york-600">Login Details</p>
-              <p>Please fill out all the fields.</p>
+              <p class="font-medium text-lg text-york-600">Login</p>
+              <p>
+                {{"LOGIN.Fill" | translate}}
+              </p>
               <img
                 src="https://i.pinimg.com/originals/45/b3/66/45b3660b7d464ca297f9f6969143ca96.jpg"
                 alt="Dogtor"
@@ -24,7 +26,7 @@
                 class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
               >
                 <div class="md:col-span-5">
-                  <label for="email">Email Address</label>
+                  <label for="email">Email</label>
                   <input
                     type="email"
                     id="email"
@@ -39,7 +41,7 @@
                       form.get('email')?.touched
                     "
                   >
-                    El email es requerido
+                  {{"LOGIN.EmailRequired" | translate}}
                   </p>
                   <p
                     class="text-red-600"
@@ -48,12 +50,14 @@
                       form.get('email')?.touched
                     "
                   >
-                    El email tiene un formato inválido
+                  {{"LOGIN.EmailInvalid" | translate}}
                   </p>
                 </div>
 
                 <div class="md:col-span-5">
-                  <label for="password">Password</label>
+                  <label for="password">
+                    {{"LOGIN.Password" | translate}}
+                  </label>
                   <input
                     type="password"
                     id="password"
@@ -67,13 +71,13 @@
                       form.get('password')?.touched
                     "
                   >
-                    El password es requerido
+                  {{"LOGIN.PasswordRequired" | translate}}
                   </p>
                   <p
                     class="text-red-600"
                     *ngIf="errors === 'El password no es correcto'"
                   >
-                    El password no es correcto
+                  {{"LOGIN.PasswordInvalid" | translate}}
                   </p>
                 </div>
                 <div class="md:col-span-5 text-center py-4">
@@ -83,14 +87,14 @@
                       type="submit"
                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-blue-200 disabled:cursor-not-allowed"
                     >
-                      Submit
+                    {{"LOGIN.Submit" | translate}}
                     </button>
                     <button
                       routerLink="/forgot-password"
                       type="button"
                       class="bg-york-500 hover:bg-york-700 text-xs text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-blue-200 disabled:cursor-not-allowed"
                     >
-                      ¿Olvidaste tu contraseña?
+                    {{"LOGIN.ForgotPassword" | translate}}
                     </button>
                   </div>
                 </div>
@@ -99,7 +103,7 @@
                     class="text-red-600 font-bold text-xl"
                     *ngIf="errors === 'El usuario no existe, registrate'"
                   >
-                    El Usuario No existe, Registrate
+                  {{"LOGIN.NoUser" | translate}}
                   </p>
                   <p
                     class="text-red-600 font-bold text-xl"
@@ -107,7 +111,8 @@
                       errors === 'No has verificado tu cuenta, revisa tu email'
                     "
                   >
-                    No has verificado tu cuenta, revisa tu email
+                  {{"LOGIN.UserNoVerified" | translate}}
+
                   </p>
                 </div>
               </div>
@@ -122,14 +127,15 @@
       class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
       routerLink=""
     >
-      Volver
+    {{"LOGIN.Back" | translate}}
+
     </button>
     <button
       *ngIf="!isTrainer"
       class="bg-york-500 hover:bg-york-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
       routerLink="/register"
     >
-      Crear Cuenta
+      {{"LOGIN.Register" | translate}}
     </button>
   </div>
 </div>

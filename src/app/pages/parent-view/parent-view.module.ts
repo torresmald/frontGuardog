@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MyPetsComponent } from './my-pets/my-pets.component';
 import { ServiceComponent } from './service/service.component';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ParentViewRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ],
   providers: [{
     provide: LOCALE_ID,

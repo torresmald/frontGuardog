@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MyAccountRoutingModule } from './my-account-routing.module';
 import { MyAccountComponent } from './my-account.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { MyAccountComponent } from './my-account.component';
   ],
   imports: [
     CommonModule,
-    MyAccountRoutingModule
+    MyAccountRoutingModule,
+    TranslateModule
   ]
 })
 export class MyAccountModule { }

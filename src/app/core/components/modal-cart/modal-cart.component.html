@@ -12,7 +12,9 @@
     *ngIf="servicesInCart.length === 0"
     class="h-[100%] flex items-center justify-center"
   >
-    <p class="text-2xl font-dog">El carrito esta vacio</p>
+    <p class="text-2xl font-dog">
+      {{"CART.Empty" | translate}}
+    </p>
   </div>
   <div *ngIf="servicesInCart.length !== 0" class="h-[80%] overflow-y-auto">
     <div *ngFor="let service of servicesInCart" class="flex h-14 justify-between items-center mx-3">
@@ -29,53 +31,15 @@
   </div>
   <div *ngIf="servicesInCart.length !== 0" class="h-[20%] bg-sienna-100 flex justify-between items-center shadow-2xl">
     <p class="mx-4">
-      <b>Total Pedido:</b>
+      {{"CART.Total" | translate}}
+      <b>:</b>
       {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
     </p>
     <button
       routerLink="/checkout"
       class="bg-blue-600 rounded-lg w-[80px] h-[25px] text-white text-sm mx-4"
     >
-      Pagar
+      {{"CART.Pay" | translate}}
     </button>
   </div>
 </section>
-
-<!-- <div
-  *ngIf="isHover"
-  class="transition animate-fade animate-once animate-delay-300 animate-ease-in-out flex w-full h-full relative z-50"
->
-    <div
-      *ngIf="servicesInCart.length !== 0"
-      class="absolute top-20 right-6 border-york-800 border-2 h-[120px] w-[300px] overflow-auto rounded-lg "
-    >
-      <div class="flex flex-col">
-        <div *ngFor="let service of servicesInCart" class="p-2 flex justify-around items-center">
-          <h5 class="text-xs">{{ service.name }}</h5>
-          <p class="text-xs text-blue-800">
-            {{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
-          </p>
-          <button
-            class="bg-red-600 rounded-lg text-white text-sm px-3"
-            *ngIf="service"
-            (click)="onRemoveService(service)"
-          >
-            X
-          </button>
-        </div>
-        <p class="text-end text-blue-800 mr-2">
-          Total Pedido:
-          <span class="text-blue font-bold">
-            {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}</span
-          >
-        </p>
-        <button routerLink="/checkout" class="bg-blue-600 rounded-lg text-white text-sm px-3 self-center m-3">Pagar</button>
-      </div>
-    </div>
-    <div
-      *ngIf="servicesInCart.length === 0"
-      class="absolute top-20 right-6 border-york-800 border-2 h-9 w-44 rounded-lg"
-    >
-      <p class="text-xs text-center m-auto">No hay productos en el carrito</p>
-    </div>
-</div> -->

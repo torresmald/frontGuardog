@@ -23,6 +23,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MAT_DATE_LOCALE} from '@angular/material/core';
 import { ModalPetsComponent } from './components/modal-pets/modal-pets.component';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { ModalPetsComponent } from './components/modal-pets/modal-pets.component
     SharedModule,
     FormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    TranslateModule
   ],
   exports: [
     HeaderComponent,
