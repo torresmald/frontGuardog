@@ -10,8 +10,14 @@
         <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()"  autocomplete="on">
           <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
             <div class="font-bold flex flex-col text-center">
-              <p class="font-medium text-lg text-york-600">Register Details</p>
-              <p>Please fill out all the fields.</p>
+              <p class="font-medium text-lg text-york-600">
+                {{"REGISTER.Register" | translate}}
+
+              </p>
+              <p>
+                {{"REGISTER.Fill" | translate}}
+
+              </p>
               <img
                 alt="Dogtor"
                 class="w-36 h-36 rounded-full mt-10 self-center"
@@ -24,7 +30,10 @@
                 class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5"
               >
                 <div class="md:col-span-5">
-                  <label for="name">Nombre</label>
+                  <label for="name">
+                  {{"REGISTER.Name" | translate}}
+
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -40,7 +49,8 @@
                       form.get('name')?.touched
                     "
                   >
-                    El nombre es requerido
+                  {{"REGISTER.NameRequired" | translate}}
+
                   </p>
                   <p
                   class="text-red-600 font-bold"
@@ -49,7 +59,8 @@
                       form.get('name')?.touched
                     "
                   >
-                    El nombre es muy corto
+                  {{"REGISTER.NameSort" | translate}}
+                    
                   </p>
                 </div>
 
@@ -64,12 +75,16 @@
                       form.get('image')?.touched
                     "
                   >
-                    La imagen es requerida
+                  {{"REGISTER.ImgRequired" | translate}}
+
                   </p>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="newPet">
-                  <label for="birthday">Fecha</label>
+                  <label for="birthday">
+                  {{"REGISTER.Date" | translate}}
+
+                  </label>
                   <input
                     type="date"
                     id="birthday"
@@ -85,19 +100,25 @@
                       form.get('birthday')?.touched
                     "
                   >
-                    La fecha es requerida
+                  {{"REGISTER.DateRequired" | translate}}
+
                   </p>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="newPet">
-                  <label for="nutrition">Alimentacion</label>
+                  <label for="nutrition">
+                  {{"REGISTER.Nutrition" | translate}}
+
+                  </label>
                   <select
                     name="nutrition"
                     id="nutrition"
                     formControlName="nutrition"
                     class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
                   >
-                    <option value="">-- Selecciona --</option>
+                    <option value="">-- 
+                  {{"REGISTER.Select" | translate}}
+                  --</option>
                     <option *ngFor="let food of nutrition" [value]="food">
                       {{ food }}
                     </option>
@@ -109,13 +130,15 @@
                       form.get('nutrition')?.touched
                     "
                   >
-                    La alimentacion es requerida
+                  {{"REGISTER.NutritionRequired" | translate}}
+
                   </p>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="newPet">
                   <button type="button" (click)="onAddDisease()" id="disease" class="bg-york-500 hover:bg-york-700 text-white font-bold py-2 px-4 rounded cursor-pointer mb-2">
-                    Add Disease
+                  {{"REGISTER.Disease" | translate}}
+                    
                   </button>
                   <div *ngFor="let diseaseControl of controlDisease; let i = index" formArrayName="diseases">
                     <input class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500" type="text" [formControlName]="i" autocomplete="on"/>
@@ -123,14 +146,20 @@
                 </div>
 
                 <div class="md:col-span-5" *ngIf="newPet">
-                  <label for="exercise">Ejercicio</label>
+                  <label for="exercise">
+                  {{"REGISTER.Exercise" | translate}}
+
+                  </label>
                   <select
                     name="exercise"
                     id="exercise"
                     formControlName="exercise"
                     class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
                   >
-                    <option value="">-- Selecciona --</option>
+                    <option value="">-- 
+                  {{"REGISTER.Select" | translate}}
+                      
+                      --</option>
                     <option
                       *ngFor="let exercise of exercises"
                       [value]="exercise"
@@ -145,12 +174,16 @@
                       form.get('exercise')?.touched
                     "
                   >
-                    El ejercicio es requerido
+                  {{"REGISTER.ExerciseRequired" | translate}}
+
                   </p>
                 </div>
 
                 <div class="md:col-span-5 flex flex-col" *ngIf="newPet">
-                  <label for="gifts">Maximos Premios Diarios</label>
+                  <label for="gifts">
+                  {{"REGISTER.Gifts" | translate}}
+                    
+                  </label>
                   <mat-slider color="primary" min="0" max="10" step="1" showTickMarks discrete >
                     <input class="" matSliderThumb id="gifts" [(ngModel)]="maxNumberGifts" [ngModelOptions]="{ standalone: true }"
                     >
@@ -175,7 +208,8 @@
                       form.get('email')?.touched
                     "
                   >
-                    El email es requerido
+                  {{"REGISTER.EmailRequired" | translate}}
+
                   </p>
                   <p
                   class="text-red-600 font-bold"
@@ -185,12 +219,16 @@
                       form.get('email')?.touched
                     "
                   >
-                    El email tiene un formato inválido
+                  {{"REGISTER.EmailInvalid" | translate}}
+
                   </p>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="!newPet">
-                  <label for="password">Password</label>
+                  <label for="password">
+                  {{"REGISTER.Password" | translate}}
+                    
+                  </label>
                   <input
                     type="password"
                     id="password"
@@ -207,7 +245,8 @@
                       form.get('password')?.touched
                     "
                   >
-                    El password es requerido
+                  {{"REGISTER.PasswordRequired" | translate}}
+
                   </p>
                   <p
                   class="text-red-600 font-bold"
@@ -217,12 +256,16 @@
                       form.get('password')?.touched
                     "
                   >
-                    El password debe tener al menos 8 carácteres
+                  {{"REGISTER.PasswordInvalid" | translate}}
+                    
                   </p>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="!newPet">
-                  <label for="repeatPassword">Repeat Password</label>
+                  <label for="repeatPassword">
+                  {{"REGISTER.RepeatPassword" | translate}}
+                    
+                  </label>
                   <input
                     type="password"
                     id="repeatPassword"
@@ -237,12 +280,16 @@
                       !isSamePassword && form.get('repeatPassword')?.touched
                     "
                   >
-                    Los passwords no coinciden
+                  {{"REGISTER.NoCoincidence" | translate}}
+                    
                   </p>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="!newPet">
-                  <label for="phone">Telefono</label>
+                  <label for="phone">
+                  {{"REGISTER.Phone" | translate}}
+                    
+                  </label>
                   <input
                     type="phone"
                     id="phone"
@@ -258,12 +305,16 @@
                       form.get('phone')?.touched
                     "
                   >
-                    El telefono es requerido
+                  {{"REGISTER.PhoneRequired" | translate}}
+
                   </p>
                 </div>
 
                 <div class="md:col-span-5" *ngIf="!newPet">
-                  <label for="address">Direccion</label>
+                  <label for="address">
+                  {{"REGISTER.Address" | translate}}
+
+                  </label>
                   <input
                     type="text"
                     id="address"
@@ -279,7 +330,8 @@
                       form.get('address')?.touched
                     "
                   >
-                    La direccion es requerida
+                  {{"REGISTER.AddressRequired" | translate}}
+
                   </p>
                 </div>
 
@@ -290,7 +342,8 @@
                       type="submit"
                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer disabled:bg-blue-200 disabled:cursor-not-allowed"
                     >
-                      Submit
+                    {{"REGISTER.Submit" | translate}}
+
                     </button>
                   </div>
                 </div>
@@ -299,13 +352,15 @@
                     class="text-red-600 font-bold text-xl"
                     *ngIf="errors === 'El usuaro ya existe, logueate'"
                   >
-                    El Usuario ya existe, Loguéate
+                  {{"REGISTER.ExistUser" | translate}}
+
                   </p>
                   <p
                   class="text-red-600 font-bold text-xl"
                   *ngIf="errors === 'Ya existe la mascota'"
                 >
-                  Ya existe la mascota
+                {{"REGISTER.ExistPet" | translate}}
+
                 </p>
                 </div>
               </div>
@@ -321,14 +376,15 @@
       class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
       routerLink=""
     >
-      Home
+    {{"REGISTER.Home" | translate}}
+
     </button>
     <button
       *ngIf="newPet"
       class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold py-2 px-4 rounded cursor-pointer"
       routerLink="/parent-view"
     >
-      Atrás
+      {{"REGISTER.Back" | translate}}
     </button>
     <button
       *ngIf="!newPet"
