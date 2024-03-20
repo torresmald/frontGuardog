@@ -7,12 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./modal-extras.component.scss'],
 })
 export class ModalExtrasComponent implements OnInit{
-  public isLightMode: boolean = false;
   public language: string = 'es';
   public lang?: string;
   public langs: string[] = [];
   public theme?: string 
-
 
   constructor(private translate: TranslateService) {
     translate.setDefaultLang('es');
@@ -23,11 +21,14 @@ export class ModalExtrasComponent implements OnInit{
   ngOnInit(): void {
     const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const userPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    
     if (userPrefersDark) {
       this.theme = 'dark'
+      document.documentElement.className = 'dark';
     }
     if (userPrefersLight) {
       this.theme = 'light'
+      document.documentElement.className = 'light';
     }
   }
   public onChangeLanguage() {
@@ -36,17 +37,13 @@ export class ModalExtrasComponent implements OnInit{
   }
 
   public changeTheme() {
-    this.isLightMode = !this.isLightMode;
     if(this.theme === 'dark'){
       document.documentElement.className = 'light';
       this.theme = 'light'
-
     }else {
       document.documentElement.className = 'dark';
       this.theme = 'dark'
-    }
-    console.log(this.theme);
-    
+    }    
   }
   
   public setThema() {

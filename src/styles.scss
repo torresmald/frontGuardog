@@ -6,7 +6,11 @@
 body, html {
   margin: 0;
   padding: 0;
+  background-color: var(--bg-color) !important;
+  color: var(--font-color-main, #666) !important;
+  overflow-x: hidden !important;
 }
+
 
 body.block-scroll{
   overflow: hidden;
