@@ -1,5 +1,5 @@
 <section *ngIf="service" class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40">
-    <section (click)="stopPropagation($event)" class="relative bg-white justify-start md:justify-between items-center p-7 pt-40 w-full rounded-md text-center">
+    <section class="relative bg-white justify-start md:justify-between items-center p-7 pt-40 w-full rounded-md text-center">
         <button class="absolute top-[5%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted" (click)="closeModalService()">X</button>
         <div class="mt-2">
             <label for="pet" class="font-dog text-xl text-york-500 my-3 md:my-0">{{"MODAL_SERVICES.Pet" | translate}}</label>

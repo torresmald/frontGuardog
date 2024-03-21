@@ -9,6 +9,7 @@ export class CourierService {
   private modalCart:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private modalPets:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);  
   private modalItemService: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  private modalServiceView: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   private cartState:BehaviorSubject<{[id: string]: Boolean}> = new BehaviorSubject<{[id: string]: Boolean}>({});
   constructor() {}
   public getServiceInCart = () => this.cartState.asObservable();
@@ -19,7 +20,9 @@ export class CourierService {
     this.cartState.next({ ...currentCartState });
   }
   public setItemServiceModal = (boolean: boolean) => this.modalItemService.next(boolean)
+  public setServiceModalView = (boolean: boolean) => this.modalServiceView.next(boolean)
   public getItemServiceModal = () => this.modalItemService.asObservable()
+  public getServiceModalView = () => this.modalServiceView.asObservable()
   public setCartModal = (boolean: boolean) => this.modalCart.next(boolean)
   public getCartModal = () => this.modalCart.asObservable()
   public setBooleanNav = (boolean: boolean) => this.modalNav.next(boolean);

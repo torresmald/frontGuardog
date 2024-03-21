@@ -14,6 +14,7 @@ export class AppComponent {
   public isMenuOpen: boolean = false
   public isCartModal: boolean = false
   public isItemServiceModal: boolean = false
+  public isServiceModalView: boolean = false
   public isPetModal: boolean = false
 
 
@@ -24,6 +25,7 @@ export class AppComponent {
     this.courierService.getModalNav().subscribe((value) => this.isMenuOpen = value);
     this.courierService.getCartModal().subscribe(value => this.isCartModal = value)
     this.courierService.getItemServiceModal().subscribe(value => this.isItemServiceModal = value)
+    this.courierService.getServiceModalView().subscribe(value => this.isServiceModalView = value)
     this.courierService.getPetModal().subscribe((value) => this.isPetModal = value);
 
   }

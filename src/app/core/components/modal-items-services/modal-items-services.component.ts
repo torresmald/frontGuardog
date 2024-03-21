@@ -82,11 +82,6 @@ export class ModalItemsServicesComponent implements OnInit {
     this.trainerSelected = event.target.value
   }
 
-  public stopPropagation(event: Event) {
-    console.log(event);
-    
-    event.stopPropagation();
-  }
 
   public disabledDates = (date: Date | null): boolean => {
     if (date) {      

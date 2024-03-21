@@ -33,5 +33,9 @@ export class ServiceComponent implements OnInit {
         this.serviceService.setSelectService(service)
         this.courierService.setItemServiceModal(true)
     }
+    openServiceModalView(service: Services) {
+        this.serviceService.setSelectService(service)
+        this.courierService.setServiceModalView(true)
+    }
 
 }
