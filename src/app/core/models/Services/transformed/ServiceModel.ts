@@ -9,5 +9,6 @@ export interface Services {
     date: string,
     hour: string,
     petId?: string,
-    trainer: string
+    trainer: string,
+    link: string,
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ServicesService } from '../../services/Services/servicesService.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CourierService } from '../../services/courier/courier.service';
+import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
