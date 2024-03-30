@@ -7,7 +7,7 @@ import { ReplaySubject } from 'rxjs';
 export class ToastService {
 
   public $shoulShowToast : ReplaySubject<boolean> = new ReplaySubject<boolean>()
-  public $message?: ReplaySubject<string> = new ReplaySubject<string>()
+  public $message: ReplaySubject<string> = new ReplaySubject<string>()
 
   constructor() { this.$shoulShowToast.next(false)}
 

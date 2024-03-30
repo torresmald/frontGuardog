@@ -5,6 +5,8 @@ import { UsersService } from '../../services/Users/usersService.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
 import { LocalStorageService } from '../../services/LocalStorage/local-storage.service';
+import { Observable } from 'rxjs';
+import { NavigationService } from 'src/app/shared/services/navigation.service';
 
 @Component({
   selector: 'app-modal-nav',
@@ -12,12 +14,10 @@ import { LocalStorageService } from '../../services/LocalStorage/local-storage.s
   styleUrls: ['./modal-nav.component.scss'],
 })
 export class ModalNavComponent implements OnInit {
-  public isLightMode: boolean = true;
-  public modalAnimation: boolean = false;
-  public isLogged: boolean = false;
+  public modalAnimation?: Observable<boolean>;
+  public isLogged?: Observable<boolean>;
   public isParent: boolean = false;
   public servicesInCart: Services[] = [];
-  public numberInCart: number = 0;
   public showFixedCart: boolean = false;
   public timeHoverMenu?: ReturnType<typeof setTimeout>;
   public id?:string;
@@ -38,38 +38,34 @@ export class ModalNavComponent implements OnInit {
     private router: Router,
     private usersService: UsersService,
     private cartService: CartService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
-    this.courierService
+    this.modalAnimation = this.courierService
       .getModalNav()
-      .subscribe((value) => (this.modalAnimation = value));
+      
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.closeMenuMobile();
       }
     });
-    this.usersService.userLogged$.subscribe((value) => {
-      this.isLogged = value;
-    });
+    this.isLogged = this.usersService.userLogged$
     this.servicesInCart = this.cartService.getCartServices();
 
-    this.localStorageService.getLocalStorage().subscribe(value => {
-        this.servicesInCart = value || [];
-        this.numberInCart = this.servicesInCart.length;        
-    });
-    this.usersService.userLogged$.subscribe((value) => {
-        this.isLogged = value
-    })
-    const token = localStorage.getItem('user') 
+    // this.localStorageService.getLocalStorage().subscribe(value => {
+    //     this.servicesInCart = value || [];
+    // });
+
+    const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER) 
     if (token) {
         JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
     }
   }
 
   public closeMenuMobile() {
-    this.modalAnimation = false;
+    this.modalAnimation?.subscribe();
     setTimeout(() => {
       this.courierService.setBooleanNav(false);
     }, 400);
@@ -80,19 +76,10 @@ export class ModalNavComponent implements OnInit {
   }
 
   public onNavigateAccount() {
-    this.token = this.localStorageService.TOKEN_KEY_USER;
-    const storedValue: string | null = localStorage.getItem(this.token);
-    const parsedValue = storedValue ? JSON.parse(storedValue) : null;
-    this.id = parsedValue.user._id
-    this.router.navigate([`/my-account/${this.id}`])
+    this.navigationService.onNavigateAccount()
   }
   public onNavigateServices() {
-    this.token = this.localStorageService.TOKEN_KEY_USER;
-    const storedValue = localStorage.getItem(this.token);
-    if (storedValue) {
-        JSON.parse(storedValue).user.pets ? this.isParent = true : this.isParent = false
-    }
-    this.isParent ? this.router.navigate(['/parent-view']) : this.router.navigate(['/trainer-view'])
+    this.navigationService.onNavigateServices()
 }
   public onLogout() {
     this.usersService.logout();

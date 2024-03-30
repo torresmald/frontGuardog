@@ -1,4 +1,4 @@
-<div *ngIf="shouldShowToast">
+<div *ngIf="shouldShowToast | async">
   <div
     *ngIf="isSuccessMessage(message); else deletedSuccessToast"
     id="alert-border-3"

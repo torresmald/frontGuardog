@@ -20,11 +20,12 @@ import { ModalItemsServicesComponent } from './components/modal-items-services/m
 import {FormsModule} from "@angular/forms";
 import { ModalCouponsComponent } from './components/modal-coupons/modal-coupons.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatNativeDateModule} from '@angular/material/core';
 import { MAT_DATE_LOCALE} from '@angular/material/core';
 import { ModalPetsComponent } from './components/modal-pets/modal-pets.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ModalServicesViewComponent } from './components/modal-services-view/modal-services-view.component';
+
 
 
 @NgModule({

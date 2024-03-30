@@ -33,7 +33,7 @@ export class LocalStorageService {
     localStorage.removeItem(key)
   }
 
-  public getLocal(key:string){
+  public getLocalItem(key:string){
     return localStorage.getItem(key)
   }
 }

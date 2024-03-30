@@ -13,14 +13,15 @@ import { format } from 'date-fns';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Trainers } from '../../models/Trainers/transformed/TrainerModel';
 import { TrainerService } from '../../services/Trainers/trainersService.service';
+import { DateAdapter } from '@angular/material/core';
+import { Observable } from 'rxjs';
 
-const STARTHOUR = 10;
-const ENDHOUR = 19;
+
 
 @Component({
   selector: 'app-modal-items-services',
   templateUrl: './modal-items-services.component.html',
-  styleUrls: ['./modal-items-services.component.scss'],
+  styleUrls: [],
 })
 export class ModalItemsServicesComponent implements OnInit {
   public pets: Pets[] = [];
@@ -28,12 +29,13 @@ export class ModalItemsServicesComponent implements OnInit {
   public service: Services | null = null;
   public appointments?: Appointments[];
   public datesToDisable: any;
-  public hours: string[] = [];
+  // public hours: string[] = [];
   public selectedHour!: string;
-  public hoursBusy : string[] = [];
-  public showHours:boolean = false;
-  public trainers?: Trainers[]
-  public trainerSelected : string = ''
+  public hoursBusy: string[] = [];
+  public showHours: boolean = false;
+  public trainers?: Observable<Trainers[]>;
+  public trainerSelected: string = '';
+  public hours : string[] = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
 
   constructor(
     private cartService: CartService,
@@ -44,12 +46,17 @@ export class ModalItemsServicesComponent implements OnInit {
     private courierService: CourierService,
     private userService: UsersService,
     private appointmentsService: AppointmentsService,
-    private trainersService: TrainerService
+    private trainersService: TrainerService,
+    private date: DateAdapter<Date>
   ) {}
-  ngOnInit(): void {    
-    for (let hour = STARTHOUR; hour <= ENDHOUR; hour++) {
-      this.hours.push(hour + ':00');
-    }
+  
+  
+  
+  
+  
+  ngOnInit(): void {
+    this.date.getFirstDayOfWeek = () => 1;
+    this.trainers = this.trainersService.getTrainers()
     this.renderer.addClass(document.body, 'block-scroll');
     this.petService.getPets().subscribe((value: Pets[]): void => {
       this.pets = value.filter(
@@ -59,11 +66,8 @@ export class ModalItemsServicesComponent implements OnInit {
     this.serviceService
       .getSelectService()
       .subscribe((value) => (this.service = value));
-    this.trainersService.getTrainers().subscribe((trainers) => {
-      this.trainers = trainers      
-    })
   }
-  closeModalService(): void {
+  closeModalService() {
     this.courierService.setItemServiceModal(false);
     this.renderer.removeClass(document.body, 'block-scroll');
   }
@@ -71,45 +75,51 @@ export class ModalItemsServicesComponent implements OnInit {
     this.selectedHour = hour;
   }
 
-  public selectPetId(event: any) {
-    const petId: string | null = event?.target?.value || null;
-    if (petId) {
-      this.petId = petId;
-    }
+  public selectPetId(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.petId = target?.value;
   }
 
-  public onSelectTrainer(event: any){
-    this.trainerSelected = event.target.value
+  public onSelectTrainer(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.trainerSelected = target.value;
   }
-
 
   public disabledDates = (date: Date | null): boolean => {
-    if (date) {      
+    if (date) {
       const today = new Date();
       const day = (date || today).getDay();
-      return  date >= today && day !== 0 && day !== 6;
+      return date >= today && day !== 0 && day !== 6;
     }
     return true;
   };
-  public onRequestHours(event: MatDatepickerInputEvent<Date>){
-    this.hoursBusy = []
-    this.selectedHour = ''
-    this.showHours = true
-    if(event){
-      const fechaFormateada = event.value ? format(event.value, 'dd/MM/yyyy') : '';
-      this.appointmentsService.getAppointmentsDate(fechaFormateada).subscribe((appointments) => {
-        appointments.map((appointment) => {
-          this.hoursBusy.push(appointment.hour)          
-        })
-      }
-      )
+  public onRequestHours(event: MatDatepickerInputEvent<Date>) {
+    this.hoursBusy = [];
+    this.selectedHour = '';
+    this.showHours = true;
+    if (event) {
+      const fechaFormateada = event.value
+        ? format(event.value, 'dd/MM/yyyy')
+        : '';
+      this.appointmentsService
+        .getAppointmentsDate(fechaFormateada)
+        .subscribe((appointments) => {
+          appointments.map((appointment) => {
+            this.hoursBusy.push(appointment.hour);
+          });
+        });
     }
   }
 
   public onAddService(service: Services): void {
     service.hour = this.selectedHour;
-    service.trainer = this.trainerSelected
-    if (!service.date || !service.pet || !this.selectedHour || !this.trainerSelected) {
+    service.trainer = this.trainerSelected;
+    if (
+      !service.date ||
+      !service.pet ||
+      !this.selectedHour ||
+      !this.trainerSelected
+    ) {
       this.toastService.$message?.next('Selecciona Todos los Campos');
       this.toastService.showToast();
       setTimeout((): void => {
@@ -122,6 +132,4 @@ export class ModalItemsServicesComponent implements OnInit {
     this.courierService.updateServiceInCart(service._id, true);
     this.courierService.setItemServiceModal(false);
   }
-
-  
 }

@@ -1,5 +1,5 @@
 <div
-  *ngIf="shouldShowModal"
+  *ngIf="shouldShowModal | async"
   id="popup-modal"
   tabindex="-1"
   class="bg-black flex justify-center items-center fixed bg-opacity-30 w-full h-full z-40"
@@ -14,7 +14,7 @@
         />
 
         <button
-          *ngIf="!isLogged"
+          *ngIf="!(isLogged | async)"
           (click)="onLeavePage(false)"
           type="button"
           class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -39,7 +39,7 @@
       </div>
       <div class="p-6 text-center">
         <h3 class="mb-11 text-lg font-normal text-gray-500 dark:text-gray-400">
-          {{message}}
+          {{message | async}}
         </h3>
 
         <div class="flex gap-10 justify-center">
@@ -52,7 +52,7 @@
             {{"MODAL.Continue" | translate}}
           </button>
           <button
-            *ngIf="!isLogged"
+            *ngIf="!(isLogged | async)"
             (click)="onLeavePage(false)"
             data-modal-hide="popup-modal"
             type="button"

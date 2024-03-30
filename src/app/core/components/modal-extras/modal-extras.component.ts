@@ -6,11 +6,11 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './modal-extras.component.html',
   styleUrls: ['./modal-extras.component.scss'],
 })
-export class ModalExtrasComponent implements OnInit{
+export class ModalExtrasComponent implements OnInit {
   public language: string = 'es';
   public lang?: string;
   public langs: string[] = [];
-  public theme?: string 
+  public theme?: string;
 
   constructor(private translate: TranslateService) {
     translate.setDefaultLang('es');
@@ -19,36 +19,30 @@ export class ModalExtrasComponent implements OnInit{
     this.lang = this.translate.currentLang;
   }
   ngOnInit(): void {
-    const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const userPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    
+    const userPrefersDark =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+
     if (userPrefersDark) {
-      this.theme = 'dark'
+      this.theme = 'dark';
       document.documentElement.className = 'dark';
-    }
-    if (userPrefersLight) {
-      this.theme = 'light'
+    } else {
+      this.theme = 'light';
       document.documentElement.className = 'light';
     }
   }
-  public onChangeLanguage() {
-    this.lang === 'es' ? this.lang = 'en' : this.lang = 'es'
-    this.translate.use (this.lang);
+  public ChangeLanguage() {
+    this.lang === 'es' ? (this.lang = 'en') : (this.lang = 'es');
+    this.translate.use(this.lang);
   }
 
   public changeTheme() {
-    if(this.theme === 'dark'){
+    if (this.theme === 'dark') {
       document.documentElement.className = 'light';
-      this.theme = 'light'
-    }else {
+      this.theme = 'light';
+    } else {
       document.documentElement.className = 'dark';
-      this.theme = 'dark'
-    }    
-  }
-  
-  public setThema() {
-    
-
-   
+      this.theme = 'dark';
+    }
   }
 }

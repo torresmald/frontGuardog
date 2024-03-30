@@ -2,34 +2,30 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ServicesService } from '../../services/Services/servicesService.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CourierService } from '../../services/courier/courier.service';
-import {DomSanitizer} from "@angular/platform-browser";
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-services-view',
   templateUrl: './modal-services-view.component.html',
-  styleUrls: ['./modal-services-view.component.scss'],
+  styleUrls: [],
 })
-export class ModalServicesViewComponent implements OnInit{
+export class ModalServicesViewComponent implements OnInit {
+  public service?: Observable<Services | null>;
 
-  public service: Services | null = null;
-
-  constructor(private serviceService: ServicesService,
+  constructor(
+    private serviceService: ServicesService,
     private courierService: CourierService,
-    private renderer: Renderer2) {}
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit(): void {
     this.renderer.addClass(document.body, 'block-scroll');
 
-    this.serviceService
-    .getSelectService()
-    .subscribe((value) => (this.service = value));    
+    this.service = this.serviceService.getSelectService();
   }
-
 
   closeModalService(): void {
     this.courierService.setServiceModalView(false);
     this.renderer.removeClass(document.body, 'block-scroll');
   }
-  
 }

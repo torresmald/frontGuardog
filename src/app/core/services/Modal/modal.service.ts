@@ -6,7 +6,7 @@ import { ReplaySubject, Subject } from 'rxjs';
 })
 export class ModalService {
   public $shoulShowModal : ReplaySubject<boolean> = new ReplaySubject<boolean>()
-  public $message?: ReplaySubject<string> = new ReplaySubject<string>()
+  public $message: ReplaySubject<string> = new ReplaySubject<string>()
   public result$: Subject<boolean> = new Subject<boolean>();
 
   constructor() { this.$shoulShowModal.next(false)}
