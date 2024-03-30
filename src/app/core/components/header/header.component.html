@@ -16,10 +16,10 @@
     <nav>
         <ul class="hidden md:flex mx-6 font-dog text-lg text-sienna-600">
             <li class="mx-5" routerLink="/about" routerLinkActive="active">
-                {{""}}
+                {{"HEADER.About" | translate}}
             </li>
             <li class="mx-5" routerLink="/contact" routerLinkActive="active">
-                {{"HEADER.About" | translate}}
+                {{"HEADER.Contact" | translate}}
             </li>
             <li
                     *ngIf="!isLogged"
