@@ -34,10 +34,21 @@ export class NavigationService {
       : this.router.navigate(['/trainer-view']);
   }
 
+  public onNavigate(
+    path: string,
+    params: string | undefined = undefined,
+    queryParams?: any
+  ) {
+    if (!params && !queryParams) {
+      this.router.navigate([path]);
+    }
 
-  public onNavigate(path:string, params?:string){
-    !params 
-    ? this.router.navigate([path])
-    : this.router.navigate([path, params])
+    if (params !== undefined) {
+      this.router.navigate([path, params]);
+    }
+
+    if (queryParams !== undefined) {
+      this.router.navigate([path], queryParams);
+    }
   }
 }

@@ -66,7 +66,6 @@ export class ModalPetsComponent implements OnInit {
 
   public goToDetail(id: string) {
      this.navigationService.onNavigate('pet', id)
-
   }
 
   public goToDetailAppointment(id: string) {
