@@ -6,7 +6,7 @@ import * as pdfMake from 'pdfmake/build/pdfmake'
 import * as pdf_Fonts from 'pdfmake/build/vfs_fonts'
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 
-(pdfMake as any).vfs = pdf_Fonts.pdfMake.vfs
+// (pdfMake as any).vfs = pdf_Fonts.pdfMake.vfs
 @Component({
   selector: 'app-pet',
   templateUrl: './pet.component.html',
@@ -27,6 +27,8 @@ export class PetComponent implements OnInit {
         console.log(this.pet)
       })
   }
+
+  // TODO Arreglar esto del PDF
   public onDownloadPet(){
     const documentDefinition = {
       content: [
@@ -34,7 +36,7 @@ export class PetComponent implements OnInit {
       ],
       
     };
-    pdfMake.createPdf(documentDefinition).open();
+    //pdfMake.createPdf(documentDefinition).open();
   }
   public onDeletePet(id: string | undefined){
     if(id){

@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
 @Component({
   selector: 'app-confirm-account',
   templateUrl: './confirm-account.component.html',
-  styleUrls: ['./confirm-account.component.scss'],
+  styleUrls: [],
 })
 export class ConfirmAccountComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private toastService: ToastService,
     private parentsService: ParentService,
-    private router: Router
+    private navigationService: NavigationService
   ) {}
 
   public token: string = '';
-  public message?: any;
+  public message: string = '';
 
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
@@ -43,7 +44,7 @@ export class ConfirmAccountComponent implements OnInit {
           this.toastService.showToast();
           setTimeout(() => {
             this.toastService.closeToast();
-            this.router.navigate(['']);
+            this.navigationService.onNavigate('')
           }, 2000);
         }
       });

@@ -14,7 +14,7 @@ import { CartService } from '../../services/Cart/cart.service';
 
 
 import localeEs from '@angular/common/locales/es';
-import { NavigationService } from 'src/app/shared/services/navigation.service';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 registerLocaleData(localeEs, 'es');
 
 @Component({
@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
 
   public onLogout() {
     this.usersService.logout();
-    this.router.navigate(['']);
+    this.navigationService.onNavigate('')
   }
 
   public onNavigateAccount() {

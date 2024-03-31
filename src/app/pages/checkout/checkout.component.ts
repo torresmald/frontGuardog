@@ -6,19 +6,17 @@ import { CartService } from '../../core/services/Cart/cart.service';
 import { CouponsService } from 'src/app/core/services/Coupons/coupons.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
 import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmentsService.service';
-import { Router } from '@angular/router';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { LoadingService } from 'src/app/core/services/Loading/loading.service';
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
 registerLocaleData(localeEs, 'es');
-const TOKEN_KEY_CART = 'cart';
-const TOKEN_KEY_USER = 'user';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss'],
+  styleUrls: [],
 })
 export class CheckoutComponent implements OnInit {
   public servicesInCart: Services[] = [];
@@ -37,10 +35,10 @@ export class CheckoutComponent implements OnInit {
     private couponsService: CouponsService,
     private toastService: ToastService,
     private appointmentsService: AppointmentsService,
-    private router: Router,
     private modalService: ModalService,
     private loadingService: LoadingService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private navigationService: NavigationService
   ) {}
   ngOnInit(): void {
     this.servicesInCart = this.cartService.getCartServices();
@@ -52,7 +50,7 @@ export class CheckoutComponent implements OnInit {
       (value) => (this.total = value)
     );
     // TODO del servicio
-    const dataStorage = localStorage.getItem(TOKEN_KEY_CART);
+    const dataStorage = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_CART)
     this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null;
   }
   public onApplyCoupon(coupon: string) {
@@ -83,7 +81,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   public onSubmit() {
-    const dataStorage = localStorage.getItem(TOKEN_KEY_USER);
+    const dataStorage = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER)
     const user = dataStorage ? JSON.parse(dataStorage).user._id : null;
     const data = this.servicesInCart.map((services) => {
       return {
@@ -98,8 +96,6 @@ export class CheckoutComponent implements OnInit {
         discounts: this.discount,
       };
     });
-    console.log(data);
-
     this.appointmentsService.registerAppointment(data).subscribe((value) => {
       if (value) {
         this.loadingService.showLoading();
@@ -110,10 +106,9 @@ export class CheckoutComponent implements OnInit {
           this.cartService.removeAllServices('cart')
           this.localStorageService.getLocalStorage().subscribe(value => {
             this.servicesInCart = value || [];
-            console.log(this.servicesInCart);
         });
           this.servicesAddedToCart = [];
-          this.router.navigate(['/parent-view']);
+          this.navigationService.onNavigate('/parent-view')
         }, 3000);
       }
     });

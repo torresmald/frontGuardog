@@ -11,7 +11,7 @@ import {ServicesService} from "../../../core/services/Services/servicesService.s
 export class ServiceComponent implements OnInit {
     @Input() service?: Services;
     @Input() servicesAddedToCart: Services[];
-    public isServiceInCart: Boolean = false
+    public isServiceInCart: boolean = false
 
     constructor(
         private serviceService: ServicesService,

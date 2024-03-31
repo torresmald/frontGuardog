@@ -7,6 +7,7 @@ import { PetsService } from '../../services/Pets/petsService.service';
 import { AppointmentsService } from '../../services/Appointmet/appointmentsService.service';
 import { Appointments } from '../../models/Appointments/transformed/AppointmentModel';
 import { Observable } from 'rxjs';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 @Component({
   selector: 'app-modal-pets',
   templateUrl: './modal-pets.component.html',
@@ -23,7 +24,8 @@ export class ModalPetsComponent implements OnInit {
     private router: Router,
     private petsService: PetsService,
     private usersService: UsersService,
-    private appointmentsService: AppointmentsService
+    private appointmentsService: AppointmentsService,
+    private navigationService: NavigationService
   ) {}
   ngOnInit(): void {
     const userId = this.usersService.getToken();
@@ -63,10 +65,11 @@ export class ModalPetsComponent implements OnInit {
   }
 
   public goToDetail(id: string) {
-    this.router.navigate(['pet', id]);
+     this.navigationService.onNavigate('pet', id)
+
   }
 
   public goToDetailAppointment(id: string) {
-    this.router.navigate(['appointment', id]);
+    this.navigationService.onNavigate('appointment', id)
   }
 }

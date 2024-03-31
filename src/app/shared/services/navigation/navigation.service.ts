@@ -33,4 +33,11 @@ export class NavigationService {
       ? this.router.navigate(['/parent-view'])
       : this.router.navigate(['/trainer-view']);
   }
+
+
+  public onNavigate(path:string, params?:string){
+    !params 
+    ? this.router.navigate([path])
+    : this.router.navigate([path, params])
+  }
 }

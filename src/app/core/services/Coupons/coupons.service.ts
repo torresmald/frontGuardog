@@ -9,7 +9,6 @@ const URL_API = 'https://api-guardog.vercel.app/coupons';
 })
 export class CouponsService {
   
-  public coupon?:Coupon;
   
   constructor(private http: HttpClient) {}
 
@@ -21,17 +20,5 @@ export class CouponsService {
   public getDailyCoupon(): Observable<Coupon>{
     return this.http.get<Coupon>(`${URL_API}/daily`)
   }
-
-  // public applyCoupon(coupon: string) {
-  //   const existCoupon = this.getDailyCoupon().subscribe((value) => {
-  //     console.log(value);
-  //     console.log(coupon);
-      
-      
-  //     this.coupon = value
-  //   })
-  //   console.log(existCoupon);
-  //   return this.coupon;
-  // }
 
 }

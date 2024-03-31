@@ -6,7 +6,7 @@ import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
 import { LocalStorageService } from '../../services/LocalStorage/local-storage.service';
 import { Observable } from 'rxjs';
-import { NavigationService } from 'src/app/shared/services/navigation.service';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
 @Component({
   selector: 'app-modal-nav',
@@ -54,10 +54,6 @@ export class ModalNavComponent implements OnInit {
     this.isLogged = this.usersService.userLogged$
     this.servicesInCart = this.cartService.getCartServices();
 
-    // this.localStorageService.getLocalStorage().subscribe(value => {
-    //     this.servicesInCart = value || [];
-    // });
-
     const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER) 
     if (token) {
         JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
@@ -83,7 +79,7 @@ export class ModalNavComponent implements OnInit {
 }
   public onLogout() {
     this.usersService.logout();
-    this.router.navigate(['']);
+    this.navigationService.onNavigate('')
   }
 
   public onChangeHover() {
