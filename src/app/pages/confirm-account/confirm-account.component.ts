@@ -4,7 +4,7 @@ import { ParentService } from 'src/app/core/services/Parents/parentsService.serv
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-confirm-account',

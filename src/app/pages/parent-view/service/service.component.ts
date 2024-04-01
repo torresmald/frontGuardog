@@ -6,19 +6,17 @@ import {ServicesService} from "../../../core/services/Services/servicesService.s
 @Component({
     selector: 'app-service',
     templateUrl: './service.component.html',
-    styleUrls: ['./service.component.scss'],
+    styleUrls: [],
 })
 export class ServiceComponent implements OnInit {
     @Input() service?: Services;
-    @Input() servicesAddedToCart: Services[];
+    @Input() servicesAddedToCart: Services[] = [];
     public isServiceInCart: boolean = false
 
     constructor(
         private serviceService: ServicesService,
         private courierService: CourierService,
-    ) {
-        this.servicesAddedToCart = []
-    }
+    ) {}
 
     ngOnInit() {
         this.servicesAddedToCart?.find(value => this.isServiceInCart = value._id === this.service?._id);       

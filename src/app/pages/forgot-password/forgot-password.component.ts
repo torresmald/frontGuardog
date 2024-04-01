@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-forgot-password',

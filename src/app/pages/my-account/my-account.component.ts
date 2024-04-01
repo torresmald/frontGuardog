@@ -6,7 +6,7 @@ import { Trainers } from 'src/app/core/models/Trainers/transformed/TrainerModel'
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-my-account',

@@ -12,7 +12,7 @@ import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-login',

@@ -6,7 +6,7 @@ import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
 import { LocalStorageService } from '../../services/LocalStorage/local-storage.service';
 import { Observable } from 'rxjs';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-modal-nav',

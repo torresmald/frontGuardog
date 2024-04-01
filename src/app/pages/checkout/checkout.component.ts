@@ -9,7 +9,7 @@ import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmen
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { LoadingService } from 'src/app/core/services/Loading/loading.service';
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 registerLocaleData(localeEs, 'es');
 

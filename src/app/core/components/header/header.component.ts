@@ -14,7 +14,7 @@ import { CartService } from '../../services/Cart/cart.service';
 
 
 import localeEs from '@angular/common/locales/es';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 registerLocaleData(localeEs, 'es');
 
 @Component({

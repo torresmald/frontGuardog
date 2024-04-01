@@ -7,7 +7,7 @@ import { PetsService } from '../../services/Pets/petsService.service';
 import { AppointmentsService } from '../../services/Appointmet/appointmentsService.service';
 import { Appointments } from '../../models/Appointments/transformed/AppointmentModel';
 import { Observable } from 'rxjs';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 @Component({
   selector: 'app-modal-pets',
   templateUrl: './modal-pets.component.html',

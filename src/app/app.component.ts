@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CourierService } from './core/services/courier/courier.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,22 +12,22 @@ import { CourierService } from './core/services/courier/courier.service';
 export class AppComponent {
   public title: string = 'Guardog';
   public excludedUrls = ['login', 'register', 'confirm-account', 'forgot-password'];
-  public isMenuOpen: boolean = false
-  public isCartModal: boolean = false
-  public isItemServiceModal: boolean = false
-  public isServiceModalView: boolean = false
-  public isPetModal: boolean = false
+  public isMenuOpen?: Observable<boolean>
+  public isCartModal?: Observable<boolean>
+  public isItemServiceModal?: Observable<boolean>
+  public isServiceModalView?: Observable<boolean>
+  public isPetModal?: Observable<boolean>
 
 
   constructor(public router: Router, public courierService: CourierService) {}
 
 
   ngOnInit() {
-    this.courierService.getModalNav().subscribe((value) => this.isMenuOpen = value);
-    this.courierService.getCartModal().subscribe(value => this.isCartModal = value)
-    this.courierService.getItemServiceModal().subscribe(value => this.isItemServiceModal = value)
-    this.courierService.getServiceModalView().subscribe(value => this.isServiceModalView = value)
-    this.courierService.getPetModal().subscribe((value) => this.isPetModal = value);
+    this.isMenuOpen = this.courierService.getModalNav()
+    this.isCartModal = this.courierService.getCartModal()
+    this.isItemServiceModal =  this.courierService.getItemServiceModal()
+    this.isServiceModalView = this.courierService.getServiceModalView()
+    this.isPetModal = this.courierService.getPetModal()
 
   }
   shouldShow(): boolean {

@@ -1,5 +1,5 @@
 <section
-  class="bg-sienna-50 w-full flex flex-col gap-20 mt-14"
+  class="bg-sienna-50 w-full flex flex-col gap-20 mt-14 min-h-[calc(100vh-(10vh+7vh))]"
 >
   <div class="flex flex-col md:flex-row justify-center md:items-center relative">
 	<article
@@ -8,10 +8,10 @@
 	  <figure
 		class="shadow-2xl rounded-full overflow-auto my-2 md:my-10 w-[110px] h-[100px] md:h-[200px] md:w-[210px]"
 	  >
-		<img class="w-full h-full" src="{{ pet?.image }}" alt="" />
+		<img class="w-full h-full" src="{{ (pet | async)?.image }}" alt="" />
 	  </figure>
 	  <p class="capitalize text-[25px] md:text-[40px] font-dog">
-		{{ pet?.name }}
+		{{ (pet | async)?.name }}
 	  </p>
 	</article>
 	<article
@@ -19,31 +19,31 @@
 	>
 	  <div class="md:ml-[49%] w-full">
 		<p class="font-dog text-2xl">
-	{{"PET.Birthday" | translate}}
+	{{"PET.Date" | translate}}
 
 		</p>
-		<p>{{ pet?.birthday }}</p>
+		<p>{{ (pet | async)?.birthday }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
 		<p class="font-dog text-2xl">
 	{{"PET.Owner" | translate}}
 
 		</p>
-		<p>{{ pet?.parent?.name }}</p>
+		<p>{{ (pet | async)?.parent?.name }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
 		<p class="font-dog text-2xl">
 	{{"PET.Diet" | translate}}
 
 		</p>
-		<p>{{ pet?.nutrition }}</p>
+		<p>{{ (pet | async)?.nutrition }}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
 		<p class="font-dog text-2xl">
 	{{"PET.Alergies" | translate}}
 
 		</p>
-		<p>{{ pet?.diseases }}</p>
+		<p>{{ (pet | async)?.diseases }}</p>
 	  </div>
 	</article>
   </div>
@@ -63,8 +63,9 @@
 	  
 	</button>
 	<button
+	*ngIf="pet | async as pet"
 	class="bg-red-500 hover:bg-red-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
-	(click)="onDeletePet(pet?._id)"
+	(click)="onDeletePet(pet._id)"
 	>
 	{{"PET.Remove" | translate}}
   </button>

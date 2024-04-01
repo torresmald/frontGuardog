@@ -1,23 +1,25 @@
 import { Component, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormControl,
+  NG_VALUE_ACCESSOR,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-upload-files',
   templateUrl: './upload-files.component.html',
-  styleUrls: ['./upload-files.component.scss'],
+  styleUrls: [],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => UploadFilesComponent),
       multi: true,
-    }
-  ]
+    },
+  ],
 })
 export class UploadFilesComponent implements ControlValueAccessor {
   public files: any = [];
-  @Input() formControl?: FormControl
-  // private onChange: Function | undefined;
-  // private onTouch: Function | undefined;
+  @Input() formControl?: FormControl;
 
   public uploadFile(event: any) {
     if (event[0]) {
@@ -36,18 +38,9 @@ export class UploadFilesComponent implements ControlValueAccessor {
     this.files.splice(index, 1);
   }
 
+  writeValue(files: any): void {}
 
-  writeValue(files: any): void {
-    // console.log();
+  registerOnChange(fn: Function): void {}
 
-    // this.files = files;
-  }
-
-  registerOnChange(fn: Function): void {
-    // this.onChange = fn;
-  }
-
-  registerOnTouched(fn: Function): void {
-    // this.onTouch = fn;
-  }
+  registerOnTouched(fn: Function): void {}
 }

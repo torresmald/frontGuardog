@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
 import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmentsService.service';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
-import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-appointment',

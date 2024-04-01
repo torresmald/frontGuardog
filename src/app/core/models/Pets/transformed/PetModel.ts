@@ -1,13 +1,13 @@
 import { Parents } from "../../Parents/transformed/ParentModel"
-import { nutrition, exercise } from "../petsData"
+import { Nutrition, Exercise } from "../petsData"
 export interface Pets{
     _id: string,
     name: string,
     image: string,
     birthday: string,
-    nutrition: nutrition,
+    nutrition: Nutrition,
     diseases: string,
-    exercise: exercise,
-    maxNumberGifts: Number,
+    exercise: Exercise,
+    maxNumberGifts: number,
     parent: Parents
 }
