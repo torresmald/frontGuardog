@@ -9,7 +9,6 @@ import { CourierService } from 'src/app/core/services/courier/courier.service';
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { Observable } from 'rxjs';
-import { initFlowbite } from 'flowbite';
 import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
 
 @Component({
@@ -23,6 +22,8 @@ export class ParentViewComponent implements OnInit {
   public pets: Pets[] = []
   public servicesAddedToCart : Services[];
   public appointments?: Appointments
+  public sortPrice?: string
+  public sortType?: string
 
   constructor(
       private servicesService: ServicesService,
@@ -51,6 +52,14 @@ export class ParentViewComponent implements OnInit {
 
   public onSubmit(){
     this.navigationService.onNavigate('/checkout')
+  }
+
+  public onSortType(event: Event){
+    const target = event.target as HTMLButtonElement;
+    this.sortType = target.value    
+  }
+  public onSortPrice(method: string){
+    this.sortPrice = method
   }
 
 }
