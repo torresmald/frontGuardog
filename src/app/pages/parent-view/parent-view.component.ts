@@ -9,12 +9,15 @@ import { CourierService } from 'src/app/core/services/courier/courier.service';
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { Observable } from 'rxjs';
+import { initFlowbite } from 'flowbite';
+import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
 
 @Component({
   selector: 'app-parent-view',
   templateUrl: './parent-view.component.html',
   styleUrls: []
 })
+@Flowbite()
 export class ParentViewComponent implements OnInit {
   public services?: Observable<Services[]>
   public pets: Pets[] = []
