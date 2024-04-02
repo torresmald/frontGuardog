@@ -1,14 +1,20 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { registerLocaleData } from '@angular/common';
+
+import { Observable } from 'rxjs';
+
 import { CourierService } from '../../services/courier/courier.service';
 import { UsersService } from '../../services/Users/usersService.service';
-import { Router } from '@angular/router';
 import { Services } from '../../models/Services/transformed/ServiceModel';
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
 import { LocalStorageService } from '../../services/LocalStorage/local-storage.service';
 import { CartService } from '../../services/Cart/cart.service';
-import { TranslateService } from '@ngx-translate/core';
 
+
+
+
+import localeEs from '@angular/common/locales/es';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 registerLocaleData(localeEs, 'es');
 
 @Component({
@@ -17,18 +23,16 @@ registerLocaleData(localeEs, 'es');
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  // public isLightMode: boolean = true;
   public token?: string;
   public id?: string;
   public scrollNav: boolean = false;
-  public isLogged: boolean = false;
+  public isLogged: Observable<boolean> = new Observable<boolean>();
   public isParent: boolean = false;
   public servicesInCart: Services[] = [];
   public numberInCart: number = 0;
   public showFixedCart: boolean = false;
   public timeHoverMenu?: ReturnType<typeof setTimeout>;
-  public lang?: string;
-  public langs: string[] = [];
+ 
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
@@ -41,17 +45,13 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(
-    public courierService: CourierService,
+    private courierService: CourierService,
     private usersService: UsersService,
     public router: Router,
     private localStorageService: LocalStorageService,
     private cartService: CartService,
-    // public translate: TranslateService
+    private navigationService : NavigationService
   ) {
-    // translate.setDefaultLang('es');
-    // translate.use('es'), this.translate.addLangs(['es', 'en']);
-    // this.langs = this.translate.getLangs();
-    // this.lang = this.translate.currentLang;
   }
   ngOnInit(): void {
     this.servicesInCart = this.cartService.getCartServices();
@@ -59,10 +59,8 @@ export class HeaderComponent implements OnInit {
       this.servicesInCart = value || [];
       this.numberInCart = this.servicesInCart.length;
     });
-    this.usersService.userLogged$.subscribe((value) => {
-      this.isLogged = value;
-    });
-    const token = localStorage.getItem('user');
+    this.isLogged = this.usersService.userLogged$
+    const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER)
     if (token) {
       JSON.parse(token).user.pets
         ? (this.isParent = true)
@@ -76,28 +74,15 @@ export class HeaderComponent implements OnInit {
 
   public onLogout() {
     this.usersService.logout();
-    this.router.navigate(['']);
+    this.navigationService.onNavigate('')
   }
 
   public onNavigateAccount() {
-    this.token = this.localStorageService.TOKEN_KEY_USER;
-    const storedValue: string | null = localStorage.getItem(this.token);
-    const parsedValue = storedValue ? JSON.parse(storedValue) : null;
-    this.id = parsedValue.user._id;
-    this.router.navigate([`/my-account/${this.id}`]);
+    this.navigationService.onNavigateAccount()
   }
 
   public onNavigateServices() {
-    this.token = this.localStorageService.TOKEN_KEY_USER;
-    const storedValue = localStorage.getItem(this.token);
-    if (storedValue) {
-      JSON.parse(storedValue).user.pets
-        ? (this.isParent = true)
-        : (this.isParent = false);
-    }
-    this.isParent
-      ? this.router.navigate(['/parent-view'])
-      : this.router.navigate(['/trainer-view']);
+    this.navigationService.onNavigateServices()
   }
   public onChangeHover() {
     if (this.servicesInCart.length >= 1) {
@@ -110,15 +95,4 @@ export class HeaderComponent implements OnInit {
   public onHoverLeave() {
     clearTimeout(this.timeHoverMenu);
   }
-
-//   public changeLang(lang: string) {
-//     if (this.lang === 'es'){
-//       this.translate.use(lang);
-//       this.lang = lang;
-//     }
-//     else{
-//       this.lang = 'es';
-//       this.translate.use(this.lang);
-//     }
-//   }
 }

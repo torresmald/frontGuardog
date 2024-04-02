@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-const TOKEN_KEY = 'user';
+import { LocalStorageService } from '../LocalStorage/local-storage.service';
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
   public userLogged$: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
-  constructor() {
+  constructor(private localStorageService: LocalStorageService) {
     this.userLogged$.next(this.isLogged());
   }
 
   public isLogged(): boolean {
-    const authToken = localStorage.getItem(TOKEN_KEY);
+    const authToken = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER)
     if (!authToken) {
       return false;
     }
@@ -21,12 +21,12 @@ export class UsersService {
   }
 
   public getToken() {
-    const authToken = localStorage.getItem(TOKEN_KEY);
+    const authToken = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER)
     return authToken ? JSON.parse(authToken).user._id : null;
   }
 
   public logout(){
-    localStorage.removeItem(TOKEN_KEY)
+    this.localStorageService.removeItem(this.localStorageService.TOKEN_KEY_USER)
     this.userLogged$.next(false);
   }
 

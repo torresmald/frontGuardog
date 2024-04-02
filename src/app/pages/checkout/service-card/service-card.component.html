@@ -9,15 +9,21 @@
   />
   <div class="mx-5 flex flex-col justify-between">
     <p class="text-md md:text-2xl font-bold">
-      {{"SERVICE_CARD.Prize" | translate}}:
+      {{ "SERVICE_CARD.Prize" | translate }}:
       {{ service?.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
     </p>
     <p class="text-sm md:text-lg">{{ service?.name }}</p>
-    <p class="text-xs md:text-lg opacity-70">{{ service?.date | date: 'dd/MM/yyyy' }}</p>
-    <p class="text-xs md:text-lg opacity-70">{{ service?.hour}} {{"SERVICE_CARD.Hour" | translate}}</p>
-    <p class="text-xs md:text-lg font-bold">{{"SERVICE_CARD.Trainer" | translate}}: {{trainerName?.name}}</p>
+    <p class="text-xs md:text-lg opacity-70">
+      {{ service?.date | date : "dd/MM/yyyy" }}
+    </p>
+    <p class="text-xs md:text-lg opacity-70">
+      {{ service?.hour }} {{ "SERVICE_CARD.Hour" | translate }}
+    </p>
+    <p class="text-xs md:text-lg font-bold">
+      {{ "SERVICE_CARD.Trainer" | translate }}: {{ (trainerName | async)?.name }}
+    </p>
     <img
-      src="{{ pet?.image }}"
+      src="{{ (pet | async)?.image }}"
       class="w-10 h-10 md:w-20 md:h-20 absolute rounded-full bottom-2 right-3"
     />
   </div>

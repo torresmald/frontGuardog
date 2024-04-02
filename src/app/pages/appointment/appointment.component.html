@@ -1,29 +1,40 @@
 <section
-  class="bg-sienna-50 w-full flex flex-col gap-20 mt-14"
+  class="bg-sienna-50 w-full flex flex-col md:items-center md:justify-center mt-14 min-h-[calc(100vh-(10vh+7vh))]"
 >
-  <div class="flex flex-col md:flex-row justify-center md:items-center relative">
-	<article
-	  class="bg-white md:relative z-10 flex flex-col justify-start text-center items-center rounded-sm shadow-2xl md:w-[900px] h-[300px] md:h-[500px] mx-4"
-	>
-	  <div class="w-full mt-4 flex flex-col gap-4">
-		<p class="font-dog text-2xl">{{"APPOINTMENTS.Appointment" | translate}}</p>
-        <div *ngFor="let service of appointment?.services" class="">
-            <p>{{service.name}}</p>
-            <p>{{"APPOINTMENTS.Date" | translate}} {{service.date | date}}</p>
-            <p>{{service.hour}}</p>
-            <p>{{service.price | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p>
-
-        </div>    
-    </div>
-	</article>
+  <div
+    class="flex flex-col md:flex-row justify-center md:items-center relative p-4"
+  >
+    <article
+      class="bg-white md:relative z-10 flex flex-col justify-start text-center items-center rounded-sm shadow-2xl md:w-[900px] h-[300px] md:h-[500px] mx-4"
+    >
+      <div class="w-full mt-4 flex flex-col gap-4">
+        <p class="font-dog text-2xl">
+          {{ "APPOINTMENTS.Appointment" | translate }}
+        </p>
+        <div *ngFor="let service of (appointment | async)?.services" class="">
+          <p>{{ service.name }}</p>
+          <p>{{ "APPOINTMENTS.Date" | translate }} {{ service.date | date }}</p>
+          <p>{{ service.hour }}</p>
+          <p>
+            {{ service.price | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
+          </p>
+        </div>
+      </div>
+    </article>
   </div>
   <div class="mx-auto w-44 flex gap-8">
-	  <button
-		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
-		routerLink="/parent-view"
-	  >
-		{{"APPOINTMENTS.Back" | translate}}
-	  </button>
-      <button class="bg-red-500 hover:bg-red-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8" (click)="onCancelAppointment(appointment._id)">{{"APPOINTMENTS.Cancel" | translate}}</button>
+    <button
+      class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+      routerLink="/parent-view"
+    >
+      {{ "APPOINTMENTS.Back" | translate }}
+    </button>
+    <button
+      class="bg-red-500 hover:bg-red-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+      *ngIf="appointment | async as appointment"
+      (click)="onCancelAppointment(appointment._id)"
+    >
+      {{ "APPOINTMENTS.Cancel" | translate }}
+    </button>
   </div>
 </section>

@@ -2,36 +2,40 @@
   (click)="closeMenuMobile()"
   class="bg-black flex fixed text-[20px] bg-opacity-40 w-full h-screen z-40"
 >
-
-<nav
-[ngClass]="{ show: modalAnimation, hiddenNav: !modalAnimation }"
-(click)="stopPropagation($event)"
-class="bg-sienna-100 flex flex-col items-center w-full z-50 gap-12 relative pt-8"
->
-    <button class="absolute top-[2%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted" (click)="closeMenuMobile()">X</button>
-    <div class="flex flex-col items-center gap-3 mt-8 w-[80%] md:w-[50%] lg:flex-row">
+  <nav
+    [ngClass]="{ show: (modalAnimation | async), hiddenNav: !(modalAnimation | async) }"
+    (click)="stopPropagation($event)"
+    class="bg-sienna-100 flex flex-col items-center w-full z-50 gap-12 relative pt-8"
+  >
+    <button
+      class="absolute top-[2%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted"
+      (click)="closeMenuMobile()"
+    >
+      X
+    </button>
+    <div
+      class="flex flex-col items-center gap-3 mt-8 w-[80%] md:w-[50%] lg:flex-row"
+    >
       <button
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-full lg:justify-self-center"
         routerLink="/register"
         [queryParams]="{ newPet: true }"
       >
-      {{"MODAL_PETS.Pet" | translate}}
-
+        {{ "MODAL_PETS.Pet" | translate }}
       </button>
       <button
         class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-full lg:justify-self-center"
         routerLink="/forgot-password"
       >
-      {{"MODAL_PETS.Password" | translate}}
-
+        {{ "MODAL_PETS.Password" | translate }}
       </button>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-10 w-[70%]">
       <h2
         class="text-2xl font-dog text-center text-sienna-700 col-span-3 lg:col-span-4"
       >
-      {{"MODAL_PETS.Pets" | translate}}
-    </h2>
+        {{ "MODAL_PETS.Pets" | translate }}
+      </h2>
       <div
         *ngFor="let pet of pets"
         (click)="goToDetail(pet._id)"
@@ -51,21 +55,24 @@ class="bg-sienna-100 flex flex-col items-center w-full z-50 gap-12 relative pt-8
       <h2
         class="text-2xl font-dog text-center text-sienna-700 col-span-3 lg:col-span-4"
       >
-        {{"MODAL_PETS.Appointments" | translate}}
+        {{ "MODAL_PETS.Appointments" | translate }}
       </h2>
-      
+
+      <div *ngFor="let appointment of appointments" class="justify-self-center">
         <div
-          *ngFor="let appointment of appointments"
-          class="justify-self-center"
+          class="cursor-pointer"
+          (click)="goToDetailAppointment(appointment._id)"
         >
-          <div class="cursor-pointer" (click)="goToDetailAppointment(appointment._id)">
-            <img class="rounded-full w-16 h-16"
-            alt="imagen Appointment" [src]="appointment.services[0].image">
-            <p class="text-sm text-center font-dog font-black truncate w-16">
-              {{ appointment._id }}
-            </p>
-          </div>
+          <img
+            class="rounded-full w-16 h-16"
+            alt="imagen Appointment"
+            [src]="appointment.services[0].image"
+          />
+          <p class="text-sm text-center font-dog font-black truncate w-16">
+            {{ appointment._id }}
+          </p>
         </div>
+      </div>
     </div>
   </nav>
 </div>

@@ -6,19 +6,20 @@ import { CourierService } from 'src/app/core/services/courier/courier.service';
 import { CartService } from 'src/app/core/services/Cart/cart.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { Trainers } from 'src/app/core/models/Trainers/transformed/TrainerModel';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-service-card',
   templateUrl: './service-card.component.html',
-  styleUrls: ['./service-card.component.scss'],
+  styleUrls: [],
 })
 export class ServiceCardComponent implements OnInit {
   @Input() service?: Services;
   @Input() servicesAddedToCart: Services[];
 
-  public pet?: Pets;
-  public isServiceInCart: Boolean = false;
-  public trainerName?: Trainers
+  public pet?: Observable<Pets>;
+  public isServiceInCart: boolean = false;
+  public trainerName?: Observable<Trainers | undefined>;
 
   constructor(
     private petsService: PetsService,
@@ -29,9 +30,14 @@ export class ServiceCardComponent implements OnInit {
     this.servicesAddedToCart = [];
   }
   ngOnInit() {
-    this.trainersService.getTrainers().subscribe((trainer) => {
-      this.trainerName = trainer.find((traine) => traine._id === this.service?.trainer)      
-    })
+    this.trainerName = this.trainersService
+      .getTrainers()
+      .pipe(
+        map((trainers) =>
+          trainers.find((traine) => traine._id === this.service?.trainer)
+        )
+      );
+
     this.servicesAddedToCart?.find(
       (value) => (this.isServiceInCart = value._id === this.service?._id)
     );
@@ -39,23 +45,26 @@ export class ServiceCardComponent implements OnInit {
       this.service?._id,
       this.isServiceInCart
     );
+
     this.courierService.getServiceInCart().subscribe((value) => {
       if (this.service) {
         this.isServiceInCart = value[this.service?._id];
       }
     });
     if (this.service?.petId)
-      this.petsService
-        .getPet(this.service.petId)
-        .subscribe((value) => (this.pet = value));
+      this.pet = this.petsService.getPet(this.service.petId);
   }
 
   public onRemoveService(service: Services) {
-    service.date = '';
-    service.pet = '';
-    service.hour = ''
-    service.trainer = ''
+    this.resetService(service)
     if (service) this.courierService.updateServiceInCart(service?._id, false);
     this.cartService.removeServiceToCart(service);
+  }
+
+  public resetService(service: Services){
+    service.date = '';
+    service.pet = '';
+    service.hour = '';
+    service.trainer = '';
   }
 }

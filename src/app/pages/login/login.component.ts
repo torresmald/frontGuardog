@@ -5,18 +5,19 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DeactivatableComponent } from 'src/app/core/guards/canDeactivate/deactivate.interface';
 import { LoadingService } from 'src/app/core/services/Loading/loading.service';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: [],
 })
 export class LoginComponent implements DeactivatableComponent {
   public form?: FormGroup;
@@ -28,13 +29,14 @@ export class LoginComponent implements DeactivatableComponent {
     private fb: FormBuilder,
     private parentService: ParentService,
     private trainerService: TrainerService,
-    private router: Router,
     private route: ActivatedRoute,
     private modalService: ModalService,
     private usersService: UsersService,
-    private loadingService: LoadingService
-
+    private loadingService: LoadingService,
+    private navigationService: NavigationService
   ) {}
+
+  // TODO Servicio de Validaciones
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -61,7 +63,7 @@ export class LoginComponent implements DeactivatableComponent {
               this.isSubmitted = true;
               this.usersService.userLogged$.next(true);
               setTimeout(() => {
-                this.router.navigate(['trainer-view']);
+                this.navigationService.onNavigate('trainer-view')
               }, 1000);
             },
             error: (error) => {
@@ -77,15 +79,13 @@ export class LoginComponent implements DeactivatableComponent {
               this.isSubmitted = true;
               this.usersService.userLogged$.next(true);
               setTimeout(() => {
-                this.router.navigate(['parent-view']);
+                this.navigationService.onNavigate('parent-view')
               }, 1000);
             },
             error: (error) => {
-              
               this.loadingService.hideLoading()
               const { error: errorResponse } = error;
               this.errors = errorResponse.message;
-              console.log(this.errors);
             },
           });
     }

@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
 import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmentsService.service';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
-  styleUrls: ['./appointment.component.scss']
+  styleUrls: []
 })
 export class AppointmentComponent implements OnInit {
 
-  public appointment!: Appointments;
+  public appointment!: Observable<Appointments>;
   public id: string = ''
 
-  constructor(private appointmentsService: AppointmentsService,private route: ActivatedRoute, private modalService: ModalService, private router: Router){}
+  constructor(private appointmentsService: AppointmentsService,private route: ActivatedRoute, private modalService: ModalService, private navigationService: NavigationService){}
 
   ngOnInit(): void {
   
     this.route.params.subscribe((value) => {
       this.id = value['id']
     })
-    this.appointmentsService.getAppointment(this.id).subscribe((value) => {
-      this.appointment = value      
-    })
+    this.appointment =  this.appointmentsService.getAppointment(this.id)
   }
 
   public onCancelAppointment(id: string){
@@ -32,7 +32,7 @@ export class AppointmentComponent implements OnInit {
         this.modalService.$message?.next('Cita Cancelada');
         this.modalService.showModal();
         setTimeout(() => {
-          this.router.navigate(['/parent-view']);
+          this.navigationService.onNavigate('/parent-view')
         }, 1000);
       }
       

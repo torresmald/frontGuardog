@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiAppointments } from 'src/app/core/models/Appointments/api/apiAppointmentModel';
-import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
 import { ApiServices } from 'src/app/core/models/Services/api/apiServiceModel';
+
+//TODO VARIABLES DE ENTORNO
 
 const URL_API = 'https://api-guardog.vercel.app/appointments';
 
@@ -17,7 +18,7 @@ export class ApiAppointmentsService {
     return this.http.get<ApiAppointments[]>(URL_API);
   }
   public getApiAppointment(id: string): Observable<ApiAppointments> {
-    return this.http.get<ApiAppointments>(`${URL_API}/${id}`)
+    return this.http.get<ApiAppointments>(`${URL_API}/${id}`);
   }
 
   public getApiAppointmentsUser(user: string): Observable<ApiAppointments[]> {
@@ -34,7 +35,7 @@ export class ApiAppointmentsService {
     return this.http.post<ApiAppointments>(URL_API, body);
   }
 
-  public deleteApiAppointment(id: string): Observable<string>{
-    return this.http.delete<string>(`${URL_API}/${id}`)
+  public deleteApiAppointment(id: string): Observable<string> {
+    return this.http.delete<string>(`${URL_API}/${id}`);
   }
 }

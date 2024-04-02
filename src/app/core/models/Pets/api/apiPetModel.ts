@@ -1,15 +1,15 @@
 import { ApiParents } from "../../Parents/api/apiParentModel"
-import { nutrition, exercise } from "../petsData"
+import { Nutrition, Exercise } from "../petsData"
 
 export interface ApiPets{
     _id: string,
     name: string,
     image: string,
     birthday: string,
-    nutrition: nutrition,
+    nutrition: Nutrition,
     diseases: string,
-    exercise: exercise,
-    maxNumberGifts: Number,
+    exercise: Exercise,
+    maxNumberGifts: number,
     __v?: string,
     createdAt?: string,
     updatedAt?: string

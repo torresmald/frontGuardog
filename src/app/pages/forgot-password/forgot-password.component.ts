@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  styleUrls: []
 })
 export class ForgotPasswordComponent implements OnInit {
   public form?: FormGroup;
-  public message?: any;
+  public message?: string;
 
-  constructor(private route: ActivatedRoute, private parentsService: ParentService, private toastService: ToastService, private router: Router){}
+  constructor(private parentsService: ParentService, private toastService: ToastService, private navigationService: NavigationService){}
   ngOnInit(): void {
     this.form = new FormGroup({
       'email': new FormControl('', [Validators.required, Validators.email])
     })
 
+    // TODO SERVICIO DE VALIDACIONES
 
   }
 
@@ -31,7 +32,7 @@ export class ForgotPasswordComponent implements OnInit {
           this.toastService.showToast();
           setTimeout(() => {
             this.toastService.closeToast();
-            this.router.navigate([''])
+            this.navigationService.onNavigate('')
           }, 2000);
         }
       })

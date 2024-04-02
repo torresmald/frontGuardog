@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ScrollListener, homeAnimation } from './animation';
+import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +11,9 @@ import { ScrollListener, homeAnimation } from './animation';
 export class HomeComponent implements OnInit {
   public scrollAnimation: homeAnimation = new homeAnimation({});
 
-  constructor(private router:Router){}
+  constructor(private navigationService: NavigationService){}
   public goToRegister() {
-    this.router.navigate(['register'])
+    this.navigationService.onNavigate('register')
   }
 
   ngOnInit(): void {
@@ -22,9 +22,9 @@ export class HomeComponent implements OnInit {
     });
   }
   public goToLogin() {
-    this.router.navigate(['login'])
+    this.navigationService.onNavigate('login')
   }
   public goToTrainerLogin() {
-    this.router.navigate(['login'], { queryParams: { isTrainer: 'true' } })
+    this.navigationService.onNavigate('login', undefined,  { queryParams: { isTrainer: 'true' } })
   }
 }

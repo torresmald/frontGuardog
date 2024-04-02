@@ -5,7 +5,7 @@
   (onFileDropped)="uploadFile($event)"
   *ngIf="formControl"
 >
-  <input hidden type="file" #fileInput (change)="uploadFile($event)" [formControl]="formControl"/>
+  <input hidden id="image" type="file" #fileInput (change)="uploadFile($event)" [formControl]="formControl"/>
 </div>
 <div class="flex justify-between w-[80%] my-2 mx-auto bg-white border-2 border-dashed border-york-600 rounded-xl p-1 text-york-600" *ngFor="let file of files; let i = index">
   <p>{{ file }}</p>

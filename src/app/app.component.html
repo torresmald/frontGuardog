@@ -1,8 +1,9 @@
 <div class="app-container flex flex-col min-h-screen">
   <app-modal-form></app-modal-form>
-  <app-modal-items-services *ngIf="isItemServiceModal"></app-modal-items-services>
-  <app-modal-nav *ngIf="isMenuOpen"></app-modal-nav>
-  <app-modal-pets *ngIf="isPetModal"></app-modal-pets>
+  <app-modal-items-services *ngIf="isItemServiceModal | async"></app-modal-items-services>
+  <app-modal-services-view *ngIf="isServiceModalView | async"></app-modal-services-view>
+  <app-modal-nav *ngIf="isMenuOpen | async"></app-modal-nav>
+  <app-modal-pets *ngIf="isPetModal | async"></app-modal-pets>
   <app-scroll-to-top></app-scroll-to-top>
   <app-modal-cart></app-modal-cart>
   <app-loader></app-loader>
@@ -10,7 +11,7 @@
   <app-header *ngIf="shouldShow()"></app-header>
   <app-modal-coupons></app-modal-coupons>
   <app-modal-extras></app-modal-extras>
-  <main>
+  <main class="grow">
     <router-outlet>
     </router-outlet>
   </main>

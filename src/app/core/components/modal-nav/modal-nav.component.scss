@@ -5,7 +5,7 @@ li {
 	display: flex;
 	align-items: center;
 	position: relative;
-	z-index: 30; /* Asegúrate de que el z-index del li sea menor que el del nav */
+	z-index: 30; 
   }
   
   li::before {
@@ -15,7 +15,7 @@ li {
 	left: 0;
 	right: 50px;
 	bottom: 0;
-	z-index: -1; /* Asegúrate de que el z-index del ::before sea menor que el del nav */
+	z-index: -1; 
 	background-color: #c06740;
 	transform-origin: top left;
 	border-top-right-radius: 30px;
@@ -85,12 +85,3 @@ section img {
     padding: 10px 0;
     z-index: 99;
 }
-
-
-
-// .light{transition: 0.5s;}
-
-// .dark {
-// 	margin-left: 54%;
-// 	transition: 0.5s;
-//   }

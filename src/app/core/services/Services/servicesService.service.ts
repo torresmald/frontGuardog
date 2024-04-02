@@ -43,7 +43,4 @@ export class ServicesService {
     );
   }
 
-  // public updateStylesImage(data: UpdatedStylesData) {
-  //   this.stylesImage.next(data);
-  // }
 }

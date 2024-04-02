@@ -1,29 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../../services/Modal/modal.service';
 import { UsersService } from '../../services/Users/usersService.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-modal-form',
   templateUrl: './modal-form.component.html',
-  styleUrls: ['./modal-form.component.scss'],
+  styleUrls: [],
 })
 export class ModalFormComponent implements OnInit {
-  public shouldShowModal?: boolean;
-  public message?: string;
-  public isLogged: boolean = false;
+  public shouldShowModal?:  Observable<boolean>
+  public message?: Observable<string>
+  public isLogged?: Observable<boolean>
 
   constructor(private modalService: ModalService, private usersService:UsersService) {}
 
   ngOnInit(): void {
-    this.modalService.$shoulShowModal.subscribe((value) => {      
-      this.shouldShowModal = value;      
-    });
-    this.modalService.$message?.subscribe((value) => {      
-      this.message = value;
-    });
-    this.usersService.userLogged$.subscribe((value) => {
-      this.isLogged = value
-    })    
+    this.shouldShowModal = this.modalService.$shoulShowModal
+    this.message = this.modalService.$message
+    this.isLogged = this.usersService.userLogged$
   }
 
   public onLeavePage(result: boolean) {

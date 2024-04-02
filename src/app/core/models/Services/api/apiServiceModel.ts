@@ -10,6 +10,7 @@ export interface ApiServices{
     hour: string,
     petId?: string,
     trainer: string,
+    link: string,
     __v?: string,
     createdAt?: string,
     updatedAt?: string
