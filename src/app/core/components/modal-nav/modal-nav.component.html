@@ -1,15 +1,21 @@
 <div (click)="closeMenuMobile()" class="bg-black flex fixed text-[20px] bg-opacity-40 w-full h-screen z-40">
 	<nav  [ngClass]="{'show': (modalAnimation | async), 'hiddenNav': !(modalAnimation | async)}" (click)="stopPropagation($event)" class="bg-sienna-100 flex flex-col justify-between w-[300px] font-dog h-screen">
 		<ul class="mt-6">
-			<li (click)="closeMenuMobile()" routerLink="/"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Home" | translate}}</li>
-			<li (click)="closeMenuMobile()" routerLink="/about"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.About" | translate}}</li>
-			<li (click)="closeMenuMobile()" routerLink="/contact"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Contact" | translate}}</li>
-			<li *ngIf="!(isLogged | async)" (click)="closeMenuMobile()" routerLink="/register"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Register" | translate}}</li>
-			<li *ngIf="(isLogged | async) && isParent" (click)="onNavigateServices()"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Services" | translate}}</li>
-			<li *ngIf="(isLogged | async)" (click)="onNavigateAccount()" class="mx-5" routerLink="active"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Account" | translate}}</li>
-			<li *ngIf="(isLogged | async)" (click)="onLogout()" class="mx-5"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Logout" | translate}}</li>
-			<li *ngIf="servicesInCart.length > 0 && (isLogged | async) && isParent" (mouseenter)="onChangeHover()" (mouseleave)="onHoverLeave()" routerLink="/checkout">
-				<img src="../../../../assets/home/nav1.png" alt="">
+			<li (click)="closeMenuMobile()" routerLink="/"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Home" | translate}}</li>
+			<li (click)="closeMenuMobile()" routerLink="/about"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.About" | translate}}</li>
+			<li (click)="closeMenuMobile()" routerLink="/contact"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Contact" | translate}}</li>
+			<li *ngIf="!(isLogged | async)" (click)="closeMenuMobile()" routerLink="/register"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Register" | translate}}</li>
+			<li *ngIf="(isLogged | async) && isParent" (click)="onNavigateServices()"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Services" | translate}}</li>
+			<li  class="mx-5" ><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">
+				<div class="relative cursor-pointer" *ngIf="isLogged | async" (click)="onNavigateAccount()"
+				>
+				  <img class="w-10 h-10 rounded-full" [src]="imageProfile" alt="profile image">
+				  <span class="top-0 start-7 absolute w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full"></span>
+			  </div>
+			</li>
+			<li *ngIf="(isLogged | async)" (click)="onLogout()" class="mx-5"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Logout" | translate}}</li>
+			<li *ngIf="servicesInCart && servicesInCart.length > 0 && (isLogged | async) && isParent" (mouseenter)="onChangeHover()" (mouseleave)="onHoverLeave()" routerLink="/checkout">
+				<img  class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">
 				<p class="absolute text-center text-black right-60 mt-1">
 					{{ servicesInCart.length }}
 				</p>

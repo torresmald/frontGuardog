@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   public numberInCart: number = 0;
   public showFixedCart: boolean = false;
   public timeHoverMenu?: ReturnType<typeof setTimeout>;
- 
+  public imageProfile?: string;
 
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
@@ -61,11 +61,16 @@ export class HeaderComponent implements OnInit {
     });
     this.isLogged = this.usersService.userLogged$
     const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER)
+    console.log(token);
+    
     if (token) {
+      this.imageProfile = JSON.parse(token).user.image
       JSON.parse(token).user.pets
-        ? (this.isParent = true)
-        : (this.isParent = false);
+        ? this.isParent = true
+        : this.isParent = false
     }
+    console.log(this.imageProfile);
+    
   }
 
   public openMenuMobile() {
