@@ -49,7 +49,6 @@ export class CheckoutComponent implements OnInit {
     this.cartService.getTotalAmount().subscribe(
       (value) => (this.total = value)
     );
-    // TODO del servicio
     const dataStorage = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_CART)
     this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null;
   }
@@ -63,7 +62,6 @@ export class CheckoutComponent implements OnInit {
         this.coupon = '';
       }
       if (this.discount) {
-        // TODO ver descuentos
         this.cartService.getSubtotalAmount().subscribe(
           (value) => (this.subTotal = value - (value * this.discount) / 100)
         );
