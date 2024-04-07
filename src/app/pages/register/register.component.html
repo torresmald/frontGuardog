@@ -86,13 +86,19 @@
                   <label for="birthday">
                     {{ "REGISTER.Date" | translate }}
                   </label>
-                  <input
+                  <!-- <input
                     type="date"
                     id="birthday"
                     class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
                     formControlName="birthday"
                     autocomplete="on"
-                  />
+                  /> -->
+                  <mat-form-field  class="w-full">
+                    <mat-label>{{"MODAL_SERVICES.Choose" | translate}}</mat-label>
+                    <input id="date" matInput [matDatepicker]="picker" formControlName="birthday" [matDatepickerFilter]="disabledDates" >
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
                   <p
                     class="text-red-600 font-bold"
                     *ngIf="
@@ -250,7 +256,7 @@
                     type="password"
                     id="password"
                     class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
-                    placeholder="Introduce tu password"
+                    placeholder="*************"
                     formControlName="password"
                     autocomplete="on"
                   />
@@ -283,6 +289,7 @@
                     id="repeatPassword"
                     class="h-10 border mt-1 rounded px-4 py-2 w-full bg-gray-50 focus:outline-none focus:ring focus:border-blue-500"
                     formControlName="repeatPassword"
+                    placeholder="*************"
                     autocomplete="on"
                   />
                   <p
@@ -338,6 +345,18 @@
                     {{ "REGISTER.AddressRequired" | translate }}
                   </p>
                 </div>
+                <div class="flex items-center gap-2 md:col-span-5" *ngIf="!newPet">
+                  <input
+                    type="checkbox"
+                    id="conditions"
+                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                    formControlName="conditions"
+                    autocomplete="on"
+                  />
+                  <label for="conditions">
+                    {{ "REGISTER.Conditions" | translate }} <span (click)="onOpenModal()" class="text-blue-600 underline cursor-pointer">{{"REGISTER.ConditionsModal" | translate}}</span>
+                  </label>
+                </div>
 
                 <div class="md:col-span-5 text-center py-4">
                   <div class="inline-flex items-center">
@@ -357,6 +376,12 @@
                   >
                     {{ "REGISTER.ExistUser" | translate }}
                   </p>
+                  <p
+                  class="text-red-600 font-bold text-xl"
+                  *ngIf="errors === 'Debes Aceptar los términos y condiciones'"
+                >
+                  {{ "REGISTER.ConditionsRequired" | translate }}
+                </p>
                   <p
                     class="text-red-600 font-bold text-xl"
                     *ngIf="errors === 'Ya existe la mascota'"

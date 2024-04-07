@@ -250,6 +250,9 @@
     "ExistUser":"The user already exist, Login",
     "ExistPet":"The pet already exist",
     "Home":"Home",
-    "Back":"Back"
+    "Back":"Back",
+    "Conditions": "I agree with",
+    "ConditionsModal": "the terms and conditions",
+    "ConditionsRequired": "You must accept the terms and conditions"
   }
 }

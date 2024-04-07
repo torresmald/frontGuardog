@@ -53,6 +53,8 @@ export class ModalNavComponent implements OnInit {
     });
     this.isLogged = this.usersService.userLogged$
     this.servicesInCart = this.cartService.getCartServices();
+    console.log(this.servicesInCart);
+    
 
     const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER) 
     if (token) {

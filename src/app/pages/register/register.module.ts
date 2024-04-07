@@ -10,7 +10,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import { UploadFilesComponent } from './upload-files/upload-files.component';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -33,6 +33,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatNativeDateModule,
     MatFormFieldModule,
     TranslateModule
-  ]
+  ],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'es-ES'}]
 })
 export class RegisterModule { }

@@ -8,7 +8,7 @@
 			<li *ngIf="(isLogged | async) && isParent" (click)="onNavigateServices()"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Services" | translate}}</li>
 			<li *ngIf="(isLogged | async)" (click)="onNavigateAccount()" class="mx-5" routerLink="active"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Account" | translate}}</li>
 			<li *ngIf="(isLogged | async)" (click)="onLogout()" class="mx-5"><img src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Logout" | translate}}</li>
-			<li *ngIf="servicesInCart.length > 0 && (isLogged | async) && isParent" (mouseenter)="onChangeHover()" (mouseleave)="onHoverLeave()" routerLink="/checkout">
+			<li *ngIf="servicesInCart && servicesInCart.length > 0 && (isLogged | async) && isParent" (mouseenter)="onChangeHover()" (mouseleave)="onHoverLeave()" routerLink="/checkout">
 				<img src="../../../../assets/home/nav1.png" alt="">
 				<p class="absolute text-center text-black right-60 mt-1">
 					{{ servicesInCart.length }}
