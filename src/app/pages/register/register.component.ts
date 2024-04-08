@@ -14,6 +14,7 @@ import { ParentService } from 'src/app/core/services/Parents/parentsService.serv
 import { PetsService } from 'src/app/core/services/Pets/petsService.service';
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-register',
@@ -43,10 +44,14 @@ export class RegisterComponent implements OnInit {
     private usersService: UsersService,
     private modalService: ModalService,
     private loadingService: LoadingService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private date: DateAdapter<Date>
+
   ) {}
 
   ngOnInit(): void {
+    this.date.getFirstDayOfWeek = () => 1;
+
     this.route.queryParams.subscribe((value) => {
       if (value['newPet']) {
         this.newPet = true;
@@ -55,9 +60,6 @@ export class RegisterComponent implements OnInit {
     });
 
     // TODO Servicio de Validaciones
-
-    // TODO Meter el MATE DATE INPUT par ala fecha
-
 
     this.newPet
       ? (this.form = this.fb.group({
@@ -90,6 +92,7 @@ export class RegisterComponent implements OnInit {
           ]),
           address: new FormControl('', Validators.required),
           phone: new FormControl('', Validators.required),
+          conditions: new FormControl(false, Validators.requiredTrue)
         }));
 
     this.form?.get('password')?.valueChanges.subscribe((passwordValue) => {
@@ -113,6 +116,14 @@ export class RegisterComponent implements OnInit {
     return (this.form?.get('diseases') as FormArray).controls;
   }
 
+  public disabledDates = (date: Date | null): boolean => {
+    if (date) {
+      const today = new Date();
+      return date <= today;
+    }
+    return true;
+  };
+
   public uploadImage(event: any) {
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
@@ -132,7 +143,7 @@ export class RegisterComponent implements OnInit {
 
   public onSubmit() {
     if (this.form?.valid) {
-      if (this.newPet) {
+      if (this.newPet) {        
         const form = new FormData();
         form.append('name', this.form?.get('name')?.value);
         form.append('image', this.image);
@@ -143,7 +154,7 @@ export class RegisterComponent implements OnInit {
         form.append('diseases', this.form?.get('diseases')?.value);
         form.append('exercise', this.form?.get('exercise')?.value);
         form.append('parent', this.form?.get('parent')?.value);
-
+        
         this.petsService.registerPets(form).subscribe({
           next: () => {
             this.modalService.$message?.next('Mascota Registrada');
@@ -159,6 +170,7 @@ export class RegisterComponent implements OnInit {
           },
         });
       } else {
+        console.log(this.form.get('conditions')?.value);
         const form = new FormData();
         form.append('name', this.form?.get('name')?.value);
         form.append('image', this.image);
@@ -166,6 +178,7 @@ export class RegisterComponent implements OnInit {
         form.append('password', this.form?.get('password')?.value);
         form.append('address', this.form?.get('address')?.value);
         form.append('phone', this.form?.get('phone')?.value);
+        form.append('conditions', this.form?.get('conditions')?.value);
 
         this.parentService.registerParent(form).subscribe({
           next: () => {
@@ -176,6 +189,8 @@ export class RegisterComponent implements OnInit {
             }, 1000);
           },
           error: (error) => {
+            console.log(error);
+            
             this.loadingService.hideLoading();
             const { error: errorResponse } = error;
             this.errors = errorResponse.message;
@@ -183,5 +198,10 @@ export class RegisterComponent implements OnInit {
         });
       }
     }
+  }
+
+  public onOpenModal(){
+    this.modalService.$message.next('Todos los datos serán tratados según la LOPD')
+    this.modalService.showModal();
   }
 }

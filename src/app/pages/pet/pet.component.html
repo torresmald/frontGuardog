@@ -22,7 +22,7 @@
 	{{"PET.Date" | translate}}
 
 		</p>
-		<p>{{ (pet | async)?.birthday }}</p>
+		<p>{{ (pet | async)?.birthday | date : 'dd/MM/yyyy'}}</p>
 	  </div>
 	  <div class="md:ml-[49%] w-full">
 		<p class="font-dog text-2xl">

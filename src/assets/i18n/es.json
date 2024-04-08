@@ -250,6 +250,9 @@
     "ExistUser":"El Usuario ya existe, Loguéate",
     "ExistPet":"Ya existe la mascota",
     "Home":"Inicio",
-    "Back":"Volver"
+    "Back":"Volver",
+    "Conditions": "Acepto los",
+    "ConditionsModal": "términos y condiciones",
+    "ConditionsRequired": "Debes Aceptar los términos y condiciones"
   }
 }
