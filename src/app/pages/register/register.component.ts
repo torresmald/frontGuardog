@@ -61,8 +61,6 @@ export class RegisterComponent implements OnInit {
 
     // TODO Servicio de Validaciones
 
-    // TODO Meter el MATE DATE INPUT par ala fecha
-
     this.newPet
       ? (this.form = this.fb.group({
           name: new FormControl('', [
