@@ -22,6 +22,7 @@ export class ModalNavComponent implements OnInit {
   public timeHoverMenu?: ReturnType<typeof setTimeout>;
   public id?:string;
   public token?: string;
+  public imageProfile?: string;
 
 
   @HostListener('window:resize', ['$event'])
@@ -58,6 +59,8 @@ export class ModalNavComponent implements OnInit {
 
     const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER) 
     if (token) {
+      this.imageProfile = JSON.parse(token).user.image
+
         JSON.parse(token).user.pets ? this.isParent = true : this.isParent = false
     }
   }
