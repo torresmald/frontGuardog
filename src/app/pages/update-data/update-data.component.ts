@@ -13,6 +13,7 @@ import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
+import { ValidationService } from 'src/app/core/services/Validation/validation.service';
 
 @Component({
   selector: 'app-update-data',
@@ -24,7 +25,7 @@ export class UpdateDataComponent implements OnInit {
   public token?: string;
   public trainer?: Trainers;
   public parent?: Parents;
-  public form?: FormGroup;
+  public form!: FormGroup;
   public url: string | ArrayBuffer | null =
     'https://i.pinimg.com/originals/45/b3/66/45b3660b7d464ca297f9f6969143ca96.jpg';
 
@@ -35,7 +36,8 @@ export class UpdateDataComponent implements OnInit {
     private parentsService: ParentService,
     private fb: FormBuilder,
     private modalService: ModalService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private validationService: ValidationService
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +49,6 @@ export class UpdateDataComponent implements OnInit {
     );
     const parsedValue = storedValue ? JSON.parse(storedValue) : null;
 
-// TODO Servicio Validaciones
 
     parsedValue.user.pets
       ? this.parentsService.getParent(this.id).subscribe((parent) => {
@@ -79,6 +80,15 @@ export class UpdateDataComponent implements OnInit {
           });
         });
   }
+
+  public isValidField(field: string){
+    return this.validationService.isValidField(this.form, field)
+  }
+
+  public getFieldError(field:string){
+    return this.validationService.getFieldError(this.form, field, 'UPDATE_DATA')
+  }
+
 
   public onSubmit() {
     if (this.form?.valid) {

@@ -15,6 +15,7 @@ import { PetsService } from 'src/app/core/services/Pets/petsService.service';
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { DateAdapter } from '@angular/material/core';
+import { ValidationService } from 'src/app/core/services/Validation/validation.service';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,7 @@ export class RegisterComponent implements OnInit {
   public max: number = 10;
   public textRegister: string = 'Usuario';
   public isSamePassword: boolean = false;
-  public form?: FormGroup;
+  public form!: FormGroup;
   public errors?: string;
   public newPet: boolean = false;
   public image: Blob | string = '';
@@ -45,8 +46,8 @@ export class RegisterComponent implements OnInit {
     private modalService: ModalService,
     private loadingService: LoadingService,
     private navigationService: NavigationService,
-    private date: DateAdapter<Date>
-
+    private date: DateAdapter<Date>,
+    private validationService: ValidationService
   ) {}
 
   ngOnInit(): void {
@@ -58,8 +59,6 @@ export class RegisterComponent implements OnInit {
         this.textRegister = 'Mascota';
       }
     });
-
-    // TODO Servicio de Validaciones
 
     this.newPet
       ? (this.form = this.fb.group({
@@ -139,6 +138,14 @@ export class RegisterComponent implements OnInit {
   public onAddDisease() {
     const control = new FormControl();
     (<FormArray>this.form?.get('diseases')).push(control);
+  }
+
+  public isValidField(field: string){
+    return this.validationService.isValidField(this.form, field)
+  }
+
+  public getFieldError(field:string){
+    return this.validationService.getFieldError(this.form, field, 'REGISTER')
   }
 
   public onSubmit() {

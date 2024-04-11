@@ -1,14 +1,14 @@
 <section
   class="bg-sienna-50 w-full flex flex-col gap-20 mt-14 min-h-[calc(100vh-(10vh+7vh))]"
 >
-  <div class="flex flex-col md:flex-row justify-center md:items-center relative">
+  <div id="htmlData" class="flex flex-col md:flex-row justify-center md:items-center relative">
 	<article
 	  class="bg-sienna-100 md:absolute md:right-[50%] flex flex-col items-center justify-center h-[170px] md:h-[550px] md:w-[400px] mx-6 mt-3 rounded-t-xl md:rounded-xl z-20"
 	>
 	  <figure
 		class="shadow-2xl rounded-full overflow-auto my-2 md:my-10 w-[110px] h-[100px] md:h-[200px] md:w-[210px]"
 	  >
-		<img class="w-full h-full" src="{{ (pet | async)?.image }}" alt="" />
+		<img class="w-full h-full" src="{{ (pet | async)?.image }}" alt="image pet" />
 	  </figure>
 	  <p class="capitalize text-[25px] md:text-[40px] font-dog">
 		{{ (pet | async)?.name }}
@@ -56,8 +56,9 @@
 
 	  </button>
 	  <button
+	  *ngIf="pet | async as pet"
 	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
-	  (click)="onDownloadPet()"
+	  (click)="onDownloadPet(pet)"
 	  >
 	{{"PET.Download" | translate}}
 	  

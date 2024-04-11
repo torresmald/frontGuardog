@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
+import { ValidationService } from 'src/app/core/services/Validation/validation.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,17 +11,23 @@ import { NavigationService } from 'src/app/core/services/Navigation/navigation.s
   styleUrls: []
 })
 export class ForgotPasswordComponent implements OnInit {
-  public form?: FormGroup;
+  public form!: FormGroup;
   public message?: string;
 
-  constructor(private parentsService: ParentService, private toastService: ToastService, private navigationService: NavigationService){}
+  constructor(private parentsService: ParentService, private toastService: ToastService, private navigationService: NavigationService, private validationService: ValidationService){}
   ngOnInit(): void {
     this.form = new FormGroup({
       'email': new FormControl('', [Validators.required, Validators.email])
     })
 
-    // TODO SERVICIO DE VALIDACIONES
+  }
 
+  public isValidField(field: string){
+    return this.validationService.isValidField(this.form, field)
+  }
+
+  public getFieldError(field:string){
+        return this.validationService.getFieldError(this.form, field, 'FORGOT_PASSWORD')
   }
 
   public onSubmit(){

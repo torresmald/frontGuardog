@@ -60,17 +60,13 @@ export class HeaderComponent implements OnInit {
       this.numberInCart = this.servicesInCart.length;
     });
     this.isLogged = this.usersService.userLogged$
-    const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER)
-    console.log(token);
-    
+    const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER)    
     if (token) {
       this.imageProfile = JSON.parse(token).user.image
       JSON.parse(token).user.pets
         ? this.isParent = true
         : this.isParent = false
-    }
-    console.log(this.imageProfile);
-    
+    }    
   }
 
   public openMenuMobile() {
