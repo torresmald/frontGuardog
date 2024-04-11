@@ -13,6 +13,7 @@ import { ParentService } from 'src/app/core/services/Parents/parentsService.serv
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { UsersService } from 'src/app/core/services/Users/usersService.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
+import { ValidationService } from 'src/app/core/services/Validation/validation.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ import { NavigationService } from 'src/app/core/services/Navigation/navigation.s
   styleUrls: [],
 })
 export class LoginComponent implements DeactivatableComponent {
-  public form?: FormGroup;
+  public form!: FormGroup;
   public errors?: string;
   public isTrainer: boolean = false;
   public isSubmitted: boolean = false;
@@ -33,10 +34,11 @@ export class LoginComponent implements DeactivatableComponent {
     private modalService: ModalService,
     private usersService: UsersService,
     private loadingService: LoadingService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private validationService: ValidationService
   ) {}
 
-  // TODO Servicio de Validaciones
+  
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -51,6 +53,14 @@ export class LoginComponent implements DeactivatableComponent {
         this.isTrainer = true;
       }
     });
+  }
+
+  public isValidField(field: string){
+    return this.validationService.isValidField(this.form, field)
+  }
+
+  public getFieldError(field:string){
+    return this.validationService.getFieldError(this.form, field, 'LOGIN')
   }
 
   public onSubmit() {

@@ -13,8 +13,6 @@
             <div class="font-bold flex flex-col text-center">
               <p class="font-medium text-lg text-york-600">
                 {{"UPDATE_DATA.Account" | translate}}
-
-
               </p>
               <p>
                 {{"UPDATE_DATA.Fill" | translate}}
@@ -44,24 +42,13 @@
                     autocomplete="on"
                   />
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('name')?.hasError('required') &&
-                      form.get('name')?.touched
+                      isValidField('name')
                     "
                   >
-                  {{"UPDATE_DATA.NameRequired" | translate}}
+                  {{getFieldError('name') | translate }}
 
-                  </p>
-                  <p
-                  class="text-red-600 font-bold"
-                  *ngIf="
-                      form.get('name')?.hasError('minlength') &&
-                      form.get('name')?.touched
-                    "
-                  >
-                  {{"UPDATE_DATA.NameSort" | translate}}
-                    
                   </p>
                 </div>
                 <div class="md:col-span-5">
@@ -78,13 +65,12 @@
                       [value]="parent ?  parent.phone : trainer?.phone"
                       />
                     <p
-                      class="text-red-600 font-bold"
+                      class="text-red-600"
                       *ngIf="
-                        form.get('phone')?.hasError('required') &&
-                        form.get('phone')?.touched
+                        isValidField('phone')
                       "
                     >
-                    {{"UPDATE_DATA.PhoneRequired" | translate}}
+                    {{getFieldError('phone') | translate}}
                       
                     </p>
                   </div>
@@ -102,14 +88,13 @@
                       [value]="parent.address"
                     />
                     <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
   
                       *ngIf="
-                        form.get('address')?.hasError('required') &&
-                        form.get('address')?.touched
+                        isValidField('address')
                       "
                     >
-                    {{"UPDATE_DATA.AddressRequired" | translate}}
+                    {{getFieldError('address') | translate}}
 
                     </p>
                   </div>

@@ -50,22 +50,12 @@
                   </div>
 
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('name')?.hasError('required') &&
-                      form.get('name')?.touched
+                      isValidField('name')
                     "
                   >
-                    {{ "REGISTER.NameRequired" | translate }}
-                  </p>
-                  <p
-                    class="text-red-600 font-bold"
-                    *ngIf="
-                      form.get('name')?.hasError('minlength') &&
-                      form.get('name')?.touched
-                    "
-                  >
-                    {{ "REGISTER.NameSort" | translate }}
+                    {{ getFieldError('name') | translate }}
                   </p>
                 </div>
 
@@ -78,13 +68,12 @@
                     (change)="uploadImage($event)"
                   ></app-upload-files>
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('image')?.hasError('required') &&
-                      form.get('image')?.touched
+                      isValidField('image')
                     "
                   >
-                    {{ "REGISTER.ImgRequired" | translate }}
+                    {{ getFieldError('image') | translate }}
                   </p>
                 </div>
                 <div class="md:col-span-5" *ngIf="newPet">
@@ -116,13 +105,12 @@
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('birthday')?.hasError('birthday') &&
-                      form.get('birthday')?.touched
+                      isValidField('birthday')
                     "
                   >
-                    {{ "REGISTER.DateRequired" | translate }}
+                    {{ getFieldError('birthday') | translate }}
                   </p>
                 </div>
 
@@ -146,13 +134,12 @@
                     </option>
                   </select>
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('nutrition')?.hasError('nutrition') &&
-                      form.get('nutrition')?.touched
+                      isValidField('nutrition')
                     "
                   >
-                    {{ "REGISTER.NutritionRequired" | translate }}
+                    {{ getFieldError('nutrition') | translate }}
                   </p>
                 </div>
 
@@ -202,13 +189,12 @@
                     </option>
                   </select>
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('exercise')?.hasError('exercise') &&
-                      form.get('exercise')?.touched
+                      isValidField('exercise')
                     "
                   >
-                    {{ "REGISTER.ExerciseRequired" | translate }}
+                    {{ getFieldError('exercise') | translate }}
                   </p>
                 </div>
 
@@ -250,22 +236,12 @@
                     >
                   </div>
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('email')?.hasError('required') &&
-                      form.get('email')?.touched
+                      isValidField('email')
                     "
                   >
-                    {{ "REGISTER.EmailRequired" | translate }}
-                  </p>
-                  <p
-                    class="text-red-600 font-bold"
-                    *ngIf="
-                      form.get('email')?.hasError('email') &&
-                      form.get('email')?.touched
-                    "
-                  >
-                    {{ "REGISTER.EmailInvalid" | translate }}
+                    {{ getFieldError('email') | translate }}
                   </p>
                 </div>
 
@@ -282,22 +258,12 @@
                     autocomplete="on"
                   />
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('password')?.hasError('required') &&
-                      form.get('password')?.touched
+                      isValidField('password')
                     "
                   >
-                    {{ "REGISTER.PasswordRequired" | translate }}
-                  </p>
-                  <p
-                    class="text-red-600 font-bold"
-                    *ngIf="
-                      form.get('password')?.hasError('minlength') &&
-                      form.get('password')?.touched
-                    "
-                  >
-                    {{ "REGISTER.PasswordInvalid" | translate }}
+                    {{ getFieldError('password') | translate }}
                   </p>
                 </div>
 
@@ -314,7 +280,7 @@
                     autocomplete="on"
                   />
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
                       !isSamePassword && form.get('repeatPassword')?.touched
                     "
@@ -339,22 +305,13 @@
 
                     />
                 </div>
-                  <!-- <input
-                    type="phone"
-                    id="phone"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    formControlName="phone"
-                    placeholder="+34XXXXXXXXX"
-                    autocomplete="on"
-                  /> -->
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('phone')?.hasError('required') &&
-                      form.get('phone')?.touched
+                      isValidField('phone')
                     "
                   >
-                    {{ "REGISTER.PhoneRequired" | translate }}
+                    {{ getFieldError('phone') | translate }}
                   </p>
                 </div>
 
@@ -374,22 +331,13 @@
                     
                     />
                 </div>
-                  <!-- <input
-                    type="text"
-                    id="address"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    formControlName="address"
-                    placeholder="Avda XXXX nº XX"
-                    autocomplete="on"
-                  /> -->
                   <p
-                    class="text-red-600 font-bold"
+                    class="text-red-600"
                     *ngIf="
-                      form.get('address')?.hasError('required') &&
-                      form.get('address')?.touched
+                      isValidField('address')
                     "
                   >
-                    {{ "REGISTER.AddressRequired" | translate }}
+                    {{ getFieldError('address') | translate }}
                   </p>
                 </div>
                 <div
@@ -426,13 +374,13 @@
                 </div>
                 <div class="md:col-span-5 text-center py-4">
                   <p
-                    class="text-red-600 font-bold text-xl"
+                    class="text-red-600"
                     *ngIf="errors === 'El usuaro ya existe, logueate'"
                   >
                     {{ "REGISTER.ExistUser" | translate }}
                   </p>
                   <p
-                    class="text-red-600 font-bold text-xl"
+                    class="text-red-600"
                     *ngIf="
                       errors === 'Debes Aceptar los términos y condiciones'
                     "
@@ -440,7 +388,7 @@
                     {{ "REGISTER.ConditionsRequired" | translate }}
                   </p>
                   <p
-                    class="text-red-600 font-bold text-xl"
+                    class="text-red-600"
                     *ngIf="errors === 'Ya existe la mascota'"
                   >
                     {{ "REGISTER.ExistPet" | translate }}

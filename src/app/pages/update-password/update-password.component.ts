@@ -6,6 +6,7 @@ import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { ToastService } from 'src/app/core/services/Toast/toast.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
+import { ValidationService } from 'src/app/core/services/Validation/validation.service';
 
 @Component({
   selector: 'app-update-password',
@@ -15,7 +16,7 @@ import { NavigationService } from 'src/app/core/services/Navigation/navigation.s
 export class UpdatePasswordComponent implements OnInit {
   public token: string = '';
   public message: string = '';
-  public form?: FormGroup;
+  public form!: FormGroup;
   public isSamePassword: boolean = false;
 
   constructor(
@@ -23,7 +24,8 @@ export class UpdatePasswordComponent implements OnInit {
     private route: ActivatedRoute,
     private toastService: ToastService,
     private modalService: ModalService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private validationService: ValidationService
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
@@ -54,7 +56,6 @@ export class UpdatePasswordComponent implements OnInit {
         }
       });
 
-    // TODO Servicio validaciones
 
     this.form = new FormGroup({
       password: new FormControl('', [
@@ -79,6 +80,17 @@ export class UpdatePasswordComponent implements OnInit {
         this.isSamePassword = passwordValue === repeatPasswordValue;
       });
   }
+
+
+  public isValidField(field: string){
+    return this.validationService.isValidField(this.form, field)
+  }
+
+  public getFieldError(field:string){
+    return this.validationService.getFieldError(this.form, field, 'UPDATE_PASSWORD')
+  }
+
+
   public onSubmit() {
     if (this.form?.valid) {
       const newPassword = this.form?.get('password')?.value;
