@@ -239,7 +239,7 @@
     "email.Invalid":"The email has an invalid format",
     "Password":"Password",
     "password.Required":"The password is required",
-    "password.Invalid":"The password must be at least 8 characters",
+    "password.Short":"The password must be at least 8 characters",
     "RepeatPassword":"Repeat Password",
     "NoCoincidence":"Passwords do not match",
     "Phone":"Phone",
