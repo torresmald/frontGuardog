@@ -43,7 +43,6 @@ export class ModalNavComponent implements OnInit {
     private navigationService: NavigationService
   ) {}
 
-  // TODO ARREGLAR ACTIVE
   ngOnInit(): void {
     this.modalAnimation = this.courierService
       .getModalNav()
@@ -78,9 +77,7 @@ export class ModalNavComponent implements OnInit {
   public onNavigateAccount() {
     this.navigationService.onNavigateAccount()
   }
-  public onNavigateServices() {
-    this.navigationService.onNavigateServices()
-}
+
   public onLogout() {
     this.usersService.logout();
     this.navigationService.onNavigate('')

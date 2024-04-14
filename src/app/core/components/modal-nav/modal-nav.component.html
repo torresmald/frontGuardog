@@ -6,7 +6,8 @@
 			<li (click)="closeMenuMobile()" routerLinkActive="active" routerLink="/about"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.About" | translate}}</li>
 			<li (click)="closeMenuMobile()" routerLinkActive="active" routerLink="/contact"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Contact" | translate}}</li>
 			<li *ngIf="!(isLogged | async)" (click)="closeMenuMobile()" routerLinkActive="active" routerLink="/register"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Register" | translate}}</li>
-			<li *ngIf="(isLogged | async) && isParent" (click)="onNavigateServices()" [routerLink]=" ['./'] " routerLinkActive="active"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Services" | translate}}</li>
+			<li *ngIf="(isLogged | async) && isParent" routerLinkActive="active" routerLink="/parent-view"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Services" | translate}}</li>
+			<li *ngIf="(isLogged | async) && !isParent" routerLinkActive="active" routerLink="/trainer-view"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">{{"MODAL_NAV.Services" | translate}}</li>
 			<li *ngIf="isLogged | async"  class="mx-5"><img class="w-5 h-5 mr-2 ml-5" src="../../../../assets/home/nav1.png" alt="">
 				<div class="relative cursor-pointer"  (click)="onNavigateAccount()"
 				>
