@@ -18,6 +18,8 @@ export class ModalServicesViewComponent implements OnInit{
     private courierService: CourierService,
     private renderer: Renderer2) {}
 
+
+    // TODO: TERMINAR VISTA
   ngOnInit(): void {
     this.renderer.addClass(document.body, 'block-scroll');
 

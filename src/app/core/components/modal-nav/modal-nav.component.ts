@@ -43,6 +43,7 @@ export class ModalNavComponent implements OnInit {
     private navigationService: NavigationService
   ) {}
 
+  // TODO ARREGLAR ACTIVE
   ngOnInit(): void {
     this.modalAnimation = this.courierService
       .getModalNav()

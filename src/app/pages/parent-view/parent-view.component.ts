@@ -17,6 +17,10 @@ import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
   styleUrls: []
 })
 @Flowbite()
+
+// TODO SKELETON
+
+
 export class ParentViewComponent implements OnInit {
   public services?: Observable<Services[]>
   public pets: Pets[] = []

@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
   public image: Blob | string = '';
   public url: string | ArrayBuffer | null =
     'https://i.pinimg.com/originals/45/b3/66/45b3660b7d464ca297f9f6969143ca96.jpg';
+  public showPassword:boolean = false
 
   constructor(
     private fb: FormBuilder,
@@ -79,7 +80,7 @@ export class RegisterComponent implements OnInit {
             Validators.required,
             Validators.minLength(3),
           ]),
-          email: new FormControl('', [Validators.required, Validators.email]),
+          email: ['', [Validators.required, Validators.email, Validators.pattern(this.validationService.emailPattern)]],
           image: new FormControl(null),
           password: new FormControl('', [
             Validators.required,
@@ -90,9 +91,15 @@ export class RegisterComponent implements OnInit {
             Validators.minLength(8),
           ]),
           address: new FormControl('', Validators.required),
-          phone: new FormControl('', Validators.required),
+          phone: ['', (Validators.required, Validators.pattern(this.validationService.phonePattern))],
           conditions: new FormControl(false, Validators.requiredTrue)
-        }));
+        },
+        {
+          validators: [
+            this.validationService.isSamePassword('password', 'repeatPassword')
+          ]
+        }
+      ));
 
     this.form?.get('password')?.valueChanges.subscribe((passwordValue) => {
       const repeatPasswordValue = this.form?.get('repeatPassword')?.value;
@@ -146,6 +153,9 @@ export class RegisterComponent implements OnInit {
 
   public getFieldError(field:string){
     return this.validationService.getFieldError(this.form, field, 'REGISTER')
+  }
+  public toogleShowPassword(){
+    this.showPassword = !this.showPassword
   }
 
   public onSubmit() {
