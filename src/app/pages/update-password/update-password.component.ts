@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
@@ -17,16 +22,18 @@ export class UpdatePasswordComponent implements OnInit {
   public token: string = '';
   public message: string = '';
   public form!: FormGroup;
-  public isSamePassword: boolean = false;
-
+  public showPassword: boolean = false;
   constructor(
     private parentsService: ParentService,
     private route: ActivatedRoute,
     private toastService: ToastService,
     private modalService: ModalService,
     private navigationService: NavigationService,
-    private validationService: ValidationService
+    private validationService: ValidationService,
+    private fb: FormBuilder
   ) {}
+
+  // TODO OJITO PARA VER PASSWORD
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
       this.token = value['token'];
@@ -56,40 +63,40 @@ export class UpdatePasswordComponent implements OnInit {
         }
       });
 
-
-    this.form = new FormGroup({
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
-      repeatPassword: new FormControl('', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
-    });
-
-    this.form?.get('password')?.valueChanges.subscribe((passwordValue) => {
-      const repeatPasswordValue = this.form?.get('repeatPassword')?.value;
-      this.isSamePassword = passwordValue === repeatPasswordValue;
-    });
-
-    this.form
-      ?.get('repeatPassword')
-      ?.valueChanges.subscribe((repeatPasswordValue) => {
-        const passwordValue = this.form?.get('password')?.value;
-        this.isSamePassword = passwordValue === repeatPasswordValue;
-      });
+    this.form = this.fb.group(
+      {
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+        ]),
+        repeatPassword: new FormControl('', [
+          Validators.required,
+          Validators.minLength(8),
+        ]),
+      },
+      {
+        validators: [
+          this.validationService.isSamePassword('password', 'repeatPassword'),
+        ],
+      }
+    );
   }
 
-
-  public isValidField(field: string){
-    return this.validationService.isValidField(this.form, field)
+  public isValidField(field: string) {
+    return this.validationService.isValidField(this.form, field);
   }
 
-  public getFieldError(field:string){
-    return this.validationService.getFieldError(this.form, field, 'UPDATE_PASSWORD')
+  public getFieldError(field: string) {
+    return this.validationService.getFieldError(
+      this.form,
+      field,
+      'UPDATE_PASSWORD'
+    );
   }
 
+  public toogleShowPassword() {
+    this.showPassword = !this.showPassword;
+  }
 
   public onSubmit() {
     if (this.form?.valid) {

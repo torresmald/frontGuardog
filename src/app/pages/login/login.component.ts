@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -25,6 +24,7 @@ export class LoginComponent implements DeactivatableComponent {
   public errors?: string;
   public isTrainer: boolean = false;
   public isSubmitted: boolean = false;
+  public showPassword:boolean = false
 
   constructor(
     private fb: FormBuilder,
@@ -42,11 +42,11 @@ export class LoginComponent implements DeactivatableComponent {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
+      email: ['', [Validators.required, Validators.pattern(this.validationService.emailPattern)]],
+      password: ['', [
         Validators.required,
         Validators.minLength(8),
-      ]),
+      ]],
     });
     this.route.queryParams.subscribe((value) => {
       if (value['isTrainer']) {
@@ -61,6 +61,10 @@ export class LoginComponent implements DeactivatableComponent {
 
   public getFieldError(field:string){
     return this.validationService.getFieldError(this.form, field, 'LOGIN')
+  }
+
+  public toogleShowPassword(){
+    this.showPassword = !this.showPassword
   }
 
   public onSubmit() {
