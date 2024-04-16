@@ -33,7 +33,6 @@ export class UpdatePasswordComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  // TODO OJITO PARA VER PASSWORD
   ngOnInit(): void {
     this.route.params.subscribe((value) => {
       this.token = value['token'];

@@ -18,7 +18,8 @@ import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
 })
 @Flowbite()
 
-// TODO SKELETON
+
+//TODO ARREGLAR VISTA
 
 
 export class ParentViewComponent implements OnInit {
@@ -28,6 +29,7 @@ export class ParentViewComponent implements OnInit {
   public appointments?: Appointments
   public sortPrice?: string
   public sortType?: string
+  public isLoaded: boolean = false
 
   constructor(
       private servicesService: ServicesService,
@@ -44,7 +46,10 @@ export class ParentViewComponent implements OnInit {
     const token = this.usersService.getToken();
     this.services = this.servicesService.getServices()
      this.petsService.getPets().subscribe((value:Pets[]):void => {
-       this.pets = value.filter((pet) => pet.parent?._id === token)
+      if(value){
+        this.isLoaded = true
+        this.pets = value.filter((pet) => pet.parent?._id === token)       
+      }
      })
      const dataStorage = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_CART)
       this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null
@@ -63,7 +68,8 @@ export class ParentViewComponent implements OnInit {
     this.sortType = target.value    
   }
   public onSortPrice(method: string){
+    console.log(method);
+    
     this.sortPrice = method
   }
-
 }

@@ -1,4 +1,4 @@
-<section class="min-h-[calc(100vh-(10vh+7vh))]">
+<section class="min-h-[calc(100vh-(10vh+7vh))]" *ngIf="isLoaded; else skeleton">
   <div class="flex gap-14 ml-6 relative">
     <button
       id="multiLevelDropdownButton"
@@ -191,7 +191,7 @@
     </div>
 
     <img
-      class="w-20 absolute right-6 bottom-1 cursor-pointer"
+      class="w-20 absolute right-6 bottom-[-3rem] cursor-pointer"
       src="../../../assets/pets.png"
       alt="Nueva Mascota"
       (click)="openMenuMobile()"
@@ -200,12 +200,9 @@
       {{ "PARENT_VIEW.Pets" | translate }}
     </p>
   </div>
-  <h2 class="text-3xl font-dog text-center text-sienna-70 mt-28">
-    {{ "PARENT_VIEW.Services" | translate }}
-  </h2>
 
   <div
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 place-items-center"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 place-items-center mt-28"
   >
     <app-service
       *ngFor="
@@ -220,3 +217,11 @@
     ></app-service>
   </div>
 </section>
+<ng-template #skeleton>
+  <div class="flex justify-center items-center gap-10 flex-wrap p-5">
+    <app-skeleton></app-skeleton>
+    <app-skeleton></app-skeleton>
+    <app-skeleton></app-skeleton>
+    <app-skeleton></app-skeleton>
+  </div>
+</ng-template>

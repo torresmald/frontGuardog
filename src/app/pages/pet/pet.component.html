@@ -1,5 +1,5 @@
 <section
-  class="bg-sienna-50 w-full flex flex-col gap-20 mt-14 min-h-[calc(100vh-(10vh+7vh))]"
+  class="bg-sienna-50 w-full flex flex-col gap-5 md:gap-20 mt-14 min-h-[calc(100vh-(10vh+7vh))]"
 >
   <div id="htmlData" class="flex flex-col md:flex-row justify-center md:items-center relative">
 	<article
@@ -47,9 +47,9 @@
 	  </div>
 	</article>
   </div>
-  <div class="mx-auto w-44 flex gap-8">
+  <div class="mx-auto flex flex-col items-center justify-center md:flex-row gap-4 md:gap-8 p-4">
 	  <button
-		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+		class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 md:w-32 md:px-8 w-full"
 		routerLink="/parent-view"
 	  >
 	  {{"PET.Back" | translate}}
@@ -57,7 +57,7 @@
 	  </button>
 	  <button
 	  *ngIf="pet | async as pet"
-	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+	  class="bg-york-500 hover:bg-york-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 md:w-32 md:px-8 w-full"
 	  (click)="onDownloadPet(pet)"
 	  >
 	{{"PET.Download" | translate}}
@@ -65,7 +65,7 @@
 	</button>
 	<button
 	*ngIf="pet | async as pet"
-	class="bg-red-500 hover:bg-red-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+	class="bg-red-500 hover:bg-red-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 md:w-32 md:px-8 w-full"
 	(click)="onDeletePet(pet._id)"
 	>
 	{{"PET.Remove" | translate}}

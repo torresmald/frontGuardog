@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PetRoutingModule } from './pet-routing.module';
 import { PetComponent } from './pet.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     CommonModule,
     PetRoutingModule,
-    TranslateModule
+    TranslateModule,
+    CoreModule
   ]
 })
 export class PetModule { }
