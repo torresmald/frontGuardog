@@ -1,14 +1,31 @@
-<div (click)="activateMessages()" class="fixed bottom-10 right-[42px] p-3 z-50 bg-blue-600 rounded-full opacity-0 transition ease-in-out delay-350 cursor-pointer"
-[ngClass]="{ 'opacity-100': isShow }"
+<div
+  (click)="activateMessages()"
+  class="fixed bottom-10 right-[42px] p-3 z-50 bg-blue-600 rounded-full opacity-0 transition ease-in-out delay-350 cursor-pointer"
+  [ngClass]="{ 'opacity-100': isShow }"
 >
-    <svg class="w-5 h-5 md:w-10 md:h-10 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z"/>
-      </svg>
-      
+  <svg
+    class="w-3 h-3 md:w-8 md:h-8 text-white dark:text-white"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1"
+      d="M7.556 8.5h8m-8 3.5H12m7.111-7H4.89a.896.896 0 0 0-.629.256.868.868 0 0 0-.26.619v9.25c0 .232.094.455.26.619A.896.896 0 0 0 4.89 16H9l3 4 3-4h4.111a.896.896 0 0 0 .629-.256.868.868 0 0 0 .26-.619v-9.25a.868.868 0 0 0-.26-.619.896.896 0 0 0-.63-.256Z"
+    />
+  </svg>
+
+  <span class="absolute top-1 right-1 z-40 text-yellow-300 font-extrabold iluminado text-xl" *ngIf="chats.length > 0">1</span>
 </div>
 
 <div
-    *ngIf="showChat"
+  *ngIf="showChat"
   class="fixed bottom-4 right-3 w-[300px] rounded-md z-50"
   [ngClass]="{
     'bg-sienna-100': isParent,
@@ -22,11 +39,27 @@
       'bg-york-400': !isParent
     }"
   >
-    <p>Live Chat</p>
-    <span >
+    <svg
+      class="w-[24px] h-[24px] text-white inline-block"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M14.079 6.839a3 3 0 0 0-4.255.1M13 20h1.083A3.916 3.916 0 0 0 18 16.083V9A6 6 0 1 0 6 9v7m7 4v-1a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1Zm-7-4v-6H5a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1Zm12-6h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1v-6Z"
+      />
+    </svg>
+    <p class="text-white font-dog font-bold">Live Chat</p>
+    <span (click)="showChat = false">
       <svg
-        *ngIf="!showChat; else noChat"
-        class="w-6 h-6 text-gray-800 dark:text-white"
+        class="w-6 h-6 text-white cursor-pointer"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -39,28 +72,9 @@
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="m19 9-7 7-7-7"
+          d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
         />
       </svg>
-      <ng-template #noChat>
-        <svg
-          class="w-6 h-6 text-gray-800 dark:text-white"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m5 15 7-7 7 7"
-          />
-        </svg>
-      </ng-template>
     </span>
   </div>
   <div class="flex h-[70%] overflow-y-hidden flex-col">
@@ -68,15 +82,18 @@
       class="p-5 mt-1 ml-1 rounded-md text-ellipsis w-auto max-w-[70%] break-words inline-block"
       [ngClass]="{
         'self-start': message.messageType === 1,
-        'text-white': message.messageType === 1,
+        'text-gray-500, font-bold': message.messageType === 1,
         'self-end': message.messageType === 2,
-        'text-black': message.messageType === 2
+        'text-black, font-bold': message.messageType === 2
       }"
       *ngFor="let message of chats"
     >
       {{ message.messageType === 1 ? "Yo: " : "Otro: " }}
       {{ message.message }}
-      <span class="text-[8px] block">{{message.messageType === 1 ? "Enviado: " : "Recibido: "}}: {{currentHour}}</span>
+      <span class="text-[8px] block"
+        >{{ message.messageType === 1 ? "Enviado: " : "Recibido: " }}:
+        {{ currentHour }}</span
+      >
     </p>
   </div>
   <div class="h-[20%] w-full" *ngIf="showChat || chats.length > 0">
@@ -87,16 +104,14 @@
           type="text"
           [(ngModel)]="text"
           name="text"
-          placeholder="Escribe tu Mensaje"
+          placeholder="Send your message"
         />
       </div>
 
-      <div class="w-[20%] flex justify-center items-center outline-none">
-        <input
-          class="w-10"
-          type="image"
-          src="https://cdn-icons-png.flaticon.com/512/3814/3814282.png"
-        />
+      <div class="w-[20%] flex justify-center items-center outline-none" (click)="sendMessage()">
+        <svg class="w-6 h-6 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M5.027 10.9a8.729 8.729 0 0 1 6.422-3.62v-1.2A2.061 2.061 0 0 1 12.61 4.2a1.986 1.986 0 0 1 2.104.23l5.491 4.308a2.11 2.11 0 0 1 .588 2.566 2.109 2.109 0 0 1-.588.734l-5.489 4.308a1.983 1.983 0 0 1-2.104.228 2.065 2.065 0 0 1-1.16-1.876v-.942c-5.33 1.284-6.212 5.251-6.25 5.441a1 1 0 0 1-.923.806h-.06a1.003 1.003 0 0 1-.955-.7A10.221 10.221 0 0 1 5.027 10.9Z"/>
+          </svg>
       </div>
     </form>
   </div>

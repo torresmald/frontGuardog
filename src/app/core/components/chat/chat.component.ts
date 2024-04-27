@@ -26,9 +26,14 @@ export class ChatComponent {
     return this.chatService.chats
   }
   get isShow(){
+    if(!this.isParent) {
+      return this.scrollService.isShow = true
+    } 
+    
     return this.scrollService.checkScroll()
   }
   public sendMessage() {
+    if(this.text === '') return
     let messageInfo = {
       message: this.text,
       messageType: 1,

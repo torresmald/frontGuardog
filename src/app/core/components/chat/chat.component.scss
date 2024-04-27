@@ -1,0 +1,15 @@
+@keyframes iluminar {
+    0% {
+      text-shadow: 0 0 0 transparent;
+    }
+    50% {
+      text-shadow: 0 0 10px yellow;
+    }
+    100% {
+      text-shadow: 0 0 0 transparent;
+    }
+  }
+  
+  .iluminado {
+    animation: iluminar 1000ms infinite; /* 600ms para 300ms de iluminación y 300ms de oscurecimiento */
+  }
