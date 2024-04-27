@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiServicesService } from './api/ApiServicesService.service';
-import {BehaviorSubject, map, tap} from 'rxjs';
+import {BehaviorSubject, delay, map, tap} from 'rxjs';
 import { transformDataService } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
 import {Services} from "../../models/Services/transformed/ServiceModel";
@@ -16,7 +16,7 @@ export class ServicesService {
   ) {}
 
   public getServices() {
-    this.loadingService.showLoading();
+    // this.loadingService.showLoading();
     return this.apiServicesService.getApiServices().pipe(
       map((apiServices) => {
         return apiServices.map((apiService) =>
@@ -24,7 +24,7 @@ export class ServicesService {
         );
       }),
       tap(() => {
-        this.loadingService.hideLoading();
+      //  this.loadingService.hideLoading();
       })
     );
   }

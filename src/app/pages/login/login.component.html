@@ -116,6 +116,14 @@
                   >
                     {{ "LOGIN.UserNoVerified" | translate }}
                   </p>
+                  <p
+                  class="text-red-600 font-bold text-xl"
+                  *ngIf="
+                    errors === 'El password no es correcto'
+                  "
+                >
+                  {{ "LOGIN.InvalidPassword" | translate }}
+                </p>
                 </div>
               </div>
             </div>

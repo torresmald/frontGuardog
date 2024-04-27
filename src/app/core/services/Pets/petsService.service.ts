@@ -13,7 +13,7 @@ export class PetsService {
     constructor(private apiPetsService: ApiPetsService, private loadingService: LoadingService) {}
 
     public getPets ():Observable<Pets[]> {
-        this.loadingService.showLoading()
+        // this.loadingService.showLoading()
         return this.apiPetsService.getApiPets().pipe(
            map((apiPets) => {
                 return apiPets.map((apiPet) => {
@@ -21,7 +21,7 @@ export class PetsService {
                 })
            }),
            tap(() => {
-            this.loadingService.hideLoading()
+            // this.loadingService.hideLoading()
            })
         )
     }

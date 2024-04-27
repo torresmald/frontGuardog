@@ -43,7 +43,6 @@ export class ModalNavComponent implements OnInit {
     private navigationService: NavigationService
   ) {}
 
-  // TODO ARREGLAR ACTIVE
   ngOnInit(): void {
     this.modalAnimation = this.courierService
       .getModalNav()
@@ -54,9 +53,7 @@ export class ModalNavComponent implements OnInit {
       }
     });
     this.isLogged = this.usersService.userLogged$
-    this.servicesInCart = this.cartService.getCartServices();
-    console.log(this.servicesInCart);
-    
+    this.servicesInCart = this.cartService.getCartServices();    
 
     const token = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_USER) 
     if (token) {
@@ -80,9 +77,7 @@ export class ModalNavComponent implements OnInit {
   public onNavigateAccount() {
     this.navigationService.onNavigateAccount()
   }
-  public onNavigateServices() {
-    this.navigationService.onNavigateServices()
-}
+
   public onLogout() {
     this.usersService.logout();
     this.navigationService.onNavigate('')

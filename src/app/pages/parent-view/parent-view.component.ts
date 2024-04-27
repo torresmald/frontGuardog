@@ -10,6 +10,7 @@ import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-st
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { Observable } from 'rxjs';
 import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
+import { ChatService } from 'src/app/core/services/Chat/chat.service';
 
 @Component({
   selector: 'app-parent-view',
@@ -18,16 +19,19 @@ import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
 })
 @Flowbite()
 
-// TODO SKELETON
+
+//TODO ARREGLAR VISTA
 
 
 export class ParentViewComponent implements OnInit {
   public services?: Observable<Services[]>
   public pets: Pets[] = []
-  public servicesAddedToCart : Services[];
+  public servicesAddedToCart : Services[] = [];
   public appointments?: Appointments
   public sortPrice?: string
   public sortType?: string
+  public isLoaded: boolean = false
+
 
   constructor(
       private servicesService: ServicesService,
@@ -35,16 +39,19 @@ export class ParentViewComponent implements OnInit {
       private usersService: UsersService,
       private courierService: CourierService,
       private localStorageService: LocalStorageService,
-      private navigationService: NavigationService
+      private navigationService: NavigationService,
+      public chatService: ChatService
   ){
-      this.servicesAddedToCart = []
   }
-
+  
   ngOnInit(): void {
     const token = this.usersService.getToken();
     this.services = this.servicesService.getServices()
      this.petsService.getPets().subscribe((value:Pets[]):void => {
-       this.pets = value.filter((pet) => pet.parent?._id === token)
+      if(value){
+        this.isLoaded = true
+        this.pets = value.filter((pet) => pet.parent?._id === token)       
+      }
      })
      const dataStorage = this.localStorageService.getLocalItem(this.localStorageService.TOKEN_KEY_CART)
       this.servicesAddedToCart = dataStorage ? JSON.parse(dataStorage) : null
@@ -62,8 +69,9 @@ export class ParentViewComponent implements OnInit {
     const target = event.target as HTMLButtonElement;
     this.sortType = target.value    
   }
-  public onSortPrice(method: string){
+  public onSortPrice(method: string){    
     this.sortPrice = method
   }
+
 
 }

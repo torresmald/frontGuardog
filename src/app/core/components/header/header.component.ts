@@ -17,7 +17,6 @@ import localeEs from '@angular/common/locales/es';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 registerLocaleData(localeEs, 'es');
 
-// TODO ARREGLAR ACTIVE
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -81,10 +80,6 @@ export class HeaderComponent implements OnInit {
 
   public onNavigateAccount() {
     this.navigationService.onNavigateAccount()
-  }
-
-  public onNavigateServices() {
-    this.navigationService.onNavigateServices()
   }
   public onChangeHover() {
     if (this.servicesInCart.length >= 1) {

@@ -45,7 +45,7 @@ export class ModalPetsComponent implements OnInit {
         this.appointments = appointments;
         appointments.map((appointment) => {
           appointment.services.map((service) => {
-            this.petsService.getPet(service.pet).subscribe((pet) => {
+            this.petsService.getPet(service.pet).subscribe((pet) => {              
               this.petsAppointments?.push(pet);
             });
           });

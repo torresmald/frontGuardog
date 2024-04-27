@@ -15,7 +15,7 @@
   </div>
   <nav>
     <ul class="hidden md:flex md:items-center mx-6 font-dog text-lg text-sienna-600">
-      <li class="mx-5 cursor-pointer" routerLink="/about" routerLinkActive="active">
+      <li  class="mx-5 cursor-pointer" routerLink="/about" routerLinkActive="active">
         {{ "HEADER.About" | translate }}
       </li>
       <li class="mx-5 cursor-pointer" routerLink="/contact" routerLinkActive="active">
@@ -30,15 +30,23 @@
         {{ "HEADER.Register" | translate }}
       </li>
       <li
-        *ngIf="(isLogged | async) && isParent"
-        (click)="onNavigateServices()"
-        class="mx-5 cursor-pointer"
-        routerLinkActive="active"
-      >
-        {{ "HEADER.Services" | translate }}
+      *ngIf="(isLogged | async) && isParent"
+      routerLink="/parent-view"
+      class="mx-5 cursor-pointer"
+      routerLinkActive="active"
+    >
+      {{ "HEADER.Services" | translate }}
       </li>
-      <li>
-        <div class="relative mx-5 cursor-pointer" *ngIf="isLogged | async" (click)="onNavigateAccount()"
+      <li
+      *ngIf="(isLogged | async) && !isParent"
+      routerLink="/trainer-view"
+      class="mx-5 cursor-pointer"
+      routerLinkActive="active"
+    >
+      {{ "HEADER.Services" | translate }}
+      </li>
+      <li *ngIf="isLogged | async" [routerLinkActive]="['active']">
+        <div class="relative mx-5 cursor-pointer" (click)="onNavigateAccount()"
         >
           <img class="w-10 h-10 rounded-full" [src]="imageProfile" alt="profile image">
           <span class="top-0 start-7 absolute w-3.5 h-3.5 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full"></span>

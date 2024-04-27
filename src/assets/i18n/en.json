@@ -109,6 +109,7 @@
     "Submit":"Submit",
     "ForgotPassword":"Forgot Password?",
     "NoUser": "The user does´t exist, Create an Account",
+    "InvalidPassword": "That´s not the right password, try again",
     "UserNoVerified": "Your account isn´t verified, check your email",
     "Back":"Back",
     "Register":"Create Account"

@@ -7,6 +7,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ServiceComponent } from './service/service.component';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { CoreModule } from 'src/app/core/core.module';
+import { ChatComponent } from 'src/app/core/components/chat/chat.component';
 
 
 @NgModule({
@@ -18,8 +20,9 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     ParentViewRoutingModule,
     SharedModule,
-    FormsModule,
-    TranslateModule
+    TranslateModule,
+    CoreModule,
+    ChatComponent
   ],
   providers: [{
     provide: LOCALE_ID,
