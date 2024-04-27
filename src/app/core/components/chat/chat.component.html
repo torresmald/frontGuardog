@@ -1,7 +1,7 @@
 <div
   (click)="activateMessages()"
   class="fixed bottom-10 right-[42px] p-3 z-50 bg-blue-600 rounded-full opacity-0 transition ease-in-out delay-350 cursor-pointer"
-  [ngClass]="{ 'opacity-100': isShow }"
+  [ngClass]="{ 'opacity-100': isShowBubble }"
 >
   <svg
     class="w-3 h-3 md:w-8 md:h-8 text-white dark:text-white"
@@ -21,7 +21,7 @@
     />
   </svg>
 
-  <span class="absolute top-1 right-1 z-40 text-yellow-300 font-extrabold iluminado text-xl" *ngIf="chats.length > 0">1</span>
+  <span class="absolute top-1 right-1 z-40 text-yellow-300 font-extrabold text-xl iluminado" *ngIf="chats.length > 0">1</span>
 </div>
 
 <div
@@ -82,11 +82,11 @@
       class="p-5 mt-1 ml-1 rounded-md text-ellipsis w-auto max-w-[70%] break-words inline-block"
       [ngClass]="{
         'self-start': message.messageType === 1,
-        'text-gray-500, font-bold': message.messageType === 1,
+        'text-gray-500, font-extrabold': message.messageType === 1,
         'self-end': message.messageType === 2,
-        'text-black, font-bold': message.messageType === 2
+        'text-black, font-extraboldbold': message.messageType === 2
       }"
-      *ngFor="let message of chats"
+      *ngFor="let message    of chats"
     >
       {{ message.messageType === 1 ? "Yo: " : "Otro: " }}
       {{ message.message }}

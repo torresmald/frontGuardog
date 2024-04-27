@@ -18,19 +18,21 @@ export class ChatComponent {
   public isParent:boolean = false;
   public text: string = '';
   public showChat?: boolean;
-  public currentHour?: string;
 
   constructor(private chatService: ChatService, private scrollService: ScrollService) {}
   
   get chats(){
     return this.chatService.chats
   }
-  get isShow(){
+  get isShowBubble(){
     if(!this.isParent) {
       return this.scrollService.isShow = true
     } 
-    
     return this.scrollService.checkScroll()
+  }
+
+  get currentHour() {
+    return this.chatService.currentHour
   }
   public sendMessage() {
     if(this.text === '') return
@@ -40,7 +42,6 @@ export class ChatComponent {
     };
     this.chatService.sendMessage(messageInfo);
     this.text = '';
-    this.currentHour  = new Date().toLocaleTimeString('es-ES', { hour: "2-digit", minute: "2-digit", hour12: false});    
     this.showChat = this.chatService.chats!.length > 0
   }
   public activateMessages() {

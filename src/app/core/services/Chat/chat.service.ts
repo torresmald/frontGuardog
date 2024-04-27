@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class ChatService {
+  public currentHour?: string;
 
   public chats: Chat[] =  [];
   io = io("http://localhost:4000", {
@@ -25,6 +26,7 @@ export class ChatService {
   }
 
   public receiveMessage() {
+    this.currentHour  = new Date().toLocaleTimeString('es-ES', { hour: "2-digit", minute: "2-digit", hour12: false});  
     this.io.on('receiveMessage', (messageInfo) => {
       if(!this.chats){
         return;

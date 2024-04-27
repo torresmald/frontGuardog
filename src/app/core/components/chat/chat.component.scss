@@ -3,7 +3,7 @@
       text-shadow: 0 0 0 transparent;
     }
     50% {
-      text-shadow: 0 0 10px yellow;
+      text-shadow: 0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow;
     }
     100% {
       text-shadow: 0 0 0 transparent;
@@ -11,5 +11,6 @@
   }
   
   .iluminado {
-    animation: iluminar 1000ms infinite; /* 600ms para 300ms de iluminación y 300ms de oscurecimiento */
+    animation: iluminar 1000ms infinite;
   }
+  
