@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { ScrollService } from 'src/app/core/services/Scroll/scroll.service';
 
 @Component({
   selector: 'app-scroll-to-top',
@@ -7,13 +8,10 @@ import { Component, HostListener } from '@angular/core';
 })
 export class ScrollToTopComponent {
 
-  public isShow?: boolean;
-  public topPosToStartShowing = 100;
-  @HostListener('window:scroll')
-  public checkScroll() {
+  constructor(private scrollService: ScrollService){}
 
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    this.isShow = scrollPosition >= this.topPosToStartShowing;
+  get isShow(){
+    return this.scrollService.checkScroll()
   }
 
   public gotoTop() {

@@ -109,6 +109,7 @@
     "Submit":"Enviar",
     "ForgotPassword":"¿Olvidaste tu contraseña?",
     "NoUser": "El Usuario No existe, Registrate",
+    "InvalidPassword": "La contraseña no es correcta",
     "UserNoVerified": "No has verificado tu cuenta, revisa tu email",
     "Back":"Volver",
     "Register":"Crear Cuenta"

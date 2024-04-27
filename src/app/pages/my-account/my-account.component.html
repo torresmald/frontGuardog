@@ -17,7 +17,7 @@
           alt=""
         />
       </figure>
-      <p class="capitalize text-[25px] md:text-[40px] font-dog">
+      <p class="capitalize text-[25px] md:text-[40px] font-dog text-center">
         {{ (trainer | async)?.name }}
       </p>
     </article>
@@ -79,7 +79,7 @@
       >
         <img class="w-full h-full" src="{{ (parent | async)?.image }}" alt="" />
       </figure>
-      <p class="capitalize text-[25px] md:text-[40px] font-dog">
+      <p class="capitalize text-[25px] md:text-[40px] font-dog text-center">
         {{ (parent | async)?.name }}
       </p>
     </article>
@@ -110,7 +110,7 @@
       </div>
     </article>
   </div>
-  <div class="mx-auto w-44 flex gap-8">
+  <div class="mx-auto w-44 flex gap-8 p-4">
     <button
       class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
       routerLink="/parent-view"

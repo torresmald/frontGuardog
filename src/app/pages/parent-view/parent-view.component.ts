@@ -10,6 +10,7 @@ import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-st
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { Observable } from 'rxjs';
 import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
+import { ChatService } from 'src/app/core/services/Chat/chat.service';
 
 @Component({
   selector: 'app-parent-view',
@@ -25,11 +26,12 @@ import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
 export class ParentViewComponent implements OnInit {
   public services?: Observable<Services[]>
   public pets: Pets[] = []
-  public servicesAddedToCart : Services[];
+  public servicesAddedToCart : Services[] = [];
   public appointments?: Appointments
   public sortPrice?: string
   public sortType?: string
   public isLoaded: boolean = false
+
 
   constructor(
       private servicesService: ServicesService,
@@ -37,11 +39,11 @@ export class ParentViewComponent implements OnInit {
       private usersService: UsersService,
       private courierService: CourierService,
       private localStorageService: LocalStorageService,
-      private navigationService: NavigationService
+      private navigationService: NavigationService,
+      public chatService: ChatService
   ){
-      this.servicesAddedToCart = []
   }
-
+  
   ngOnInit(): void {
     const token = this.usersService.getToken();
     this.services = this.servicesService.getServices()
@@ -67,9 +69,9 @@ export class ParentViewComponent implements OnInit {
     const target = event.target as HTMLButtonElement;
     this.sortType = target.value    
   }
-  public onSortPrice(method: string){
-    console.log(method);
-    
+  public onSortPrice(method: string){    
     this.sortPrice = method
   }
+
+
 }
