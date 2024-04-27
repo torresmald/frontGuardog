@@ -9,7 +9,6 @@ import { Subject } from 'rxjs';
 export class ChatService {
 
   public chats: Chat[] =  [];
-  public chatsEmitter?: Subject<Chat[]>
   io = io("http://localhost:4000", {
     autoConnect: true
   })
@@ -22,7 +21,6 @@ export class ChatService {
       return;
     }
     this.chats.push(messageInfo);
-    this.chatsEmitter?.next(this.chats)
     this.io.emit('sendMessage', messageInfo);
   }
 
@@ -33,7 +31,6 @@ export class ChatService {
       }
       messageInfo.messageType = 2;
       this.chats.push(messageInfo);
-      this.chatsEmitter?.next(this.chats)
     });
   }
 }
