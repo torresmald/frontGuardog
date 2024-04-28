@@ -24,7 +24,6 @@ import { MatNativeDateModule} from '@angular/material/core';
 import { MAT_DATE_LOCALE} from '@angular/material/core';
 import { ModalPetsComponent } from './components/modal-pets/modal-pets.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { ModalServicesViewComponent } from './components/modal-services-view/modal-services-view.component';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 
 
@@ -42,7 +41,6 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
     ModalItemsServicesComponent,
     ModalCouponsComponent,
     ModalPetsComponent,
-    ModalServicesViewComponent,
     SkeletonComponent
   ],
   imports: [
@@ -70,7 +68,6 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
     ModalItemsServicesComponent,
     ModalCouponsComponent,
     ModalPetsComponent,
-    ModalServicesViewComponent,
     SkeletonComponent
   ],
   providers: [LoadingService, ModalService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},

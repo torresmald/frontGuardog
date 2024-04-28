@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { CourierService } from '../../services/courier/courier.service';
 import { Pets } from '../../models/Pets/transformed/PetModel';
 import { UsersService } from '../../services/Users/usersService.service';
@@ -24,6 +24,9 @@ import { Observable } from 'rxjs';
   styleUrls: [],
 })
 export class ModalItemsServicesComponent implements OnInit {
+
+  @Input()
+  public typeModal?: string | null
   public pets: Pets[] = [];
   public petId: string = '';
   public service: Services | null = null;
@@ -54,21 +57,23 @@ export class ModalItemsServicesComponent implements OnInit {
   
   
   
-  ngOnInit(): void {
-    this.date.getFirstDayOfWeek = () => 1;
-    this.trainers = this.trainersService.getTrainers()
+  ngOnInit(): void {    
+    if(this.typeModal === 'cart'){
+      this.date.getFirstDayOfWeek = () => 1;
+      this.trainers = this.trainersService.getTrainers()
+      this.petService.getPets().subscribe((value: Pets[]): void => {
+        this.pets = value.filter(
+          (pet: Pets): boolean => pet.parent?._id === this.userService.getToken()
+        );
+      });
+    }
     this.renderer.addClass(document.body, 'block-scroll');
-    this.petService.getPets().subscribe((value: Pets[]): void => {
-      this.pets = value.filter(
-        (pet: Pets): boolean => pet.parent?._id === this.userService.getToken()
-      );
-    });
     this.serviceService
       .getSelectService()
       .subscribe((value) => (this.service = value));
   }
   closeModalService() {
-    this.courierService.setItemServiceModal(false);
+    this.courierService.setItemServiceModal('');
     this.renderer.removeClass(document.body, 'block-scroll');
   }
   public onAddHour(hour: string) {
@@ -130,6 +135,6 @@ export class ModalItemsServicesComponent implements OnInit {
     this.renderer.removeClass(document.body, 'block-scroll');
     this.cartService.addServiceToCart(service, this.petId);
     this.courierService.updateServiceInCart(service._id, true);
-    this.courierService.setItemServiceModal(false);
+    this.courierService.setItemServiceModal('');
   }
 }

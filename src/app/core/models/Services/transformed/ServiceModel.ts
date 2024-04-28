@@ -11,4 +11,5 @@ export interface Services {
     petId?: string,
     trainer: string,
     link: string,
+    description: string,
 }

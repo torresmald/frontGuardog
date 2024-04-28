@@ -6,11 +6,11 @@
         <p class="text-2xl font-bold opacity-70">{{service.price | currency : "EUR" : "symbol" : "2.2-2" : "es"}}</p>
         <button
                 [ngClass]="{'bg-green-500': isServiceInCart}"
-                [disabled]="isServiceInCart" (click)="openServiceModal(service)"
+                [disabled]="isServiceInCart" (click)="openServiceModal(service, 'cart')"
                  class="absolute right-0 -bottom-9 text-xs w-[90px] h-[25px] text-white bg-blue-500 rounded">{{isServiceInCart ? "En carrito":"Añadir"}}
         </button>
         <button
-        (click)="openServiceModalView(service)"
+        (click)="openServiceModal(service, 'desc')"
          class="absolute left-[-30%] -bottom-9 text-xs w-[90px] h-[25px] text-white bg-york-500 rounded">Info</button>
     </div>
     <div class="box bg-sienna-100 h-[160px] w-[330px] translate-y-10 -translate-x-5 p-3 rounded-t-3xl -rotate-12">
