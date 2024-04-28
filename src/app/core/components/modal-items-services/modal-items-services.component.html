@@ -1,41 +1,137 @@
-<section *ngIf="service" class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40">
-    <section class="relative bg-white justify-start md:justify-between items-center p-7 pt-40 w-full rounded-md text-center">
-        <button class="absolute top-[5%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted" (click)="closeModalService()">X</button>
-        <div class="mt-2">
-            <label for="pet" class="block font-dog text-xl text-york-500 my-3 md:my-0">{{"MODAL_SERVICES.Pet" | translate}}</label>
-            <select class="w-full" [(ngModel)]="service.pet"  id="pet" (change)="selectPetId($event)">
-                <option  value="Selecciona">-- {{"MODAL_SERVICES.Select" | translate}} --</option>
-                <option [value]="pet._id" *ngFor="let pet of pets">{{pet.name}}</option>
-            </select>
-        </div>
-        <div class="mt-2">
-            <label for="date" class="block font-dog text-xl text-york-500 text-center my-3 md:my-0" >{{"MODAL_SERVICES.Date" | translate}}</label>
-            <mat-form-field  class="w-full">
-                <mat-label>{{"MODAL_SERVICES.Choose" | translate}}</mat-label>
-                <input id="date" matInput [matDatepicker]="picker" [(ngModel)]="service.date" [matDatepickerFilter]="disabledDates"  (dateChange)="onRequestHours($event)" >
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-        </div>
-        <div class="mt-2" *ngIf="showHours">
-            <label for="hour" class="block font-dog text-xl text-york-500 text-center my-3 md:my-0" >{{"MODAL_SERVICES.Time" | translate}}</label>
-            <div class="flex gap-1 justify-center flex-wrap w-full mx-auto">
-                 <button   id="hour"  [disabled]="hoursBusy.includes(hour)"
-                 (click)="onAddHour(hour)" class="text-white p-2 rounded disabled:bg-red-600 disabled:cursor-not-allowed" [ngClass]="{'bg-blue-600': selectedHour === hour, 'bg-york-500': !hoursBusy.includes(hour) && selectedHour != hour}" *ngFor="let hour of hours">
-                    {{hour}}
-                </button>
-            </div>
-        </div>
-        <div class="mt-2">
-            <label for="trainer" class="block font-dog text-xl text-york-500 my-3 md:my-0">{{"MODAL_SERVICES.Trainer" | translate}}</label>
-            <select class="w-full" id="trainer" (change)="onSelectTrainer($event)">
-                <option  value="Selecciona">-- {{"MODAL_SERVICES.Select" | translate}} --</option>
-                <option [value]="trainer._id" *ngFor="let trainer of trainers | async">{{trainer.name}}</option>
-            </select>
-        </div>
-        <button (click)="onAddService(service)"  class="bg-blue-500 text-sm mt-14 w-full md:mt-6 text-white h-[40px] rounded hover:bg-blue-700">{{"MODAL_SERVICES.Confirm" | translate}}</button>
-    </section>
+<section
+  *ngIf="service && typeModal === 'cart'; else desc"
+  class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40"
+>
+  <section
+    class="relative bg-white justify-start md:justify-between items-center p-7 pt-40 w-full rounded-md text-center"
+  >
+    <button
+      class="absolute top-[5%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted"
+      (click)="closeModalService()"
+    >
+      X
+    </button>
+    <div class="mt-2">
+      <label
+        for="pet"
+        class="block font-dog text-xl text-york-500 my-3 md:my-0"
+        >{{ "MODAL_SERVICES.Pet" | translate }}</label
+      >
+      <select
+        class="w-full"
+        [(ngModel)]="service.pet"
+        id="pet"
+        (change)="selectPetId($event)"
+      >
+        <option value="Selecciona">
+          -- {{ "MODAL_SERVICES.Select" | translate }} --
+        </option>
+        <option [value]="pet._id" *ngFor="let pet of pets">
+          {{ pet.name }}
+        </option>
+      </select>
+    </div>
+    <div class="mt-2">
+      <label
+        for="date"
+        class="block font-dog text-xl text-york-500 text-center my-3 md:my-0"
+        >{{ "MODAL_SERVICES.Date" | translate }}</label
+      >
+      <mat-form-field class="w-full">
+        <mat-label>{{ "MODAL_SERVICES.Choose" | translate }}</mat-label>
+        <input
+          id="date"
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="service.date"
+          [matDatepickerFilter]="disabledDates"
+          (dateChange)="onRequestHours($event)"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="mt-2" *ngIf="showHours">
+      <label
+        for="hour"
+        class="block font-dog text-xl text-york-500 text-center my-3 md:my-0"
+        >{{ "MODAL_SERVICES.Time" | translate }}</label
+      >
+      <div class="flex gap-1 justify-center flex-wrap w-full mx-auto">
+        <button
+          id="hour"
+          [disabled]="hoursBusy.includes(hour)"
+          (click)="onAddHour(hour)"
+          class="text-white p-2 rounded disabled:bg-red-600 disabled:cursor-not-allowed"
+          [ngClass]="{
+            'bg-blue-600': selectedHour === hour,
+            'bg-york-500': !hoursBusy.includes(hour) && selectedHour != hour
+          }"
+          *ngFor="let hour of hours"
+        >
+          {{ hour }}
+        </button>
+      </div>
+    </div>
+    <div class="mt-2">
+      <label
+        for="trainer"
+        class="block font-dog text-xl text-york-500 my-3 md:my-0"
+        >{{ "MODAL_SERVICES.Trainer" | translate }}</label
+      >
+      <select class="w-full" id="trainer" (change)="onSelectTrainer($event)">
+        <option value="Selecciona">
+          -- {{ "MODAL_SERVICES.Select" | translate }} --
+        </option>
+        <option [value]="trainer._id" *ngFor="let trainer of trainers | async">
+          {{ trainer.name }}
+        </option>
+      </select>
+    </div>
+    <button
+      (click)="onAddService(service)"
+      class="bg-blue-500 text-sm mt-14 w-full md:mt-6 text-white h-[40px] rounded hover:bg-blue-700"
+    >
+      {{ "MODAL_SERVICES.Confirm" | translate }}
+    </button>
+  </section>
 </section>
 
-
-
+<ng-template #desc>
+  <section
+    *ngIf="service"
+    class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40"
+  >
+    <section
+      class="relative bg-white justify-start md:justify-between items-center p-7 pt-40 w-full rounded-md text-center"
+    >
+      <button
+        class="absolute top-[5%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted"
+        (click)="closeModalService()"
+      >
+        X
+      </button>
+      <h2 class="text-center text-york-500">Datos del Servicio</h2>
+      <div class="mx-auto w-[50%]">
+        <iframe
+          width="400"
+          height="300"
+          [src]="
+            'https://www.youtube.com/watch?v=AJcppcSjlSs&t=3434s' | sanitizer
+          "
+          [title]="service!._id"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="mt-4 w-[70%] mx-auto text-center">
+        <h3 class="text-2xl font-dog font-bold">{{ service!.description }}</h3>
+        <h4 class="text-xl text-york-500 font-bold">{{ service!.price  | currency : "EUR" : "symbol" : ".2-2" : "es" }}</h4>
+      </div>
+    </section>
+  </section>
+</ng-template>

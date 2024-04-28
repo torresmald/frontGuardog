@@ -1,7 +1,6 @@
 <div class="app-container flex flex-col min-h-screen">
   <app-modal-form></app-modal-form>
-  <app-modal-items-services *ngIf="isItemServiceModal | async"></app-modal-items-services>
-  <app-modal-services-view *ngIf="isServiceModalView | async"></app-modal-services-view>
+  <app-modal-items-services *ngIf="isItemServiceModal | async" [typeModal]="isItemServiceModal |async"></app-modal-items-services>
   <app-modal-nav *ngIf="isMenuOpen | async"></app-modal-nav>
   <app-modal-pets *ngIf="isPetModal | async"></app-modal-pets>
   <app-scroll-to-top></app-scroll-to-top>

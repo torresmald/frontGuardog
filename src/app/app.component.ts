@@ -14,8 +14,7 @@ export class AppComponent {
   public excludedUrls = ['login', 'register', 'confirm-account', 'forgot-password'];
   public isMenuOpen?: Observable<boolean>
   public isCartModal?: Observable<boolean>
-  public isItemServiceModal?: Observable<boolean>
-  public isServiceModalView?: Observable<boolean>
+  public isItemServiceModal?: Observable<string>
   public isPetModal?: Observable<boolean>
 
 
@@ -26,7 +25,6 @@ export class AppComponent {
     this.isMenuOpen = this.courierService.getModalNav()
     this.isCartModal = this.courierService.getCartModal()
     this.isItemServiceModal =  this.courierService.getItemServiceModal()
-    this.isServiceModalView = this.courierService.getServiceModalView()
     this.isPetModal = this.courierService.getPetModal()
 
   }

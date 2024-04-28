@@ -27,13 +27,10 @@ export class ServiceComponent implements OnInit {
             }
         });
     }
-    openServiceModal(service: Services) {
+    openServiceModal(service: Services, typeModal: string) {
         this.serviceService.setSelectService(service)
-        this.courierService.setItemServiceModal(true)
+        this.courierService.setItemServiceModal(typeModal)
     }
-    openServiceModalView(service: Services) {
-        this.serviceService.setSelectService(service)
-        this.courierService.setServiceModalView(true)
-    }
+
 
 }

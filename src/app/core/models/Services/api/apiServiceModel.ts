@@ -11,6 +11,7 @@ export interface ApiServices{
     petId?: string,
     trainer: string,
     link: string,
+    description: string
     __v?: string,
     createdAt?: string,
     updatedAt?: string
