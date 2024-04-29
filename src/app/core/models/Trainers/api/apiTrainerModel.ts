@@ -12,5 +12,9 @@ export interface ApiTrainers {
     __v?: string,
     createdAt?: string,
     updatedAt?: string
+    location: Location;
 }
-
+interface Location {
+  lat: number;
+  lng: number;
+}

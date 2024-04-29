@@ -1,0 +1,21 @@
+<google-map 
+*ngIf="trainers"
+height="300px"
+            width="400px"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)"
+            (mapDblclick)="addMarker($event)"
+            >
+
+            <map-marker
+            *ngFor="let marker of trainersLocations"
+            [position]="marker.position"
+            [label]="marker.label"
+            [title]="marker.title"
+            [options]="marker.options"
+            (mapClick)="onSelectTrainer($event)"
+          >
+          </map-marker>
+</google-map>

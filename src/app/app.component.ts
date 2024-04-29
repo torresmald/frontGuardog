@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CourierService } from './core/services/courier/courier.service';
+import { CourierService } from './core/services/Courier/courier.service';
 import { Observable } from 'rxjs';
 
 

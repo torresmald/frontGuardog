@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
-import { CourierService } from '../../services/courier/courier.service';
+import { CourierService } from '../../services/Courier/courier.service';
 import { Pets } from '../../models/Pets/transformed/PetModel';
 import { UsersService } from '../../services/Users/usersService.service';
 import { PetsService } from '../../services/Pets/petsService.service';
@@ -36,7 +36,7 @@ export class ModalItemsServicesComponent implements OnInit {
   public selectedHour!: string;
   public hoursBusy: string[] = [];
   public showHours: boolean = false;
-  public trainers?: Observable<Trainers[]>;
+  public trainers!: Observable<Trainers[]>;
   public trainerSelected: string = '';
   public hours : string[] = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
 

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Services} from 'src/app/core/models/Services/transformed/ServiceModel';
-import {CourierService} from "../../../core/services/courier/courier.service";
+import {CourierService} from "../../../core/services/Courier/courier.service";
 import {ServicesService} from "../../../core/services/Services/servicesService.service";
 
 @Component({
