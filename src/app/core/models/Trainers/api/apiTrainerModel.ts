@@ -14,7 +14,8 @@ export interface ApiTrainers {
     updatedAt?: string
     location: Location;
 }
-interface Location {
-  lat: number;
-  lng: number;
+export interface Location {
+    lat: number ;
+    lng: number ;  
+  options: any;
 }

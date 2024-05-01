@@ -11,8 +11,9 @@ export interface Trainers {
   token: string;
   location: Location;
 }
+export interface Location {
+  lat: number ;
+  lng: number ;  
+options: any;
 
-interface Location {
-  lat: number;
-  lng: number;
 }

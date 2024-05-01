@@ -82,16 +82,16 @@
         class="block font-dog text-xl text-york-500 my-3 md:my-0"
         >{{ "MODAL_SERVICES.Trainer" | translate }}</label
       >
-      <select class="w-full" id="trainer" (change)="onSelectTrainer($event)">
+      <!-- <select class="w-full" id="trainer" (change)="onSelectTrainer($event)">
         <option value="Selecciona">
           -- {{ "MODAL_SERVICES.Select" | translate }} --
         </option>
         <option [value]="trainer._id" *ngFor="let trainer of trainers | async">
           {{ trainer.name }}
         </option>
-      </select>
+      </select> -->
 
-      <app-maps class="block mx-auto max-w-sm mt-4" *ngIf="trainers" [trainers]="trainers | async"></app-maps>
+      <app-maps class="block mx-auto max-w-sm mt-4" *ngIf="trainers" [trainers]="trainers" (selectedTrainer)="onSelectedTrainer($event)"></app-maps>
     </div>
     <button
       (click)="onAddService(service)"

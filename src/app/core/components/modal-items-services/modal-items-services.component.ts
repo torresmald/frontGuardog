@@ -70,7 +70,7 @@ export class ModalItemsServicesComponent implements OnInit {
     this.renderer.addClass(document.body, 'block-scroll');
     this.serviceService
       .getSelectService()
-      .subscribe((value) => (this.service = value));
+      .subscribe((value) => (this.service = value));      
   }
   closeModalService() {
     this.courierService.setItemServiceModal('');
@@ -85,10 +85,10 @@ export class ModalItemsServicesComponent implements OnInit {
     this.petId = target?.value;
   }
 
-  public onSelectTrainer(event: Event) {
-    const target = event.target as HTMLSelectElement;
-    this.trainerSelected = target.value;
-  }
+  // public onSelectTrainer(event: Event) {
+  //   const target = event.target as HTMLSelectElement;
+  //   this.trainerSelected = target.value;
+  // }
 
   public disabledDates = (date: Date | null): boolean => {
     if (date) {
@@ -136,5 +136,10 @@ export class ModalItemsServicesComponent implements OnInit {
     this.cartService.addServiceToCart(service, this.petId);
     this.courierService.updateServiceInCart(service._id, true);
     this.courierService.setItemServiceModal('');
+  }
+
+  public onSelectedTrainer(id: string){
+    this.trainerSelected = id;
+    
   }
 }
