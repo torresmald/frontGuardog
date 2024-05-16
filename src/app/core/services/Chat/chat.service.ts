@@ -10,7 +10,7 @@ export class ChatService {
   public currentHour?: string;
 
   public chats: Chat[] =  [];
-  io = io("http://localhost:4000", {
+  io = io("https://api-guardog.vercel.app", {
     autoConnect: true
   })
   constructor() {
