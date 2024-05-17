@@ -12,8 +12,7 @@ export interface Trainers {
   location: Location;
 }
 export interface Location {
-  lat: number ;
-  lng: number ;  
-options: any;
-
+  lat: number;
+  lng: number;
+  options: any;
 }

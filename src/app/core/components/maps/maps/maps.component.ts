@@ -28,8 +28,6 @@ export class MapsComponent implements OnInit, AfterViewInit {
   public display: any;
   public center!: google.maps.LatLngLiteral;
   public zoom = 8;
-  public markers: any = [];
-  public mapLoaded: boolean = false;
   public trainersLocations: any[] = [];
   public trainersLoaded?: Trainers[];
   @Input() public trainers?: Observable<Trainers[]>;
@@ -57,7 +55,6 @@ export class MapsComponent implements OnInit, AfterViewInit {
             },
             options: {
               animation: google.maps.Animation.BOUNCE,
-              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
             },
           };
           this.trainersLocations.push(location);
@@ -69,9 +66,7 @@ export class MapsComponent implements OnInit, AfterViewInit {
       console.log(error);
     }
 
-    setTimeout(() => {
-      this.mapLoaded = true;
-    }, 2000);
+  
 
     // this.markers = [{
     //   position: {
@@ -82,11 +77,6 @@ export class MapsComponent implements OnInit, AfterViewInit {
     // }]
   }
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.markersArray?.forEach((marker) => {
-        console.log(marker.nativeElement);
-      });
-    }, 1000); // Espera 1 segundo antes de acceder a los marcadores
   }
 
   public moveMap(event: google.maps.MapMouseEvent) {
@@ -96,22 +86,9 @@ export class MapsComponent implements OnInit, AfterViewInit {
     if (event.latLng != null) this.display = event.latLng.toJSON();
   }
 
-  // public addMarker(event: google.maps.MapMouseEvent) {
-  //   console.log(event);
-  //   this.markers.push({
-  //     position: {
-  //       lat: event.latLng?.lat(),
-  //       lng: event.latLng?.lng()
-  //     },
-  //     label: 'Trainer',
-  //     title: 'ewiurhewiurhweuir',
-  //     options: { animation: google.maps.Animation.BOUNCE },
-  //   })
-  // }
 
   public onSelectTrainer(event: google.maps.MapMouseEvent, index: number) {
-    console.log(this.trainersLocations[index]);
-    this.trainersLocations[index]['options']['icon'] = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
+
     const location = {
       lat: event.latLng?.lat(),
       lng: event.latLng?.lng(),
