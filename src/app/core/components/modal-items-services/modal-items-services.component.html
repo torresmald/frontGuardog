@@ -82,14 +82,16 @@
         class="block font-dog text-xl text-york-500 my-3 md:my-0"
         >{{ "MODAL_SERVICES.Trainer" | translate }}</label
       >
-      <select class="w-full" id="trainer" (change)="onSelectTrainer($event)">
+      <!-- <select class="w-full" id="trainer" (change)="onSelectTrainer($event)">
         <option value="Selecciona">
           -- {{ "MODAL_SERVICES.Select" | translate }} --
         </option>
         <option [value]="trainer._id" *ngFor="let trainer of trainers | async">
           {{ trainer.name }}
         </option>
-      </select>
+      </select> -->
+
+      <app-maps class="block mx-auto max-w-sm mt-4" *ngIf="trainers" [trainers]="trainers" (selectedTrainer)="onSelectedTrainer($event)"></app-maps>
     </div>
     <button
       (click)="onAddService(service)"
@@ -114,22 +116,14 @@
       >
         X
       </button>
-      <h2 class="text-center text-york-500">Datos del Servicio</h2>
-      <div class="mx-auto w-[50%]">
-        <iframe
-          width="400"
-          height="300"
-          [src]="
-            'https://www.youtube.com/watch?v=AJcppcSjlSs&t=3434s' | sanitizer
-          "
-          [title]="service!._id"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
+      <h1 class="text-center text-york-500 m-6 text-3xl font-extrabold">Datos del Servicio</h1>
+      <h2 class="text-center text-york-700 m-6 text-xl font-extrabold">{{service!.name}}</h2>
+      <div class="mx-auto max-w-md">
+        <iframe   width="400"
+        height="300" [src]="service!.link | sanitizer" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="mt-4 w-[70%] mx-auto text-center">
-        <h3 class="text-2xl font-dog font-bold">{{ service!.description }}</h3>
+        <h3 class="text-2xl font-dog font-bold m-4 max-w-sm text-center mx-auto">{{ service!.description }}</h3>
         <h4 class="text-xl text-york-500 font-bold">{{ service!.price  | currency : "EUR" : "symbol" : ".2-2" : "es" }}</h4>
       </div>
     </section>

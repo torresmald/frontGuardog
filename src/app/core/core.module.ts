@@ -25,6 +25,7 @@ import { MAT_DATE_LOCALE} from '@angular/material/core';
 import { ModalPetsComponent } from './components/modal-pets/modal-pets.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { MapsComponent } from './components/maps/maps/maps.component';
 
 
 
@@ -54,7 +55,8 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    TranslateModule
+    TranslateModule,
+    MapsComponent
   ],
   exports: [
     HeaderComponent,

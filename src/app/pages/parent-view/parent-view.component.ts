@@ -5,7 +5,7 @@ import {PetsService} from 'src/app/core/services/Pets/petsService.service';
 import {ServicesService} from 'src/app/core/services/Services/servicesService.service';
 import {UsersService} from 'src/app/core/services/Users/usersService.service';
 import { Appointments } from 'src/app/core/models/Appointments/transformed/AppointmentModel';
-import { CourierService } from 'src/app/core/services/courier/courier.service';
+import { CourierService } from 'src/app/core/services/Courier/courier.service';
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { Observable } from 'rxjs';

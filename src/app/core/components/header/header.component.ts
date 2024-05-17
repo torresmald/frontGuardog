@@ -4,7 +4,7 @@ import { registerLocaleData } from '@angular/common';
 
 import { Observable } from 'rxjs';
 
-import { CourierService } from '../../services/courier/courier.service';
+import { CourierService } from '../../services/Courier/courier.service';
 import { UsersService } from '../../services/Users/usersService.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { LocalStorageService } from '../../services/LocalStorage/local-storage.service';

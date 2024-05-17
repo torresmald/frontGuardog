@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
-import { CourierService } from '../../services/courier/courier.service';
+import { CourierService } from '../../services/Courier/courier.service';
 import { Pets } from '../../models/Pets/transformed/PetModel';
 import { UsersService } from '../../services/Users/usersService.service';
 import { PetsService } from '../../services/Pets/petsService.service';
@@ -36,7 +36,7 @@ export class ModalItemsServicesComponent implements OnInit {
   public selectedHour!: string;
   public hoursBusy: string[] = [];
   public showHours: boolean = false;
-  public trainers?: Observable<Trainers[]>;
+  public trainers!: Observable<Trainers[]>;
   public trainerSelected: string = '';
   public hours : string[] = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
 
@@ -70,7 +70,7 @@ export class ModalItemsServicesComponent implements OnInit {
     this.renderer.addClass(document.body, 'block-scroll');
     this.serviceService
       .getSelectService()
-      .subscribe((value) => (this.service = value));
+      .subscribe((value) => (this.service = value));      
   }
   closeModalService() {
     this.courierService.setItemServiceModal('');
@@ -85,10 +85,10 @@ export class ModalItemsServicesComponent implements OnInit {
     this.petId = target?.value;
   }
 
-  public onSelectTrainer(event: Event) {
-    const target = event.target as HTMLSelectElement;
-    this.trainerSelected = target.value;
-  }
+  // public onSelectTrainer(event: Event) {
+  //   const target = event.target as HTMLSelectElement;
+  //   this.trainerSelected = target.value;
+  // }
 
   public disabledDates = (date: Date | null): boolean => {
     if (date) {
@@ -136,5 +136,10 @@ export class ModalItemsServicesComponent implements OnInit {
     this.cartService.addServiceToCart(service, this.petId);
     this.courierService.updateServiceInCart(service._id, true);
     this.courierService.setItemServiceModal('');
+  }
+
+  public onSelectedTrainer(id: string){
+    this.trainerSelected = id;
+    
   }
 }

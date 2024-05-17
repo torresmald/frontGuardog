@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { Services } from '../../models/Services/transformed/ServiceModel';
 import { CartService } from '../../services/Cart/cart.service';
-import { CourierService } from '../../services/courier/courier.service';
+import { CourierService } from '../../services/Courier/courier.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { LocalStorageService } from '../../services/LocalStorage/local-storage.service';
 import { UsersService } from '../../services/Users/usersService.service';

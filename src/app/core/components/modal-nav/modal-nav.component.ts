@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { CourierService } from '../../services/courier/courier.service';
+import { CourierService } from '../../services/Courier/courier.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { UsersService } from '../../services/Users/usersService.service';
 import { Services } from '../../models/Services/transformed/ServiceModel';
