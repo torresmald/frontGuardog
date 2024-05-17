@@ -1,104 +1,91 @@
+import { CommonModule } from '@angular/common';
 import {
-  AfterViewChecked,
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   Input,
-  OnInit,
-  Output,
-  QueryList,
+  OnDestroy,
   ViewChild,
-  ViewChildren,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { GoogleMapsModule, MapMarker } from '@angular/google-maps';
+import * as mapboxgl from 'mapbox-gl';
+import { environment } from 'src/environments/environment';
+import { Map, LngLat, Marker } from 'mapbox-gl';
 import { Trainers } from 'src/app/core/models/Trainers/transformed/TrainerModel';
 import { Observable } from 'rxjs';
-import { Location } from 'src/app/core/models/Trainers/api/apiTrainerModel';
+import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
+
+(mapboxgl as any).accessToken = environment.apiMapboxKey;
 
 @Component({
   selector: 'app-maps',
   standalone: true,
-  imports: [CommonModule, GoogleMapsModule],
+  imports: [CommonModule],
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.scss'],
 })
-export class MapsComponent implements OnInit, AfterViewInit {
-  public display: any;
-  public center!: google.maps.LatLngLiteral;
-  public zoom = 8;
-  public trainersLocations: any[] = [];
-  public trainersLoaded?: Trainers[];
-  @Input() public trainers?: Observable<Trainers[]>;
-  //@Input() public trainers?: Trainers[] | null
-  @ViewChildren('markersArray') markersArray?: QueryList<ElementRef>;
+export class MapsComponent implements AfterViewInit, OnDestroy {
+  constructor(private trainersService: TrainerService) {}
 
-  @Output() public selectedTrainer: EventEmitter<string> = new EventEmitter();
+  public trainers!: Trainers[];
+  @ViewChild('map') public divMap?: ElementRef;
+  public zoom: number = 12;
+  public map?: Map;
+  public lngLat: LngLat = new LngLat(-3.6795450239783873, 40.189412710967794);
+  public color!: string;
+  public trainerInfo: mapboxgl.Popup = new mapboxgl.Popup();
 
-  ngOnInit(): void {
-    try {
-      navigator.geolocation.getCurrentPosition(({ coords }) => {
-        this.center = {
-          lat: coords.latitude,
-          lng: coords.longitude,
-        };
-      });
-
-      this.trainers?.subscribe((trainers: Trainers[]) => {
-        this.trainersLoaded = trainers;
-        trainers.forEach((trainer) => {
-          const location = {
-            location: {
-              lat: trainer.location.lat,
-              lng: trainer.location.lng,
-            },
-            options: {
-              animation: google.maps.Animation.BOUNCE,
-            },
-          };
-          this.trainersLocations.push(location);
-        });
-      });
-
-      // this.trainersLocations = this.trainers
-    } catch (error) {
-      console.log(error);
-    }
-
-  
-
-    // this.markers = [{
-    //   position: {
-    //     lat: this.center?.lat ,
-    //     lng: this.center?.lng
-    //   },
-    //   options: { animation: google.maps.Animation.BOUNCE },
-    // }]
-  }
   ngAfterViewInit(): void {
-  }
-
-  public moveMap(event: google.maps.MapMouseEvent) {
-    if (event.latLng != null) this.center = event.latLng.toJSON();
-  }
-  public move(event: google.maps.MapMouseEvent) {
-    if (event.latLng != null) this.display = event.latLng.toJSON();
-  }
-
-
-  public onSelectTrainer(event: google.maps.MapMouseEvent, index: number) {
-
-    const location = {
-      lat: event.latLng?.lat(),
-      lng: event.latLng?.lng(),
-    };
-    const selectedTrainer = this.trainersLoaded?.find((trainer) => {
-      return (
-        trainer.location.lat == location.lat &&
-        trainer.location.lng == location.lng
-      );
+    if (!this.divMap) throw 'El elemento no fue encontrado';
+    this.map = new Map({
+      container: this.divMap.nativeElement,
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: this.lngLat,
+      zoom: this.zoom,
     });
-    this.selectedTrainer.emit(selectedTrainer?._id);
+    this.trainersService.getTrainers().subscribe((trainers: Trainers[]) => {
+      this.trainers = trainers;
+      trainers.forEach((trainer: Trainers) => {
+        this.addMarker(trainer);
+      });
+    });
+  }
+  public addMarker(trainer: Trainers) {
+    const color = '#xxxxxx'.replace(/x/g, (y) =>
+      ((Math.random() * 16) | 0).toString(16)
+    );
+    this.color = color;
+    this.trainerInfo = new mapboxgl.Popup().setHTML(`<h2>${trainer.name}</h2><br><span>Experience: ${trainer.experience}</span>`);
+    const imageHtml = document.createElement('img');
+    imageHtml.src = trainer.image;
+    imageHtml.style.width = '50px';
+    imageHtml.style.borderRadius = '9999px';
+    const marker = new Marker({ color, element: imageHtml, })
+      .setLngLat(trainer.location)
+      .setPopup(this.trainerInfo)
+      .addTo(this.map!);
+    console.log(marker.getPopup());
+  }
+
+  onChangeZoom(method: string) {
+    method === 'minus' ? this.map!.zoomOut() : this.map!.zoomIn();
+  }
+
+  public listenersMap() {
+    this.map?.on('zoom', (event) => {
+      if (this.map) this.zoom = this.map?.getZoom();
+    });
+
+    this.map?.on('move', () => {
+      if (!this.map) return;
+      this.lngLat = this.map.getCenter();
+    });
+  }
+
+  public zoomChanged(value: string) {
+    this.map?.zoomTo(Number(value));
+  }
+
+  ngOnDestroy(): void {
+    this.map?.remove();
   }
 }

@@ -60,7 +60,9 @@ export class ModalItemsServicesComponent implements OnInit {
   ngOnInit(): void {    
     if(this.typeModal === 'cart'){
       this.date.getFirstDayOfWeek = () => 1;
-      this.trainers = this.trainersService.getTrainers()
+      // this.trainers = this.trainersService.getTrainers()
+    console.log(this.trainers);
+
       this.petService.getPets().subscribe((value: Pets[]): void => {
         this.pets = value.filter(
           (pet: Pets): boolean => pet.parent?._id === this.userService.getToken()

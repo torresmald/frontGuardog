@@ -11,7 +11,14 @@ const envContent = `
     }
 `
 
+const envContentDev = `
+    export const environment = {
+        apiMapboxKey: "${process.env['apiMapboxKey']}",
+        baseUrl: "${process.env['baseUrlDev']}"
+    }
+`
+
 mkdirSync('./src/environments/', {recursive: true});
 
 writeFileSync(targetPath, envContent);
-writeFileSync(targetPathDev, envContent);
+writeFileSync(targetPathDev, envContentDev);
