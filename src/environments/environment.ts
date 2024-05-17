@@ -1,4 +1,4 @@
 export const environment = {
-    baseUrl: 'https://api-guardog.vercel.app',
+    baseUrl: 'https://apiguardog.onrender.com',
     production: true
 };

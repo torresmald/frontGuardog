@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Chat } from '../../models/Chat/chat.interface';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +9,10 @@ export class ChatService {
   public currentHour?: string;
 
   public chats: Chat[] =  [];
-  io = io("https://api-guardog.vercel.app", {
+  io = io("https://apiguardog.onrender.com",  {
     autoConnect: true
-  })
+  }
+)
   constructor() {
     this.receiveMessage();
   }
