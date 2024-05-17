@@ -1,4 +1,5 @@
-export const environment = {
-    baseUrl: 'http://localhost:4000',
-    production: false
-};
+
+    export const environment = {
+        apiMapboxKey: "pk.eyJ1IjoidG9ycmVzbWFsZCIsImEiOiJjbHZkZzJndmYwbWd2MmlvNjk4cXN3cGZhIn0.bkyGeUch-OYN50jgzdG8ag",
+        baseUrl: "https://apiguardog.onrender.com"
+    }
