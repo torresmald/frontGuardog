@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 
 
 const URL_API = {
-  DOMAIN: environment.baseUrl,
+  DOMAIN: environment,
   APPOINTMENTS: '/appointments',
   USER: '/user',
   DATE: '/date?date='
