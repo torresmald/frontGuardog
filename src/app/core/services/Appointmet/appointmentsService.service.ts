@@ -42,9 +42,7 @@ export class AppointmentsService {
     )
   }
 
-  public getAppointmentsDate(date: string): Observable<Services[]> {
-    console.log(date);
-    
+  public getAppointmentsDate(date: string): Observable<Services[]> {    
     return this.apiAppointments.getApiAppointmentsDate(date).pipe(
       map((appiAppointment: ApiServices[]) => {
         return appiAppointment.map((appiAppointment: ApiServices) => appiAppointment)

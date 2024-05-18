@@ -34,7 +34,7 @@ export class ServiceCardComponent implements OnInit {
       .getTrainers()
       .pipe(
         map((trainers) =>
-          trainers.find((traine) => traine._id === this.service?.trainer)
+          trainers.find((traine) => traine._id === this.service?.trainer._id)
         )
       );
 
@@ -65,6 +65,6 @@ export class ServiceCardComponent implements OnInit {
     service.date = '';
     service.pet = '';
     service.hour = '';
-    service.trainer = '';
+    service.trainer._id = '';
   }
 }
