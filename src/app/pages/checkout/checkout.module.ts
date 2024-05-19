@@ -6,12 +6,14 @@ import { CheckoutComponent } from './checkout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceCardComponent } from './service-card/service-card.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { CheckoutPaymentComponent } from './checkout-payment/checkout-payment.component';
 
 
 @NgModule({
   declarations: [
     CheckoutComponent,
-    ServiceCardComponent
+    ServiceCardComponent,
+    CheckoutPaymentComponent
   ],
   imports: [
     CommonModule,

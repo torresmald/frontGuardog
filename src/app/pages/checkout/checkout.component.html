@@ -30,9 +30,19 @@
           <p *ngIf="!isValidCoupon" class="text-red-600 text-center">{{"CHECKOUT.Invalud" | translate}}</p>
         </article>
       </div>
-      <div class="h-[22%] flex justify-center">
-        <button (click)="onSubmit()" class="bg-blue-600 text-white w-[500px] mt-3 h-10 tracking-widest font-bold">{{"CHECKOUT.Buy" | translate}}</button>
+      <div class="h-[22%] flex flex-col justify-center gap-2">
+        <button (click)="onSubmit()" class="bg-blue-600 text-white mt-3 h-10 tracking-widest font-bold w-auto">{{"CHECKOUT.Buy" | translate}}</button>
+        <div class="flex justify-between items-center">
+          <h3 class="inline">Payments</h3>
+          <div class="flex gap-2 text-2xl">
+            <i class="fa-brands fa-paypal"></i>
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-solid fa-mobile-screen"></i>           
+           <i class="fa-solid fa-money-bill-transfer"></i>
+          </div>
+        </div> 
       </div>
     </div>
   </div>
 </section>
+

@@ -94,21 +94,24 @@ export class CheckoutComponent implements OnInit {
         discounts: this.discount,
       };
     });
-    this.appointmentsService.registerAppointment(data).subscribe((value) => {
-      if (value) {
-        this.loadingService.showLoading();
-        setTimeout(() => {
-          this.loadingService.hideLoading();
-          this.modalService.$message?.next('Compra realizada con Éxito');
-          this.modalService.showModal();
-          this.cartService.removeAllServices('cart')
-          this.localStorageService.getLocalStorage().subscribe(value => {
-            this.servicesInCart = value || [];
-        });
-          this.servicesAddedToCart = [];
-          this.navigationService.onNavigate('/parent-view')
-        }, 3000);
-      }
-    });
+    if(!data) return
+    this.localStorageService.setLocalStorageKey('cart', JSON.stringify(data))
+    this.navigationService.onNavigate('/checkout/payment')
+    // this.appointmentsService.registerAppointment(data).subscribe((value) => {
+    //   if (value) {
+    //     this.loadingService.showLoading();
+    //     setTimeout(() => {
+    //       this.loadingService.hideLoading();
+    //       this.modalService.$message?.next('Compra realizada con Éxito');
+    //       this.modalService.showModal();
+    //       this.cartService.removeAllServices('cart')
+    //       this.localStorageService.getLocalStorage().subscribe(value => {
+    //         this.servicesInCart = value || [];
+    //     });
+    //       this.servicesAddedToCart = [];
+    //       this.navigationService.onNavigate('/parent-view')
+    //     }, 3000);
+    //   }
+    // });
   }
 }
