@@ -120,7 +120,8 @@
     "Experience": "Experience",
     "Back":"Back",
     "Change": "Change Data",
-    "Address": "Address"
+    "Address": "Address",
+    "Pet": "New Pet"
   },
   "MY_APPOINTMENTS":{
     "Date":"Date",
@@ -131,7 +132,8 @@
   },
   "PARENT_VIEW":{
     "Pets":"Pets/Appointmets",
-    "Services":"Services"
+    "Services":"Services",
+    "Filters": "Filters"
   },
   "PET":{
     "Date":"Birthdate",

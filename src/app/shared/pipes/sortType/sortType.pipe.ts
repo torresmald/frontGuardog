@@ -3,8 +3,6 @@ import { Services } from 'src/app/core/models/Services/transformed/ServiceModel'
 
 @Pipe({
   name: 'sortType',
-  pure: false
-
 })
 export class SortTypePipe implements PipeTransform {
   transform(
@@ -14,7 +12,7 @@ export class SortTypePipe implements PipeTransform {
     if (services === null) {
       return null;
     }
-    if(!condition) return services
+    if(!condition || condition === 'default') return services    
     switch (condition) {
       case 'paseo':
         return services.filter((service) => service.type === condition);

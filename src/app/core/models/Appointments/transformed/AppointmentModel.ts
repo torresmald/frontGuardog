@@ -6,4 +6,7 @@ export interface Appointments{
     services: Services[],
     parent: Parents,
     amount: number,
+    totalPaidReal: number,
+    totalPay: number,
+    discounts: number
 }

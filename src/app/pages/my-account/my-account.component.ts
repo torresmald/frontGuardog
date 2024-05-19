@@ -7,6 +7,7 @@ import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-st
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
+import { CourierService } from 'src/app/core/services/Courier/courier.service';
 
 @Component({
   selector: 'app-my-account',
@@ -22,7 +23,8 @@ export class MyAccountComponent implements OnInit {
     private trainerService: TrainerService,
     private localStorageService: LocalStorageService,
     private parentsService: ParentService,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    private courierService: CourierService
   ) {}
 
   ngOnInit(): void {
@@ -41,4 +43,8 @@ export class MyAccountComponent implements OnInit {
   public onChangeData(id: string) {
     this.navigationService.onNavigate('/update-data', id)    
   }
+
+  public openMenuMobile() {
+    this.courierService.setPetModal(true);
+}
 }

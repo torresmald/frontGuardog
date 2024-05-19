@@ -1,210 +1,19 @@
 <section class="min-h-[calc(100vh-(10vh+7vh))]" *ngIf="isLoaded; else skeleton">
-  <div class="flex flex-col md:flex-row">
-    <!-- Top side (Mobile) / Left side (Desktop): Dropdowns -->
-    <div class="w-full md:w-1/5 p-4">
-      <button
-        id="multiLevelDropdownButton"
-        data-dropdown-toggle="multi-dropdown"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-4 md:mb-0"
-        type="button"
-      >
-        Ordenacion
-        <svg
-          class="w-2.5 h-2.5 ms-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
-      </button>
-
-      <!-- Dropdown menu -->
-      <div
-        id="multi-dropdown"
-        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-      >
-        <ul
-          class="py-2 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="multiLevelDropdownButton"
-        >
-          <li>
-            <button
-              id="doubleDropdownButton"
-              data-dropdown-toggle="doubleDropdown"
-              data-dropdown-placement="right-start"
-              type="button"
-              class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-            >
-              Precio<svg
-                class="w-2.5 h-2.5 ms-3 rtl:rotate-180"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-            </button>
-            <div
-              id="doubleDropdown"
-              class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-            >
-              <ul
-                class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="doubleDropdownButton"
-              >
-                <li>
-                  <p
-                    (click)="onSortPrice('ascendant')"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Menor a Mayor
-                  </p>
-                </li>
-                <li>
-                  <p
-                    (click)="onSortPrice('descendant')"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    Mayor a Menor
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
+  <div class="flex flex-col justify-center">
+    <div class="w-full flex flex-col gap-10 md:w-52 p-4 mx-auto text-center ">
 
       <button
-        id="dropdownRadioButton"
-        data-dropdown-toggle="dropdownDefaultRadio"
-        class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-4 md:mb-0"
-        type="button"
+        class="bg-blue-500 hover:bg-blue-700 rounded text-white px-16 py-2 w-full"
+        (click)="onShowFiltersModal()"
       >
-        Type<svg
-          class="w-2.5 h-2.5 ms-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"
-          />
-        </svg>
+        {{ "PARENT_VIEW.Filters" | translate }}
       </button>
 
-      <!-- Dropdown menu -->
-      <div
-        id="dropdownDefaultRadio"
-        class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-      >
-        <ul
-          class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="dropdownRadioButton"
-        >
-          <li>
-            <div class="flex items-center">
-              <input
-                (change)="onSortType($event)"
-                id="default-radio-1"
-                type="radio"
-                value="paseo"
-                name="default-radio"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="default-radio-1"
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >Paseo</label
-              >
-            </div>
-          </li>
-          <li>
-            <div class="flex items-center">
-              <input
-                (change)="onSortType($event)"
-                id="default-radio-2"
-                type="radio"
-                value="higiene"
-                name="default-radio"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="default-radio-2"
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >Higiene</label
-              >
-            </div>
-          </li>
-          <li>
-            <div class="flex items-center">
-              <input
-                (change)="onSortType($event)"
-                id="default-radio-3"
-                type="radio"
-                value="entrenamiento"
-                name="default-radio"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="default-radio-3"
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >Entrenamiento</label
-              >
-            </div>
-          </li>
-          <li>
-            <div class="flex items-center">
-              <input
-                (change)="onSortType($event)"
-                id="default-radio-4"
-                type="radio"
-                value="cuidados"
-                name="default-radio"
-                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-              />
-              <label
-                for="default-radio-4"
-                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >Cuidados</label
-              >
-            </div>
-          </li>
-        </ul>
-      </div>
+    
 
-      <img
-        class="w-20 mt-4 cursor-pointer"
-        src="../../../assets/pets.png"
-        alt="Nueva Mascota"
-        (click)="openMenuMobile()"
-      />
-      <p class="font-dog text-york-700 mt-2">
-        {{ "PARENT_VIEW.Pets" | translate }}
-      </p>
     </div>
 
-    <!-- Bottom side (Mobile) / Right side (Desktop): app-service -->
-    <div class="w-full md:w-4/5 p-4">
+    <div class="w-full p-4">
       <div
         class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 mb-12 place-items-center"
       >
@@ -223,7 +32,6 @@
     </div>
   </div>
 </section>
-
 
 <ng-template #skeleton>
   <div class="flex justify-center items-center gap-10 flex-wrap p-5">

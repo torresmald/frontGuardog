@@ -1,0 +1,203 @@
+<section
+  class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40"
+>
+  <section
+    class="relative bg-white justify-start flex flex-col gap-20 md:max-w-[60%] items-start p-7 pt-20 w-full rounded-md text-center"
+  >
+    <button
+      class="absolute top-[5%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted"
+      (click)="closeModalFilter()"
+    >
+      X
+    </button>
+
+    <div>
+      <button
+        id="dropdownBottomButton"
+        data-dropdown-toggle="dropdownBottom"
+        data-dropdown-placement="right"
+        class="mb-3 md:mb-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 md:px-20 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button"
+      >
+        Price
+        <svg
+          class="w-2.5 h-2.5 ms-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div
+        id="dropdownBottom"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+      >
+        <ul
+          class="py-2 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownBottomButton"
+        >
+          <li>
+            <p
+              (click)="onSortPrice('ascendant')"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Ascendente
+            </p>
+          </li>
+          <li>
+            <p
+              (click)="onSortPrice('descendant')"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Descendente
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <button
+        id="dropdownRadioBgHoverButton"
+        data-dropdown-toggle="dropdownRadioBgHover"
+        data-dropdown-placement="right"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 md:px-20 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="button"
+      >
+        Type
+        <svg
+          class="w-2.5 h-2.5 ms-3"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div
+        id="dropdownRadioBgHover"
+        class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+      >
+        <ul
+          class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdownRadioBgHoverButton"
+        >
+        <li>
+            <div
+              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="default-radio-4"
+                type="radio"
+                (change)="onSortType($event)"
+                value="default"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="default-radio-4"
+                class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                >Ninguno</label
+              >
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="default-radio-4"
+                type="radio"
+                (change)="onSortType($event)"
+                value="paseo"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="default-radio-4"
+                class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                >Paseo</label
+              >
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="default-radio-5"
+                type="radio"
+                (change)="onSortType($event)"
+                value="higiene"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="default-radio-5"
+                class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                >Higiene</label
+              >
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="default-radio-5"
+                type="radio"
+                (change)="onSortType($event)"
+                value="entrenamiento"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="default-radio-5"
+                class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                >Entrenamiento</label
+              >
+            </div>
+          </li>
+          <li>
+            <div
+              class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600"
+            >
+              <input
+                id="default-radio-5"
+                type="radio"
+                (change)="onSortType($event)"
+                value="cuidados"
+                name="default-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="default-radio-5"
+                class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                >Cuidados</label
+              >
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</section>

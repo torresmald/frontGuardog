@@ -15,6 +15,7 @@ export class AppComponent {
   public isMenuOpen?: Observable<boolean>
   public isCartModal?: Observable<boolean>
   public isItemServiceModal?: Observable<string>
+  public isFiltersModal?: Observable<boolean>
   public isPetModal?: Observable<boolean>
 
 
@@ -26,6 +27,7 @@ export class AppComponent {
     this.isCartModal = this.courierService.getCartModal()
     this.isItemServiceModal =  this.courierService.getItemServiceModal()
     this.isPetModal = this.courierService.getPetModal()
+    this.isFiltersModal = this.courierService.getFiltersModal()
 
   }
   shouldShow(): boolean {

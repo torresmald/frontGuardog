@@ -6,7 +6,7 @@ import { Services } from 'src/app/core/models/Services/transformed/ServiceModel'
   
 })
 export class SortPricePipe implements PipeTransform {
-  transform(services: Services[] | null, condition?: string): Services[] | null {
+  transform(services: Services[] | null, condition?: string): Services[] | null {    
     if (services === null) {
       return null;
     }

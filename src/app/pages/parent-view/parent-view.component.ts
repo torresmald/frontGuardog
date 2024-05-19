@@ -9,16 +9,16 @@ import { CourierService } from 'src/app/core/services/Courier/courier.service';
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { Observable } from 'rxjs';
-import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
 import { ChatService } from 'src/app/core/services/Chat/chat.service';
+import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
+
+@Flowbite()
 
 @Component({
   selector: 'app-parent-view',
   templateUrl: './parent-view.component.html',
   styleUrls: []
 })
-@Flowbite()
-
 
 //TODO ARREGLAR VISTA
 
@@ -45,6 +45,12 @@ export class ParentViewComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.courierService.getSortPrice().subscribe((value) => {
+      this.sortPrice = value
+    })
+    this.courierService.getSortType().subscribe((value) => {      
+      this.sortType = value
+    })
     const token = this.usersService.getToken();
     this.services = this.servicesService.getServices()
      this.petsService.getPets().subscribe((value:Pets[]):void => {
@@ -65,13 +71,7 @@ export class ParentViewComponent implements OnInit {
     this.navigationService.onNavigate('/checkout')
   }
 
-  public onSortType(event: Event){
-    const target = event.target as HTMLButtonElement;
-    this.sortType = target.value    
+  public onShowFiltersModal(){
+    this.courierService.setFiltersModal(true)
   }
-  public onSortPrice(method: string){    
-    this.sortPrice = method
-  }
-
-
 }
