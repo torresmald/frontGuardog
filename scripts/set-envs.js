@@ -7,14 +7,16 @@ const targetPathDev = './src/environments/environment.development.ts'
 const envContent = `
     export const environment = {
         apiMapboxKey: "${process.env['apiMapboxKey']}",
-        baseUrl: "${process.env['baseUrl']}"
+        baseUrl: "${process.env['baseUrl']}",
+        baseUrlChat: "${process.env['baseUrlChat']}"
     }
 `
 
 const envContentDev = `
     export const environment = {
         apiMapboxKey: "${process.env['apiMapboxKey']}",
-        baseUrl: "${process.env['baseUrlDev']}"
+        baseUrl: "${process.env['baseUrlDev']}",
+        baseUrlChat: "${process.env['baseUrlChat']}"
     }
 `
 
