@@ -1,0 +1,78 @@
+<section
+  class="bg-white my-5 mx-auto p-5 w-[80%] max-w-[500px] min-h-[500px] flex flex-col shadow-lg"
+>
+  <h2 class="">Elige Método de Pago</h2>
+  <form id="checkout-form" class="flex flex-col justify-evenly flex-1">
+    <div>
+      <div class="flex items-center py-3">
+        <input
+          type="radio"
+          class="mr-3"
+          id="paypal"
+          name="payment"
+          value="paypal"
+        />
+        <div class="flex gap-3 items-center">
+          <label for="paypal" class="cursor-pointer flex items-center">
+            PAYPAL
+          </label>
+          <i class="fa-brands fa-paypal"></i>
+        </div>
+      </div>
+      <div class="flex items-center py-3">
+        <input
+          type="radio"
+          class="mr-3"
+          id="stripe"
+          name="payment"
+          value="stripe"
+        />
+        <div class="flex gap-3 items-center">
+          <label for="stripe" class="cursor-pointer flex items-center">
+            VISA
+          </label>
+          <i class="fa-brands fa-cc-visa"></i>
+        </div>
+        <div #cardInfo>
+          
+        </div>
+      </div>
+      <div class="flex items-center py-3">
+        <input
+          type="radio"
+          class="mr-3"
+          id="bizum"
+          name="payment"
+          value="bizum"
+        />
+        <div class="flex gap-3 items-center">
+          <label for="bizum" class="cursor-pointer flex items-center">
+            BIZUM
+          </label>
+          <i class="fa-solid fa-mobile-screen"></i>
+        </div>       
+      </div>
+      <div class="flex items-center py-3">
+        <input
+          type="radio"
+          class="mr-3"
+          id="bizum"
+          name="payment"
+          value="bizum"
+        />
+        <div class="flex gap-3 items-center">
+          <label for="bizum" class="cursor-pointer flex items-center">
+            BANK TRANSFER
+          </label>
+          <i class="fa-solid fa-money-bill-transfer"></i>
+        </div>
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="w-full p-4 bg-york-500 hover:bg-york-700 text-white border-none cursor-pointer text-lg"
+    >
+      Pagar
+    </button>
+  </form>
+</section>

@@ -110,7 +110,7 @@
       </div>
     </article>
   </div>
-  <div class="mx-auto w-44 flex gap-8 p-4">
+  <div class="mx-auto w-44 flex justify-center gap-8 p-4">
     <button
       class="bg-sienna-500 hover:bg-sienna-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
       routerLink="/parent-view"
@@ -124,5 +124,13 @@
     >
       {{ "MY_ACCOUNT.Change" | translate }}
     </button>
+
+    <button
+       class="bg-blue-500 hover:bg-blue-700 text-white font-bold text-xs px-4 rounded cursor-pointer h-10 w-32 md:px-8"
+    (click)="openMenuMobile()"
+  >
+  {{ "MY_ACCOUNT.Pet" | translate }}
+  
+  </button>
   </div>
 </section>

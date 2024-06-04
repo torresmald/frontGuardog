@@ -6,6 +6,9 @@ export interface ApiAppointments{
     services: ApiServices[],
     parent: ApiParents,
     amount: number,
+    totalPaidReal: number,
+    totalPay: number,
+    discounts: number
     createdAt?: string,
     updatedAt?: string,
     __v?: string

@@ -8,8 +8,14 @@ export class CourierService {
   private modalNav:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private modalCart:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private modalPets:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);  
+  private modalFilters:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);  
   private modalItemService: BehaviorSubject<string> = new BehaviorSubject<string>('')
+  private sortPrice: BehaviorSubject<string> = new BehaviorSubject<string>('')
+  private sortType: BehaviorSubject<string> = new BehaviorSubject<string>('')
   private cartState:BehaviorSubject<{[id: string]: boolean}> = new BehaviorSubject<{[id: string]: boolean}>({});
+
+
+
   constructor() {}
   public getServiceInCart = () => this.cartState.asObservable();
   public updateServiceInCart(serviceId: string | undefined, isInCart: boolean ):void {
@@ -26,4 +32,10 @@ export class CourierService {
   public getModalNav = () => this.modalNav.asObservable();
   public setPetModal = (boolean: boolean) => this.modalPets.next(boolean)
   public getPetModal = () => this.modalPets.asObservable()
+  public setFiltersModal = (boolean: boolean) => this.modalFilters.next(boolean)
+  public getFiltersModal = () => this.modalFilters.asObservable()
+  public setSortPrice = (string: string) => this.sortPrice.next(string)
+  public getSortPrice = () => this.sortPrice.asObservable()
+  public setSortType = (string: string) => this.sortType.next(string)
+  public getSortType = () => this.sortType.asObservable()
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiTrainerService } from './api/apiTrainersService.service';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, Subject, map, tap } from 'rxjs';
 import { Trainers } from '../../models/Trainers/transformed/TrainerModel';
 import { transformDataTrainer } from './helpers/transformApi';
 import { LoadingService } from '../Loading/loading.service';
@@ -15,6 +15,13 @@ export class TrainerService {
 
   constructor(private apiTrainerService: ApiTrainerService, private loadingService:LoadingService ) { }
 
+  // public selectedTrainer: Subject<Trainers> = new Subject()
+  private trainerSelectedSubject = new Subject<Trainers>();
+  public trainerSelected$ = this.trainerSelectedSubject.asObservable();
+
+  selectTrainer(trainer: Trainers): void {
+    this.trainerSelectedSubject.next(trainer);
+  }
 
   public getTrainers (): Observable<Trainers[]> {
     this.loadingService.showLoading()

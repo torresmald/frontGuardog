@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Chat } from '../../models/Chat/chat.interface';
+import { environment } from 'src/environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,7 @@ export class ChatService {
   public currentHour?: string;
 
   public chats: Chat[] =  [];
-  io = io("https://apiguardog.onrender.com",  {
+  io = io(environment.baseUrlChat,  {
     autoConnect: true
   }
 )

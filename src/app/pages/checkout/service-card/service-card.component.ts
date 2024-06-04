@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Services } from '../../../core/models/Services/transformed/ServiceModel';
 import { PetsService } from '../../../core/services/Pets/petsService.service';
 import { Pets } from '../../../core/models/Pets/transformed/PetModel';
-import { CourierService } from 'src/app/core/services/Courier/courier.service';
+import { CourierService } from 'src/app/core/services/courier/courier.service';
 import { CartService } from 'src/app/core/services/Cart/cart.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { Trainers } from 'src/app/core/models/Trainers/transformed/TrainerModel';
@@ -34,7 +34,7 @@ export class ServiceCardComponent implements OnInit {
       .getTrainers()
       .pipe(
         map((trainers) =>
-          trainers.find((traine) => traine._id === this.service?.trainer)
+          trainers.find((traine) => traine._id === this.service?.trainer._id)
         )
       );
 
@@ -65,6 +65,6 @@ export class ServiceCardComponent implements OnInit {
     service.date = '';
     service.pet = '';
     service.hour = '';
-    service.trainer = '';
+    service.trainer._id = '';
   }
 }

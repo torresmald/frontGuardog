@@ -120,7 +120,8 @@
     "Experience": "Experiencia",
     "Back":"Volver",
     "Change": "Cambiar Datos",
-    "Address": "Direccion"
+    "Address": "Direccion",
+    "Pet": "Nueva Mascota"
   },
   "MY_APPOINTMENTS":{
     "Date":"Fecha",
@@ -131,7 +132,9 @@
   },
   "PARENT_VIEW":{
     "Pets":"Mascotas/Citas",
-    "Services":"Servicios"
+    "Services":"Servicios",
+    "Filters": "Filtros"
+
   },
   "PET":{
     "Date":"Fecha Nacimiento",

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
-import { CourierService } from '../../services/Courier/courier.service';
+import { CourierService } from '../../services/courier/courier.service';
 import { Pets } from '../../models/Pets/transformed/PetModel';
 import { UsersService } from '../../services/Users/usersService.service';
 import { PetsService } from '../../services/Pets/petsService.service';
@@ -16,29 +16,36 @@ import { TrainerService } from '../../services/Trainers/trainersService.service'
 import { DateAdapter } from '@angular/material/core';
 import { Observable } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-modal-items-services',
   templateUrl: './modal-items-services.component.html',
   styleUrls: [],
 })
 export class ModalItemsServicesComponent implements OnInit {
-
   @Input()
-  public typeModal?: string | null
+  public typeModal?: string | null;
+  public selectedTrainer?: Trainers;
   public pets: Pets[] = [];
   public petId: string = '';
   public service: Services | null = null;
   public appointments?: Appointments[];
   public datesToDisable: any;
-  // public hours: string[] = [];
   public selectedHour!: string;
   public hoursBusy: string[] = [];
   public showHours: boolean = false;
   public trainers!: Observable<Trainers[]>;
-  public trainerSelected: string = '';
-  public hours : string[] = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
+  public hours: string[] = [
+    '10:00',
+    '11:00',
+    '12:00',
+    '13:00',
+    '14:00',
+    '15:00',
+    '16:00',
+    '17:00',
+    '18:00',
+    '19:00',
+  ];
 
   constructor(
     private cartService: CartService,
@@ -52,25 +59,27 @@ export class ModalItemsServicesComponent implements OnInit {
     private trainersService: TrainerService,
     private date: DateAdapter<Date>
   ) {}
-  
-  
-  
-  
-  
-  ngOnInit(): void {    
-    if(this.typeModal === 'cart'){
+
+  ngOnInit(): void {
+    if (this.typeModal === 'cart') {
       this.date.getFirstDayOfWeek = () => 1;
-      this.trainers = this.trainersService.getTrainers()
+      // this.trainers = this.trainersService.getTrainers()
+
       this.petService.getPets().subscribe((value: Pets[]): void => {
         this.pets = value.filter(
-          (pet: Pets): boolean => pet.parent?._id === this.userService.getToken()
+          (pet: Pets): boolean =>
+            pet.parent?._id === this.userService.getToken()
         );
       });
     }
     this.renderer.addClass(document.body, 'block-scroll');
     this.serviceService
       .getSelectService()
-      .subscribe((value) => (this.service = value));      
+      .subscribe((value) => (this.service = value));
+
+    this.trainersService.trainerSelected$.subscribe((trainer: Trainers) => {
+      this.selectedTrainer = trainer;
+    });
   }
   closeModalService() {
     this.courierService.setItemServiceModal('');
@@ -84,11 +93,6 @@ export class ModalItemsServicesComponent implements OnInit {
     const target = event.target as HTMLSelectElement;
     this.petId = target?.value;
   }
-
-  // public onSelectTrainer(event: Event) {
-  //   const target = event.target as HTMLSelectElement;
-  //   this.trainerSelected = target.value;
-  // }
 
   public disabledDates = (date: Date | null): boolean => {
     if (date) {
@@ -106,6 +110,9 @@ export class ModalItemsServicesComponent implements OnInit {
       const fechaFormateada = event.value
         ? format(event.value, 'dd/MM/yyyy')
         : '';
+
+      console.log(fechaFormateada);
+
       this.appointmentsService
         .getAppointmentsDate(fechaFormateada)
         .subscribe((appointments) => {
@@ -117,13 +124,16 @@ export class ModalItemsServicesComponent implements OnInit {
   }
 
   public onAddService(service: Services): void {
+    console.log(service);
+    console.log(this.selectedTrainer);
     service.hour = this.selectedHour;
-    service.trainer = this.trainerSelected;
+    service.trainer = this.selectedTrainer!;
+
     if (
       !service.date ||
       !service.pet ||
       !this.selectedHour ||
-      !this.trainerSelected
+      !this.selectedTrainer
     ) {
       this.toastService.$message?.next('Selecciona Todos los Campos');
       this.toastService.showToast();
@@ -138,8 +148,4 @@ export class ModalItemsServicesComponent implements OnInit {
     this.courierService.setItemServiceModal('');
   }
 
-  public onSelectedTrainer(id: string){
-    this.trainerSelected = id;
-    
-  }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreRoutingModule } from './core-routing.module';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/Loading/loading.service';
@@ -26,6 +25,8 @@ import { ModalPetsComponent } from './components/modal-pets/modal-pets.component
 import { TranslateModule } from '@ngx-translate/core';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { MapsComponent } from './components/maps/maps/maps.component';
+import { ModalFiltersComponent } from './components/modal-filters/modal-filters.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -42,7 +43,8 @@ import { MapsComponent } from './components/maps/maps/maps.component';
     ModalItemsServicesComponent,
     ModalCouponsComponent,
     ModalPetsComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    ModalFiltersComponent
   ],
   imports: [
     CommonModule,
@@ -70,7 +72,8 @@ import { MapsComponent } from './components/maps/maps/maps.component';
     ModalItemsServicesComponent,
     ModalCouponsComponent,
     ModalPetsComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    ModalFiltersComponent
   ],
   providers: [LoadingService, ModalService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
 ],

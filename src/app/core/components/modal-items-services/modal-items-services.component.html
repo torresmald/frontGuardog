@@ -3,7 +3,7 @@
   class="fixed flex justify-center bg-black bg-opacity-60 w-screen h-screen z-40"
 >
   <section
-    class="relative bg-white justify-start md:justify-between items-center p-7 pt-40 w-full rounded-md text-center"
+    class="relative bg-white justify-start md:flex md:flex-col md:justify-between md:max-w-[60%] items-center p-7 pt-20 w-full rounded-md text-center "
   >
     <button
       class="absolute top-[5%] right-[5%] bg-slate-600 rounded-full text-white text-sm h-7 w-7 ng-star-inserted"
@@ -11,7 +11,7 @@
     >
       X
     </button>
-    <div class="mt-2">
+    <div class="mt-2 w-full md:max-w-[500px]">
       <label
         for="pet"
         class="block font-dog text-xl text-york-500 my-3 md:my-0"
@@ -31,7 +31,7 @@
         </option>
       </select>
     </div>
-    <div class="mt-2">
+    <div class="mt-2 w-full md:max-w-[500px]">
       <label
         for="date"
         class="block font-dog text-xl text-york-500 text-center my-3 md:my-0"
@@ -54,7 +54,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
-    <div class="mt-2" *ngIf="showHours">
+    <div class="mt-2 w-full md:max-w-[500px]" *ngIf="showHours">
       <label
         for="hour"
         class="block font-dog text-xl text-york-500 text-center my-3 md:my-0"
@@ -76,12 +76,12 @@
         </button>
       </div>
     </div>
-    <div class="mt-2">
+    <div class="mt-2 w-full md:max-w-[500px]">
       <label
         for="trainer"
         class="block font-dog text-xl text-york-500 my-3 md:my-0"
         >{{ "MODAL_SERVICES.Trainer" | translate }}</label
-      >
+      > 
       <!-- <select class="w-full" id="trainer" (change)="onSelectTrainer($event)">
         <option value="Selecciona">
           -- {{ "MODAL_SERVICES.Select" | translate }} --
@@ -89,13 +89,16 @@
         <option [value]="trainer._id" *ngFor="let trainer of trainers | async">
           {{ trainer.name }}
         </option>
-      </select> -->
+      </select>  -->
 
-      <app-maps class="block mx-auto max-w-sm mt-4" *ngIf="trainers" [trainers]="trainers" (selectedTrainer)="onSelectedTrainer($event)"></app-maps>
+
+      <!-- MAPA -->
+
+      <app-maps class="relative"></app-maps>
     </div>
     <button
       (click)="onAddService(service)"
-      class="bg-blue-500 text-sm mt-14 w-full md:mt-6 text-white h-[40px] rounded hover:bg-blue-700"
+      class="bg-blue-500 text-sm mt-14 w-full md:max-w-[500px] md:mt-6 text-white h-[40px] rounded hover:bg-blue-700"
     >
       {{ "MODAL_SERVICES.Confirm" | translate }}
     </button>

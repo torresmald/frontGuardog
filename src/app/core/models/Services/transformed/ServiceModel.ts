@@ -1,3 +1,4 @@
+import { Trainers } from "../../Trainers/transformed/TrainerModel";
 
 export interface Services {
     name: string,
@@ -9,7 +10,7 @@ export interface Services {
     date: string,
     hour: string,
     petId?: string,
-    trainer: string,
+    trainer: Trainers,
     link: string,
     description: string,
 }
