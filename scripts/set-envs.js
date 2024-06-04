@@ -15,7 +15,7 @@ const envContent = `
 const envContentDev = `
     export const environment = {
         apiMapboxKey: "${process.env['apiMapboxKey']}",
-        baseUrl: "${process.env['baseUrlDev']}",
+        baseUrl: "${process.env['baseUrl']}",
         baseUrlChat: "${process.env['baseUrlChat']}"
     }
 `
