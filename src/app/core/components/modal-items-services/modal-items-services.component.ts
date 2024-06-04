@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
-import { CourierService } from '../../services/Courier/courier.service';
+import { CourierService } from '../../services/courier/courier.service';
 import { Pets } from '../../models/Pets/transformed/PetModel';
 import { UsersService } from '../../services/Users/usersService.service';
 import { PetsService } from '../../services/Pets/petsService.service';

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreRoutingModule } from './core-routing.module';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/Loading/loading.service';
@@ -27,6 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { MapsComponent } from './components/maps/maps/maps.component';
 import { ModalFiltersComponent } from './components/modal-filters/modal-filters.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 

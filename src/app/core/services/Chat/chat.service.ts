@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { io } from 'socket.io-client';
 import { Chat } from '../../models/Chat/chat.interface';
-import { environment } from 'src/environments/environments';
-// import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
+
 
 
 @Injectable({

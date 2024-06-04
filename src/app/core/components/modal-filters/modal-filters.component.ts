@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { CourierService } from '../../services/Courier/courier.service';
+import { CourierService } from '../../services/courier/courier.service';
 import { Flowbite } from 'src/app/shared/helpers/decorator/flowbite.decorator';
 
 @Component({

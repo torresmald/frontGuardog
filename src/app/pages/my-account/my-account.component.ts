@@ -7,7 +7,7 @@ import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-st
 import { ParentService } from 'src/app/core/services/Parents/parentsService.service';
 import { TrainerService } from 'src/app/core/services/Trainers/trainersService.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
-import { CourierService } from 'src/app/core/services/Courier/courier.service';
+import { CourierService } from 'src/app/core/services/courier/courier.service';
 
 @Component({
   selector: 'app-my-account',
