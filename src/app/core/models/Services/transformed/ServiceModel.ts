@@ -13,4 +13,5 @@ export interface Services {
     trainer: Trainers,
     link: string,
     description: string,
+    totalPaidReal: number
 }

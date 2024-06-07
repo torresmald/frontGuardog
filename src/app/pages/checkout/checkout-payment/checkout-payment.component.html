@@ -1,4 +1,20 @@
-<section
+
+<div class="credit-card">
+  <div #cardInfo>
+  </div>
+  <div class="text-red-500 text-center text-lg" *ngIf="cardError">
+    {{cardError}}
+  </div>
+
+  <button
+  (click)="onCreateTransaction()"
+  type="submit"
+  class="w-full p-4 bg-york-500 hover:bg-york-700 text-white border-none cursor-pointer text-lg"
+>
+  Pagar
+</button>
+</div>
+<!-- <section
   class="bg-white my-5 mx-auto p-5 w-[80%] max-w-[500px] min-h-[500px] flex flex-col shadow-lg"
 >
   <h2 class="">Elige Método de Pago</h2>
@@ -32,9 +48,6 @@
             VISA
           </label>
           <i class="fa-brands fa-cc-visa"></i>
-        </div>
-        <div #cardInfo>
-          
         </div>
       </div>
       <div class="flex items-center py-3">
@@ -75,4 +88,7 @@
       Pagar
     </button>
   </form>
-</section>
+</section> -->
+
+
+

@@ -6,6 +6,11 @@ import { LoadingService } from 'src/app/core/services/Loading/loading.service';
 import { LocalStorageService } from 'src/app/core/services/LocalStorage/local-storage.service';
 import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
+import { StripeService } from 'src/app/core/services/Stripe/stripe.service';
+
+// import * as Stripe from 'typings/Stripe';
+// import * as elements from 'typings/elements';
+
 
 @Component({
   selector: 'app-checkout-payment',
@@ -20,6 +25,7 @@ export class CheckoutPaymentComponent implements OnInit, AfterViewInit {
     private cartService: CartService,
     private localStorageService: LocalStorageService,
     private navigationService: NavigationService,
+    private stripeService: StripeService
   ) {}
   ngOnInit(): void {
     this.localStorageService.getLocalStorage().subscribe((value) => {
@@ -30,17 +36,40 @@ export class CheckoutPaymentComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.card = elements.create('card')
     this.card.mount(this.cardInfo.nativeElement)
-    this.card.addEventListener('change', this.onChange)
+    this.card.addEventListener('change', this.onChange.bind(this))
   }
   @ViewChild('cardInfo') public cardInfo!: ElementRef
   public servicesInCart: Services[] = [];
-  public servicesAddedToCart: Services[] = [];
   public card: any;
-  private stripe: any;
-  private elements: any;
-  public onChange($event: any){
-    console.log($event)
+  public cardError: string = ''
+  public totalAmount: number = 0
+
+
+
+
+
+
+  public onChange(event: any){
+    console.log(event)
+    if(event.error) this.cardError = event.error.message
     
+  }
+
+  public async  onCreateTransaction(){
+    const {token, error} = await stripe.createToken(this.card)
+    error ? this.cardError = error.message : ''
+    this.totalAmount = this.getTotalAmount()
+    console.log(this.totalAmount);
+    
+    this.stripeService.createTransaction(token, this.totalAmount).subscribe()
+  }
+
+  public getTotalAmount(){
+    console.log(this.servicesInCart);
+    const total = this.servicesInCart.reduce((acc, current) => {      
+      return acc + current.totalPaidReal
+    }, 0)
+    return total
   }
 
   public onSubmitPay() {
@@ -55,7 +84,6 @@ export class CheckoutPaymentComponent implements OnInit, AfterViewInit {
           this.localStorageService.getLocalStorage().subscribe((value) => {
             this.servicesInCart = value || [];
           });
-          this.servicesAddedToCart = [];
           this.navigationService.onNavigate('/parent-view');
         }, 3000);
       }
