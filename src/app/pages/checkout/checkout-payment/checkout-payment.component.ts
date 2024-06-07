@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Parents } from 'src/app/core/models/Parents/transformed/ParentModel';
 import { Services } from 'src/app/core/models/Services/transformed/ServiceModel';
 import { AppointmentsService } from 'src/app/core/services/Appointmet/appointmentsService.service';
 import { CartService } from 'src/app/core/services/Cart/cart.service';
@@ -8,9 +9,10 @@ import { ModalService } from 'src/app/core/services/Modal/modal.service';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { StripeService } from 'src/app/core/services/Stripe/stripe.service';
 
-// import * as Stripe from 'typings/Stripe';
-// import * as elements from 'typings/elements';
-
+interface DataStripe {
+  description: Parents,
+  totalAmount: number
+}
 
 @Component({
   selector: 'app-checkout-payment',
@@ -44,11 +46,6 @@ export class CheckoutPaymentComponent implements OnInit, AfterViewInit {
   public cardError: string = ''
   public totalAmount: number = 0
 
-
-
-
-
-
   public onChange(event: any){
     console.log(event)
     if(event.error) this.cardError = event.error.message
@@ -56,12 +53,19 @@ export class CheckoutPaymentComponent implements OnInit, AfterViewInit {
   }
 
   public async  onCreateTransaction(){
-    const {token, error} = await stripe.createToken(this.card)
+    const { paymentMethod, error } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: this.card,
+    });
     error ? this.cardError = error.message : ''
     this.totalAmount = this.getTotalAmount()
-    console.log(this.totalAmount);
+    const description = this.servicesInCart[0].parent
+    const dataToStripe: DataStripe = {
+      totalAmount: this.totalAmount,
+      description: description!
+    }
     
-    this.stripeService.createTransaction(token, this.totalAmount).subscribe()
+    this.stripeService.createTransaction(paymentMethod.id, dataToStripe).subscribe()
   }
 
   public getTotalAmount(){
