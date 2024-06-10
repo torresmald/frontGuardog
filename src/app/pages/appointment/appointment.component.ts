@@ -30,7 +30,7 @@ export class AppointmentComponent implements OnInit {
     this.appointmentsService.deleteAppointment(id).subscribe(value => {
       if(value){
         this.modalService.$message?.next('Cita Cancelada');
-        this.modalService.showModal();
+        this.modalService.showModal('other');
         setTimeout(() => {
           this.navigationService.onNavigate('/parent-view')
         }, 1000);

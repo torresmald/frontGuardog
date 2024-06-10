@@ -4,10 +4,8 @@ import { environment } from 'src/environments/environment';
 import { Parents } from '../../models/Parents/transformed/ParentModel';
 import { LoadingService } from '../Loading/loading.service';
 import { catchError, of, tap } from 'rxjs';
-interface DataStripe {
-  description: Parents;
-  totalAmount: number;
-}
+import { LocalStorageService } from '../LocalStorage/local-storage.service';
+
 const URL_API = {
   DOMAIN: environment.baseUrl,
   TRANSACTIONS: '/transactions/create-transaction',
@@ -15,28 +13,29 @@ const URL_API = {
 @Injectable({
   providedIn: 'root',
 })
-export class StripeService {
+export class PaypalService {
   constructor(
     private http: HttpClient,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private localStorageService: LocalStorageService
   ) {}
 
-  public createTransaction(payment_method_token: any, data: DataStripe) {
+  public transactionData : any
+
+  public createTransaction(order: any) {
+    this.transactionData = order
     this.loadingService.showLoading();
-    const body = {
-      payment_method_token,
-      data,
-    };
 
     // return this.http.post(`${URL_API.DOMAIN}${URL_API.TRANSACTIONS}`, body)
     return this.http
-      .post(`http://localhost:4000/transactions/create-transaction`, body)
+      .post(`http://localhost:4000/transactions/create-transaction-paypal`, order)
       .pipe(
-          catchError((err, caught) => {
-          console.log(err);
-
+        tap(() => {
           this.loadingService.hideLoading();
-          
+          this.localStorageService.removeItem('cart')
+        }),
+          catchError((err, caught) => {
+          this.loadingService.hideLoading();
           return of(undefined)}),
       );
   }

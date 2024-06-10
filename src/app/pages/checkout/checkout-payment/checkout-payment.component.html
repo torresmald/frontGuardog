@@ -1,25 +1,9 @@
 
-<div class="credit-card">
-  <div #cardInfo>
-  </div>
-  <div class="text-red-500 text-center text-lg" *ngIf="cardError">
-    {{cardError}}
-  </div>
-
-  <button
-  (click)="onCreateTransaction()"
-  type="submit"
-  class="w-full p-4 bg-york-500 hover:bg-york-700 text-white border-none cursor-pointer text-lg"
->
-  Pagar
-</button>
-</div>
-<!-- <section
+<section
   class="bg-white my-5 mx-auto p-5 w-[80%] max-w-[500px] min-h-[500px] flex flex-col shadow-lg"
 >
-  <h2 class="">Elige Método de Pago</h2>
-  <form id="checkout-form" class="flex flex-col justify-evenly flex-1">
-    <div>
+  <h2 class="font-extrabold text-2xl mt-5 text-center text-sienna-600">Elige Método de Pago</h2>
+    <div class="flex flex-col justify-evenly flex-1">
       <div class="flex items-center py-3">
         <input
           type="radio"
@@ -27,9 +11,10 @@
           id="paypal"
           name="payment"
           value="paypal"
+          (input)="onOpenModal('paypal')"
         />
         <div class="flex gap-3 items-center">
-          <label for="paypal" class="cursor-pointer flex items-center">
+          <label for="paypal" class="cursor-pointer flex items-center font-bold">
             PAYPAL
           </label>
           <i class="fa-brands fa-paypal"></i>
@@ -42,9 +27,10 @@
           id="stripe"
           name="payment"
           value="stripe"
+          (input)="onOpenModal('stripe')"
         />
         <div class="flex gap-3 items-center">
-          <label for="stripe" class="cursor-pointer flex items-center">
+          <label for="stripe" class="cursor-pointer flex items-center font-bold">
             VISA
           </label>
           <i class="fa-brands fa-cc-visa"></i>
@@ -57,10 +43,11 @@
           id="bizum"
           name="payment"
           value="bizum"
+          disabled
         />
         <div class="flex gap-3 items-center">
-          <label for="bizum" class="cursor-pointer flex items-center">
-            BIZUM
+          <label for="bizum" class="cursor-pointer flex items-center font-bold text-gray-400">
+            BIZUM (NO DISPONIBLE TODAVIA)
           </label>
           <i class="fa-solid fa-mobile-screen"></i>
         </div>       
@@ -72,23 +59,20 @@
           id="bizum"
           name="payment"
           value="bizum"
+          disabled
         />
         <div class="flex gap-3 items-center">
-          <label for="bizum" class="cursor-pointer flex items-center">
-            BANK TRANSFER
+          <label for="bizum" class="cursor-pointer flex items-center font-bold text-gray-400">
+            BANK TRANSFER (NO DISPONIBLE TODAVIA)
           </label>
           <i class="fa-solid fa-money-bill-transfer"></i>
         </div>
       </div>
     </div>
-    <button
-      type="submit"
-      class="w-full p-4 bg-york-500 hover:bg-york-700 text-white border-none cursor-pointer text-lg"
-    >
-      Pagar
-    </button>
-  </form>
-</section> -->
+</section>
+
+<app-modal-stripe *ngIf="openModal === 'stripe'"></app-modal-stripe>
+<app-modal-paypal *ngIf="openModal === 'paypal'"></app-modal-paypal>
 
 
 

@@ -1,0 +1,55 @@
+<div
+  *ngIf="shouldShowModal | async"
+  class="bg-black flex justify-center items-center fixed top-0 left-0 w-full h-full inset-0 bg-opacity-30 z-40"
+>
+  <div
+    class="credit-card p-5 flex flex-col justify-evenly items-center relative w-full md:w-[50%]"
+  >
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 p-4">
+      <div id="cardInfo" #cardInfo class="p-3 mb-5"></div>
+      <div class="text-red-500 text-center text-lg" *ngIf="cardError">
+        {{ cardError }}
+      </div>
+
+      <button
+        (click)="onCreateTransaction()"
+        type="submit"
+        class="w-full p-4 bg-york-500 hover:bg-york-700 text-white border-none cursor-pointer text-lg"
+      >
+        Pagar {{ totalAmount | currency : "EUR" : "symbol" : "2.2-2" : "es" }}
+      </button>
+      <div class="mx-auto mt-1 flex flex-col justify-center w-[80%]">
+        <p>
+          Este pago se realiza a través de la plataforma de pago seguro de
+          Stripe
+        </p>
+        <img
+          class="w-[60%]"
+          src="https://res.cloudinary.com/dpyvlsksj/image/upload/v1718025353/Guardog/img_safe_es_lij3jp.png"
+        />
+      </div>
+    </div>
+  </div>
+  <button
+    (click)="onCloseModal(false)"
+    type="button"
+    class="absolute top-10 right-2.5 text-black bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-12 h-12 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+  >
+    <svg
+      class="w-6 h-6"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 14 14"
+    >
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+      />
+    </svg>
+    <span class="sr-only">{{ "MODAL.Close" | translate }}</span>
+  </button>
+</div>

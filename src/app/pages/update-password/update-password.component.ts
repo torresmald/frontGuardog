@@ -105,7 +105,7 @@ export class UpdatePasswordComponent implements OnInit {
         .subscribe((value) => {
           if (value) {
             this.modalService.$message?.next(value);
-            this.modalService.showModal();
+            this.modalService.showModal('other');
             setTimeout(() => {
               this.modalService.closeModal();
               this.navigationService.onNavigate('/login');

@@ -97,7 +97,7 @@ export class UpdateDataComponent implements OnInit {
             .updateDataParent(this.id, this.form.value)
             .subscribe((value) => {
               this.modalService.$message?.next(value);
-              this.modalService.showModal();
+              this.modalService.showModal('other');
               setTimeout(() => {
                 this.navigationService.onNavigate('/my-account/', this.id);
               }, 1000);
@@ -106,7 +106,7 @@ export class UpdateDataComponent implements OnInit {
             .updateDataTrainer(this.id, this.form.value)
             .subscribe((value) => {
               this.modalService.$message?.next(value);
-              this.modalService.showModal();
+              this.modalService.showModal('other');
               setTimeout(() => {
                 this.navigationService.onNavigate('/my-account/', this.id);
               }, 1000);

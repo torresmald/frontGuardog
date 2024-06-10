@@ -7,20 +7,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceCardComponent } from './service-card/service-card.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { CheckoutPaymentComponent } from './checkout-payment/checkout-payment.component';
+import { ModalStripeComponent } from 'src/app/core/components/modal-stripe/modal-stripe.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 
 @NgModule({
   declarations: [
     CheckoutComponent,
     ServiceCardComponent,
-    CheckoutPaymentComponent
+    CheckoutPaymentComponent,
+    ConfirmationComponent,
   ],
   imports: [
     CommonModule,
     CheckoutRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    TranslateModule
+    TranslateModule,
+    CoreModule
   ]
 })
 export class CheckoutModule { }

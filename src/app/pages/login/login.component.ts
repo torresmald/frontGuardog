@@ -73,7 +73,7 @@ export class LoginComponent implements DeactivatableComponent {
         ? this.trainerService.loginTrainers(this.form?.value).subscribe({
             next: () => {
               this.modalService.$message?.next('Logueado con éxito');
-              this.modalService.showModal();
+              this.modalService.showModal('other');
               this.isSubmitted = true;
               this.usersService.userLogged$.next(true);
               setTimeout(() => {
@@ -89,7 +89,7 @@ export class LoginComponent implements DeactivatableComponent {
         : this.parentService.loginParent(this.form?.value).subscribe({
             next: () => {
               this.modalService.$message?.next('Logueado con éxito');
-              this.modalService.showModal();
+              this.modalService.showModal('other');
               this.isSubmitted = true;
               this.usersService.userLogged$.next(true);
               setTimeout(() => {
@@ -112,7 +112,7 @@ export class LoginComponent implements DeactivatableComponent {
       this.modalService.$message?.next(
         'No has terminado de rellenar el Formulario'
       );
-      this.modalService.showModal();
+      this.modalService.showModal('other');
     }
     return this.modalService.result$;
   }

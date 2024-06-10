@@ -131,7 +131,7 @@ export class MapsComponent implements AfterViewInit, OnDestroy {
     if (this.isTrainerSelected) return;
     this.trainersService.selectTrainer(trainer);
     this.isTrainerSelected = true;
-    this.marker?.togglePopup()
+    // this.marker?.togglePopup()
     if(this.isTrainerSelected)
     this.popUp!.on('close', () => {      
     })

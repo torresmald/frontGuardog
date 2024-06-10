@@ -27,6 +27,8 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { MapsComponent } from './components/maps/maps/maps.component';
 import { ModalFiltersComponent } from './components/modal-filters/modal-filters.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ModalStripeComponent } from './components/modal-stripe/modal-stripe.component';
+import { ModalPaypalComponent } from './components/modal-paypal/modal-paypal.component';
 
 
 
@@ -44,7 +46,9 @@ import { HeaderComponent } from './components/header/header.component';
     ModalCouponsComponent,
     ModalPetsComponent,
     SkeletonComponent,
-    ModalFiltersComponent
+    ModalFiltersComponent,
+    ModalStripeComponent,
+    ModalPaypalComponent
   ],
   imports: [
     CommonModule,
@@ -73,7 +77,9 @@ import { HeaderComponent } from './components/header/header.component';
     ModalCouponsComponent,
     ModalPetsComponent,
     SkeletonComponent,
-    ModalFiltersComponent
+    ModalFiltersComponent,
+    ModalStripeComponent,
+    ModalPaypalComponent
   ],
   providers: [LoadingService, ModalService, {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
 ],
