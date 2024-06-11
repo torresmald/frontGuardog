@@ -9,7 +9,7 @@ import { NavigationService } from '../Navigation/navigation.service';
 
 const URL_API = {
   DOMAIN: environment.baseUrl,
-  TRANSACTIONS: '/transactions/create-transaction',
+  TRANSACTIONS: '/transactions/create-transaction-paypal',
 };
 @Injectable({
   providedIn: 'root',
@@ -31,7 +31,8 @@ export class PaypalService {
 
     // return this.http.post(`${URL_API.DOMAIN}${URL_API.TRANSACTIONS}`, body)
     return this.http
-      .post(`http://localhost:4000/transactions/create-transaction-paypal`, order)
+      //.post(`http://localhost:4000/transactions/create-transaction-paypal`, order)
+      .post(`${URL_API.DOMAIN}${URL_API.TRANSACTIONS}`, order)
       .pipe(
         tap(() => {
           this.loadingService.hideLoading();

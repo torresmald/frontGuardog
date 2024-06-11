@@ -36,7 +36,9 @@ export class StripeService {
     };
     // return this.http.post(`${URL_API.DOMAIN}${URL_API.TRANSACTIONS}`, body)
     return this.http
-      .post(`http://localhost:4000/transactions/create-transaction`, body)
+      // .post(`http://localhost:4000/transactions/create-transaction`, body)
+        .post(`${URL_API.DOMAIN}${URL_API.TRANSACTIONS}`, body)
+
       .pipe(
         tap(() => {
           this.loadingService.hideLoading();
