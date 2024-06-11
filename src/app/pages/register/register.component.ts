@@ -175,7 +175,7 @@ export class RegisterComponent implements OnInit {
         this.petsService.registerPets(form).subscribe({
           next: () => {
             this.modalService.$message?.next('Mascota Registrada');
-            this.modalService.showModal();
+            this.modalService.showModal('other');
             setTimeout(() => {
               this.navigationService.onNavigate('/parent-view');
             }, 1000);
@@ -200,7 +200,7 @@ export class RegisterComponent implements OnInit {
         this.parentService.registerParent(form).subscribe({
           next: () => {
             this.modalService.$message?.next('Usuario Registrado');
-            this.modalService.showModal();
+            this.modalService.showModal('other');
             setTimeout(() => {
               this.navigationService.onNavigate('/parent-view');
             }, 1000);
@@ -219,6 +219,6 @@ export class RegisterComponent implements OnInit {
 
   public onOpenModal(){
     this.modalService.$message.next('Todos los datos serán tratados según la LOPD')
-    this.modalService.showModal();
+    this.modalService.showModal('other');
   }
 }

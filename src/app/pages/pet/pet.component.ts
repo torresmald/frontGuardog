@@ -39,7 +39,7 @@ export class PetComponent implements OnInit {
     this.petsService.deletePets(id).subscribe((value) => {
       if (value) {
         this.modalService.$message?.next('Mascota Eliminada');
-        this.modalService.showModal();
+        this.modalService.showModal('other');
         setTimeout(() => {
           this.navigationService.onNavigate('/parent-view');
         }, 1000);

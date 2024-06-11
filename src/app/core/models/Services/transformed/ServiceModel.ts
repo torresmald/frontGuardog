@@ -1,3 +1,4 @@
+import { Parents } from "../../Parents/transformed/ParentModel";
 import { Trainers } from "../../Trainers/transformed/TrainerModel";
 
 export interface Services {
@@ -13,4 +14,6 @@ export interface Services {
     trainer: Trainers,
     link: string,
     description: string,
+    totalPaidReal: number,
+    parent?: Parents
 }

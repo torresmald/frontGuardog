@@ -46,7 +46,7 @@ export class MyAppointmentsComponent {
     this.appointmentsService.deleteAppointment(id).subscribe((value) => {
       if (value) {
         this.modalService.$message?.next('Cita Cancelada');
-        this.modalService.showModal();
+        this.modalService.showModal('other');
         setTimeout(() => {
           this.navigationService.onNavigate('/trainer-view');
         }, 1000);
