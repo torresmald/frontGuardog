@@ -4,9 +4,12 @@ import { environment } from 'src/environments/environment';
 import { Parents } from '../../models/Parents/transformed/ParentModel';
 import { LoadingService } from '../Loading/loading.service';
 import { catchError, of, tap } from 'rxjs';
+import { LocalStorageService } from '../LocalStorage/local-storage.service';
+import { NavigationService } from '../Navigation/navigation.service';
 interface DataStripe {
   description: Parents;
   totalAmount: number;
+  customer: Parents
 }
 const URL_API = {
   DOMAIN: environment.baseUrl,
@@ -18,26 +21,33 @@ const URL_API = {
 export class StripeService {
   constructor(
     private http: HttpClient,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private localStorageService: LocalStorageService,
+    private navigationService: NavigationService
   ) {}
+  public transactionData : any
 
   public createTransaction(payment_method_token: any, data: DataStripe) {
     this.loadingService.showLoading();
+
     const body = {
       payment_method_token,
       data,
     };
-
     // return this.http.post(`${URL_API.DOMAIN}${URL_API.TRANSACTIONS}`, body)
     return this.http
       .post(`http://localhost:4000/transactions/create-transaction`, body)
       .pipe(
-          catchError((err, caught) => {
-          console.log(err);
-
+        tap(() => {
           this.loadingService.hideLoading();
-          
-          return of(undefined)}),
+          this.localStorageService.removeItem('cart')
+          this.navigationService.onNavigate('/checkout/confirmation')
+
+        }),
+        catchError((err, caught) => {
+          this.loadingService.hideLoading();
+          return of(undefined);
+        })
       );
   }
 }

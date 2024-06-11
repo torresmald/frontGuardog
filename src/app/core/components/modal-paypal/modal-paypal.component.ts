@@ -76,15 +76,12 @@ export class ModalPaypalComponent implements OnInit, AfterViewInit {
   public shouldShowModal?: Observable<boolean>;
 
   public async onCreateTransaction(order: any) {
-    this.paypalService.createTransaction(order).subscribe({
-      next: () => {
-        this.navigationService.onNavigate('/checkout/confirmation');
-      },
-      error: (error) => {
-        this.loadingService.hideLoading();
-        console.log(error);
-      },
-    });
+    try {
+      this.paypalService.createTransaction(order).subscribe();
+      this.onSubmitPay()
+    } catch (error) {
+      
+    }
   }
 
   public onCloseModal(result: boolean) {
@@ -111,16 +108,13 @@ export class ModalPaypalComponent implements OnInit, AfterViewInit {
       .registerAppointment(this.servicesInCart)
       .subscribe((value) => {
         if (value) {
-          this.loadingService.showLoading();
           setTimeout(() => {
-            this.loadingService.hideLoading();
             this.modalService.$message?.next('Compra realizada con Éxito');
             this.modalService.showModal('other');
             this.cartService.removeAllServices('cart');
             this.localStorageService.getLocalStorage().subscribe((value) => {
               this.servicesInCart = value || [];
             });
-            this.navigationService.onNavigate('/parent-view');
           }, 3000);
         }
       });

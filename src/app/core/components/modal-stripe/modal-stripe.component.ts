@@ -13,7 +13,8 @@ import { Observable } from 'rxjs';
 
 interface DataStripe {
   description: Parents,
-  totalAmount: number
+  totalAmount: number,
+  customer: Parents
 }
 
 @Component({
@@ -80,23 +81,15 @@ export class ModalStripeComponent implements OnInit, AfterViewInit, OnDestroy {
       const description = this.servicesInCart[0].parent
       const dataToStripe: DataStripe = {
         totalAmount: this.totalAmount,
-        description: description!
+        description: description!,
+        customer: description!
       }
       
-      this.stripeService.createTransaction(paymentMethod.id, dataToStripe).subscribe({
-        next: () => {
-          this.navigationService.onNavigate('/checkout/confirmation')
-        },
-        error: (error) => {
-          this.loadingService.hideLoading()
-          console.log(error);
-        }
-      })
+     this.stripeService.createTransaction(paymentMethod.id, dataToStripe).subscribe(value =>  this.stripeService.transactionData = value)
+     this.onSubmitPay()
     } catch (error) {
       console.log(error);
-      
     }
-
   }
 
 
@@ -111,16 +104,13 @@ export class ModalStripeComponent implements OnInit, AfterViewInit, OnDestroy {
   public onSubmitPay() {
     this.appointmentsService.registerAppointment(this.servicesInCart).subscribe((value) => {
       if (value) {
-        this.loadingService.showLoading();
         setTimeout(() => {
-          this.loadingService.hideLoading();
           this.modalService.$message?.next('Compra realizada con Éxito');
           this.modalService.showModal('other');
           this.cartService.removeAllServices('cart');
           this.localStorageService.getLocalStorage().subscribe((value) => {
             this.servicesInCart = value || [];
           });
-          this.navigationService.onNavigate('/parent-view');
         }, 3000);
       }
     });

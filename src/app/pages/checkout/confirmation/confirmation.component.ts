@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from 'src/app/core/services/Navigation/navigation.service';
 import { PaypalService } from 'src/app/core/services/Paypal/paypal.service';
+import { StripeService } from 'src/app/core/services/Stripe/stripe.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -9,16 +10,16 @@ import { PaypalService } from 'src/app/core/services/Paypal/paypal.service';
 })
 export class ConfirmationComponent implements OnInit {
   constructor(private navigationService: NavigationService,
-    private paypalService: PaypalService
-  ){
+    private paypalService: PaypalService,
+    private stripeService: StripeService
+  ){}
 
-  }
-
+  public transactionDataPaypal: any
   public transactionData: any
 
   ngOnInit(): void {
-      this.transactionData = this.paypalService.transactionData
-      console.log(this.transactionData);
+      this.transactionDataPaypal = this.paypalService.transactionData
+      this.transactionData = this.stripeService.transactionData
       
   }
 
