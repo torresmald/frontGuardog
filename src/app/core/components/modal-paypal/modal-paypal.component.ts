@@ -50,16 +50,13 @@ export class ModalPaypalComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.paypal = paypal
       .Buttons({
-        createOrder: (data: any, actions: any) => {
-          console.log(this.transformServices());
-          
+        createOrder: (data: any, actions: any) => {          
           return actions.order.create({
              purchase_units: this.transformServices(),
           });
         },
         onApprove: async (data: any, actions: any) => {
           const order = await actions.order.capture();
-          console.log(order)
           this.onCreateTransaction(order);
         },
         onError: (err: any) => {

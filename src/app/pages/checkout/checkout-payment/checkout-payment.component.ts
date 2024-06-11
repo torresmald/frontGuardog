@@ -23,77 +23,10 @@ export class CheckoutPaymentComponent  {
 
   public openModal: string = '';
   constructor(
-    // private appointmentsService: AppointmentsService,
-    // private loadingService: LoadingService,
-    // private modalService: ModalService,
-    // private cartService: CartService,
-    // private localStorageService: LocalStorageService,
-    // private navigationService: NavigationService,
-    // private stripeService: StripeService
     private modalService: ModalService
   ) {}
-  // ngOnInit(): void {
-  //   this.localStorageService.getLocalStorage().subscribe((value) => {
-  //     console.log(value);
-  //     this.servicesInCart = value || [];
-  //   });
-  // }
-  // ngAfterViewInit(): void {
-  //   this.card = elements.create('card')
-  //   this.card.mount(this.cardInfo.nativeElement)
-  //   this.card.addEventListener('change', this.onChange.bind(this))
-  // }
-  // @ViewChild('cardInfo') public cardInfo!: ElementRef
-  // public servicesInCart: Services[] = [];
-  // public card: any;
-  // public cardError: string = ''
-  // public totalAmount: number = 0
-
   public onOpenModal(name :string){
     name == 'stripe' ? this.openModal = name : this.openModal = 'paypal'
     this.modalService.showModal('checkout')
-    
   }
-
-  // public async  onCreateTransaction(){
-  //   const { paymentMethod, error } = await stripe.createPaymentMethod({
-  //     type: 'card',
-  //     card: this.card,
-  //   });
-  //   error ? this.cardError = error.message : ''
-  //   this.totalAmount = this.getTotalAmount()
-  //   const description = this.servicesInCart[0].parent
-  //   const dataToStripe: DataStripe = {
-  //     totalAmount: this.totalAmount,
-  //     description: description!
-  //   }
-    
-  //   this.stripeService.createTransaction(paymentMethod.id, dataToStripe).subscribe()
-  // }
-
-  // public getTotalAmount(){
-  //   console.log(this.servicesInCart);
-  //   const total = this.servicesInCart.reduce((acc, current) => {      
-  //     return acc + current.totalPaidReal
-  //   }, 0)
-  //   return total
-  // }
-
-  // public onSubmitPay() {
-  //   this.appointmentsService.registerAppointment(this.servicesInCart).subscribe((value) => {
-  //     if (value) {
-  //       this.loadingService.showLoading();
-  //       setTimeout(() => {
-  //         this.loadingService.hideLoading();
-  //         this.modalService.$message?.next('Compra realizada con Éxito');
-  //         this.modalService.showModal();
-  //         this.cartService.removeAllServices('cart');
-  //         this.localStorageService.getLocalStorage().subscribe((value) => {
-  //           this.servicesInCart = value || [];
-  //         });
-  //         this.navigationService.onNavigate('/parent-view');
-  //       }, 3000);
-  //     }
-  //   });
-  // }
 }
